@@ -1,11 +1,11 @@
-//modules
+﻿//modules
 var mysql = require('mysql');
 //coneção com db
 var con = mysql.createConnection({
   host: "localhost",
-  user: "admin",
-  password: "admin",
-  database: "brandibDB"
+  user: "adminb",
+  password: "adminB123!",
+  database: "brandiBDB"
 });
 //inicia coneção com db
 con.connect(function(err) {

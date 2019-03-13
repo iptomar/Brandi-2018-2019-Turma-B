@@ -1,4 +1,4 @@
-//modules
+﻿//modules
 var mysql = require('mysql');
 var express = require('express');
 var session = require('express-session');
@@ -7,9 +7,9 @@ var path = require('path');
 //coneção com db
 var con = mysql.createConnection({
 	host     : 'localhost',
-	user     : 'admin',
-	password : 'admin',
-	database : 'brandibDB'
+	user     : 'adminb',
+	password : 'adminB123!',
+	database : 'brandiBDB'
 });
 //inicia o express
 var app = express();
