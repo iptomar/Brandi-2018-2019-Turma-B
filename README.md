@@ -2,10 +2,10 @@
 Este Projeto consiste na criação de uma aplicação web para gestão de fichas de restauro de modo a facilitar o processo de preenchimento, armazenamento e preservação das mesmas.
 
 ## Pasta Backend
-Estão as pastas e ficheiros para o funcionamento do Backend
+Pasta que contém os ficheiros para o funcionamento do Backend
 
 ## Pasta Frontend
-Estão as pastas e ficheiros para o funcionamento do Frontend
+Pasta que contém os ficheiros para o funcionamento do Frontend
 
 ## Frameworks utilizadas
 ### Backend
