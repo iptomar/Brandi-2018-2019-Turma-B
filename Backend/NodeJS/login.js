@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 //pagina default
 app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname + '/../../Frontend/public/index.html'));
+	response.sendFile(path.join(__dirname + '/../../Frontend/notes-app-client/public/index.html'));
 });
 //method: post | action: auth
 //autentica o utilizador através do username e password
