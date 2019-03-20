@@ -22,13 +22,10 @@ app.use(session({
 //define o bodyparser para trabalhar com json
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
-//pagina default
-app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname + '/../../Frontend/notes-app-client/public/index.html'));
-});
+
 //method: post | action: auth
 //autentica o utilizador através do username e password
-app.post('/auth', function(request, response) {
+app.post('/api/auth', function(request, response) {
 	//guarda o username e password recebidos
 	var username = request.body.username;
 	var password = request.body.password;
@@ -57,7 +54,7 @@ app.post('/auth', function(request, response) {
 });
 //method: post | action: logout
 //termina a sessão
-app.post('/logout', function(request, response) {
+app.post('/api/logout', function(request, response) {
 	//apaga as variaveis de sessão
 	request.session.loggedin = false;
 	request.session.username = null;
@@ -66,22 +63,11 @@ app.post('/logout', function(request, response) {
 	response.redirect('/');
 	response.end();
 });
-//pagina home
-app.get('/home', function(request, response) {
-	//utilizador logged in
-	if (request.session.loggedin) {
-		response.sendFile(path.join(__dirname + '/home.html'));
-	//utilizador logged out
-	} else {
-		response.send('Please login to view this page!');
-		response.end();
-	}
-});
 
 //*********************** API **************************//
 
 //lista de utilizadores
-app.get("/users", (req, res) => {
+app.get("/api/users", (req, res) => {
   let sql = "SELECT * FROM tblUsers";
 
   con.query(sql, (err, results) => {
@@ -95,7 +81,7 @@ app.get("/users", (req, res) => {
 });
 
 //utilizador (pelo ID)
-app.get("/users/:id", (req, res) => {
+app.get("/api/users/:id", (req, res) => {
   let sql = "SELECT * FROM tblUsers WHERE id = ?";
 
   // req.params.id mapeia o :id que está no URL acima.
