@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import { Redirect } from 'react-router-dom'
 import axios from "axios";
 
 export default class Login extends Component {
@@ -9,7 +10,8 @@ export default class Login extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      loginState: "idle"
     };
   }
 
@@ -26,18 +28,34 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
+    this.setState({ loginState: 'loggingIn' })
+
     const username = this.state.username
 
     const password = this.state.password
 
-    axios.post('http://brandi.ipt.pt/auth', { username, password })
+    axios.post('/api/auth', { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);
+
+        this.setState({loginState: 'success'})
+      })
+      .catch(err => {
+        this.setState({ loginState: 'error'});
       });
   }
 
   render() {
+
+    if (this.state.loginState === "error") {
+      return (
+        <h1>Erro</h1>
+      )
+    } else if (this.state.loginState === "success"){
+      return <Redirect to='/profile' />
+    }
+
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
