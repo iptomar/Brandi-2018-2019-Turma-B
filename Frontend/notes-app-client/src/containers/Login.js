@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,13 +25,15 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    return fetch('http://brandi.ipt.pt/users', {method: 'GET', headers: { Accept: 'application/json' } })
-      .then(function (resposta) {
-        return resposta.json();
-      }).then(function (res){
+
+    const username = this.state.username
+
+    const password = this.state.password
+
+    axios.post('http://localhost:83/auth', { username, password })
+      .then(res => {
         console.log(res);
-      }).catch(function (err){
-        console.log("erro");
+        console.log(res.data);
       });
   }
 
