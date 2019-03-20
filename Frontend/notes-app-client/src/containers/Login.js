@@ -30,7 +30,7 @@ export default class Login extends Component {
 
     const password = this.state.password
 
-    axios.post('http://localhost:83/auth', { username, password })
+    axios.post('http://brandi.ipt.pt/auth', { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);
