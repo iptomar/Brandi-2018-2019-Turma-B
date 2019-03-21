@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 //method: post | action: auth
 //autentica o utilizador através do username e password
-app.post('/api/auth', function(request, response) {
+app.post('/auth', function(request, response) {
 	//guarda o username e password recebidos
 	var username = request.body.username;
 	var password = request.body.password;
@@ -54,7 +54,7 @@ app.post('/api/auth', function(request, response) {
 });
 //method: post | action: logout
 //termina a sessão
-app.post('/api/logout', function(request, response) {
+app.post('/logout', function(request, response) {
 	//apaga as variaveis de sessão
 	request.session.loggedin = false;
 	request.session.username = null;
@@ -67,7 +67,7 @@ app.post('/api/logout', function(request, response) {
 //*********************** API **************************//
 
 //lista de utilizadores
-app.get("/api/users", (req, res) => {
+app.get("/users", (req, res) => {
   let sql = "SELECT * FROM tblUsers";
 
   con.query(sql, (err, results) => {
@@ -81,7 +81,7 @@ app.get("/api/users", (req, res) => {
 });
 
 //utilizador (pelo ID)
-app.get("/api/users/:id", (req, res) => {
+app.get("/users/:id", (req, res) => {
   let sql = "SELECT * FROM tblUsers WHERE id = ?";
 
   // req.params.id mapeia o :id que está no URL acima.
