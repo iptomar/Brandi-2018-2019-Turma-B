@@ -13,7 +13,7 @@ class App extends Component {
             <Navbar.Brand>
               <Link to="/">Scratch </Link>
               <Link to="/login">Login </Link>
-              <Link to="/logout">LogOut</Link>
+              
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
