@@ -60,7 +60,7 @@ app.post('/logout', function(request, response) {
 	request.session.username = null;
 	console.log("User logged out")
 	//redireciona para a página de login
-	response.redirect('/');
+	//response.redirect('/');
 	response.end();
 });
 

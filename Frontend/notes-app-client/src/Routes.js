@@ -3,10 +3,12 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Profile from "./containers/Profile";
+import Logout from "./containers/Logout";
 
 export default () =>
   <Switch>
     <Route path="/" exact component={Home} />
     <Route path="/login" exact component={Login} />
     <Route path="/profile" exact component={Profile} />
+    <Route path="/logout" exact component={} />
   </Switch>;

@@ -6,33 +6,21 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      name : "test"
+      name : ""
     };
   }
 
   componentDidMount(){
-    //session.setState({name: sessionStorage.getItem("username")});
-    alert(this.state.name);
+    const sessionName = sessionStorage.getItem("username");
+    this.setState({name: sessionName })
+    document.getElementById("header").innerHTML = sessionName;
   }
-  /*
-    axios.post('/api/users', { username, password })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-
-        this.setState({loginState: 'success'})
-      })
-      .catch(err => {
-        this.setState({ loginState: 'error'});
-      });*/
-  
 
   render() {
 
-
     return (
       <div className="Login">
-        <h1>PROFILE</h1>
+        <h1 id = "header">test</h1>
       </div>
     );
   }

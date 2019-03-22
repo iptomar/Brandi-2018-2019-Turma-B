@@ -20,6 +20,7 @@ export default class Login extends Component {
   }
 
   handleChange = event => {
+    this.setState({ loginState: 'loggingIn' })
     this.setState({
       [event.target.id]: event.target.value
     });
@@ -35,7 +36,7 @@ export default class Login extends Component {
     const password = this.state.password
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'api/auth', { username, password })
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth', { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -54,11 +55,10 @@ export default class Login extends Component {
   render() {
 
     if (this.state.loginState === "error") {
-      return (
         alert("Wrong login information")
-      );  
     } else if (this.state.loginState === "success"){
-      //sessionStorage.setItem("username", this.state.username);
+      sessionStorage.setItem("username", this.state.username);
+      sessionStorage.setItem("loginState", this.state.loginState);
       return <Redirect to='/profile' />
     }
 

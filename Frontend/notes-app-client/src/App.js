@@ -4,7 +4,6 @@ import { Navbar } from "react-bootstrap";
 import "./App.css";
 import Routes from "./Routes";
 
-
 class App extends Component {
   render() {
     return (
@@ -13,7 +12,8 @@ class App extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">Scratch </Link>
-              <Link to="/login">Login</Link>
+              <Link to="/login">Login </Link>
+              <Link to="/logout">LogOut</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
