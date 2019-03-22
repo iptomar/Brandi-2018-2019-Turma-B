@@ -1,7 +1,6 @@
 {
   "name": "notes-app-client",
   "version": "0.1.0",
-  "proxy":"http://localhost:8080",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",

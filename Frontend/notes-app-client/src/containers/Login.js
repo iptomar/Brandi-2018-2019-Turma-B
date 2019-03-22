@@ -34,15 +34,20 @@ export default class Login extends Component {
 
     const password = this.state.password
 
-    axios.post('/api/auth', { username, password })
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'api/auth', { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);
 
-        this.setState({loginState: 'success'})
+        if(res.data === "Incorrect Username and/or Password!"){
+          this.setState({ loginState: 'error' })
+        }else{
+          this.setState({ loginState: 'success' })
+        }
       })
       .catch(err => {
-        this.setState({ loginState: 'error'});
+        console.log(err);
       });
   }
 
@@ -50,9 +55,10 @@ export default class Login extends Component {
 
     if (this.state.loginState === "error") {
       return (
-        <h1>Erro</h1>
-      )
+        alert("Wrong login information")
+      );  
     } else if (this.state.loginState === "success"){
+      //sessionStorage.setItem("username", this.state.username);
       return <Redirect to='/profile' />
     }
 
