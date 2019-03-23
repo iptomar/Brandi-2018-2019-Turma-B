@@ -32,7 +32,8 @@ app.post('/auth', function(request, response) {
 	//foram recebidos dados
 	if (username && password) {
 		//procura utilizador na db
-		con.query('SELECT * FROM tblUsers WHERE username = ? AND password = ?', [username, password], 			function(error, results, fields) {
+		con.query('SELECT * FROM tecnicos WHERE username = ? AND password = ?', [username, password],
+		function(error, results, fields) {
 			//utilizador encontrado
 			if (results.length > 0) {
 				//guarda a informação do utilizador logged in
@@ -68,7 +69,7 @@ app.post('/logout', function(request, response) {
 
 //lista de utilizadores
 app.get("/users", (req, res) => {
-  let sql = "SELECT * FROM tblUsers";
+  let sql = "SELECT * FROM tecnicos";
 
   con.query(sql, (err, results) => {
     if (err) {
@@ -82,7 +83,7 @@ app.get("/users", (req, res) => {
 
 //utilizador (pelo ID)
 app.get("/users/:id", (req, res) => {
-  let sql = "SELECT * FROM tblUsers WHERE id = ?";
+  let sql = "SELECT * FROM tecnicos WHERE idTecnico = ?";
 
   // req.params.id mapeia o :id que está no URL acima.
   con.query(sql, [req.params.id], (err, results) => {
