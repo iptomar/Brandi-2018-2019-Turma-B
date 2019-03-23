@@ -11,12 +11,6 @@ var con = mysql.createConnection({
 con.connect(function(err) {
 	if (err) throw err;
 	console.log("Connected!");
-	//eliminar tabela
-	var sql = "drop table if exists tblUsers;";
-	con.query(sql, function (err, result) {
-		if (err) throw err;
-		console.log("Table dropped");
-	});
 	//criar tabela objetos
 	sql = "create table if not exists objetos(idObjeto int UNIQUE not null AUTO_INCREMENT, designacao varchar(100) not null, superCategoria varchar(100), categoria varchar(100) not null, subCategoria varchar(100), tipologia varchar(100) not null,localizacao varchar(255) not null,dimensoes varchar(120) not null,outrasDimensoes varchar(255),conjunto boolean not null,elementosConjunto text,elementosAcessorios varchar(255),marcasAutoria varchar(255),marcasMontagem varchar(255),marcasConstrucao varchar(255),classificacaoPatrimonial varchar(100),estilo varchar(150),epoca varchar(100),qualidade varchar(100),estruturaMaterial varchar(255),superficieMaterial varchar(255),tecnicaEstrutura varchar(255),tecnicaSuperficie varchar(255),descricao text,analogias text,conclusoes text,autoria varchar(150),datacao varchar(150),localOrigem varchar(150),condicoesAmbientais text,primary key(idObjeto))ENGINE = InnoDB;";
 	con.query(sql, function (err, result) {
