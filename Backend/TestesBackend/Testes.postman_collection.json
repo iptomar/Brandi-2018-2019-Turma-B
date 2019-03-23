@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "142394bb-a726-49ea-8818-80ec819a1f77",
+		"name": "Testes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste de um Login Correto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0d52070-f33e-487e-9db5-28d36f7e719e",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Mensagem de erro não presente\", function () {",
+							"    pm.response.to.have.body(\"\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\" : \"joaon\",\r\n   \"password\" : \"pass123\"\r\n }"
+				},
+				"url": {
+					"raw": "localhost:8080/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Testa se um utilizador se pode autenticar de forma correta"
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um Login Incorreto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0d52070-f33e-487e-9db5-28d36f7e719e",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Mensagem de erro presente\", function () {",
+							"    pm.response.to.have.body(\"Incorrect Username and/or Password!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\" : \"joao\",\r\n   \"password\" : \"pass123\"\r\n }"
+				},
+				"url": {
+					"raw": "localhost:8080/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Testa se um utilizador se pode autenticar de forma correta"
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de Pedido dos Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a1c7b47-4cf9-4f08-98aa-4eeee82800b0",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Resposta de /users\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idTecnico\": 1,",
+							"        \"nome\": \"João Nunes\",",
+							"        \"username\": \"joaon\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"jn@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    },",
+							"    {",
+							"        \"idTecnico\": 2,",
+							"        \"nome\": \"Edgar Oliveira\",",
+							"        \"username\": \"edgaroli\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"eo@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    },",
+							"    {",
+							"        \"idTecnico\": 3,",
+							"        \"nome\": \"Hélder Lopes\",",
+							"        \"username\": \"hellopes\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"hl@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    },",
+							"    {",
+							"        \"idTecnico\": 4,",
+							"        \"nome\": \"Miguel Tomé\",",
+							"        \"username\": \"mtome\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"mt@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    },",
+							"    {",
+							"        \"idTecnico\": 5,",
+							"        \"nome\": \"David Moreno\",",
+							"        \"username\": \"dmoreno\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"dm@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    },",
+							"    {",
+							"        \"idTecnico\": 6,",
+							"        \"nome\": \"Diogo Ribeiro\",",
+							"        \"username\": \"dribeiro\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"dr@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    },",
+							"    {",
+							"        \"idTecnico\": 7,",
+							"        \"nome\": \"André Fronteira\",",
+							"        \"username\": \"afronteira\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"af@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    }",
+							"]);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						""
+					]
+				},
+				"description": "Testa se um get por /Users retorna um resultado correto"
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um user com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa2e3dd7-905e-4b57-8a1a-00026d799368",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de erro - Utilizador não encontrado\", function () {",
+							"    pm.response.to.have.body({",
+							"        \"erro\": \"User not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um user com ID válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62c70aaa-82dd-42ff-97d2-f3f0d315a4f8",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Encontra o utilizador 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idTecnico\": 1,",
+							"        \"nome\": \"João Nunes\",",
+							"        \"username\": \"joaon\",",
+							"        \"password\": \"pass123\",",
+							"        \"email\": \"jn@hotmail.com\",",
+							"        \"tipo\": \"aluno\",",
+							"        \"habilitacoes\": \"\",",
+							"        \"nivelProfissional\": 0",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ff062cf5-02cb-4be8-a464-d0f0635228ef",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "da2c3260-dc31-4a2a-a347-836ce774a493",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
