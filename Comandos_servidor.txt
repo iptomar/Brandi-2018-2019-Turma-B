@@ -1,0 +1,63 @@
+#########################################################
+
+Sincronizar repositorio com o git: 
+cd brandiB/  
+sudo git pull
+
+Criar frontend estatico:
+cd Frontend/
+cd notes.../
+npm run build
+rm /home/operador/brandiB_FE/*
+cp -avr /build/* /home/operador/brandiB_FE
+
+Iniciar servicos:
+
+service nginx reload/start
+pm2 reload/delete/start login
+
+##########################################################
+#		GIT COMMANDS				 #
+##########################################################
+Para clonar um repositorio git:
+git clone [link_repositorio] [pasta destino]
+
+*pasta destino opcional. Se o comando for executado sem este argumento e criada uma pasta com o nome do repositorio ja com o git inicializado
+
+Para sincronizar um repositorio local com o que esta no git:
+*Necessario estar na pasta onde esta o repositorio*
+git pull
+
+Para ver se existem alteracoes face ao repositorio no git:
+git status
+###########################################################
+#		BACKEND					  #
+###########################################################
+Para iniciar o backend entrar na pasta brandiB/Backend/NodeLogin/ e executar:
+
+pm2 start/reload login.js
+###########################################################
+#		FRONTEND				  #
+###########################################################
+Para gerar novo frontend e preciso primeiro fazer git pull
+Depois entrar na pasta brandiB/Frontend/notes... e executar:
+
+npm run build
+
+Depois de executado e preciso substituir as antigas paginas web pelas novas:
+
+cp -avr brandiB/Frontend/notes.../build/* /home/operador/brandiB_FE
+service nginx restart
+###########################################################
+#		Outras explicacoes uteis		  #
+###########################################################
+As paginas web localizam-se em: /home/operador/brandiB_FE
+Esta localizacao e outras definicoes encontram-se maioritariamente em: /etc/nginx/nginx.conf
+
+PM2 e a aplicacao que permite que outras aplicacoes corram em simultaneo no background:
+
+pm2 start/reload/delete [file] ## Permite iniciar/reiniciar/parar uma app
+
+pm2 status ## permite ver as apps a correr em background
+
+

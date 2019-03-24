@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Não fazer alterações a este ficheiro. Fazer "sudo cp /home/operador/brandiB/brandiB_update.sh /home/operador/brandiB_update.sh"
 #Necessário fornecer permissões ao script exemplo: chmod 777 brandiB_update.sh
 #./brandiB_update.sh
 
