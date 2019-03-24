@@ -36,8 +36,8 @@ export default class Login extends Component {
 
     const password = this.state.password
 
-    const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/auth', { username, password })
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth', { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);

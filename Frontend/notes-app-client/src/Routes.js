@@ -7,7 +7,7 @@ import Logout from "./containers/Logout";
 
 export default () =>
   <Switch>
-    <Route path="/" exact component={Home} />
+    <Route path="/" exact component={Login} />
     <Route path="/login" exact component={Login} />
     <Route path="/profile" exact component={Profile} />
     <Route path="/logout" exact component={Logout} />
