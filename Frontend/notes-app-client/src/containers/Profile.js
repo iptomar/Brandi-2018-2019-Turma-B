@@ -16,12 +16,17 @@ export default class Login extends Component {
     document.getElementById("header").innerHTML = sessionName;
   }
 
+  doLogout = event =>{
+    this.props.history.push("/logout");
+  }
+
   render() {
 
     return (
       <div className="Login">
         <h1 id = "header">test</h1>
-      </div>
+        <button onClick = {this.doLogout} >Logout</button>
+      </div>   
     );
   }
 }

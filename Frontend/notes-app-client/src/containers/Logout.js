@@ -1,33 +1,29 @@
 import React, { Component } from "react";
 import "./Logout.css";
-import { Redirect } from 'react-router-dom'
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      logState: ""
+      logState: "testLogState"
     };
   }
 
   componentDidMount(){
     const loginState = sessionStorage.getItem("loginState");
-    this.setState({ logState: loginState })
-    alert(this.state.loginState);
-    if(this.state.logstate === "success"){
+    console.log(loginState);
+    if(loginState === "success"){
       sessionStorage.setItem("loginState", "idle");
-      //alert("logged out");
-      return <Redirect to='/'/>
+      alert("Logged out");
+      this.props.history.push("/");
+      
     }else{
-      //alert("you are still logged in");
-      return <Redirect to='/profile'/>
+      alert("You are not logged in");
+      this.props.history.push("/login");
     }
   }
-
-  render() {
-    return (  
-      <h1 id = "header">Log Out</h1>
-    );
+  render(){
+    return<div></div>
   }
 }
