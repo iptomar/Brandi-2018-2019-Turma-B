@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "142394bb-a726-49ea-8818-80ec819a1f77",
+		"_postman_id": "38c4b3a3-4f88-434c-9449-f6cfdcdbf86a",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -39,12 +39,15 @@
 					"raw": "{\r\n   \"username\" : \"joaon\",\r\n   \"password\" : \"pass123\"\r\n }"
 				},
 				"url": {
-					"raw": "localhost:8080/auth",
+					"raw": "brandi.ipt.pt:80/api/auth",
 					"host": [
-						"localhost"
+						"brandi",
+						"ipt",
+						"pt"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
+						"api",
 						"auth"
 					]
 				},
@@ -86,12 +89,15 @@
 					"raw": "{\r\n   \"username\" : \"joao\",\r\n   \"password\" : \"pass123\"\r\n }"
 				},
 				"url": {
-					"raw": "localhost:8080/auth",
+					"raw": "brandi.ipt.pt:80/api/auth",
 					"host": [
-						"localhost"
+						"brandi",
+						"ipt",
+						"pt"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
+						"api",
 						"auth"
 					]
 				},
@@ -200,14 +206,16 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:8080/users/",
+					"raw": "brandi.ipt.pt:80/api/users",
 					"host": [
-						"localhost"
+						"brandi",
+						"ipt",
+						"pt"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
-						"users",
-						""
+						"api",
+						"users"
 					]
 				},
 				"description": "Testa se um get por /Users retorna um resultado correto"
@@ -243,12 +251,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:8080/users/10",
+					"raw": "brandi.ipt.pt:80/api/users/10",
 					"host": [
-						"localhost"
+						"brandi",
+						"ipt",
+						"pt"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
+						"api",
 						"users",
 						"10"
 					]
@@ -295,12 +306,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:8080/users/1",
+					"raw": "brandi.ipt.pt:80/api/users/1",
 					"host": [
-						"localhost"
+						"brandi",
+						"ipt",
+						"pt"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
+						"api",
 						"users",
 						"1"
 					]
