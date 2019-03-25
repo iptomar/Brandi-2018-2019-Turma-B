@@ -10,15 +10,12 @@
 
 ### GET /api/users
 
-<br/>```
-<br/>recebe
-<br/>```
+
+### recebe:
 
 <br/> Nada
 
-<br/>```
-<br/>devolve
-<br/>```
+### devolve:
 
 <br/>se com sucesso:
 [{"id":1,"nome":"João Nunes","username":"joaon","password":"pass123","email":"jn@hotmail.com","tipo":"aluno"},
@@ -35,16 +32,13 @@
 
 ### POST /api/auth
 
-<br/>```
-<br/>recebe
-<br/>```
+### recebe:
 
 <br/> username - nome utilizado para se autenticar
 <br/> password- password do utilizador para se autenticar
 
-<br/>```
-<br/>devolve
-<br/>```
+### devolve
+
 <br/>se com sucesso:
 <br/>não devolve erro
 
