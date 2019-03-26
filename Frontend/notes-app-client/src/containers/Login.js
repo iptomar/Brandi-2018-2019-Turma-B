@@ -36,8 +36,8 @@ export default class Login extends Component {
 
     const password = this.state.password
 
-    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt/*/'api/auth', { username, password })
+    const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(proxyurl + 'http://brandi.ipt.pt/api/auth', { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -55,45 +55,25 @@ export default class Login extends Component {
 
   render() {
 
+    let alertBox = document.getElementById("alertBox");
+    if(alertBox != null){
+      document.getElementById("divBtn").removeChild(alertBox);
+    }
     if (this.state.loginState === "error") {
-        alert("Wrong login information")
+      let x = document.createElement("div");
+      x.className="alert alert-danger";
+      x.id = "alertBox"
+      let y = document.createElement("strong")
+      y.innerText = "Wrong username/password";
+      x.appendChild(y);
+      document.getElementById("divBtn").appendChild(x);
     } else if (this.state.loginState === "success"){
       sessionStorage.setItem("username", this.state.username);
       sessionStorage.setItem("loginState", this.state.loginState);
-      return <Redirect to='/profile' />
+      return <Redirect to='/menu' />
     }
 
     return (
-      /*
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="username" bsSize="large">
-            <ControlLabel>Username</ControlLabel>
-            <FormControl
-              autoFocus
-              type="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-      </div>*/
       <Router>
         <div className="App">
           <div className="App__Aside" />
@@ -134,7 +114,7 @@ export default class Login extends Component {
                       onChange={this.handleChange}
                     />
                   </FormGroup>
-                  <div className="FormField">
+                  <div id="divBtn" className="FormField">
                     <button className="FormField__Button mr-20" disabled={!this.validateForm()} type="submit">
                       Iniciar sessao
                     </button>

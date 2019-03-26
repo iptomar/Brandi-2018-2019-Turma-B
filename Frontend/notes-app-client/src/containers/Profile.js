@@ -25,7 +25,7 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <h1 id = "header">test</h1>
-        <button onClick = {this.doLogout} >Logout</button>
+        <button onClick = {this.doLogout}>Logout</button>
       </div>   
     );
   }
