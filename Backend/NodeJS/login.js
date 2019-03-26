@@ -67,13 +67,13 @@ app.post('/logout', function(request, response) {
 
 //*********************** API **************************//
 
-//lista de utilizadores
-app.get("/users", (req, res) => {
+//lista de tecnicos
+app.get("/tecnicos", (req, res) => {
   let sql = "SELECT * FROM tecnicos";
 
   con.query(sql, (err, results) => {
     if (err) {
-      console.error("Erro get users", err);
+      console.error("Erro get tecnicos", err);
       res.status(500).json({ erro: "Erro na query" });
     } else {
       res.status(200).json(results);
@@ -81,14 +81,33 @@ app.get("/users", (req, res) => {
   });
 });
 
-//utilizador (pelo ID)
-app.get("/users/:id", (req, res) => {
+//tecnico (pelo ID)
+app.get("/tecnicos/:id", (req, res) => {
   let sql = "SELECT * FROM tecnicos WHERE idTecnico = ?";
 
   // req.params.id mapeia o :id que está no URL acima.
   con.query(sql, [req.params.id], (err, results) => {
     if (err) {
-      console.error("Erro get user", err);
+      console.error("Erro get tecnico", err);
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      if (results.length ==0) {
+	res.status(404).json({ erro: "User not found" });
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  });
+});
+
+//tecnico (pelo username)
+app.get("/tecnicos/:username", (req, res) => {
+  let sql = "SELECT * FROM tecnicos WHERE username = ?";
+
+  // req.params.id mapeia o :id que está no URL acima.
+  con.query(sql, [req.params.id], (err, results) => {
+    if (err) {
+      console.error("Erro get tecnico", err);
       res.status(500).json({ erro: "Erro na query" });
     } else {
       if (results.length ==0) {
