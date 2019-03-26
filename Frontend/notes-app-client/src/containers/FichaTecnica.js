@@ -7,8 +7,8 @@ export default class Login extends Component {
 
     return (
       <Router>
-        <div className="App">
-          <div className="App__Form">
+        <div className="App2">
+          <div className="App__Form2">
             <div className="FormTitle">
               <Link to="/fichatecnica" className="FormTitle__Link ">
                 Ficha Técnica
