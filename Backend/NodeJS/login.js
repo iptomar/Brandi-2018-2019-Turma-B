@@ -101,27 +101,23 @@ app.get("/tecnicos/:id", (req, res) => {
 });
 
 //tecnico (pelo username)
-app.get("/tecnicos/:username", (req, res) => {
-  let key = req.params.username;
-  console.log(req.params.username);
-  let sql = 'SELECT * FROM tecnicos WHERE username = ' + con.escape(key);
+app.get("/tecnicos/username/:username", (req, res) => {
+
+let sql = "SELECT * FROM tecnicos WHERE username = ?";
 
 // req.params.username mapeia o :username que está no URL acima.
-con.query(sql, (err, results) => {
+con.query(sql, [req.params.username], (err, results) => {
 	if (err) {
 		console.error("Erro get tecnico", err);
 		res.status(500).json({ erro: "Erro na query" });
 	} else {
-		console.log(req.params.username);
 		if (results.length ==0) {
-		console.log(key);
-			res.status(200).json(key);
-			//res.status(404).json({ erro: "User not found" });
+	res.status(404).json({ erro: "User not found" });
 		} else {
 			res.status(200).json(results);
 		}
 	}
-  });
+});
 });
 
 app.listen(8080);
