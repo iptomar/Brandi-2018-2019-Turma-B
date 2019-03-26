@@ -103,6 +103,7 @@ app.get("/tecnicos/:id", (req, res) => {
 //tecnico (pelo username)
 app.get("/tecnicos/:username", (req, res) => {
   let key = req.params.username;
+  console.log(req.params.username);
   let sql = 'SELECT * FROM tecnicos WHERE username = ' + con.escape(key);
 
 // req.params.username mapeia o :username que está no URL acima.
