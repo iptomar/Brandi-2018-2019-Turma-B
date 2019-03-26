@@ -102,7 +102,7 @@ app.get("/tecnicos/:id", (req, res) => {
 
 //tecnico (pelo username)
 app.get("/tecnicos/:username", (req, res) => {
-  let sql = "SELECT * FROM tecnicos WHERE username LIKE '?'";
+  let sql = "SELECT * FROM tecnicos WHERE username = ?";
 
   // req.params.username mapeia o :username que está no URL acima.
   con.query(sql, [req.params.username], (err, results) => {
