@@ -112,8 +112,11 @@ con.query(sql, (err, results) => {
 		console.error("Erro get tecnico", err);
 		res.status(500).json({ erro: "Erro na query" });
 	} else {
+		console.log(req.params.username);
 		if (results.length ==0) {
-	res.status(404).json({ erro: "User not found" });
+		console.log(key);
+			res.status(200).json(key);
+			//res.status(404).json({ erro: "User not found" });
 		} else {
 			res.status(200).json(results);
 		}
