@@ -105,7 +105,7 @@ app.get("/tecnicos/:username", (req, res) => {
   let sql = "SELECT * FROM tecnicos WHERE username LIKE ?";
 
   // req.params.id mapeia o :id que está no URL acima.
-  con.query(sql, [req.params.id], (err, results) => {
+  con.query(sql, [req.params.username], (err, results) => {
     if (err) {
       console.error("Erro get tecnico", err);
       res.status(500).json({ erro: "Erro na query" });
