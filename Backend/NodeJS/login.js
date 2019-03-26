@@ -92,7 +92,7 @@ app.get("/tecnicos/:id", (req, res) => {
       res.status(500).json({ erro: "Erro na query" });
     } else {
       if (results.length ==0) {
-	res.status(404).json({ erro: "User not found" });
+	res.status(404).json({ erro: "Bolinhas Amarelas" });
       } else {
         res.status(200).json(results);
       }
