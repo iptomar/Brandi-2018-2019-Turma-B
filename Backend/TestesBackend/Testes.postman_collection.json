@@ -518,7 +518,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "brandi.ipt.pt:80/api/procedimentos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimentos"
+					]
 				}
 			},
 			"response": []
@@ -535,6 +545,53 @@
 							"    pm.response.to.have.status(404);",
 							"});",
 							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Procedimento not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/procedimento/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimento",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido dos processos de Obra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2885ab4f-3e5a-4597-8dd7-b653b02b3f3e",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							""
 						],
 						"type": "text/javascript"
@@ -549,7 +606,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/procedimentos/id/-1",
+					"raw": "brandi.ipt.pt:80/api/processosObra",
 					"host": [
 						"brandi",
 						"ipt",
@@ -558,7 +615,53 @@
 					"port": "80",
 					"path": [
 						"api",
-						"procedimentos",
+						"processosObra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de um processo de obra com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c65577d5-ce20-4f9e-9613-130d02dceaa1",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"ProcessoObra not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processosObra/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processosObra",
 						"id",
 						"-1"
 					]
