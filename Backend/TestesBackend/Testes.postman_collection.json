@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "38c4b3a3-4f88-434c-9449-f6cfdcdbf86a",
+		"_postman_id": "21b3dfb6-723f-4236-9a5f-1cde884452ce",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -106,7 +106,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste de Pedido dos Users",
+			"name": "Teste de Pedido dos Técnicos",
 			"event": [
 				{
 					"listen": "test",
@@ -116,7 +116,7 @@
 							"pm.test(\"Ligação bem sucedida\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Resposta de /users\", function () {",
+							"pm.test(\"Resposta de /tecnicos\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData).to.eql([",
 							"    {",
@@ -206,7 +206,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/users",
+					"raw": "brandi.ipt.pt:80/api/tecnicos",
 					"host": [
 						"brandi",
 						"ipt",
@@ -215,7 +215,7 @@
 					"port": "80",
 					"path": [
 						"api",
-						"users"
+						"tecnicos"
 					]
 				},
 				"description": "Testa se um get por /Users retorna um resultado correto"
@@ -223,7 +223,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste de um user com ID inválido",
+			"name": "Teste de um técnico com ID inválido",
 			"event": [
 				{
 					"listen": "test",
@@ -233,9 +233,9 @@
 							"pm.test(\"Ligação não encontrada\", function () {",
 							"    pm.response.to.have.status(404);",
 							"});",
-							"pm.test(\"Mensagem de erro - Utilizador não encontrado\", function () {",
+							"pm.test(\"Mensagem de erro - Tecnico não encontrado\", function () {",
 							"    pm.response.to.have.body({",
-							"        \"erro\": \"User not found\"",
+							"        \"erro\": \"Tecnico not found\"",
 							"    });",
 							"});"
 						],
@@ -251,7 +251,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/users/10",
+					"raw": "brandi.ipt.pt:80/api/tecnicos/id/10",
 					"host": [
 						"brandi",
 						"ipt",
@@ -260,7 +260,8 @@
 					"port": "80",
 					"path": [
 						"api",
-						"users",
+						"tecnicos",
+						"id",
 						"10"
 					]
 				}
@@ -268,7 +269,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste de um user com ID válido",
+			"name": "Teste de um técnico com ID válido",
 			"event": [
 				{
 					"listen": "test",
@@ -278,7 +279,7 @@
 							"pm.test(\"Ligação bem sucedida\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Encontra o utilizador 1\", function () {",
+							"pm.test(\"Encontra o tecnico 1\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData).to.eql([",
 							"    {",
@@ -306,7 +307,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/users/1",
+					"raw": "brandi.ipt.pt:80/api/tecnicos/id/1",
 					"host": [
 						"brandi",
 						"ipt",
@@ -315,7 +316,8 @@
 					"port": "80",
 					"path": [
 						"api",
-						"users",
+						"tecnicos",
+						"id",
 						"1"
 					]
 				}
