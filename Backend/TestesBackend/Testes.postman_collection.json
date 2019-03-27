@@ -668,6 +668,94 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste de pedido dos Processos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6fbcb076-9644-4d4c-9be2-df3b0f4d42c6",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um processo com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeb59567-c80c-4360-9da5-c96e74bb169d",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Processo not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processos/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processos",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
