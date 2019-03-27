@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "079a93c1-2907-4c48-b024-8c73be58ede7",
+		"_postman_id": "2c8459e8-bbd2-41a4-955b-02336dd368d9",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -245,9 +245,6 @@
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -259,7 +256,10 @@
 						"disabled": true
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/tecnicos",
 					"host": [
@@ -380,21 +380,59 @@
 		},
 		{
 			"name": "Teste ao logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d8f0c67-8336-490f-9769-aca8d65cf9cd",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "brandi.ipt.pt:80/api/logout",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"logout"
+					]
 				}
 			},
 			"response": []
 		},
 		{
 			"name": "Teste de pedido dos Materiais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "63c09ac0-0aea-45e6-971a-9afcae4344d0",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -403,7 +441,417 @@
 					"raw": ""
 				},
 				"url": {
+					"raw": "brandi.ipt.pt:80/api/materiais/",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"materiais",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um material com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9757372-07a5-470e-b5fb-684d8e9956fd",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Material not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
 					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/materiais/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"materiais",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido dos procedimentos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60a66bec-d386-4f24-acb7-eeb066c4eb01",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/procedimentos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um procedimento com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7117219e-22a5-42b9-a182-c24bb6c873da",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Procedimento not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/procedimento/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimento",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido dos processos de Obra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2885ab4f-3e5a-4597-8dd7-b653b02b3f3e",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processosObra",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processosObra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de um processo de obra com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c65577d5-ce20-4f9e-9613-130d02dceaa1",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"ProcessoObra not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processosObra/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processosObra",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido dos Processos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6fbcb076-9644-4d4c-9be2-df3b0f4d42c6",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um processo com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeb59567-c80c-4360-9da5-c96e74bb169d",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Processo not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/processos/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"processos",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de objetos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62ab429f-939b-4abe-994e-0ba5f0177b4e",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um objeto de ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23507a12-06ad-4a61-890f-dc774f82adad",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Objeto not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"id",
+						"-1"
+					]
 				}
 			},
 			"response": []
