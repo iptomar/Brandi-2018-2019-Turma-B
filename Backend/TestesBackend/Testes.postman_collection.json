@@ -492,6 +492,79 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste de pedido dos procedimentos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60a66bec-d386-4f24-acb7-eeb066c4eb01",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um procedimento com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7117219e-22a5-42b9-a182-c24bb6c873da",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/procedimentos/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimentos",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
