@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2c8459e8-bbd2-41a4-955b-02336dd368d9",
+		"_postman_id": "67451b42-d8fc-4d2f-b285-aa1f554457a6",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -425,8 +425,18 @@
 					"script": {
 						"id": "63c09ac0-0aea-45e6-971a-9afcae4344d0",
 						"exec": [
-							"pm.test(\"Ligação Bem Sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /materiais\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -512,10 +522,19 @@
 					"script": {
 						"id": "60a66bec-d386-4f24-acb7-eeb066c4eb01",
 						"exec": [
-							"pm.test(\"Ligação Bem Sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							""
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /procedimentos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -600,10 +619,19 @@
 					"script": {
 						"id": "2885ab4f-3e5a-4597-8dd7-b653b02b3f3e",
 						"exec": [
-							"pm.test(\"Ligação Bem Sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							""
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /processosObra\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -688,10 +716,19 @@
 					"script": {
 						"id": "6fbcb076-9644-4d4c-9be2-df3b0f4d42c6",
 						"exec": [
-							"pm.test(\"Ligação Bem Sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							""
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /processos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -776,10 +813,19 @@
 					"script": {
 						"id": "62ab429f-939b-4abe-994e-0ba5f0177b4e",
 						"exec": [
-							"pm.test(\"Ligação Bem Sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							""
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /objetos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
 						],
 						"type": "text/javascript"
 					}
