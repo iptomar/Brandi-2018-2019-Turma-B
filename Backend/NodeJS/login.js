@@ -100,24 +100,134 @@ app.get("/tecnicos/id/:id", (req, res) => {
   });
 });
 
-//tecnico (pelo username)
-app.get("/tecnicos/username/:username", (req, res) => {
+//lista de materiais
+app.get("/materiais", (req, res) => {
+  let sql = "SELECT * FROM materiais";
 
-let sql = "SELECT * FROM tecnicos WHERE username = ?";
-
-// req.params.username mapeia o :username que está no URL acima.
-con.query(sql, [req.params.username], (err, results) => {
-	if (err) {
-		console.error("Erro get tecnico", err);
-		res.status(500).json({ erro: "Erro na query" });
-	} else {
-		if (results.length ==0) {
-	res.status(404).json({ erro: "User not found" });
-		} else {
-			res.status(200).json(results);
-		}
-	}
+  con.query(sql, (err, results) => {
+    if (err) {
+      console.error("Erro get tecnicos", err);
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      res.status(200).json(results);
+    }
+  });
 });
+
+//material (pelo ID)
+app.get("/materiais/id/:id", (req, res) => {
+  let sql = "SELECT * FROM materiais WHERE idMaterial = ?";
+
+  // req.params.id mapeia o :id que está no URL acima.
+  con.query(sql, [req.params.id], (err, results) => {
+    if (err) {
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      if (results.length ==0) {
+	res.status(404).json({ erro: "User not found" });
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  });
+});
+
+
+
+//lista de procedimentos
+app.get("/procedimentos", (req, res) => {
+  let sql = "SELECT * FROM procedimentos";
+
+  con.query(sql, (err, results) => {
+    if (err) {
+      console.error("Erro get tecnicos", err);
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+//procedimento (pelo ID)
+app.get("/procedimento/id/:id", (req, res) => {
+  let sql = "SELECT * FROM procedimentos WHERE idProcedimento = ?";
+
+  // req.params.id mapeia o :id que está no URL acima.
+  con.query(sql, [req.params.id], (err, results) => {
+    if (err) {
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      if (results.length ==0) {
+	res.status(404).json({ erro: "User not found" });
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  });
+});
+
+//lista de processosObra
+app.get("/processosObra", (req, res) => {
+  let sql = "SELECT * FROM processosObra";
+
+  con.query(sql, (err, results) => {
+    if (err) {
+      console.error("Erro get tecnicos", err);
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+//processosObra (pelo ID)
+app.get("/processosObra/id/:id", (req, res) => {
+  let sql = "SELECT * FROM processosObra WHERE numProcesso = ?";
+
+  // req.params.id mapeia o :id que está no URL acima.
+  con.query(sql, [req.params.id], (err, results) => {
+    if (err) {
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      if (results.length ==0) {
+	res.status(404).json({ erro: "User not found" });
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  });
+});
+
+//lista de processos
+app.get("/processos", (req, res) => {
+  let sql = "SELECT * FROM processos";
+
+  con.query(sql, (err, results) => {
+    if (err) {
+      console.error("Erro get tecnicos", err);
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+//processo (pelo ID)
+app.get("/processos/id/:id", (req, res) => {
+  let sql = "SELECT * FROM processos WHERE idProcesso = ?";
+
+  // req.params.id mapeia o :id que está no URL acima.
+  con.query(sql, [req.params.id], (err, results) => {
+    if (err) {
+      res.status(500).json({ erro: "Erro na query" });
+    } else {
+      if (results.length ==0) {
+	res.status(404).json({ erro: "User not found" });
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  });
 });
 
 app.listen(8080);
