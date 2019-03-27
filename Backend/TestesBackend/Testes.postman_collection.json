@@ -68,7 +68,8 @@
 							"});",
 							"pm.test(\"Mensagem de erro presente\", function () {",
 							"    pm.response.to.have.body(\"Incorrect Username and/or Password!\");",
-							"});"
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -102,6 +103,48 @@
 					]
 				},
 				"description": "Testa se um utilizador se pode autenticar de forma correta"
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de falta de parâmetros no Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "855bfd9c-b3e5-4915-a81a-0efc1e52a153",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Falta de Parâmetros\", function () {",
+							"    pm.response.to.have.body(\"Please enter Username and Password!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\" : \"\",\r\n   \"password\" : \"pass123\"\r\n }"
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/auth",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
 			},
 			"response": []
 		},
