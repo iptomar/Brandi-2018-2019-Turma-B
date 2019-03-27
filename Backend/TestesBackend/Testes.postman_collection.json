@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "21b3dfb6-723f-4236-9a5f-1cde884452ce",
+		"_postman_id": "6b137083-a7eb-46cc-9362-667588e2538a",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -320,6 +320,36 @@
 						"id",
 						"1"
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido dos Materiais",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
 				}
 			},
 			"response": []
