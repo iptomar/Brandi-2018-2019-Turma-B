@@ -756,6 +756,94 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste de pedido de objetos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62ab429f-939b-4abe-994e-0ba5f0177b4e",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um objeto de ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23507a12-06ad-4a61-890f-dc774f82adad",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Objeto not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
