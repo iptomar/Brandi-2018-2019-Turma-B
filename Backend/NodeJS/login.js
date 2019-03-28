@@ -280,4 +280,36 @@ app.get("/objetos/id/:id", (req, res) => {
 	});
 });
 
+//Todas as imagens
+app.get("/imagens", (req, res) => {
+	let sql = "SELECT * FROM imagens";
+
+	con.query(sql, (err, results) => {
+		if (err) {
+			console.error("Erro get objetos", err);
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			res.status(200).json(results);
+		}
+	});
+});
+
+//Imagens de um objeto (pelo ID do objeto)
+app.get("/imagens/objeto/:id", (req, res) => {
+	let sql = "SELECT * FROM imagens WHERE objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Objeto not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
 app.listen(8080);
