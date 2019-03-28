@@ -295,7 +295,7 @@ app.get("/imagens", (req, res) => {
 });
 
 //Imagens de um objeto (pelo ID do objeto)
-app.get("/objeto/:id/imagens", (req, res) => {
+app.get("/objetos/:id/imagens", (req, res) => {
 	let sql = "SELECT * FROM imagens WHERE objeto = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -313,7 +313,7 @@ app.get("/objeto/:id/imagens", (req, res) => {
 });
 
 //Interessados de um objeto (pelo ID do objeto)
-app.get("/objeto/:id/interessados", (req, res) => {
+app.get("/objetos/:id/interessados", (req, res) => {
 	let sql = "Select interessados.* from interessados,interessadosObjeto where interessadosObjeto.objeto = ? and interessados.idInteressado = interessadosObjeto.interessado";
 
 	// req.params.id mapeia o :id que está no URL acima.
