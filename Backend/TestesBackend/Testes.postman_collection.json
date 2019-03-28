@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2c24dc8d-be04-44c0-bfbc-ce92e253ba8f",
+		"_postman_id": "738a3c90-5fb4-40ae-b91c-fda754c5a5d9",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -945,6 +945,47 @@
 					"port": "80",
 					"path": [
 						"api",
+						"imagens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de imagens de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee998b12-bf02-4030-a285-0b812d8e1904",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/1/imagens",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"1",
 						"imagens"
 					]
 				}
