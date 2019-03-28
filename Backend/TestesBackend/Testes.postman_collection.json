@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "738a3c90-5fb4-40ae-b91c-fda754c5a5d9",
+		"_postman_id": "c2f88f6d-353f-424a-8fd5-f086efd03221",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -987,6 +987,47 @@
 						"objetos",
 						"1",
 						"imagens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido num interessado num objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca4539b-ac68-42e9-8b98-51c38144e8d8",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/1/interessados",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"1",
+						"interessados"
 					]
 				}
 			},
