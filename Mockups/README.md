@@ -20,6 +20,11 @@
   <img src="/Mockups/Ficha_Técnica/equipa.jpg" width="600px" height="400px"/>
 </p>
 
+# Perfil de Técnico
+<p align="center">
+  <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Perfil%20de%20Tecnico/perfil.jpg" width="600px" height="400px"
+</p>
+
 # Testes de Solubilização
 <p align="center">
   <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Testes_Solubilizac%CC%A7a%CC%83o/mockup1.png" width="600px" height="400px" />
