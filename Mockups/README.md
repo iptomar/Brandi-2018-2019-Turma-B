@@ -18,16 +18,12 @@
   <img src="/Mockups/Ficha_Técnica/documentacao.jpg" width="600px" height="400px" />
   <img src="/Mockups/Ficha_Técnica/fontes.jpg" width="600px" height="400px"/>
   <img src="/Mockups/Ficha_Técnica/equipa.jpg" width="600px" height="400px"/>
-
-
-
-
 </p>
 
 # Testes de Solubilização
 <p align="center">
-  <img src="/Mockups/Testes_Solubilização/mockup1.png" width="600px" height="400px" />
-  <img src="/Mockups/Testes_Solubilização/mockup2.png" width="600px" height="400px" />
+  <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Testes_Solubilizac%CC%A7a%CC%83o/mockup1.png" width="600px" height="400px" />
+  <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Testes_Solubilizac%CC%A7a%CC%83o/mockup2.png" width="600px" height="400px" />
 </p>
 
 
