@@ -1,25 +1,27 @@
-# Brandi-2018-2019-Turma-B
-## Pasta Mockups
-Mockups das várias views da aplicação web
+# Folhas de Obra
+<p align="center">
+  <img src="/Mockups/Folha_de_obra/1.png" width="600px" height="400px"/>
+  <img src="/Mockups/Folha_de_obra/2.png" width="600px" height="400px"/>
+  <img src="/Mockups/Folha_de_obra/3.png" width="600px" height="400px"/>
+  <img src="/Mockups/Folha_de_obra/4.png" width="600px" height="400px"/>
+  <img src="/Mockups/Folha_de_obra/Principal_V1.png" width="600px" height="400px"/>
+  <img src="/Mockups/Folha_de_obra/Processo_V1.png" width="600px" height="400px" />
+</p>
 
-# Brandi-2018-2019-Turma-B
-## Pasta Mockups
-Mockups das várias views da aplicação web
+# Ficha Técnica
+<p align="center">
+  <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Ficha_T%C3%A9cnica/%20Condi%C3%A7%C3%B5es.jpg" width="600px" height="400px" />
+  <img src="/Mockups/Ficha_Técnica/Estado.jpg" width="600px" height="400px" />
+  <img src="/Mockups/Ficha_Técnica/fontes.jpg" width="600px" height="400px"/>
+  <img src="/Mockups/Ficha_Técnica/inicio.jpg" width="600px" height="400px" />
+</p>
 
-![](/Mockups/Folha_de_obra/1.png)
-![](/Mockups/Folha_de_obra/2.png)
-![](/Mockups/Folha_de_obra/3.png)
-![](/Mockups/Folha_de_obra/4.png)
-![](/Mockups/Folha_de_obra/Principal_V1.png)
-![](/Mockups/Folha_de_obra/Processo_V1.png)
+# Testes de Solubilização
+<p align="center">
+  <img src="/Mockups/Testes_Solubilização/mockup1.png" width="600px" height="400px" />
+  <img src="/Mockups/Testes_Solubilização/mockup1.png" width="600px" height="400px" />
+</p>
 
-![](https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Ficha_T%C3%A9cnica/%20Condi%C3%A7%C3%B5es.jpg)
-![](/Mockups/Ficha_Técnica/Estado.jpg)
-![](/Mockups/Ficha_Técnica/fontes.jpg)
-![](/Mockups/Ficha_Técnica/inicio.jpg)
-
-![](/Mockups/Testes_Solubilização/mockup1.png)
-![](/Mockups/Testes_Solubilização/mockup1.png)
 
 
 
