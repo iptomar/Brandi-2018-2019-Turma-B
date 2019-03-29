@@ -26,8 +26,8 @@
 
 # Testes de Solubilização
 <p align="center">
-  <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Testes_Solubilização/mockup1.png" width="600px" height="400px" />
-  <img src="https://github.com/iptomar/Brandi-2018-2019-Turma-B/blob/master/Mockups/Testes_Solubilização/mockup2.png" width="600px" height="400px" />
+  <img src="/Mockups/Testes_Solubilização/mockup1.png" width="600px" height="400px" />
+	<img src="/Mockups/Testes_Solubilização/mockup2.png" width="600px" height="400px" />
 </p>
 
 
