@@ -27,7 +27,7 @@
 # Testes de Solubilização
 <p align="center">
   <img src="/Mockups/Testes_Solubilização/mockup1.png" width="600px" height="400px" />
-	<img src="/Mockups/Testes_Solubilização/mockup2.png" width="600px" height="400px" />
+  <img src="/Mockups/Testes_Solubilização/mockup2.png" width="600px" height="400px" />
 </p>
 
 
