@@ -1,0 +1,47 @@
+
+.mainDiv{
+  background-color:white;
+  max-width: 100%;
+  max-height: 50%;
+}
+
+.header{
+  font-family: arial, sans-serif;
+  margin-left: 25%;
+  margin-top: 5%;
+  background-color:dimgrey;
+  width: 50%;
+  height: 25%;
+}
+.p{
+  margin-top: 1%;
+}
+
+table{
+  font-family: arial, sans-serif;
+  border: 1px;
+  border-color: black;
+  width: 50%;
+  margin-top: 3%;
+}
+tr{
+  background-color: #dddddd;
+}
+
+td{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+ 
+}
+th{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 1px;
+  
+ 
+}
+
+
+
+
