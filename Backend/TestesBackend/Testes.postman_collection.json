@@ -1220,6 +1220,53 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste de pedido de pedidos de intervenção de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3718eb4b-2a4b-4a8e-b40e-680e24be6586",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Pedidos de intervenção not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/pedidosintervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"pedidosintervencao"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
