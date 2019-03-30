@@ -1553,6 +1553,21 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido de testes feitos num exame",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
