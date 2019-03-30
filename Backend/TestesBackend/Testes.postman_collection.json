@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c2f88f6d-353f-424a-8fd5-f086efd03221",
+		"_postman_id": "c7ec7b9e-0784-4c25-bf1e-2d2ab1cf5266",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1028,6 +1028,53 @@
 						"objetos",
 						"1",
 						"interessados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um pedido por poluicao de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "390bf113-0c67-4927-9608-f18d5ae8c413",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Poluição not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/-1/poluicao",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"poluicao"
 					]
 				}
 			},
