@@ -1615,6 +1615,53 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido de documentação  de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac7cda9b-c6d9-49ff-b687-24aa2637c97e",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Documentacao not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/documentacao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"documentacao"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
