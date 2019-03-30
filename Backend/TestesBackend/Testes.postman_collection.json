@@ -1316,14 +1316,14 @@
 			"response": []
 		},
 		{
-			"name": "Teste ao pedido de propostas de intervenções de um objeto",
+			"name": "Teste ao pedido de intervenção de um objeto",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "86d76f43-8030-4dcd-9103-15c386b86b1a",
 						"exec": [
-							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"pm.test(\"Teste ao Pedido de Intervenção\", function () {",
 							"    //Se o estado for 200",
 							"    if(pm.response.to.have.status(200)){",
 							"         pm.test(\"Resposta de /propostasIntervencao\", function () {",
