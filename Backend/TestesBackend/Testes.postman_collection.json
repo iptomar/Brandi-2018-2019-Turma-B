@@ -1568,6 +1568,53 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido de testes feitos por um técnico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b38d9fa4-f7bb-4b1d-a8d3-478169336401",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Objeto not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/tecnicos/-1/testes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"tecnicos",
+						"-1",
+						"testes"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
