@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Frontend",
+    "\\Frontend\\Pag_Perfil-RutePaz",
+    "\\Frontend\\Pag_Perfil-RutePaz\\myapp"
   ],
   "PreviewInSolutionExplorer": false
 }
