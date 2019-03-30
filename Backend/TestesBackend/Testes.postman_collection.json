@@ -1410,6 +1410,55 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido de intervenções",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33dd04d2-53ba-4ae7-805d-003c96ddb3ac",
+						"exec": [
+							"pm.test(\"Teste ao Pedido de Intervenção\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /intervencoes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/intervencoes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"intervencoes"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
