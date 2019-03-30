@@ -1222,7 +1222,56 @@
 			"response": []
 		},
 		{
-			"name": "Teste de pedido de pedidos de intervenção de um objeto",
+			"name": "Teste ao pedido de propostas de intervenção",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86d76f43-8030-4dcd-9103-15c386b86b1a",
+						"exec": [
+							"pm.test(\"Teste ao Pedido de Intervenção\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /propostasIntervencao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/propostasIntervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"propostasIntervencao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedidos de intervenção de um objeto",
 			"event": [
 				{
 					"listen": "test",
@@ -1316,56 +1365,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste ao pedido de intervenção de um objeto",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "86d76f43-8030-4dcd-9103-15c386b86b1a",
-						"exec": [
-							"pm.test(\"Teste ao Pedido de Intervenção\", function () {",
-							"    //Se o estado for 200",
-							"    if(pm.response.to.have.status(200)){",
-							"         pm.test(\"Resposta de /propostasIntervencao\", function () {",
-							"            var jsonData = pm.response.json();",
-							"            pm.expect(jsonData).to.eql([]);",
-							"         });",
-							"    }",
-							"    //Se o estado for 500",
-							"    else if(pm.response.to.have.status(500)){",
-							"        pm.response.to.have.body(\"Erro na query\");",
-							"    }",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://brandi.ipt.pt/api/propostasIntervencao",
-					"protocol": "http",
-					"host": [
-						"brandi",
-						"ipt",
-						"pt"
-					],
-					"path": [
-						"api",
-						"propostasIntervencao"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Teste aos pedidos de intervenção de um objeto",
+			"name": "Teste ao pedido de propostas de intervenção de um objeto",
 			"event": [
 				{
 					"listen": "test",
