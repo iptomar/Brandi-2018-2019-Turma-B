@@ -1742,6 +1742,26 @@
 		},
 		{
 			"name": "Teste ao pedido de análises solventes de um técnico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9f353b4-b3e2-4a59-994c-48b1e2d0311a",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"analisesSolventes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -1750,7 +1770,19 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "http://brandi.ipt.pt/api/tecnicos/-1/analisesSolventes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"tecnicos",
+						"-1",
+						"analisesSolventes"
+					]
 				}
 			},
 			"response": []
