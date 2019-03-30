@@ -502,7 +502,7 @@ app.get("/intervencoes/objeto/:id", (req, res) => {
 		}
 	});
 });
-
+//exames de um objeto (pelo ID do objeto)
 app.get("/objetos/:id/exames", (req, res) => {
 	let sql = "SELECT * FROM exames WHERE objeto = ?";
 
@@ -519,7 +519,7 @@ app.get("/objetos/:id/exames", (req, res) => {
 		}
 	});
 });
-
+//testes feitos num exame (pelo ID do exame)
 app.get("/exames/:id/testes", (req, res) => {
 	let sql = "SELECT * FROM testes WHERE exame = ?";
 
@@ -536,7 +536,7 @@ app.get("/exames/:id/testes", (req, res) => {
 		}
 	});
 });
-
+//testes feitos por um tecnico (pelo ID do tecnico)
 app.get("/tecnicos/:id/testes", (req, res) => {
 	let sql = "SELECT * FROM testes WHERE tecnico = ?";
 
@@ -575,6 +575,23 @@ app.get("/objetos/:id/documentacao", (req, res) => {
 //Testes de uma análise (pelo ID da análise)
 app.get("/analise/:id/testesSolvente", (req, res) => {
 	let sql = "Select * from testesSolvente where analise = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Testes not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+//Intervencoes Anteriores de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/intervencoesanteriores", (req, res) => {
+	let sql = "Select * from intervencoesAnteriores where objeto = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
 	con.query(sql, [req.params.id], (err, results) => {
