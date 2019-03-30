@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4e23e37d-ba7e-4ff6-89fa-9d58ce0778b2",
+		"_postman_id": "36f02449-d6fb-4d3a-9992-1cc0fad9e2a9",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1122,6 +1122,53 @@
 						"objetos",
 						"-1",
 						"ciclosclimatericos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido por fontes de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3f2d870-ece9-4b78-acc9-e1698fb695db",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Fontes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/fontes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"fontes"
 					]
 				}
 			},
