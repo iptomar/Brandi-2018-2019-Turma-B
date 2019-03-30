@@ -332,7 +332,7 @@ app.get("/objetos/:id/interessados", (req, res) => {
 
 //Ciclos climatéricos de um objeto (pelo ID do objeto)
 app.get("/objetos/:id/ciclosclimatericos", (req, res) => {
-	let sql = "Select * from clicosClimatericos where objeto = ?";
+	let sql = "Select * from ciclosClimatericos where objeto = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
 	con.query(sql, [req.params.id], (err, results) => {
