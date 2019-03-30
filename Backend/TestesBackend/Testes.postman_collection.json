@@ -1662,6 +1662,53 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido de testes solvente de uma análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05f2dec6-0ffc-42fe-a4c0-7daa692814cb",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Testes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/analise/-1/testesSolvente",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"analise",
+						"-1",
+						"testesSolvente"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
