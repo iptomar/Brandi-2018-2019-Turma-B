@@ -1789,6 +1789,26 @@
 		},
 		{
 			"name": "Teste ao pedido de intervenções anteriores de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8608f8a3-ca41-4eec-b004-0a4f9ee45ffc",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Testes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -1797,7 +1817,19 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/intervencoesanteriores",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"intervencoesanteriores"
+					]
 				}
 			},
 			"response": []
