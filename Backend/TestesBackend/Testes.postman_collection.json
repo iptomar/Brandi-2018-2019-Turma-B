@@ -1709,6 +1709,21 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido da análise solventes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
