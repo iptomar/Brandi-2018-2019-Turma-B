@@ -454,7 +454,7 @@ app.get("/propostasIntervencao", (req, res) => {
 });
 
 //propostasIntervencao (pelo ID do objeto)
-app.get("/propostasIntervencao/objeto/:id", (req, res) => {
+app.get("/objetos/:id/propostasIntervencao", (req, res) => {
 	let sql = "Select * from propostasIntervencao where objeto = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -486,7 +486,7 @@ app.get("/intervencoes", (req, res) => {
 });
 
 //intervencoes (pelo ID do objeto)
-app.get("/intervencoes/objeto/:id", (req, res) => {
+app.get("/objetos/:id/intervencoes", (req, res) => {
 	let sql = "Select intervencoes.* from intervencoes,propostasIntervencao  where propostasIntervencao.objeto = ? and intervencoes.proposta = propostasIntervencao.idProposta" ;
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -589,6 +589,75 @@ app.get("/analise/:id/testesSolvente", (req, res) => {
 		}
 	});
 });
+
+//lista de analisesSolventes
+app.get("/analisesSolventes", (req, res) => {
+	let sql = "SELECT * FROM analisesSolventes";
+
+	con.query(sql, (err, results) => {
+		if (err) {
+			console.error("Erro get analisesSolventes", err);
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			res.status(200).json(results);
+		}
+	});
+});
+
+//analisesSolventes (pelo ID)
+app.get("/analisesSolventes/id/:id", (req, res) => {
+	let sql = "SELECT * FROM analisesSolventes WHERE idObjeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "analisesSolventes not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//analisesSolventes de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/analisesSolventes", (req, res) => {
+	let sql = "Select * from analisesSolventes where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "analisesSolventes not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//analisesSolventes de um tecnico (pelo ID do tecnico)
+app.get("/tecnicos/:id/analisesSolventes", (req, res) => {
+	let sql = "Select * from analisesSolventes where tecnico = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "analisesSolventes not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
 //Intervencoes Anteriores de um objeto (pelo ID do objeto)
 app.get("/objetos/:id/intervencoesanteriores", (req, res) => {
 	let sql = "Select * from intervencoesAnteriores where objeto = ?";
