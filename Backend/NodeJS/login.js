@@ -330,4 +330,113 @@ app.get("/objetos/:id/interessados", (req, res) => {
 	});
 });
 
+//Ciclos climatéricos de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/ciclosclimatericos", (req, res) => {
+	let sql = "Select * from clicosClimatericos where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Ciclos climatéricos not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//fontes de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/fontes", (req, res) => {
+	let sql = "Select * from fontes where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Fontes not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//poluição de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/poluicao", (req, res) => {
+	let sql = "Select * from poluicao where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Poluição not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//iluminação de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/iluminacao", (req, res) => {
+	let sql = "Select * from iluminacao where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Iluminação not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//pedidos de intervenção de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/pedidosintervencao", (req, res) => {
+	let sql = "Select * from pedidosIntervencao where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Pedidos de intervenção not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+//conservações de um objeto (pelo ID do objeto)
+app.get("/objetos/:id/conservacoes", (req, res) => {
+	let sql = "Select * from conservacoes where objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Conservacoes not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+
 app.listen(8080);
