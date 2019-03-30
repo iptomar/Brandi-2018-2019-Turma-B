@@ -1506,6 +1506,53 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste ao pedido de exames de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "316b3890-0c73-497f-8b31-d248989c2083",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Objeto not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/exames",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"exames"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
