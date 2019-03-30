@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c7ec7b9e-0784-4c25-bf1e-2d2ab1cf5266",
+		"_postman_id": "4e23e37d-ba7e-4ff6-89fa-9d58ce0778b2",
 		"name": "Testes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1075,6 +1075,53 @@
 						"objetos",
 						"-1",
 						"poluicao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de ciclos climatericos de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70354f94-bf46-45c2-b302-572aa9863a3d",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Ciclos climatéricos not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/-1/ciclosclimatericos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"ciclosclimatericos"
 					]
 				}
 			},
