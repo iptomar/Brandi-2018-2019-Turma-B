@@ -17,12 +17,6 @@ con.connect(function(err) {
 		if (err) throw err;
 		console.log("Table objetos created");
 	});
-	//inserir registos dos tecnicos
-	sql = "INSERT INTO tecnicos (idTecnico, nome, username, password, email, tipo, habilitacoes, nivelProfissional) VALUES (1, 'João Nunes', 'joaon', 'pass123', 'jn@hotmail.com', 'aluno', '', 0),     (2, 'Edgar Oliveira', 'edgaroli', 'pass123', 'eo@hotmail.com', 'aluno', '', 0),     (3, 'Hélder Lopes', 'hellopes', 'pass123', 'hl@hotmail.com', 'aluno', '', 0),     (4, 'Miguel Tomé', 'mtome', 'pass123', 'mt@hotmail.com', 'aluno', '', 0),     (5, 'David Moreno', 'dmoreno', 'pass123', 'dm@hotmail.com', 'aluno', '', 0),     (6, 'Diogo Ribeiro', 'dribeiro', 'pass123', 'dr@hotmail.com', 'aluno', '', 0),     (7, 'André Fronteira', 'afronteira', 'pass123', 'af@hotmail.com', 'aluno', '', 0);";
-	con.query(sql, function (err, result) {
-		if (err) throw err;
-		console.log("Values inserted");
-	});
 	//criar tabela imagens
 	sql = "create table if not exists imagens(idImagem int UNIQUE not null AUTO_INCREMENT, imagem varchar(255) not null,tipo set('fotografia','grafico') not null,formato varchar(20),referencia varchar(100),documentacao text,objeto int not null,primary key(idImagem),constraint im1 foreign key (objeto) references objetos(idObjeto))ENGINE = InnoDB;";
 	con.query(sql, function (err, result) {
@@ -161,9 +155,15 @@ con.connect(function(err) {
 		if (err) throw err;
 		console.log("Table intervencoes created");
 	});
-
+//-------------------------------LINHA DE AGUA---------------------------------------------------------------
 	//inserir registos dos objetos
 	sql = "INSERT into objetos(idObjeto, designacao, superCategoria, categoria, subCategoria, tipologia, localizacao, dimensoes, outrasDimensoes, conjunto, elementosConjunto, elementosAcessorios, marcasAutoria, marcasMontagem,marcasConstrucao, classificacaoPatrimonial, estilo, epoca, qualidade, estruturaMaterial, superficieMaterial, tecnicaEstrutura, tecnicaSuperficie, descricao, analogias, conclusoes, autoria, datacao, localOrigem, condicoesAmbientais) values (1, 'Coluna neoclássica com policromia', 'Bens Culturais', 'Móvel Integrado', 'Coluna pertence a um retábulo','Arte Sacra', 'Lisboa', 'Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm','Lado - 19 x 19 cm | Diagonal - 25 cm', true,'Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido','O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.','Não foram identificadas quaisquer marcas deste género','Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.','Riscador.', 'Nacional/Regional','Neo-clássico','Coevo','Boa','Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.','Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro','Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;','Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.','Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.','Desconhecidas','A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.','Desconhecida', 'Século XVIII/XIX','Desconhecida','Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.');";
+	con.query(sql, function (err, result) {
+		if (err) throw err;
+		console.log("Values inserted");
+	});
+	//inserir registos dos tecnicos
+	sql = "INSERT INTO tecnicos (idTecnico, nome, username, password, email, tipo, habilitacoes, nivelProfissional) VALUES (1, 'João Nunes', 'joaon', 'pass123', 'jn@hotmail.com', 'aluno', '', 0),     (2, 'Edgar Oliveira', 'edgaroli', 'pass123', 'eo@hotmail.com', 'aluno', '', 0),     (3, 'Hélder Lopes', 'hellopes', 'pass123', 'hl@hotmail.com', 'aluno', '', 0),     (4, 'Miguel Tomé', 'mtome', 'pass123', 'mt@hotmail.com', 'aluno', '', 0),     (5, 'David Moreno', 'dmoreno', 'pass123', 'dm@hotmail.com', 'aluno', '', 0),     (6, 'Diogo Ribeiro', 'dribeiro', 'pass123', 'dr@hotmail.com', 'aluno', '', 0),     (7, 'André Fronteira', 'afronteira', 'pass123', 'af@hotmail.com', 'aluno', '', 0);";
 	con.query(sql, function (err, result) {
 		if (err) throw err;
 		console.log("Values inserted");
