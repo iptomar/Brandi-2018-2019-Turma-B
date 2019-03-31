@@ -205,7 +205,7 @@ con.connect(function(err) {
 		console.log("Values inserted");
 	});
 	//inserir registos dos testesSolvente
-	sql = "testesSolvente(idTeste,solvente,eficacia,observacao,analise) VALUES (1,'Decapante lavável E-013-0070',2,'Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete.',1);";
+	sql = "INSERT INTO testesSolvente(idTeste,solvente,eficacia,observacao,analise) VALUES (1,'Decapante lavável E-013-0070',2,'Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete.',1);";
 	con.query(sql, function (err, result) {
 		if (err) throw err;
 		console.log("Values inserted");
