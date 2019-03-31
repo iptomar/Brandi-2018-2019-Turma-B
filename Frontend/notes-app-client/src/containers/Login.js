@@ -77,6 +77,8 @@ export default class Login extends Component {
       <Router>
         <div className="App">
           <div className="App__Aside" />
+            <img className= "estt" src={require('./estt.png')}></img><br></br>
+            <img className= "icr" src={require('./lcr.png')}></img>
           <div className="App__Form">
             <div className="FormTitle">
               <Link to="/login" className="FormTitle__Link ">
@@ -115,7 +117,7 @@ export default class Login extends Component {
                     />
                   </FormGroup>
                   <div id="divBtn" className="FormField">
-                    <button className="FormField__Button mr-20" disabled={!this.validateForm()} type="submit">
+                    <button id="idBtn"className="FormField__Button mr-20" disabled={!this.validateForm()} type="submit">
                       Iniciar sessao
                     </button>
                   </div>

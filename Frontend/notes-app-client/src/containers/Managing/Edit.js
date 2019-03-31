@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./Edit.css";
 
 export default class Login extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
-  }
+  }*/
 
   render() {
 

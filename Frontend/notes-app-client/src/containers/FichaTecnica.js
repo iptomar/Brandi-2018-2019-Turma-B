@@ -1,29 +1,53 @@
 import React, { Component } from "react";
 import "./FichaTecnica.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-export default class Login extends Component {
+import axios from 'axios';
+import { CardDeck, Card, CardBody, CardImg, CardTitle, CardText, CardFooter } from 'reactstrap';
+export default class FichasTecnica extends Component {
+  	constructor(props) {
+    super(props);
 
-  render() {
-
+    this.state = {
+       isLoading: true,
+       tecnicos:[]
+    };
+  }
+componentDidMount(){	
+  //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+  axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos')
+    .then((response) => {
+      return response.data
+    })
+	  .then(data => {
+      this.setState({tecnicos: data})
+      console.log(data);
+      document.getElementById("header1").innerHTML = this.state.tecnicos[0].nome;
+      document.getElementById("header2").innerHTML = this.state.tecnicos[1].nome;
+      document.getElementById("header3").innerHTML = this.state.tecnicos[2].nome;
+    })
+      
+}
+	render() {
     return (
-      <Router>
-        <div className="App2">
-          <div className="App__Form2">
-            <div className="FormTitle">
-              <Link to="/fichatecnica" className="FormTitle__Link ">
-                Ficha Técnica
-              </Link>
-            </div>
-            <Route exact path="/fichatecnica">
-              <div className="FormCenter">
-                    <button className="FormField__Button mr-20" type="button">
-                      Adicionar nova ficha
-                    </button>
-              </div>
-            </Route>
-          </div>
-        </div>
-      </Router>
+      <CardDeck className="cardDeckListObj" > 
+		  <Card className="cardListObj" >
+			<CardImg className="imgListObj" variant="top" src={require('./image.png')} />
+			<CardBody>
+			  <CardTitle className="cardTitleListObj" id='header1'></CardTitle>
+			</CardBody>
+		  </Card>
+		  <Card className="cardListObj">
+			<CardImg className="imgListObj" variant="top" src={require('./image.png')} />
+			<CardBody>
+			  <CardTitle className="cardTitleListObj" id='header2'>Card title</CardTitle>
+			</CardBody>
+		  </Card>
+		  <Card className="cardListObj">
+			<CardImg className="imgListObj" variant="top" src={require('./image.png')} />
+			<CardBody>
+			  <CardTitle className="cardTitleListObj" id='header3'>Card title</CardTitle>
+			</CardBody>
+		  </Card>
+		</CardDeck>
     );
   }
 }

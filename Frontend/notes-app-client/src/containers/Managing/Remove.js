@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./Remove.css";
 
 export default class Login extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
 
