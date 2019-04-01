@@ -6,47 +6,61 @@ export default class FichasTecnica extends Component {
   	constructor(props) {
     super(props);
 
-    this.state = {
-       isLoading: true,
-       tecnicos:[]
-    };
+    this.state ={ 
+		isLoading: true,
+		tecnicos:[]
+	};
   }
-componentDidMount(){	
-  //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-  axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos')
-    .then((response) => {
-      return response.data
-    })
-	  .then(data => {
-      this.setState({tecnicos: data})
-      console.log(data);
-      document.getElementById("header1").innerHTML = this.state.tecnicos[0].nome;
-      document.getElementById("header2").innerHTML = this.state.tecnicos[1].nome;
-      document.getElementById("header3").innerHTML = this.state.tecnicos[2].nome;
-    })
-      
+	
+componentDidMount(){
+	
+	axios.get('/api/tecnicos')
+	.then((response) => {
+		return response.data
+	})
+	.then(data => {
+		this.setState({tecnicos: data})
+		console.log(data);
+		for (var i = 0; i < this.state.tecnicos.length; i++) {
+
+			// um tecnico do array
+			var tecnico = this.state.tecnicos[i];
+
+			// nome do tecnico
+			var nome = tecnico.nome;
+			
+			var deck = document.querySelector('#deck');
+			
+			var card = document.createElement('div');
+			card.classList.add('card');
+			card.classList.add('cardListObj');
+			deck.appendChild(card);
+			
+			var image = document.createElement('img');
+			image.setAttribute('src',require("./image.png"));
+			image.classList.add('card-img');
+			card.classList.add('imgListObj');
+			card.appendChild(image);
+			
+			var body = document.createElement('div');
+			body.classList.add('card-body');
+			card.appendChild(body);
+			
+			var titulo = document.createElement('div');
+			titulo.classList.add('card-title');
+			card.classList.add('cardTitleListObj');
+			body.appendChild(titulo);
+			titulo.textContent = nome;
+			
+			
+    	}
+	})
 }
 	render() {
+
+	const tecnicos = this.state;	
     return (
-      <CardDeck className="cardDeckListObj" > 
-		  <Card className="cardListObj" >
-			<CardImg className="imgListObj" variant="top" src={require('./image.png')} />
-			<CardBody>
-			  <CardTitle className="cardTitleListObj" id='header1'></CardTitle>
-			</CardBody>
-		  </Card>
-		  <Card className="cardListObj">
-			<CardImg className="imgListObj" variant="top" src={require('./image.png')} />
-			<CardBody>
-			  <CardTitle className="cardTitleListObj" id='header2'>Card title</CardTitle>
-			</CardBody>
-		  </Card>
-		  <Card className="cardListObj">
-			<CardImg className="imgListObj" variant="top" src={require('./image.png')} />
-			<CardBody>
-			  <CardTitle className="cardTitleListObj" id='header3'>Card title</CardTitle>
-			</CardBody>
-		  </Card>
+     <CardDeck id="deck" className="cardDeckListObj" > 
 		</CardDeck>
     );
   }

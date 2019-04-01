@@ -1,23 +1,17 @@
 
-.App2 {
-  height: 100vh;
-  display: flex;
-  background-color: #66da8d;
-  margin: 0%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.imgListObj {
+  height: 100%;
+  width: 100%;
 }
 
 
-.App__Form2 {
-  height: 100vh;
-  width: 40%;
-  background-color: #0c6854;
-  padding: 25px 40px;
-  overflow: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.cardListObj {
+	background-color: #ffffff;
 }
 
+.cardDeckListObj {
+  display: flex;
+}
+.cardTitleListObj {
+  text-align: center;
+}
