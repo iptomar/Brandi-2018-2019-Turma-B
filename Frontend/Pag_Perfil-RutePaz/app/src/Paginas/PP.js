@@ -32,37 +32,52 @@ class PP extends Component {
 									<tr>
 										<td>Nome</td>
 										<td>(nome aluno)</td>
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editNome">Edit</button>
+                                        </td>
 									</tr>
 									<tr>
 										<td>Username</td>
 										<td>(username aluno) </td>
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editUsername">Edit</button>
+
+                                        </td>
 									</tr>
 									<tr>
 										<td>E-mail</td>
 										<td>(e-mail aluno)</td>
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editEmail">Edit</button>
+                                        </td>
 									</tr>
 									<tr>
 										<td>Password</td>
 										<td>********</td>
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editPassword">Edit</button>
+                                        </td>
 									</tr>
 									<tr>
 										<td>Tipo</td>
 										<td>(aluno)</td>
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editTipo">Edit</button>
+                                        </td>
 									</tr>
 									<tr>
 										<td>Habilitações</td>
 										<td />
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editHab">Edit</button>
+                                        </td>
 									</tr>
 									<tr>
 										<td>Nível Profissional</td>
 										<td>0</td>
-										<td>Editar</td>
+                                        <td>
+                                            <button id="editNProf">Edit</button>
+                                        </td>
 									</tr>
 								</tbody>
 							</table>
