@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "aad3803b-da49-4d29-8136-24b6e5e9a918",
+		"name": "Teste a Procedimentos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste de pedido dos procedimentos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60a66bec-d386-4f24-acb7-eeb066c4eb01",
+						"exec": [
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /procedimentos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idProcedimento\": 1,",
+							"        \"data\": \"2017-02-21T00:00:00.000Z\",",
+							"        \"designacao\": \"Escolha e análise do objeto\",",
+							"        \"duracao\": \"4h\",",
+							"        \"observacoes\": \"Coluna neoclássica com policromia\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 1",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 2,",
+							"        \"data\": \"2017-02-28T00:00:00.000Z\",",
+							"        \"designacao\": \"Recolha de fotografias\",",
+							"        \"duracao\": \"3h\",",
+							"        \"observacoes\": \"Geral e de pormenor\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 2",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 3,",
+							"        \"data\": \"2017-03-14T00:00:00.000Z\",",
+							"        \"designacao\": \"Avaliação para a recolha de amostras\",",
+							"        \"duracao\": \"2h\",",
+							"        \"observacoes\": \"\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 3",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 4,",
+							"        \"data\": \"2017-03-14T00:00:00.000Z\",",
+							"        \"designacao\": \"Limpeza superficial\",",
+							"        \"duracao\": \"1:30h\",",
+							"        \"observacoes\": \"\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 4",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 5,",
+							"        \"data\": \"2017-03-14T00:00:00.000Z\",",
+							"        \"designacao\": \"Recolha de fotografias\",",
+							"        \"duracao\": \"1:30h\",",
+							"        \"observacoes\": \"Geral e de pormenor\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 5",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 6,",
+							"        \"data\": \"2017-03-21T00:00:00.000Z\",",
+							"        \"designacao\": \"Avaliação para a recolha de amostras\",",
+							"        \"duracao\": \"\",",
+							"        \"observacoes\": \"\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 6",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 7,",
+							"        \"data\": \"2017-03-21T00:00:00.000Z\",",
+							"        \"designacao\": \"Recolha de amostras\",",
+							"        \"duracao\": \"4h\",",
+							"        \"observacoes\": \"\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 7",
+							"    },",
+							"    {",
+							"        \"idProcedimento\": 8,",
+							"        \"data\": \"2017-03-21T00:00:00.000Z\",",
+							"        \"designacao\": \"Recolha de fotografias\",",
+							"        \"duracao\": \"4h\",",
+							"        \"observacoes\": \"À recolha de amostras\",",
+							"        \"processoObra\": 1,",
+							"        \"tecnicoObra\": 1",
+							"    }",
+							"]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/procedimentos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um procedimento com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7117219e-22a5-42b9-a182-c24bb6c873da",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Procedimento not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/procedimento/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"procedimento",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

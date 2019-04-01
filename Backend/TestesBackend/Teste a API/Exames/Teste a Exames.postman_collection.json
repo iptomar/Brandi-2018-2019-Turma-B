@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "eac412d9-4f26-47af-86d0-b276975742e5",
+		"name": "Teste a Exames",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste ao pedido de testes feitos num exame",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2efcd055-03fa-4f65-8102-293fb22dc603",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Resposta de /exames/1/testes\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idTeste\": 1,",
+							"        \"referecia\": \"Observação á vista desarmada\",",
+							"        \"localizacao\": \"Corpo da coluna e capitel\",",
+							"        \"objetivosEspecificos\": \"Identificação dos materiais\",",
+							"        \"resultados\": \"Confirmação do uso de folha de ouro, purpurina, massa oleica, camada de preparação de gesso ou cré, policromia.\",",
+							"        \"data\": \"2017-02-21T00:00:00.000Z\",",
+							"        \"exame\": 1,",
+							"        \"tecnico\": 1",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/exames/1/testes",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"exames",
+						"1",
+						"testes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

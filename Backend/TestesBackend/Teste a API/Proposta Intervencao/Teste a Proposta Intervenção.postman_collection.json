@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "34b09088-2c93-43aa-a788-5fb29b6db312",
+		"name": "Teste a Proposta Intervenção",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste ao pedido de propostas de intervenção",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86d76f43-8030-4dcd-9103-15c386b86b1a",
+						"exec": [
+							"pm.test(\"Teste ao Pedido de Intervenção\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /propostasIntervencao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idProposta\": 1,",
+							"        \"tipo\": \"Conservação | Restauro\",",
+							"        \"dataProposto\": null,",
+							"        \"dataAceite\": null,",
+							"        \"interlecutoresIPT\": \"Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda\",",
+							"        \"interlecutoresCliente\": \"\",",
+							"        \"objeto\": 1",
+							"    }",
+							"]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/propostasIntervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"propostasIntervencao"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

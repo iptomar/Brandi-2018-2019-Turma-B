@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "91160f6b-eb67-47c4-aa61-d228b1cdbfd2",
+		"name": "Teste a Materiais",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste de pedido dos Materiais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "63c09ac0-0aea-45e6-971a-9afcae4344d0",
+						"exec": [
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /materiais\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idMaterial\": 1,",
+							"        \"material\": \"Nikon 3300\",",
+							"        \"quantidade\": \"\",",
+							"        \"procedimento\": 2",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 2,",
+							"        \"material\": \"Pano, trincha, água\",",
+							"        \"quantidade\": \"\",",
+							"        \"procedimento\": 4",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 3,",
+							"        \"material\": \"Nikon 3300\",",
+							"        \"quantidade\": \"\",",
+							"        \"procedimento\": 5",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 4,",
+							"        \"material\": \"Bisturi 11, etiquetas, contentor, zaragatoa\",",
+							"        \"quantidade\": \"oito\",",
+							"        \"procedimento\": 7",
+							"    }",
+							"]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/materiais/",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"materiais",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um material com ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9757372-07a5-470e-b5fb-684d8e9956fd",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Material not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/materiais/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"materiais",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

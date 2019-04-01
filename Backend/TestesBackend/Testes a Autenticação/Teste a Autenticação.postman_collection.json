@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "da9f762f-8522-4fc2-85ca-58510b62922d",
+		"name": "Teste a Autenticação",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste de um Login Correto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0d52070-f33e-487e-9db5-28d36f7e719e",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Mensagem de erro não presente\", function () {",
+							"    pm.response.to.have.body(\"\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\" : \"joaon\",\r\n   \"password\" : \"pass123\"\r\n }"
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/auth",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"auth"
+					]
+				},
+				"description": "Testa se um utilizador se pode autenticar de forma correta"
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um Login Incorreto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0d52070-f33e-487e-9db5-28d36f7e719e",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Mensagem de erro presente\", function () {",
+							"    pm.response.to.have.body(\"Incorrect Username and/or Password!\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\" : \"joao\",\r\n   \"password\" : \"pass123\"\r\n }"
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/auth",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"auth"
+					]
+				},
+				"description": "Testa se um utilizador se pode autenticar de forma correta"
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de falta de parâmetros no Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "855bfd9c-b3e5-4915-a81a-0efc1e52a153",
+						"exec": [
+							"pm.test(\"Ligação bem sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Falta de Parâmetros\", function () {",
+							"    pm.response.to.have.body(\"Please enter Username and Password!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"username\" : \"\",\r\n   \"password\" : \"pass123\"\r\n }"
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/auth",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d8f0c67-8336-490f-9769-aca8d65cf9cd",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/logout",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

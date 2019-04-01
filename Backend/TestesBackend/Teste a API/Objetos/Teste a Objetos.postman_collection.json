@@ -1,0 +1,841 @@
+{
+	"info": {
+		"_postman_id": "e206f691-957a-473a-a4ec-c227752d12a0",
+		"name": "Teste a Objetos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste de pedido de objetos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62ab429f-939b-4abe-994e-0ba5f0177b4e",
+						"exec": [
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /objetos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idObjeto\": 1,",
+							"        \"designacao\": \"Coluna neoclássica com policromia\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"conjunto\": 1,",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\"",
+							"    }",
+							"]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um objeto de ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23507a12-06ad-4a61-890f-dc774f82adad",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Objeto not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de imagens de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee998b12-bf02-4030-a285-0b812d8e1904",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idImagem\": 1,",
+							"        \"imagem\": \"imgColuna1.jpg\",",
+							"        \"tipo\": \"fotografia\",",
+							"        \"formato\": \"JPEG\",",
+							"        \"referencia\": \"Nikon 3300\",",
+							"        \"documentacao\": \"Capitel e pormenores (CD) | Análises estratigráficas (CD)\",",
+							"        \"objeto\": 1",
+							"    },",
+							"    {",
+							"        \"idImagem\": 2,",
+							"        \"imagem\": \"grafColuna1.jpg\",",
+							"        \"tipo\": \"grafico\",",
+							"        \"formato\": \"JPEG\",",
+							"        \"referencia\": \"Nikon 3300\",",
+							"        \"documentacao\": \"FTIR\",",
+							"        \"objeto\": 1",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/1/imagens",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"1",
+						"imagens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido num interessado num objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca4539b-ac68-42e9-8b98-51c38144e8d8",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idInteressado\": 1,",
+							"        \"enderecoPostal\": \"Coimbra\",",
+							"        \"enderecoEletronico\": \"Sem informação\",",
+							"        \"contacto\": \"Sem informação\",",
+							"        \"tipo\": \"Proprietário\"",
+							"    },",
+							"    {",
+							"        \"idInteressado\": 2,",
+							"        \"enderecoPostal\": \"Lisboa\",",
+							"        \"enderecoEletronico\": \"Sem informação\",",
+							"        \"contacto\": \"Sem informação\",",
+							"        \"tipo\": \"Salvador Sanchez\"",
+							"    },",
+							"    {",
+							"        \"idInteressado\": 3,",
+							"        \"enderecoPostal\": \"Não se aplica\",",
+							"        \"enderecoEletronico\": \"Não se aplica\",",
+							"        \"contacto\": \"Não se aplica\",",
+							"        \"tipo\": \"Mecenas\"",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/1/interessados",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"1",
+						"interessados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um pedido por poluicao de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "390bf113-0c67-4927-9608-f18d5ae8c413",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Poluição not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/-1/poluicao",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"poluicao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de ciclos climatericos de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70354f94-bf46-45c2-b302-572aa9863a3d",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Ciclos climatéricos not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/-1/ciclosclimatericos",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"ciclosclimatericos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido por fontes de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3f2d870-ece9-4b78-acc9-e1698fb695db",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Fontes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/fontes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"fontes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de iluminação de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e5489ec-0873-44cf-a628-a61988f9f508",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Iluminação not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/iluminacao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"iluminacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedidos de intervenção de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3718eb4b-2a4b-4a8e-b40e-680e24be6586",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"Pedidos de intervenção not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/pedidosintervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"pedidosintervencao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de conservações de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a1d25bb-3514-4b8c-a60c-d0996e4984a2",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Conservacoes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/conservacoes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"conservacoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de propostas de intervenção de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "644eb631-edd5-4d1b-984e-ce447dbe12e2",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"PropostasIntervencao not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/propostasIntervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"propostasIntervencao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de intervenções de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "970ab41c-9a7e-4945-a35f-4d198659bf23",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"intervencoes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/intervencoes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"intervencoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de exames de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "316b3890-0c73-497f-8b31-d248989c2083",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Objeto not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/exames",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"exames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de documentação  de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac7cda9b-c6d9-49ff-b687-24aa2637c97e",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Documentacao not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/documentacao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"documentacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de análises  solventes de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a00b8e71-3b15-4cc1-8260-8047fe410abd",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Resposta de /objetos/1/analisesSolventes\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idAnalise\": 1,",
+							"        \"sujidade\": \"Repintes\",",
+							"        \"data\": \"1970-01-01T00:00:00.000Z\",",
+							"        \"caracteristicas\": \"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração\",",
+							"        \"tecnico\": 1,",
+							"        \"objeto\": 1",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/objetos/1/analisesSolventes",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"objetos",
+						"1",
+						"analisesSolventes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de intervenções anteriores de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8608f8a3-ca41-4eec-b004-0a4f9ee45ffc",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"Testes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/intervencoesanteriores",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"intervencoesanteriores"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
