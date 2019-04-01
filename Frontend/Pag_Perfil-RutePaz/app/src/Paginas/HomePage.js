@@ -6,7 +6,12 @@ class HomePage extends Component {
 		return (
 			<div className="Home-grid ">
 				<h1>Bem Vindo!</h1>
-				<p>Laboratório de Conservação e Restauro</p>
+                <img
+                    src="http://www.cr.estt.ipt.pt/labs/lcr_C_2a.jpg"
+                    alt="logo"
+                    className="logoImg"
+                />
+
 			</div>
 		);
 	}

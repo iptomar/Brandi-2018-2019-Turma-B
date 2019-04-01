@@ -27,20 +27,28 @@
 	}
 
 .Profile-grid {
-	background: #f2994a; /* fallback for old browsers */
-	background: -webkit-linear-gradient( to right, #f2c94c, #f2994a ); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #f2c94c, #f2994a);
-	text-align: center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
+    background: #f2994a; /* fallback for old browsers */
+    background: -webkit-linear-gradient( to right, #f2c94c, #f2994a ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f2c94c, #f2994a);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
 }
 
 .avatarImg {
 	height: 250px;
 	padding-top: 5em;
+}
+.logoImg {
+    height: 550px;
+    width: 1250spx;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .text {
