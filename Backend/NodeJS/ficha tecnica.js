@@ -11,7 +11,7 @@ app.post('/inserirFT', function(request, response) {
 	var dataEntregaCEARC = request.body.dataEntregaCEARC;
 	var coordenador = request.body.coordenador;
 	var funcao = request.body.funcao;
-	var objeto = request.body.objeto
+	var objeto = request.body.objeto;
 	
 	//guardar o id do tecnico, id do processo e id do objetos
 	var idTecnico;
@@ -25,7 +25,7 @@ app.post('/inserirFT', function(request, response) {
 		function(error, results, fields) {
 			//utilizador encontrado
 			if (results.length > 0) {
-				idTecnico=results[0].idTecnico
+				idTecnico=results[0].idTecnico;
 			//utilizador não encontrado
 			} else {
 				response.send('Coordenador inválido.');
@@ -36,7 +36,7 @@ app.post('/inserirFT', function(request, response) {
 		function(error, results, fields) {
 			//objeto encontrado
 			if (results.length > 0) {
-				idObjeto=results[0].idObjeto
+				idObjeto=results[0].idObjeto;
 			//objeto não encontrado
 			} else {
 				response.send('Coordenador inválido.');
