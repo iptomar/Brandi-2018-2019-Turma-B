@@ -65,7 +65,7 @@ export default class Login extends Component {
       x.appendChild(y);
       document.getElementById("divBtn").appendChild(x);
     } else if (this.state.loginState === "success"){
-      sessionStorage.setItem("id", this.state.username);
+      sessionStorage.setItem("username", this.state.username);
       sessionStorage.setItem("loginState", this.state.loginState);
       return <Redirect to='/menu' />
     }

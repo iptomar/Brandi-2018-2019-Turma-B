@@ -8,16 +8,16 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      user : []
+			user : [],
+			name : ""
     };
   }
 
   componentDidMount(){
-    /*const sessionName = sessionStorage.getItem("username");
+    const sessionName = sessionStorage.getItem("username");
     this.setState({name: sessionName })
-    document.getElementById("header").innerHTML = sessionName;*/
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/id/1')
+    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/' + sessionName)
     .then((response) => {
       return response.data
     })
