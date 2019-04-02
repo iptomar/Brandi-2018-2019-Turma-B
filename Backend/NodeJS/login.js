@@ -100,6 +100,25 @@ app.get("/tecnicos/id/:id", (req, res) => {
 	});
 });
 
+//tecnico (pelo username)
+app.get("/tecnicos/username/:username", (req, res) => {
+	let sql = "SELECT * FROM tecnicos WHERE username = ?";
+
+	// req.params.id mapeia o :username que está no URL acima.
+	con.query(sql, [req.params.username], (err, results) => {
+		if (err) {
+			console.error("Erro get tecnico", err);
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Tecnico not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
 //lista de materiais
 app.get("/materiais", (req, res) => {
 	let sql = "SELECT * FROM materiais";
