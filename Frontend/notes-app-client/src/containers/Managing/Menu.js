@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Layout, Header, Navigation, Drawer, Content } from "react-mdl";
+import { Link } from "react-router-dom";
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
 import "./Menu.css";
 
 export default class Login extends Component {
@@ -7,40 +11,33 @@ export default class Login extends Component {
 
   }*/
 
-  Add = event =>{
-    this.props.history.push("/add");
-  }
-
-  Consultar = event =>{
-    this.props.history.push("/consultar");
-  }
-
-  Remove = event =>{
-    this.props.history.push("/remove");
-  }
-
-  Edit = event =>{
-    this.props.history.push("/edit");
-  }
-
-  Profile = event =>{
-    this.props.history.push("/profile");
-  }
-
-  FichTec = event =>{
-    this.props.history.push("/fichatecnica");
-  }
-
   render() {
 
     return (
-      <div >
-        <button onClick = {this.Add}>Adicionar ficha tecnica</button><br/>
-        <button onClick = {this.Consultar}>Consultar ficha tecnica</button><br/>
-        <button onClick = {this.Remove}>Remover ficha tecnica</button><br/>
-        <button onClick = {this.Edit}>Editar ficha tecnica</button><br/>
-        <button onClick = {this.Profile}>Profile</button><br/>
-        <button onClick = {this.FichTec}>Ficha Tecnica</button>
+      
+      <div className="demo-big-content">
+        <Layout>
+          <Header
+            className="header-color"
+            title="Conservação e Restauro "
+            scroll
+          >
+            <Navigation>
+              <Link to="/">Home</Link>
+              <Link to="/fichatecnica">Objetos</Link>
+            </Navigation>
+          </Header>
+          <Drawer title="Conservação e Restauro ">
+            <Navigation>
+              <Link to="/">Home</Link>
+              <Link to="/profile">Perfil</Link>
+              <Link to="/logout">Logout</Link>
+            </Navigation>
+          </Drawer>
+          <Content>
+            <div className="page-content" />
+          </Content>    
+        </Layout>
       </div>   
     );
   }

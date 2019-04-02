@@ -1,33 +1,34 @@
 import React, { Component } from "react";
 import "./FichaTecnica.css";
 import axios from 'axios';
-import { CardDeck, Card, CardBody, CardImg, CardTitle, CardText, CardFooter } from 'reactstrap';
+import { CardDeck } from 'reactstrap';
 export default class FichasTecnica extends Component {
   	constructor(props) {
     super(props);
 
     this.state ={ 
 		isLoading: true,
-		tecnicos:[]
+		objetos:[]
 	};
   }
 	
 componentDidMount(){
 	
-	axios.get('/api/tecnicos')
+
+	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/objetos')
 	.then((response) => {
 		return response.data
 	})
 	.then(data => {
-		this.setState({tecnicos: data})
-		console.log(data);
-		for (var i = 0; i < this.state.tecnicos.length; i++) {
+		this.setState({objetos: data})
+		for (var i = 0; i < this.state.objetos.length; i++) {
 
 			// um tecnico do array
-			var tecnico = this.state.tecnicos[i];
+			var objeto = this.state.objetos[i];
 
 			// nome do tecnico
-			var nome = tecnico.nome;
+			var nome = objeto.designacao;
 			
 			var deck = document.querySelector('#deck');
 			
@@ -37,7 +38,7 @@ componentDidMount(){
 			deck.appendChild(card);
 			
 			var image = document.createElement('img');
-			image.setAttribute('src',require("./image.png"));
+			image.setAttribute('src',require("./img/image.png"));
 			image.classList.add('card-img');
 			card.classList.add('imgListObj');
 			card.appendChild(image);
@@ -58,7 +59,6 @@ componentDidMount(){
 }
 	render() {
 
-	const tecnicos = this.state;	
     return (
      <CardDeck id="deck" className="cardDeckListObj" > 
 		</CardDeck>

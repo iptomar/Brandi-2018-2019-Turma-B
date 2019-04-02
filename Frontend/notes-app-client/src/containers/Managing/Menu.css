@@ -1,0 +1,109 @@
+.header-color {
+	background: #4b2402; /* fallback for old browsers */
+}
+
+.Home-grid {
+	background: #f2994a; /* fallback for old browsers */
+	background: -webkit-linear-gradient( to right, #f2c94c, #f2994a ); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #f2c94c, #f2994a);
+	text-align: center;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+.Home-grid h1 {
+	font-size: 80px;
+	font-weight: bold;
+	color: #4b2402;
+	text-align: center;
+}
+
+.Home-grid p {
+	font-size: 50px;
+	font-weight: bold;
+	color: #4b2402;
+	text-align: center;
+}
+
+.Profile-grid {
+    background: #f2994a; /* fallback for old browsers */
+    background: -webkit-linear-gradient( to right, #f2c94c, #f2994a ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f2c94c, #f2994a);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.avatarImg {
+	height: 250px;
+	padding-top: 5em;
+}
+.logoImg {
+    height: 550px;
+    width: 1250spx;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text {
+	background-color: #4b2402;
+	opacity: 0.8;
+	width: 75%;
+	margin: auto;
+	border-radius: 10px;
+}
+
+.text h1 {
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+
+.text p {
+	color: white;
+	font-size: 20px;
+	padding: 1em;
+}
+
+.header {
+	font-family: arial, sans-serif;
+	margin-left: 25%;
+	margin-top: 5%;
+	background-color: dimgrey;
+	width: 50%;
+	height: 25%;
+}
+
+.p {
+	margin-top: 1%;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border: 1px;
+	border-color: black;
+	width: 50%;
+	margin-top: 3%;
+}
+
+tr {
+	background-color: #dddddd;
+}
+
+td {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+}
+
+th {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 1px;
+}

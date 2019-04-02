@@ -37,11 +37,8 @@ export default class Login extends Component {
     const password = this.state.password
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth', { username, password })
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'api/auth', { username, password })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-
         if(res.data === "Incorrect Username and/or Password!"){
           this.setState({ loginState: 'error' })
         }else{
@@ -68,7 +65,7 @@ export default class Login extends Component {
       x.appendChild(y);
       document.getElementById("divBtn").appendChild(x);
     } else if (this.state.loginState === "success"){
-      sessionStorage.setItem("username", this.state.username);
+      sessionStorage.setItem("id", this.state.username);
       sessionStorage.setItem("loginState", this.state.loginState);
       return <Redirect to='/menu' />
     }
@@ -76,9 +73,10 @@ export default class Login extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="App__Aside" />
-            <img className= "estt" src={require('./estt.png')}></img><br></br>
-            <img className= "icr" src={require('./lcr.png')}></img>
+          <div className="App__Aside">
+            <img className= "estt" src={require('./img/estt.png')}></img><br></br>
+            <img className= "icr" src={require('./img/lcr.png')}></img>
+          </div>
           <div className="App__Form">
             <div className="FormTitle">
               <Link to="/login" className="FormTitle__Link ">

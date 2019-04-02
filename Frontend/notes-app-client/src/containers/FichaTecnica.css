@@ -1,14 +1,10 @@
-
 .imgListObj {
   height: 100%;
   width: 100%;
 }
-
-
 .cardListObj {
 	background-color: #ffffff;
 }
-
 .cardDeckListObj {
   display: flex;
 }
