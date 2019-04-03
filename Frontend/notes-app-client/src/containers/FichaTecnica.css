@@ -1,13 +1,49 @@
-.imgListObj {
-  height: 100%;
-  width: 100%;
+.pageObj {
+	background: #f2994a;
 }
-.cardListObj {
+
+.navbarObj {
+	background-color: #4b2402;
+	border-radius: 0px;
+}
+
+.navbarbrandObj {
+    color: #ffffff !important;
+  	padding-top: 15px;
+}
+
+.deckObj {
+	margin-top: 100px;
+	margin-left: 0px;
+}
+
+.colObj {
+    padding: 0px;
+    margin: 20px 0px 20px 0px;
+}
+
+.cardObj {
+	text-align: center;
 	background-color: #ffffff;
+	height: 300px;
+	width: 250px;
+	border-color: #4b2402;
 }
-.cardDeckListObj {
-  display: flex;
+
+.imgObj {
+	height: 200px;
+	width: 250px;
+    object-fit: cover;
 }
-.cardTitleListObj {
-  text-align: center;
+
+.bodyObj {
+    padding: 0px;
+    margin: 0px;
+	background: #4b2402;
+}
+
+.titleObj {
+    padding-top: 10px;
+    font-size: 16px;
+	color: #ffffff;
 }

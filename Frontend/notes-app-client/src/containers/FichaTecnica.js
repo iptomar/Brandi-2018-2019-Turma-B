@@ -1,17 +1,32 @@
 import React, { Component } from "react";
 import "./FichaTecnica.css";
 import axios from 'axios';
-import { CardDeck } from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink} from 'reactstrap';
 export default class FichasTecnica extends Component {
-  	constructor(props) {
-    super(props);
+	constructor(props) {
+	    super(props);
 
-    this.state ={ 
-		isLoading: true,
-		objetos:[],
-		imagens:[]
-	};
-  }
+		this.toggle = this.toggle.bind(this);
+	    this.state ={ 
+			isLoading: true,
+	      	isOpen: false,
+			objetos:[],
+			imagens:[]
+		};
+  	}
+
+	toggle() {
+		this.setState({
+      		isOpen: !this.state.isOpen
+		});
+	}
 	
 componentDidMount(){
 	
@@ -26,17 +41,30 @@ componentDidMount(){
 		for (var i = 0; i < this.state.objetos.length; i++) {
 			
 			// um objeto do array
-			var objeto = this.state.objetos[i];
+			let objeto = this.state.objetos[i];
 			
 			// designação do objeto
-			var nome = objeto.designacao;
+			let nome = objeto.designacao;
 			
-			var deck = document.querySelector('#deck');
+			let deck = document.querySelector('#row1');
+        	deck.classList.add("deckObj");
 			
-			var card = document.createElement('div');
+			let col = document.createElement('div');
+			col.classList.add('col');
+			col.classList.add('colObj');
+        	col.classList.add("col-xs-12");
+        	col.classList.add("col-sm-6");
+        	col.classList.add("col-md-4");
+        	col.classList.add("col-lg-3");
+        	col.classList.add("d-flex");
+        	col.classList.add("align-items-stretch");
+			deck.appendChild(col);
+
+			let card = document.createElement('div');
 			card.classList.add('card');
-			card.classList.add('cardListObj');
-			deck.appendChild(card);
+			card.classList.add('cardObj');
+        	card.classList.add("m-3");
+			col.appendChild(card);
 			
 			axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/objetos/'+objeto.idObjeto+'/imagens')
 			.then((response) => {
@@ -45,23 +73,29 @@ componentDidMount(){
 			.then(data => {
 				this.setState({imagens: data})
 				
-				var imgname = this.state.imagens[0].imagem;
-				var imgpath = './img/'+ imgname;
-				var image = document.createElement('img');
+				let imgname = this.state.imagens[0].imagem;
+				let imgpath = './img/'+ imgname;
+				let image = document.createElement('img');
 				image.setAttribute('src',require(""+imgpath));
+				image.setAttribute('alt','alt');
 				image.classList.add('card-img');
-				card.classList.add('imgListObj');
+				image.classList.add('imgObj');
+				image.classList.add('img-fluid');
+				image.addEventListener('click', function seeFT() {
+					console.log("Mostrar Ficha Técnica");
+				});
 				card.appendChild(image);
 			
-				var body = document.createElement('div');
+				let body = document.createElement('div');
 				body.classList.add('card-body');
+				body.classList.add('bodyObj');
 				card.appendChild(body);
 
-				var titulo = document.createElement('div');
+				let titulo = document.createElement('div');
 				titulo.classList.add('card-title');
-				card.classList.add('cardTitleListObj');
-				body.appendChild(titulo);
+				titulo.classList.add('titleObj');
 				titulo.textContent = nome;
+				body.appendChild(titulo);
 			})
     	}
 	})
@@ -69,8 +103,32 @@ componentDidMount(){
 	render() {
 
     return (
-     <CardDeck id="deck" className="cardDeckListObj" > 
-		</CardDeck>
+        <div className="pageObj">
+	    	<Navbar className="navbarObj" dark expand="sm">
+          		<NavbarBrand className="navbarbrandObj" href="/">Conservação e Restauro</NavbarBrand>
+          		<NavbarToggler onClick={this.toggle} />
+          		<Collapse isOpen={this.state.isOpen} navbar>
+            	<Nav className="ml-auto" navbar>
+	            	<NavItem>
+	                	<NavLink href="/">Home</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/menu">Menu</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/profile">Profile</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="">Logout</NavLink>
+	             	</NavItem>
+            	</Nav>
+				</Collapse>
+			</Navbar> 
+
+		    <div id="grid" className="container">
+		        <div id="row1" className="row"></div>
+		    </div>
+	    </div>
     );
   }
 }
