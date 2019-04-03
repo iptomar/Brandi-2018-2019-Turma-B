@@ -9,7 +9,8 @@ var con = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'adminb',
 	password : 'adminB123!',
-	database : 'brandiBDB'
+	database : 'brandiBDB',
+    multipleStatements: true
 });
 //inicia o express
 var app = express();
