@@ -65,6 +65,47 @@ app.post('/logout', function(request, response) {
 	response.end();
 });
 
+//method: get | action: consultarFT
+//metodo que permite consultar uma ficha tecnica
+app.get("/objeto/:id/consultarFT", (req, res) => {
+	let sql = "Select o.designacao, p.LCRM, p.CEARC, p.dataAberturaLCRM, p.dataAberturaCEARC, p.dataEntradaLCRM, p.dataEntradaCEARC, t.nome, tp.funcao  from processos p, tecnicos t, tecnicoProcesso tp, objetos o where t.idTecnico=tp.tecnico and p.idProcesso=tp.processo and p.objeto=o.idObjeto and p.objeto = ?";
+
+	// req.params.id mapeia o :id que está no URL acima.
+	con.query(sql, [req.params.id], (err, results) => {
+		if (err) {
+			res.status(500).json({ erro: "Erro na query" });
+		} else {
+			if (results.length ==0) {
+				res.status(404).json({ erro: "Ficha Tecnica not found" });
+			} else {
+				res.status(200).json(results);
+			}
+		}
+	});
+});
+
+
+//method: get | action: removeFT
+//metodo que permite remover uma ficha tecnica
+app.get("/objeto/:id/removeFT", (req, res) => {
+    let sql = "Delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?); Delete from processos where objeto = ?;";
+
+    // req.params.id mapeia o :id que está no URL acima.
+    con.query(sql, [req.params.id, req.params.id], (err, results) => {
+        if (err) {
+        console.log(err);
+            res.status(500).json({ erro: "Erro na query" });
+        } else {
+            if (results.length ==0) {
+                res.status(404).json({ erro: "Ficha Tecnica not found" });
+            } else {
+                res.status(200).json(results);
+            }
+        }
+    });
+
+});
+
 //*********************** API **************************//
 
 //lista de tecnicos
