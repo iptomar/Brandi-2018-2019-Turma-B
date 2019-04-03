@@ -19,17 +19,17 @@ export default class Login extends Component {
         <Layout>
           <Header
             className="header-color"
-            title="Conservação e Restauro "
+            title={<a href="/menu" style={{ color: '#ffffff' }}>Conservação e Restauro</a>}
             scroll
+            href="google.com"
+            
           >
             <Navigation>
-              <Link to="/">Home</Link>
-              <Link to="/fichatecnica">Objetos</Link>
+              <Link to="/objetos">Objetos</Link>
             </Navigation>
           </Header>
           <Drawer title="Conservação e Restauro ">
             <Navigation>
-              <Link to="/">Home</Link>
               <Link to="/profile">Perfil</Link>
               <Link to="/logout">Logout</Link>
             </Navigation>
