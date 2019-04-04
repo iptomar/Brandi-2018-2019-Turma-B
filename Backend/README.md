@@ -980,5 +980,19 @@
 ]
 ```
 
+### GET /api/objetos/{id}/pedidosintervencao
+#### Isto mostra os pedidos de intervenção de um objeto atraves do id
+#### Se o id for 1 irá devolver o seguinte output:
+```jsonc
+[
+  {
+	"idPedido":1,
+	"tipo":"O proprietário deixou este campo sob a responsabilidade de quem fosse realizar a intervenção.",
+	"aspetos":"Não se aplica",
+	"objeto":1
+  }
+]
+```
+
 
 
