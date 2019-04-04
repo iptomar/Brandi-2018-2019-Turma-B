@@ -277,3 +277,20 @@
 ]
 ```
 
+### GET /api/procedimento/id/{id}
+#### Isto retorna um determinado procedimento com o respetivo id.
+#### Se o id for 7 irá devolver o seguinte output:
+```jsonc
+[
+  {
+	"idProcedimento":6,
+	"data":"2017-03-21T00:00:00.000Z",
+	"designacao":"Avaliação para a recolha de amostras",
+	"duracao":"",
+	"observacoes":"",
+	"processoObra":1,
+	"tecnicoObra":6
+  }
+]
+```
+
