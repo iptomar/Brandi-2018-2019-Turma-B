@@ -875,6 +875,67 @@
   }
 ]
 ```
+### GET /api/objetos/{id}/ciclosclimatericos
+#### Mostra as fontes de um objeto dado o seu id
+#### Por exemplo se o id for 1 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"idFonte":1,
+	"fonte":"Não se aplica",
+	"tipo":"NA",
+	"localizacao":"NA",
+	"cota":"NA",
+	"dataConsulta":"1997-01-01T00:00:00.000Z",
+	"area":"Arquivísticas | Documentais",
+	"objeto":1
+	},
+	{
+	"idFonte":2,
+	"fonte":"Não se aplica",
+	"tipo":"NA",
+	"localizacao":"NA",
+	"cota":"NA",
+	"dataConsulta":"1997-01-01T00:00:00.000Z",
+	"area":"Iconográficas",
+	"objeto":1
+	},
+	{
+	"idFonte":3,
+	"fonte":"CRUZ, 
+	João – “Métodos de Exame e Análise – Espectroscopia de infravermelho”,
+	Tomar (2015/2016); pp 4-8",
+	"tipo":"NA",
+	"localizacao":"NA",
+	"cota":"NA",
+	"dataConsulta":"1997-01-01T00:00:00.000Z",
+	"area":"Bibliográficas",
+	"objeto":1
+	},
+	{
+	"idFonte":4,
+	"fonte":"Não se aplica",
+	"tipo":"NA",
+	"localizacao":"NA",
+	"cota":"NA",
+	"dataConsulta":"1997-01-01T00:00:00.000Z",
+	"area":"Eletrónicas",
+	"objeto":1
+	},
+	{
+	"idFonte":5,
+	"fonte":"Não se aplica",
+	"tipo":"NA",
+	"localizacao":"NA",
+	"cota":"NA",
+	"dataConsulta":"1997-01-01T00:00:00.000Z",
+	"area":
+	"Outras Fontes",
+	"objeto":
+	}
+  }
+]
+```
 
 
 
