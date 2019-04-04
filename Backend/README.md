@@ -936,6 +936,21 @@
   }
 ]
 ```
+### GET /api/objetos/{id}/poluicao
+#### Isto mostra a poluição de um objeto atraves do id
+#### Se o id for 1 irá devolver o seguinte output:
+```jsonc
+[
+  {
+"idPoluicao":1,
+"agente":"Sendo uma coluna pertencente a um restauro, é possível que estivesse inserida num espaço litúrgico, estando exposta a poeiras e fumos. Pertence possivelmente a um retábulo desmantelado, tendo percorrido um longo caminho até ao local atual, devendo por isso ter passado por alterações bruscas de temperatura e humidade relativa.",
+"fonte":"Em relação às poeiras e fumos, provavelmente, teriam origem em velas ou devido ao contacto com pessoas do exterior.",
+"resultados":"O contacto com estes agentes degradadores, em especial, às alterações de temperatura e humidade, levaram ao aparecimento de lacunas, tanto ao nível da camada policroma como de preparação. Assim como levaram à perda de coesão da camada de preparação, tornando-se pulverulenta.",
+"observacoes":"Deve-se evitar ao máximo coloca-la perto de fontes de calor, como velas, fogueiras ou materiais quentes, assim como evitar transições bruscas de temperatura e humidade, de maneira a que a sua degradação não seja acelerada, levando ao aparecimento de danos e patologias no objeto.",
+"objeto":1
+  }
+]
+```
 
 
 
