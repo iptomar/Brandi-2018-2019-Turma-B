@@ -1023,5 +1023,20 @@
 ]
 ```
 
+### GET /api/propostasintervecao
+#### Mostra todas as propostas de intervecão
+```jsonc
+[
+  {
+	"idProposta":1,
+	"tipo":"Conservação | Restauro",
+	"dataProposto":null,"dataAceite":null,
+	"interlecutoresIPT":"Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda",
+	"interlecutoresCliente":"",
+	"objeto":1
+  }
+]
+```
+
 
 
