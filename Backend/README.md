@@ -994,5 +994,34 @@
 ]
 ```
 
+### GET /api/objetos/{id}/conservacoes
+#### Isto mostra as conservações de um objeto através do id
+#### Se o id for 1 irá devolver o seguinte output:
+```jsonc
+[
+  {
+  	{
+	"idConservacao":1,
+	"tipo":"Deterioração Física, Química e Mecânica dos Materiais",
+	"estado":"Alterabilidade: decorrente de envelhecimento natural|Alteração: decorrente de fatores físicos, químicos, biológicos e antrópicos",
+	"estrutura":"O suporte da coluna encontra-se em bom estado de conservação. Não revela fragilidade nem falta de coesão. O local onde o seu estado poderá ser classificado como pior é a zona do capitel uma vez que há lacunas de suporte. O suporte do corpo da coluna apenas revela perfurações/cortes que se julgam ser de uma serra elétrica.",
+"superficie":"A superfície da coluna encontra-se em mau estado de conservação. Esta é constituída por policromia e repolicromia repinte e ambas se encontram em mau estado de conservação, não só por falta de coesão das camadas de preparação como houve degradação das condições químicas e físicas de maior parte da policromia. Para além disso existem lacunas tanto a nível da camada policroma como da camada de preparação.",
+"elementos":"A coluna tem como acessórios elementos constituídos materialmente por madeira (frisos) e elementos metálicos (pregos e elementos decorativos em bronze)O estado de conservação dos frisos é médio, isto é, encontram-se com várias lacunas de suporte, porém a estrutura que ainda se mantem não revela problemas a nível físico ou químico.Os elementos metálicos encontram-se em mau estado de conservação uma vez que todos eles se encontram oxidados.",
+"observacoes":"O que se pode concluir em relação ao estado de conservação da obra é que este é mau. Apesar do suporte relevar bom estado tudo o resto não se assemelha, o que dificulta a leitura artística da obra, dificultando então a sua intervenção.",
+"objeto":1
+	},
+	{
+	"idConservacao":2,
+	"tipo":"Deterioração Biológica dos Materiais",
+	"estado":"Identificação de Patologias e Agentes de Biodeterioração – Diagnóstico",
+	"estrutura":"Não releva qualquer tipo de atividade biologia, ativa ou não ativa (anterior).",
+	"superficie":"Não releva qualquer tipo de atividade biologia, ativa ou não ativa (anterior).",
+	"elementos":"Não releva qualquer tipo de atividade biologia, ativa ou não ativa (anterior).",
+	"observacoes":"O que se pode concluir em relação ao estado de conservação da obra é que este é mau. Apesar do suporte relevar bom estado tudo o resto não se assemelha, o que dificulta a leitura artística da obra, dificultando então a sua intervenção.",
+	"objeto":1
+  }
+]
+```
+
 
 
