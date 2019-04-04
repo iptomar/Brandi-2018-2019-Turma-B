@@ -318,4 +318,83 @@
 ]
 ```
 
+### GET /api/processos
+#### Lista todos os processos 
+```jsonc
+[	
+	{
+		{
+		"idProcesso":1,
+		"LCRM":"0005-04-2006-MOB",
+		"CEARC":"1221/21/06",
+		"dataAberturaLCRM":"2006-04-27T23:00:00.000Z",
+		"dataAberturaCEARC":"2006-04-27T23:00:00.000Z",
+		"dataEntradaLCRM":"2006-04-27T23:00:00.000Z",
+		"dataEntradaCEARC":"2006-04-27T23:00:00.000Z",
+		"objeto":1
+		},
+		{
+		"idProcesso":2,
+		"LCRM":"001/01/07/2016/MOB",
+		"CEARC":"2016-12-12",
+		"dataAberturaLCRM":"2016-07-01T23:00:00.000Z",
+		"dataAberturaCEARC":"2016-07-03T23:00:00.000Z",
+		"dataEntradaLCRM":"2016-07-01T23:00:00.000Z",
+		"dataEntradaCEARC":"2016-09-03T23:00:00.000Z",
+		"objeto":2
+		},
+		{
+		"idProcesso":3,
+		"LCRM":"06-006-011-2013-40B",
+		"CEARC":"2013-01-04",
+		"dataAberturaLCRM":"2013-11-28T00:00:00.000Z",
+		"dataAberturaCEARC":"2013-02-21T00:00:00.000Z",
+		"dataEntradaLCRM":"2013-11-28T00:00:00.000Z",
+		"dataEntradaCEARC":"2013-02-21T00:00:00.000Z",
+		"objeto":3
+		},
+		{
+		"idProcesso":4,
+		"LCRM":"001-01-05-2015-MOB",
+		"CEARC":"16-10-2015-2",
+		"dataAberturaLCRM":"2015-05-01T23:00:00.000Z",
+		"dataAberturaCEARC":"2015-05-26T23:00:00.000Z",
+		"dataEntradaLCRM":"2015-02-02T00:00:00.000Z",
+		"dataEntradaCEARC":"2015-05-19T23:00:00.000Z",
+		"objeto":4
+		},
+		{
+		"idProcesso":5,
+		"LCRM":"0004-04-2006-MOB",
+		"CEARC":"1119/19/06",
+		"dataAberturaLCRM":"2006-04-17T23:00:00.000Z",
+		"dataAberturaCEARC":"2006-04-17T23:00:00.000Z",
+		"dataEntradaLCRM":"2006-04-17T23:00:00.000Z",
+		"dataEntradaCEARC":"2006-04-17T23:00:00.000Z",
+		"objeto":5
+		},
+		{
+		"idProcesso":6,"LCRM":"",
+		"CEARC":"861/03/02",
+		"dataAberturaLCRM":"2002-03-05T00:00:00.000Z",
+		"dataAberturaCEARC":"2002-03-05T00:00:00.000Z",
+		"dataEntradaLCRM":"2002-03-05T00:00:00.000Z",
+		"dataEntradaCEARC":"2002-03-05T00:00:00.000Z",
+		"objeto":6
+		},
+		{
+		"idProcesso":8,
+		"LCRM":"080-08-11-2013-mob",
+		"CEARC":"1266/02/2013",
+		"dataAberturaLCRM":"2013-11-28T00:00:00.000Z",
+		"dataAberturaCEARC":"2012-02-02T00:00:00.000Z",
+		"dataEntradaLCRM":"2012-02-02T00:00:00.000Z",
+		"dataEntradaCEARC":"2012-02-02T00:00:00.000Z",
+		"objeto":8
+		}
+	}
+]
+```
+
+
 
