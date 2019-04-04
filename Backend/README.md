@@ -1049,7 +1049,7 @@
   }
 ]
 ```
-### GET /api/objetos/1/intervencoes
+### GET /api/objetos/{id}/intervencoes
 #### Mostra as intervencoes de um objeto dado o seu id
 #### Se o seu id for 1 resulta do seguinte output:
 ```jsonc
@@ -1072,6 +1072,25 @@
 	"idExame":1,
 	"objetivos":"Identificação de materiais, técnicas e tecnologias de produção. Identificação de intervenções efectuadas no objecto. Caracterização do estado de conservação. Identificação de patologias e agentes de biodeterioração. Datação do objecto e das eventuais intervenções que tenha sido alvo. Ensaio de produtos e materiais a empregar na intervenção","interpretacaoResultados":"Em relação aos materiais, apenas se sabe com certeza a do tronco da madeira, de nogueira, e dos restauros antigos nos capitéis, de cerejeira. Em relação ao capitel, pensasse ser de choupo, afusélia ou marupa, havendo maior probabilidade de ser a ultima.As análises realizadas levaram a várias conclusões. O FTIR revelou que a camada de preparação é constituída por gesso, podendo ser por isso que se encontra pouco coesa e pulverulenta.Com as análises estratigráficas, pretendeu-se distinguir policromias originais, de repolicromias e repintes. A amostra 1 representa uma repolicromia, estando um azul escuro sobre um azul, original, de cor mais clara. Com a amostra 2, havia uma espectativa de estar presente preparação, bollus, ouro e purpurina, assim como vários azuis, o que se comprovou pela análise estratigráfica, sendo que o azul mais escuro aparenta estar sobre o azul mais claro, sendo por isso um repinte. Em relação à amostra 3, pensava-se ser o branco original, não só por estar mais amarelecido que os restantes brancos, mas porque era naquela localização que se encontravam os apliques metálicos, não havendo preocupação numa situação de repolicromia ou repinte, em retira-los. Sobre a superfície são visíveis várias cores, podendo estas ser sujidades ou pigmentos. A amostra 4 pode trazer alguma confusão, pois sobre a camada de preparação, bollus e ouro, é visível pigmento brancos. Este aparece apenas em algumas zonas, pois a amostra foi retirada de uma zona próxima aos frisos, que eram dourados. Aquando do douramento, a zona que levaria a policromia ficou com bollus e ouro por baixo, que foi depois pintada com branco. Na amostra 5 é visível a camada de preparação, branco e vários azuis na superfície. Isto comprova a teoria inicial, de que a superfície seria a imitar lápis lazúli. O branco sujo, na mesma zona, seria um repinte. A amostra 6, será a de um azul original, já muito desvanecido, pois sendo que aparece na parte de trás da coluna, não havia preocupação em fazer uma repolicromia ou um repinte. A recolha da amostras 7, assim como da amostras 7A seria de modo a comparar as massas de vidreiro presentes nos dois locais, mas apresentaram-se completamente diferentes. Na amostras 7, são visíveis 5 estratos: preparação branca, bollus, ouro, outro branco (possivelmente preparação) e purpurina. Observam-se também tons esverdeados, que segundo o Doutor Vítor Gaspar, se trata da oxidação da purpurina. A amostra 7A relevou-se completamente diferente, aparentando apenas a massa de vidreiro ser mais grossa, mas revelando-se um material completamente diferente à 7. É visível uma preparação branca, uma camada grossa de massa de vidreiro e purpurina, estando esta também esverdeada devido à oxidação da mesma.","conclusoes":"Devido à análise das estratigrafias, chegou-se à conclusão que a policromia original, seria azul e branca, de modo a imitar lápis lazúli, excluindo-se a hipótese de marmoreado.De acordo com as análises estratigráficas, foi decidida a maneira com se iria intervir na coluna neoclássica. Ficou decidido que as repolicromias seriam mantidas, sendo que geralmente, e no próprio caso, como é o da amostra 1, têm um maior valor artístico assim como são de uma maior qualidade técnica, pois seguem os mesmo procedimentos que o original. Em relação aos repintes, foi decidido o contrário, apresentando-se os mesmos, especialmente os brancos, com fraca qualidade, assim já com grandes problemas, estando bastante envelhecidos. A massa oleica será também retirada, não tendo nenhuma ligação com o resto da coluna, em termos estéticos, nem tem nenhuma função especifica.Em relação ao original, claro está, que se decidiu manter, podendo proceder-se apenas a uma consolidação de maneira a que a sua degradação não fosse acelerada, em grande parte devido à pulverulência da camada de preparação.",
 	"objeto":1
+	}
+]
+```
+
+### GET /api/exames/{id}/testes
+#### Mostra os exames dado o seu id
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+	"idTeste":1,
+	"referecia":"Observação á vista desarmada",
+	"localizacao":"Corpo da coluna e capitel",
+	"objetivosEspecificos":"Identificação dos materiais",
+	"resultados":"Confirmação do uso de folha de ouro, purpurina, massa oleica, camada de preparação de gesso ou cré, policromia.",
+	"data":"2017-02-21T00:00:00.000Z",
+	"exame":1,
+	"tecnico":1
 	}
 ]
 ```
