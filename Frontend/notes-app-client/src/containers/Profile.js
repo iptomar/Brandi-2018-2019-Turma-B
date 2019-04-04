@@ -19,13 +19,10 @@ export default class Login extends Component {
 			sessionName = sessionStorage.getItem("username");
 		}else{
 			sessionName = (window.location.pathname).split("/")[2];
-		}
-
-		console.log(sessionName);
-    
+		}    
     this.setState({name: sessionName })
-    const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.get(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/' + sessionName)
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/tecnicos/username/' + sessionName)
     .then((response) => {
       return response.data
     })

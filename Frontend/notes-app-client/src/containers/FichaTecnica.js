@@ -26,6 +26,7 @@ componentDidMount(){
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
 	axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/objeto/'+ FtId +'/consultarFT')
 	.then((response) => {
+		console.log(response)
 		return response.data[0]
 	})
 	.then(data => {
