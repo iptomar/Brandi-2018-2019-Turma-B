@@ -305,4 +305,17 @@
   }
 ]
 ```
+### GET /api/processosObra/id/{id}
+#### Lista de processos de obra dado um determinado id
+#### Por exemplo se o id for 1 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"numProcesso":1,
+	"designacao":"Coluna neoclássica com policromia",
+	"objeto":1
+  }
+]
+```
+
 
