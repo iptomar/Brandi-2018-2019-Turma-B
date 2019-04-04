@@ -861,5 +861,20 @@
 ]
 ```
 
+### GET /api/objetos/{id}/ciclosclimatericos
+#### Mostra os ciclos climatéricos de um objeto dado o seu id
+#### Por exemplo se o id for 1 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"idCiclo":1,
+	"temperatura":"Frio / Húmido: Desconhecido | Quente / Seco: Desconhecido",
+	"humidade":"Frio / Húmido: Desconhecido  | Quente / Seco: Desconhecido",
+	"periodoAno":"NA",
+	"objeto":1
+  }
+]
+```
+
 
 
