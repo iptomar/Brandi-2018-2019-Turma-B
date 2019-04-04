@@ -688,5 +688,45 @@
 ]
 ```
 
+### GET /api/objetos/id/{id}
+#### Lista os objetos dado um determinado id
+#### Por exemplo se o id for 3 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"idObjeto":3,
+	"designacao":"Estante de missal",
+	"superCategoria":"",
+	"categoria":"",
+	"subCategoria":"",
+	"tipologia":"",
+	"localizacao":"",
+	"dimensoes":"",
+	"outrasDimensoes":"",
+	"conjunto":0,
+	"elementosConjunto":"",
+	"elementosAcessorios":"",
+	"marcasAutoria":"",
+	"marcasMontagem":"",
+	"marcasConstrucao":"",
+	"classificacaoPatrimonial":"",
+	"estilo":"",
+	"epoca":"",
+	"qualidade":"",
+	"estruturaMaterial":"",
+	"superficieMaterial":"",
+	"tecnicaEstrutura":"",
+	"tecnicaSuperficie":"",
+	"descricao":"",
+	"analogias":"",
+	"conclusoes":"",
+	"autoria":"",
+	"datacao":"",
+	"localOrigem":"",
+	"condicoesAmbientais":""
+  }
+]
+```
+
 
 
