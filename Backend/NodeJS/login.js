@@ -144,7 +144,7 @@ app.get("/tecnicos/id/:id", (req, res) => {
 
 //tecnico (pelo username)
 app.get("/tecnicos/username/:username", (req, res) => {
-	if(req.session.user){
+	if(req.session.username){
 			let sql = "SELECT * FROM tecnicos WHERE username = ?";
 
 		// req.params.id mapeia o :username que está no URL acima.
