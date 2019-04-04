@@ -727,6 +727,93 @@
   }
 ]
 ```
+### GET /api/imagens
+#### Lista todas as imagens
+```jsonc
+[
+  {
+	  {"idImagem":1,
+	  "imagem":"imgColuna1.jpg",
+	  "tipo":"fotografia",
+	  "formato":"JPEG",
+	  "referencia":"Nikon 3300",
+	  "documentacao":"Capitel e pormenores (CD) | Análises estratigráficas (CD)",
+	  "objeto":1
+	  },
+	  {
+	  "idImagem":2,
+	  "imagem":"grafColuna1.jpg",
+	  "tipo":"grafico",
+	  "formato":"JPEG",
+	  "referencia":"Nikon 3300",
+	  "documentacao":"FTIR",
+	  "objeto":1
+	  },
+	  {
+	  "idImagem":3,
+	  "imagem":"PianoBrincar.png",
+	  "tipo":"fotografia",
+	  "formato":"PNG",
+	  "referencia":"",
+	  "documentacao":"",
+	  "objeto":2
+	  },
+	  {
+	  "idImagem":4,
+	  "imagem":"EstanteMissal.png",
+	  "tipo":"fotografia",
+	  "formato":"PNG",
+	  "referencia":"",
+	  "documentacao":"",
+	  "objeto":3
+	  },
+	  {
+	  "idImagem":5,
+	  "imagem":"Gaiola.png",
+	  "tipo":"fotografia",
+	  "formato":"PNG",
+	  "referencia":"",
+	  "documentacao":"",
+	  "objeto":4
+	  },
+	  {
+	  "idImagem":6,
+	  "imagem":"GuardaJoias.png",
+	  "tipo":"fotografia",
+	  "formato":"PNG",
+	  "referencia":"",
+	  "documentacao":"",
+	  "objeto":5
+	  },
+	  {
+	  "idImagem":7,
+	  "imagem":"OratorioPolicromado.png",
+	  "tipo":"fotografia","formato":"PNG",
+	  "referencia":"",
+	  "documentacao":"",
+	  "objeto":6
+	  },
+	  {
+	 "idImagem":8,
+	 "imagem":"SacrarioDouradoPolicromado.png",
+	 "tipo":"fotografia",
+	 "formato":"PNG",
+	 "referencia":"",
+	 "documentacao":"",
+	 "objeto":7
+	 },
+	 {
+	 "idImagem":9,
+	 "imagem":"UrnaSantissimo.png",
+	 "tipo":"fotografia",
+	 "formato":"PNG",
+	 "referencia":"",
+ 	 "documentacao":"",
+	 "objeto":8
+	 }
+  }
+]
+```
 
 
 
