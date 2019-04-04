@@ -149,3 +149,36 @@
 ]
 ```
 
+
+### GET /api/materiais
+#### Retorna todos os materiais
+```jsonc
+[
+  {
+    {
+    "idMaterial":1,
+    "material":"Nikon 3300",
+    "quantidade":"",
+    "procedimento":2
+    },
+    {
+    "idMaterial":2,
+    "material":"Pano, trincha, água","quantidade":"",
+    "procedimento":4
+    },
+    {
+    "idMaterial":3,
+    "material":"Nikon 3300",
+    "quantidade":"",
+    "procedimento":5
+    },
+    {
+    "idMaterial":4,
+    "material":"Bisturi 11, etiquetas, contentor, zaragatoa",
+    "quantidade":"oito",
+    "procedimento":7
+    }
+  }
+]
+```
+
