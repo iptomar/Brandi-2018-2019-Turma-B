@@ -183,3 +183,18 @@
 ]
 ```
 
+### GET /api/materiais/id/{id}
+#### Isto retorna um determinado material com o respetivo id.
+#### Se o id for 4 irá devolver o seguinte output:
+```jsonc
+[
+  {
+  "idMaterial":4,
+  "material":"Bisturi 11, etiquetas, contentor, zaragatoa",
+  "quantidade":"oito",
+  "procedimento":7
+  }
+]
+```
+
+
