@@ -8,21 +8,94 @@
 
 ## Os webservices disponivies (até agora) são:
 
-### GET /api/users
+### GET /api/tecnicos
+#### Retorna todos os Técnicos
 
-
-### recebe:
-
-<br/> Nada
-
-### devolve:
-
-<br/>se com sucesso:
-[{"idTecnico":1,"nome":"João Nunes","username":"joaon","password":"pass123","email":"jn@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0},{"idTecnico":2,"nome":"Edgar Oliveira","username":"edgaroli","password":"pass123","email":"eo@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0},{"idTecnico":3,"nome":"Hélder Lopes","username":"hellopes","password":"pass123","email":"hl@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0},{"idTecnico":4,"nome":"Miguel Tomé","username":"mtome","password":"pass123","email":"mt@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0},{"idTecnico":5,"nome":"David Moreno","username":"dmoreno","password":"pass123","email":"dm@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0},{"idTecnico":6,"nome":"Diogo Ribeiro","username":"dribeiro","password":"pass123","email":"dr@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0},{"idTecnico":7,"nome":"André Fronteira","username":"afronteira","password":"pass123","email":"af@hotmail.com","tipo":"aluno","habilitacoes":"","nivelProfissional":0}]
-
-<br/>se id inválido:
-{"erro":"User not found"}
-
+#### Se com sucesso:
+``` jsonc
+[
+  {
+    "idTecnico" : 1,
+    "nome":"JoãoNunes",
+    "username":"joaon",
+    "password":"pass123",
+    "email":"jn@hotmail.com",
+    "tipo":"aluno",
+    "habilitacoes":"",
+    "nivelProfissional":0
+},
+{
+    "idTecnico":2,
+    "nome":"EdgarOliveira",
+    "username":"edgaroli",
+    "password":"pass123",
+    "email":"eo@hotmail.com",
+    "tipo":"aluno",
+    "habilitacoes":"",
+    "nivelProfissional":0
+    },
+{
+     "idTecnico":3
+     "nome":"HélderLopes",
+     "username":"hellopes",
+     "password":"pass123",
+     "email":"hl@hotmail.com",
+     "tipo":"aluno",
+     "habilitacoes":"",
+     "nivelProfissional":0
+     },
+     {
+     
+     "idTecnico":4,
+     "nome":"MiguelTomé",
+     "username":"mtome",
+     "password":"pass123",
+     "email":"mt@hotmail.com",
+     "tipo":"aluno",
+     "habilitacoes":"",
+     "nivelProfissional":0
+     },
+{
+    "idTecnico":5,
+    "nome":"DavidMoreno",
+    "username":"dmoreno",
+    "password":"pass123",
+    "email":"dm@hotmail.com",
+    "tipo":"aluno",
+    "habilitacoes":"",
+    "nivelProfissional":0
+    },
+{
+   "idTecnico":6,
+   "nome":"DiogoRibeiro",
+   "username":"dribeiro",
+   "password":"pass123",
+   "email":"dr@hotmail.com",
+   "tipo":"aluno",
+   "habilitacoes":"",
+   "nivelProfissional":0
+   },
+{
+   "idTecnico":7,
+   "nome":"AndréFronteira",
+   "username":"afronteira",
+   "password":"pass123",
+   "email":"af@hotmail.com",
+   "tipo":"aluno",
+   "habilitacoes":"",
+   "nivelProfissional":0
+},
+{
+   "idTecnico":8,
+   "nome":"Fernando dos Santos Antunes",
+   "username":"admin",
+   "password":"admin",
+   "email":"fsa@hotmail.com",
+   "tipo":"admin",
+   "habilitacoes":"Mestrado",
+   "nivelProfissional":7
+}]
+```
 
 ### POST /api/auth
 
