@@ -131,3 +131,21 @@
 ]
 ```
 
+### GET /api/tecnicos/username/{username}
+#### Isto retorna um determinado técnico com o respetivo username.
+#### Se o username for edgaroli irá devolver o seguinte output:
+```jsonc
+[
+  {
+  "idTecnico":2,
+  "nome":"Edgar Oliveira",
+  "username":"edgaroli",
+  "password":"pass123",
+  "email":"eo@hotmail.com",
+  "tipo":"aluno",
+  "habilitacoes":"",
+  "nivelProfissional":0
+  }
+]
+```
+
