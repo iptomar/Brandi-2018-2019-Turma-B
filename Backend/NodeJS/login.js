@@ -144,7 +144,6 @@ app.get("/tecnicos/id/:id", (req, res) => {
 
 //tecnico (pelo username)
 app.get("/tecnicos/username/:username", (req, res) => {
-	if(req.session.username){
 			let sql = "SELECT * FROM tecnicos WHERE username = ?";
 
 		// req.params.id mapeia o :username que está no URL acima.
@@ -160,11 +159,6 @@ app.get("/tecnicos/username/:username", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Erro Hello" });
-	}
-	
 });
 
 //lista de materiais
