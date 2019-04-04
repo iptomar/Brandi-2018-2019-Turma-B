@@ -815,5 +815,22 @@
 ]
 ```
 
+### GET /api/objetos/{id}/imagens
+#### Mostra a imagem que esta definida para aquele id do objeto
+#### Por exemplo se o id for 2 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"idImagem":3,
+	"imagem":"PianoBrincar.png",
+	"tipo":"fotografia",
+	"formato":"PNG",
+	"referencia":"",
+	"documentacao":"",
+	"objeto":2
+  }
+]
+```
+
 
 
