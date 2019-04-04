@@ -875,7 +875,7 @@
   }
 ]
 ```
-### GET /api/objetos/{id}/ciclosclimatericos
+### GET /api/objetos/{id}/fontes
 #### Mostra as fontes de um objeto dado o seu id
 #### Por exemplo se o id for 1 irá retornar o seguinte output:
 ```jsonc
@@ -902,9 +902,7 @@
 	},
 	{
 	"idFonte":3,
-	"fonte":"CRUZ, 
-	João – “Métodos de Exame e Análise – Espectroscopia de infravermelho”,
-	Tomar (2015/2016); pp 4-8",
+	"fonte":"CRUZ,João – Métodos de Exame e Análise – Espectroscopia de infravermelho Tomar (2015/2016); pp 4-8",
 	"tipo":"NA",
 	"localizacao":"NA",
 	"cota":"NA",
