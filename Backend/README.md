@@ -952,5 +952,33 @@
 ]
 ```
 
+### GET /api/objetos/{id}/iluminacao
+#### Isto mostra a iluminacao de um objeto atraves do id
+#### Se o id for 1 irá devolver o seguinte output:
+```jsonc
+[
+  {
+	{
+	"idIlumicao":1,
+	"fonte":"Desconhecido",
+	"iluminancia":"Desconhecido",
+	"UVmedido":"Desconhecido",
+	"UVreal":"Desconhecido",
+	"tipo":"natural",
+	"objeto":1
+	},
+	{
+	"idIlumicao":2,
+	"fonte":"Desconhecido",
+	"iluminancia":"Desconhecido",
+	"UVmedido":"Desconhecido",
+	"UVreal":"Desconhecido",
+	"tipo":"artificial",
+	"objeto":1
+	}
+  }
+]
+```
+
 
 
