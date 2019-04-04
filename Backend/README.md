@@ -1049,4 +1049,19 @@
   }
 ]
 ```
+### GET /api/objetos/1/intervencoes
+#### Mostra as intervencoes de um objeto dado o seu id
+#### Se o seu id for 1 resulta do seguinte output:
+```jsonc
+[
+"idIntervencao":1,
+"tipo":"Conservação | Restauro",
+"intervencao":"Estrutura | Suporte:No suporte propõe-se apenas a limpeza superficial, com água, e remoção de adesivos antigos.Remoção da massa oleica que se encontra na zona inferior da coluna.Preenchimentos das lacunas devido à serra elétrica, através do entalhamento da madeira de cerejeira.",
+"recursos":"Para a limpeza prevê-se o uso de um pano humedecido em água.Na remoção do adesivo usar-se-á água para o seu amolecimento e o bisturi para a sua remoção.O bisturi será também usado para remover a massa oleica.",
+"estado":"proposto",
+"proposta":1
+  }
+]
+```
+
 
