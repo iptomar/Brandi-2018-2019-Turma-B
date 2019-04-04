@@ -196,5 +196,84 @@
   }
 ]
 ```
-
+### GET /api/procedimentos
+#### Isto retorna todos os procedimentos
+```jsonc
+[
+  {
+  	{
+	"idProcedimento":1,
+	"data":"2017-02-21T00:00:00.000Z",
+	"designacao":"Escolha e análise do objeto",
+	"duracao":"4h",
+	"observacoes":"Coluna neoclássica com policromia",
+	"processoObra":1,
+	"tecnicoObra":1
+	},
+	{
+	"idProcedimento":2,
+	"data":"2017-02-28T00:00:00.000Z",
+	"designacao":"Recolha de fotografias",
+	"duracao":"3h",
+	"observacoes":"Geral e de pormenor",
+	"processoObra":1,
+	"tecnicoObra":2
+	},
+	{
+	"idProcedimento":3,
+	"data":"2017-03-14T00:00:00.000Z",
+	"designacao":"Avaliação para a recolha de amostras",
+	"duracao":"2h",
+	"observacoes":"",
+	"processoObra":1,
+	"tecnicoObra":3
+	},
+	{
+	"idProcedimento":4,
+	"data":"2017-03-14T00:00:00.000Z",
+	"designacao":"Limpeza superficial",
+	"duracao":"1:30h",
+	"observacoes":"",
+	"processoObra":1,
+	"tecnicoObra":4
+	},
+	{
+	"idProcedimento":5,
+	"data":"2017-03-14T00:00:00.000Z",
+	"designacao":"Recolha de fotografias",
+	"duracao":"1:30h",
+	"observacoes":"Geral e de pormenor",
+	"processoObra":1,
+	"tecnicoObra":5
+	},
+	{
+	"idProcedimento":6,
+	"data":"2017-03-21T00:00:00.000Z",
+	"designacao":"Avaliação para a recolha de amostras",
+	"duracao":"",
+	"observacoes":"",
+	"processoObra":1,
+	"tecnicoObra":6
+	},
+	{
+	"idProcedimento":7,
+	"data":"2017-03-21T00:00:00.000Z",
+	"designacao":"Recolha de amostras",
+	"duracao":"4h",
+	"observacoes":"",
+	"processoObra":1,
+	"tecnicoObra":7
+	},
+	{
+	"idProcedimento":8,
+	"data":"2017-03-21T00:00:00.000Z",
+	"designacao":"Recolha de fotografias",
+	"duracao":"4h",
+	"observacoes":"À recolha de amostras",
+	"processoObra":1,
+	"tecnicoObra":1
+	}
+  }
+]
+```
 
