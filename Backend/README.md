@@ -38,3 +38,23 @@
 
 <br/>se sem sucesso:
 <br/>"Incorrect Username and/or Password!"
+
+
+### GET /api/tecnicos/{id}
+#### Isto retorna um determinado técnico com o respetivo id.
+#### Se o id for 1 irá devolver o seguinte output:
+```jsonc
+[
+  {
+    "idTecnico":1,
+    "nome":"João Nunes",
+    "username":"joaon",
+    "password":"pass123",
+    "email":"jn@hotmail.com",
+    "tipo":"aluno",
+    "habilitacoes":"",
+    "nivelProfissional":0
+    }
+]
+```
+
