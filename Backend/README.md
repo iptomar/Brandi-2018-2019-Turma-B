@@ -413,4 +413,22 @@
 ]
 ```
 
+### GET /api/processos/{id}/tecnicos
+#### Lista o tecnico que está encarregado de um determinado processo
+#### Por exemplo se o id for 4 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"idTecnico":1,
+	"nome":"João Nunes",
+	"username":"joaon",
+	"password":"pass123",
+	"email":"jn@hotmail.com",
+	"tipo":"aluno",
+	"habilitacoes":"",
+	"nivelProfissional":0
+  }
+]
+```
+
 
