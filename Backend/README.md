@@ -395,6 +395,22 @@
 	}
 ]
 ```
-
+### GET /api/processos/id/{id}
+#### Lista os processos dado um determinado id
+#### Por exemplo se o id for 4 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	"idProcesso":4,
+	"LCRM":"001-01-05-2015-MOB",
+	"CEARC":"16-10-2015-2",
+	"dataAberturaLCRM":"2015-05-01T23:00:00.000Z",
+	"dataAberturaCEARC":"2015-05-26T23:00:00.000Z",
+	"dataEntradaLCRM":"2015-02-02T00:00:00.000Z",
+	"dataEntradaCEARC":"2015-05-19T23:00:00.000Z",
+	"objeto":4
+  }
+]
+```
 
 
