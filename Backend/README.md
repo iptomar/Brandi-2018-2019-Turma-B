@@ -831,6 +831,35 @@
   }
 ]
 ```
+### GET /api/objetos/{id}/interessados
+#### Mostra a lista de interessados de um certo objeto
+#### Por exemplo se o id for 1 irá retornar o seguinte output:
+```jsonc
+[
+  {
+	{"idInteressado":1,
+	"enderecoPostal":"Coimbra",
+	"enderecoEletronico":"Sem informação",
+	"contacto":"Sem informação",
+	"tipo":"Proprietário"
+	},
+	{
+	"idInteressado":2,
+	"enderecoPostal":"Lisboa",
+	"enderecoEletronico":"Sem informação",
+	"contacto":"Sem informação",
+	"tipo":"Salvador Sanchez"
+	},
+	{
+	"idInteressado":3,
+	"enderecoPostal":"Não se aplica",
+	"enderecoEletronico":"Não se aplica",
+	"contacto":"Não se aplica",
+	"tipo":"Mecenas"
+	}
+  }
+]
+```
 
 
 
