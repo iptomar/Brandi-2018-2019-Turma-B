@@ -279,7 +279,7 @@
 
 ### GET /api/procedimento/id/{id}
 #### Isto retorna um determinado procedimento com o respetivo id.
-#### Se o id for 7 irá devolver o seguinte output:
+#### Se o id for 6 irá devolver o seguinte output:
 ```jsonc
 [
   {
@@ -290,6 +290,18 @@
 	"observacoes":"",
 	"processoObra":1,
 	"tecnicoObra":6
+  }
+]
+```
+
+### GET /api/processosObra
+#### Lista de processos de obra
+```jsonc
+[
+  {
+	"numProcesso":1,
+	"designacao":"Coluna neoclássica com policromia",
+	"objeto":1
   }
 ]
 ```
