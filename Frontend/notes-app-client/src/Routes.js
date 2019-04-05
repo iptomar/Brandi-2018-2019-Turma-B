@@ -6,10 +6,8 @@ import Logout from "./containers/Logout";
 import Objetos from "./containers/Objetos";
 import Menu from "./containers/Managing/Menu";
 import Add from "./containers/Managing/Add";
-import Remove from "./containers/Managing/Remove";
-import Consultar from "./containers/Managing/Consultar";
-import Edit from "./containers/Managing/Edit";
 import FichaTecnica from "./containers/FichaTecnica";
+import Register from "./containers/Register";
 
 export default () =>
   <Switch>
@@ -19,9 +17,7 @@ export default () =>
     <Route path="/logout" exact component={Logout} />
     <Route path="/objetos" exact component={Objetos} />
     <Route path="/menu" exact component={Menu} />
-    <Route path="/add" exact component={Add} />
-    <Route path="/remove" exact component={Remove} />
-    <Route path="/consultar" exact component={Consultar} />
-    <Route path="/edit" exact component={Edit} />
+    <Route path="/adicionar" exact component={Add} />
     <Route path="/fichatecnica" component={FichaTecnica} />
+    <Route path="/register" component={Register} />
   </Switch>;

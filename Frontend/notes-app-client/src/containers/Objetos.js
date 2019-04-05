@@ -32,7 +32,7 @@ componentDidMount(){
 	
 
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/objetos')
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos')
 	.then((response) => {
 		return response.data
 	})
@@ -71,7 +71,7 @@ componentDidMount(){
 			});
 			col.appendChild(card);
 			
-			axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/objetos/'+objeto.idObjeto+'/imagens')
+			axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+objeto.idObjeto+'/imagens')
 			.then((response) => {
 				return response.data
 			})		
