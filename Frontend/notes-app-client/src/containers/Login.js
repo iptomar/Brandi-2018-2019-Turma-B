@@ -37,7 +37,7 @@ export default class Login extends Component {
     const password = this.state.password
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt/*/'api/auth', { username, password })
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/auth', { username, password })
       .then(res => {
         if(res.data === "Incorrect Username and/or Password!"){
           this.setState({ loginState: 'error' })
@@ -74,8 +74,8 @@ export default class Login extends Component {
       <Router>
         <div className="App">
           <div className="App__Aside">
-            <img className= "estt" src={require('./img/estt.png')}></img><br></br>
-            <img className= "icr" src={require('./img/lcr.png')}></img>
+            <img className= "estt" alt="./img/img.png" src={require('./img/estt.png')}></img><br></br>
+            <img className= "icr" alt="./img/img.png" src={require('./img/lcr.png')}></img>
           </div>
           <div className="App__Form">
             <div className="FormTitle">

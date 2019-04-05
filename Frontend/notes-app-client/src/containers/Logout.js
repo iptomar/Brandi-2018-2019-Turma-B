@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import "./Logout.css";
 
 export default class Login extends Component {
@@ -22,6 +23,15 @@ export default class Login extends Component {
       alert("You are not logged in");
       this.props.history.push("/login");
     }
+
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/logout')
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render(){
     return<div></div>
