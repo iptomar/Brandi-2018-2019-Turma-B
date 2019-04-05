@@ -40,7 +40,7 @@ app.post('/auth', function(request, response) {
 				//guarda a informação do utilizador logged in
 				request.session.loggedin = true;
 				request.session.username = username;
-				res.status(200).json({ message: "Logged in" });
+				response.status(200).json({ message: "Logged in" });
 				//redireciona para a página home
 				//response.redirect('/home');
 			//utilizador não encontrado
