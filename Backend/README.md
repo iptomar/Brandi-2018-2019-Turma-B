@@ -875,7 +875,7 @@
   }
 ]
 ```
-### GET /api/objetos/{id}/ciclosclimatericos
+### GET /api/objetos/{id}/fontes
 #### Mostra as fontes de um objeto dado o seu id
 #### Por exemplo se o id for 1 irá retornar o seguinte output:
 ```jsonc
@@ -902,8 +902,7 @@
 	},
 	{
 	"idFonte":3,
-	"fonte":"CRUZ, 
-	João – “Métodos de Exame e Análise – Espectroscopia de infravermelho”,
+	"fonte":"CRUZ, João – “Métodos de Exame e Análise – Espectroscopia de infravermelho”,
 	Tomar (2015/2016); pp 4-8",
 	"tipo":"NA",
 	"localizacao":"NA",
@@ -1078,6 +1077,25 @@
 
 ### GET /api/exames/{id}/testes
 #### Mostra os exames dado o seu id
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+	"idTeste":1,
+	"referecia":"Observação á vista desarmada",
+	"localizacao":"Corpo da coluna e capitel",
+	"objetivosEspecificos":"Identificação dos materiais",
+	"resultados":"Confirmação do uso de folha de ouro, purpurina, massa oleica, camada de preparação de gesso ou cré, policromia.",
+	"data":"2017-02-21T00:00:00.000Z",
+	"exame":1,
+	"tecnico":1
+	}
+]
+```
+
+### GET /api/tecnicos/{id}/testes
+#### Mostra os testes feitos por um tecnico dado o seu id
 #### Se o seu id for 1 mostra o seguinte output:
 ```jsonc
 
