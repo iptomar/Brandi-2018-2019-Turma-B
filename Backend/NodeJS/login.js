@@ -128,8 +128,8 @@ app.post('/inserirFT', function(request, response) {
 								con.query('INSERT INTO processos SET ?', [processo],
 								function(error, results, fields) {
 									if(error){
-										//response.send("erro1");
-										//response.end();
+										response.send("Erro ao inserir na tabela processos");
+										response.end();
 									}else{
 										idProcesso=results.insertId;
 										//insere na tabela tecnicoProcesso os dados
@@ -137,7 +137,7 @@ app.post('/inserirFT', function(request, response) {
 										con.query('INSERT INTO tecnicoProcesso SET ?', [tecnicoProcesso],
 										function(error, results, fields) {
 											if(error){
-												 response.send("erro2");
+												 response.send("Erro ao inserir na tabela tecnicosProcesso");
 											}else{
 												response.send("done")
 												response.end();
@@ -154,8 +154,51 @@ app.post('/inserirFT', function(request, response) {
 						});	
 					//objeto não encontrado
 					} else {
-						response.send('Objeto inválido.');
-						response.end();
+						//response.send('Objeto inválido.');
+						//response.end();
+						const obj = {designacao : objeto, superCategoria:"", categoria:"", subCategoria:"", tipologia:"", localizacao:"", dimensoes:"", outrasDimensoes:"", conjunto:false, elementosConjunto:"", elementosAcessorios:"", marcasAutoria:"", marcasMontagem:"",marcasConstrucao:"", classificacaoPatrimonial:"", estilo:"", epoca:"", qualidade:"", estruturaMaterial:"", superficieMaterial:"", tecnicaEstrutura:"", tecnicaSuperficie:"", descricao:"", analogias:"", conclusoes:"", autoria:"", datacao:"", localOrigem:"", condicoesAmbientais:""};
+						con.query('INSERT INTO objetos SET ?', [obj],
+						function(error, results, fields) {
+							if(error){
+								console.log(error);
+								 response.send("Erro ao inserir novo objeto");
+							}else{
+								idObjeto=results.insertId;
+								con.query('SELECT * FROM processos WHERE objeto=?', [idObjeto],
+								function(error, results, fields) {
+									if (results.length == 0) {
+										//insere na tabela processo os dados
+										const processo= {LCRM:LCRM, CEARC:CEARC, dataAberturaLCRM:dataAberturaLCRM, dataAberturaCEARC:dataAberturaCEARC, dataEntradaLCRM:dataEntradaLCRM, dataEntradaCEARC:dataEntradaCEARC, objeto:idObjeto};
+										con.query('INSERT INTO processos SET ?', [processo],
+										function(error, results, fields) {
+											if(error){
+												response.send("Erro ao inserir na tabela processos");
+												response.end();
+											}else{
+												idProcesso=results.insertId;
+												//insere na tabela tecnicoProcesso os dados
+												const tecnicoProcesso = {tecnico:idTecnico, processo:idProcesso, funcao:funcao };
+												con.query('INSERT INTO tecnicoProcesso SET ?', [tecnicoProcesso],
+												function(error, results, fields) {
+													if(error){
+														 response.send("Erro ao inserir na tabela tecnicosProcesso");
+													}else{
+														response.send("done")
+														response.end();
+													}
+			
+												});
+											}
+										});
+									}
+									else{
+										response.send('Ficha tecnica já existe.');
+										response.end();
+									}
+								});	
+							}
+
+						});
 					}
 				});
 
@@ -172,7 +215,6 @@ app.post('/inserirFT', function(request, response) {
         response.end();
     }
 });
-
 
 //method: post | action: updateFT
 //metodo que permite dar update a uma ficha tecnica
