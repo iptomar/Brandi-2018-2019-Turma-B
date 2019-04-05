@@ -1164,23 +1164,6 @@
 ]
 ```
 
-### GET api/analisesSolventes
-#### Mostra a lista de analise de solventes
-```jsonc
-
-[
-	{
-	"idAnalise":1,
-	"sujidade":"Repintes",
-	"data":"1970-01-01T00:00:00.000Z",
-	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
-	"tecnico":1,
-	"objeto":1
-	
-	}
-]
-```
-
 
 
 
