@@ -1215,22 +1215,6 @@
 ]
 ```
 
-### GET api/objetos/{id}/intervencoesanteriores"
-#### Mostra as intervenções anterioes que um objeto esteve sujeito dado o seu id.
-#### Se id for 1 irá mostrar o seguinte output:
-```jsonc
-
-[
-	{
-	"idIntervencao":1,
-	"estrutura":"Desmontagem do capitel. O capitel foi entalhado num bloco separado, que se une à coluna através de uma ligação simples (macho-fêmea), essa fixação é reforçada com adesivo.Foram colocados blocos de madeira nos locais de lacuna de suporte do capitel. O seu entalhe foi iniciado, porém não foi finalizado.",
-	"superficie":"Foram realizadas repolicromia e repintes anteriormente. Também foi colocada massa oleica numa das faces na zona inferior o motivo é desconhecido. Em alguns dos casos foram usadas purpurinas para substituir a falta de folha de ouro, de uma forma mais económica.",
-	"elementos":"Os frisos de madeira foram retirados do corpo da escultura e os elementos metálicos também.",
-	"observacoes":"Os restauros anteriores observam-se sobretudo a nível da superfície. Maior parte dos restauros anteriores, ao nível de policromia, verificaram-se incoerentes, uma vez que não respeitam de qualquer modo a policromia original. Tudo isto muda a sua leitura a nível artístico.",
-	"objeto":1
-	}
-]
-```
 
 
 
