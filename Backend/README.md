@@ -1199,23 +1199,6 @@
 ]
 ```
 
-### GET api/tecnicos/:id/analisesSolventes"
-#### Mostra analises de solventes de um tecnico pelo id do tecnico.
-#### Se id for 1 irá mostrar o seguinte output:
-```jsonc
-
-[
-	{
-	idAnalise":1,
-	"sujidade":"Repintes","data":"1970-01-01T00:00:00.000Z",
-	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
-	"tecnico":1,
-	"objeto":1
-	}
-]
-```
-
-
 
 
 
