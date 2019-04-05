@@ -902,8 +902,7 @@
 	},
 	{
 	"idFonte":3,
-	"fonte":"CRUZ, João – “Métodos de Exame e Análise – Espectroscopia de infravermelho”,
-	Tomar (2015/2016); pp 4-8",
+	"fonte":"CRUZ, João – Métodos de Exame e Análise – Espectroscopia de infravermelho, Tomar (2015/2016); pp 4-8",
 	"tipo":"NA",
 	"localizacao":"NA",
 	"cota":"NA",
@@ -1112,6 +1111,43 @@
 	}
 ]
 ```
+
+### GET /api//objetos/{id}/documentacao
+#### Mostra a documentação de um objeto
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+		{
+		"idDocumentacao":1,
+		"designacao":"Não identificados. Não se sabe nada sobre a história do objeto, como proveniência e local de origem.",
+		"referencias":"NA",
+		"autor":"NA",
+		"tipo":"Originais Fotográficos",
+		"objeto":1
+		},
+		{
+		"idDocumentacao":2,
+		"designacao":"Exame de FTIR",
+		"referencias":"Ver anexo digital em CD.",
+		"autor":"Dr. Vitor Gaspar; Beatriz Penas; Leonor Miranda",
+		"tipo":"Documentação Gráfica",
+		"objeto":1
+		},
+		{
+		"idDocumentacao":3,
+		"designacao":"Foi feita a análise estratigráfica. A análise estratigráfica consiste na observação microscópica, de amostras, que revelam os diferentes estratos, resultantes da aplicação de novas camadas de preparação e consequentemente, de camadas policromas (repolicromias ou repintes) e ainda, dos seus materiais.Exame de espectroscopia de absorção de infravermelho com transformada de Fourier (FTIR). É feito através de diferentes conjuntos de átomos que vibram de forma diferente. Aos diferentes conjuntos de átomos correspondem transições vibracionais com diferentes energias. Quando as moléculas são expostas a uma fonte de radiação infravermelha, estas absorvem a energia que corresponde à transições vibracionais apresentadas pelos seus grupos constituintes. O conjunto de absorções apresentadas pelas moléculas permite a identificação dos grupos constituinte das mesmas.",
+		"referencias":"Ver anexo digital em CD.",
+		"autor":"Dr. Victor Gaspar;Beatriz penas;Leonor Miranda.",
+		"tipo":"Exames e Análises",
+		"objeto":1
+		}
+	}
+]
+```
+
+
 
 
 
