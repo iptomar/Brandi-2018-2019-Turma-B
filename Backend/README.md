@@ -1154,11 +1154,12 @@
 
 [
 	{
-	idTeste":"1"
-	"solvente":"Decapante lavável E-013-0070"
-	"eficacia":"2"
-	"observacao":"Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete."
-	"analise":"1"
+	idTeste":1,
+	"solvente":"Decapante lavável E-013-0070",
+	"eficacia":2,
+	"observacao":"Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete.",
+	"analise":1
+	
 	}
 ]
 ```
@@ -1169,12 +1170,13 @@
 
 [
 	{
-	"idAnalise":1
-	"sujidade":"Repintes"
-	"data":"1970-01-01T00:00:00.000Z"
-	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração"
-	"tecnico":1
+	"idAnalise":1,
+	"sujidade":"Repintes",
+	"data":"1970-01-01T00:00:00.000Z",
+	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
+	"tecnico":1,
 	"objeto":1
+	
 	}
 ]
 ```
@@ -1186,29 +1188,29 @@
 
 [
 	{
-	"idAnalise":"1"
-	"sujidade":"Repintes"
-	"data":"1970-01-01T00:00:00.000Z"
-	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração"
-	"tecnico":"1"
-	"objeto":"1"
+	"idAnalise":1,
+	"sujidade":"Repintes",
+	"data":"1970-01-01T00:00:00.000Z",
+	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
+	"tecnico":1,
+	"objeto":1
+	
 	}
 ]
 ```
 
-### GET api/tecnicos/{id}/analisesSolventes"
+### GET api/tecnicos/:id/analisesSolventes"
 #### Mostra analises de solventes de um tecnico pelo id do tecnico.
 #### Se id for 1 irá mostrar o seguinte output:
 ```jsonc
 
 [
 	{
-	idAnalise":"1"
-	"sujidade":"Repintes"
-	"data":"1970-01-01 T00:00:00:000"
-	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração"
-	"tecnico":"1"
-	"objeto":"1"
+	idAnalise":1,
+	"sujidade":"Repintes","data":"1970-01-01T00:00:00.000Z",
+	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
+	"tecnico":1,
+	"objeto":1
 	}
 ]
 ```
