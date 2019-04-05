@@ -68,7 +68,7 @@ app.post('/logout', function(request, response) {
 
 //method: get | action: consultarFT
 //metodo que permite consultar uma ficha tecnica
-app.get("/objeto/:id/consultarFT", (req, res) => {
+app.get("/objetos/:id/consultarFT", (req, res) => {
 	let sql = "Select o.designacao, p.LCRM, p.CEARC, p.dataAberturaLCRM, p.dataAberturaCEARC, p.dataEntradaLCRM, p.dataEntradaCEARC, t.nome, tp.funcao  from processos p, tecnicos t, tecnicoProcesso tp, objetos o where t.idTecnico=tp.tecnico and p.idProcesso=tp.processo and p.objeto=o.idObjeto and p.objeto = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -175,7 +175,7 @@ app.post('/inserirFT', function(request, response) {
 
 //method: post | action: updateFT
 //metodo que permite dar update a uma ficha tecnica
-app.post('/objeto/:id/updateFT', function(request, response) {
+app.post('/objetos/:id/updateFT', function(request, response) {
 	//guarda os dados recebidos
 	var LCRM = request.body.LCRM;
 	var CEARC = request.body.CEARC;
@@ -255,7 +255,7 @@ app.post('/objeto/:id/updateFT', function(request, response) {
 
 //method: get | action: removeFT
 //metodo que permite remover uma ficha tecnica
-app.get("/objeto/:id/removeFT", (req, res) => {
+app.get("/objetos/:id/removeFT", (req, res) => {
     let sql = "Delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?); Delete from processos where objeto = ?;";
 
     // req.params.id mapeia o :id que está no URL acima.
@@ -377,7 +377,7 @@ app.get("/procedimentos", (req, res) => {
 });
 
 //procedimento (pelo ID)
-app.get("/procedimento/id/:id", (req, res) => {
+app.get("/procedimentos/id/:id", (req, res) => {
 	let sql = "SELECT * FROM procedimentos WHERE idProcedimento = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -801,7 +801,7 @@ app.get("/objetos/:id/documentacao", (req, res) => {
 });
 
 //Testes de uma análise (pelo ID da análise)
-app.get("/analise/:id/testesSolvente", (req, res) => {
+app.get("/analisesSolventes/:id/testesSolvente", (req, res) => {
 	let sql = "Select * from testesSolvente where analise = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
