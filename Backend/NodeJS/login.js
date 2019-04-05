@@ -280,7 +280,7 @@ app.get("/objetos/:id/removeFT", (req, res) => {
 //lista de tecnicos
 app.get("/tecnicos", (req, res) => {
 
-	if(request.session.loggedin){
+	if(request.session.loggedin == true){
 		let sql = "SELECT * FROM tecnicos";
 
 		con.query(sql, (err, results) => {
