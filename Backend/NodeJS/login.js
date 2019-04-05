@@ -40,6 +40,7 @@ app.post('/auth', function(request, response) {
 				//guarda a informação do utilizador logged in
 				request.session.loggedin = true;
 				request.session.username = username;
+				res.status(200).json({ message: "Logged in" });
 				//redireciona para a página home
 				//response.redirect('/home');
 			//utilizador não encontrado
@@ -278,16 +279,23 @@ app.get("/objetos/:id/removeFT", (req, res) => {
 
 //lista de tecnicos
 app.get("/tecnicos", (req, res) => {
-	let sql = "SELECT * FROM tecnicos";
 
-	con.query(sql, (err, results) => {
-		if (err) {
-			console.error("Erro get tecnicos", err);
-			res.status(500).json({ erro: "Erro na query" });
-		} else {
-			res.status(200).json(results);
-		}
-	});
+	if(request.session.loggedin){
+		let sql = "SELECT * FROM tecnicos";
+
+		con.query(sql, (err, results) => {
+			if (err) {
+				console.error("Erro get tecnicos", err);
+				res.status(500).json({ erro: "Erro na query" });
+			} else {
+				res.status(200).json(results);
+			}
+		});
+	}
+	else{
+		res.status(500).json({ erro: "Not Loggedin" });
+	}
+
 });
 
 //tecnico (pelo ID)
