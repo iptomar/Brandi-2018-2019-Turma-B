@@ -40,6 +40,7 @@ app.post('/auth', function(request, response) {
 				//guarda a informação do utilizador logged in
 				request.session.loggedin = true;
 				request.session.username = username;
+				response.status(200).json({ message: "Logged in" });
 				//redireciona para a página home
 				//response.redirect('/home');
 			//utilizador não encontrado
@@ -58,17 +59,22 @@ app.post('/auth', function(request, response) {
 //termina a sessão
 app.get('/logout', function(request, response) {
 	//apaga as variaveis de sessão
-	request.session.loggedin = false;
-	request.session.username = null;
+	//request.session.loggedin = false;
+	//request.session.username = null;
+	request.session.destroy();
 	console.log("User logged out")
 	//redireciona para a página de login
 	//response.redirect('/');
 	response.end();
 });
 
+
+//*********************** Ficha Tecnica **************************//
+
+
 //method: get | action: consultarFT
 //metodo que permite consultar uma ficha tecnica
-app.get("/objeto/:id/consultarFT", (req, res) => {
+app.get("/objetos/:id/consultarFT", (req, res) => {
 	let sql = "Select o.designacao, p.LCRM, p.CEARC, p.dataAberturaLCRM, p.dataAberturaCEARC, p.dataEntradaLCRM, p.dataEntradaCEARC, t.nome, tp.funcao  from processos p, tecnicos t, tecnicoProcesso tp, objetos o where t.idTecnico=tp.tecnico and p.idProcesso=tp.processo and p.objeto=o.idObjeto and p.objeto = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -218,7 +224,7 @@ app.post('/inserirFT', function(request, response) {
 
 //method: post | action: updateFT
 //metodo que permite dar update a uma ficha tecnica
-app.post('/objeto/:id/updateFT', function(request, response) {
+app.post('/objetos/:id/updateFT', function(request, response) {
 	//guarda os dados recebidos
 	var LCRM = request.body.LCRM;
 	var CEARC = request.body.CEARC;
@@ -298,7 +304,7 @@ app.post('/objeto/:id/updateFT', function(request, response) {
 
 //method: get | action: removeFT
 //metodo que permite remover uma ficha tecnica
-app.get("/objeto/:id/removeFT", (req, res) => {
+app.get("/objetos/:id/removeFT", (req, res) => {
     
 	con.query('SELECT * FROM processos WHERE objeto = ?', [req.params.id],
         function(error, results, fields) {
@@ -320,21 +326,30 @@ app.get("/objeto/:id/removeFT", (req, res) => {
 	
 
 });
+//*********************** Ficha Tecnica **************************//
 
 //*********************** API **************************//
 
 //lista de tecnicos
 app.get("/tecnicos", (req, res) => {
-	let sql = "SELECT * FROM tecnicos";
+	
+	if(req.session.loggedin == true){
+		
+		let sql = "SELECT * FROM tecnicos";
 
-	con.query(sql, (err, results) => {
-		if (err) {
-			console.error("Erro get tecnicos", err);
-			res.status(500).json({ erro: "Erro na query" });
-		} else {
-			res.status(200).json(results);
-		}
-	});
+		con.query(sql, (err, results) => {
+			if (err) {
+				console.error("Erro get tecnicos", err);
+				res.status(500).json({ erro: "Erro na query" });
+			} else {
+				res.status(200).json(results);
+			}
+		});
+	}
+	else{
+		res.status(500).json({ erro: "Not Loggedin" });
+	}
+
 });
 
 //tecnico (pelo ID)
@@ -424,7 +439,7 @@ app.get("/procedimentos", (req, res) => {
 });
 
 //procedimento (pelo ID)
-app.get("/procedimento/id/:id", (req, res) => {
+app.get("/procedimentos/id/:id", (req, res) => {
 	let sql = "SELECT * FROM procedimentos WHERE idProcedimento = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
@@ -848,7 +863,7 @@ app.get("/objetos/:id/documentacao", (req, res) => {
 });
 
 //Testes de uma análise (pelo ID da análise)
-app.get("/analise/:id/testesSolvente", (req, res) => {
+app.get("/analisesSolventes/:id/testesSolvente", (req, res) => {
 	let sql = "Select * from testesSolvente where analise = ?";
 
 	// req.params.id mapeia o :id que está no URL acima.
