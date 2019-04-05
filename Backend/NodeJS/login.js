@@ -57,10 +57,11 @@ app.post('/auth', function(request, response) {
 });
 //method: post | action: logout
 //termina a sessão
-app.post('/logout', function(request, response) {
+app.get('/logout', function(request, response) {
 	//apaga as variaveis de sessão
-	request.session.loggedin = false;
-	request.session.username = null;
+	//request.session.loggedin = false;
+	//request.session.username = null;
+	request.session.destroy();
 	console.log("User logged out")
 	//redireciona para a página de login
 	//response.redirect('/');
