@@ -127,8 +127,8 @@ app.post('/inserirFT', function(request, response) {
 								con.query('INSERT INTO processos SET ?', [processo],
 								function(error, results, fields) {
 									if(error){
-										//response.send("erro1");
-										//response.end();
+										response.send("Erro ao inserir na tabela processos");
+										response.end();
 									}else{
 										idProcesso=results.insertId;
 										//insere na tabela tecnicoProcesso os dados
@@ -136,7 +136,7 @@ app.post('/inserirFT', function(request, response) {
 										con.query('INSERT INTO tecnicoProcesso SET ?', [tecnicoProcesso],
 										function(error, results, fields) {
 											if(error){
-												 response.send("erro2");
+												 response.send("Erro ao inserir na tabela tecnicosProcesso");
 											}else{
 												response.send("done")
 												response.end();
@@ -153,8 +153,51 @@ app.post('/inserirFT', function(request, response) {
 						});	
 					//objeto não encontrado
 					} else {
-						response.send('Objeto inválido.');
-						response.end();
+						//response.send('Objeto inválido.');
+						//response.end();
+						const obj = {designacao : objeto, superCategoria:"", categoria:"", subCategoria:"", tipologia:"", localizacao:"", dimensoes:"", outrasDimensoes:"", conjunto:false, elementosConjunto:"", elementosAcessorios:"", marcasAutoria:"", marcasMontagem:"",marcasConstrucao:"", classificacaoPatrimonial:"", estilo:"", epoca:"", qualidade:"", estruturaMaterial:"", superficieMaterial:"", tecnicaEstrutura:"", tecnicaSuperficie:"", descricao:"", analogias:"", conclusoes:"", autoria:"", datacao:"", localOrigem:"", condicoesAmbientais:""};
+						con.query('INSERT INTO objetos SET ?', [obj],
+						function(error, results, fields) {
+							if(error){
+								console.log(error);
+								 response.send("Erro ao inserir novo objeto");
+							}else{
+								idObjeto=results.insertId;
+								con.query('SELECT * FROM processos WHERE objeto=?', [idObjeto],
+								function(error, results, fields) {
+									if (results.length == 0) {
+										//insere na tabela processo os dados
+										const processo= {LCRM:LCRM, CEARC:CEARC, dataAberturaLCRM:dataAberturaLCRM, dataAberturaCEARC:dataAberturaCEARC, dataEntradaLCRM:dataEntradaLCRM, dataEntradaCEARC:dataEntradaCEARC, objeto:idObjeto};
+										con.query('INSERT INTO processos SET ?', [processo],
+										function(error, results, fields) {
+											if(error){
+												response.send("Erro ao inserir na tabela processos");
+												response.end();
+											}else{
+												idProcesso=results.insertId;
+												//insere na tabela tecnicoProcesso os dados
+												const tecnicoProcesso = {tecnico:idTecnico, processo:idProcesso, funcao:funcao };
+												con.query('INSERT INTO tecnicoProcesso SET ?', [tecnicoProcesso],
+												function(error, results, fields) {
+													if(error){
+														 response.send("Erro ao inserir na tabela tecnicosProcesso");
+													}else{
+														response.send("Ficha Tecnica inserida com sucesso")
+														response.end();
+													}
+			
+												});
+											}
+										});
+									}
+									else{
+										response.send('Ficha tecnica já existe.');
+										response.end();
+									}
+								});	
+							}
+
+						});
 					}
 				});
 
@@ -225,7 +268,7 @@ app.post('/objeto/:id/updateFT', function(request, response) {
 											response.send( "Erro na query" );
 											response.end();
 										} else {
-											response.send("ficha tecnica alterada com sucesso");
+											response.send("Ficha Tecnica alterada com sucesso");
 											response.end();
 										}	
 									});
@@ -256,21 +299,25 @@ app.post('/objeto/:id/updateFT', function(request, response) {
 //method: get | action: removeFT
 //metodo que permite remover uma ficha tecnica
 app.get("/objeto/:id/removeFT", (req, res) => {
-    let sql = "Delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?); Delete from processos where objeto = ?;";
-
-    // req.params.id mapeia o :id que está no URL acima.
-    con.query(sql, [req.params.id, req.params.id], (err, results) => {
-        if (err) {
-        console.log(err);
-            res.status(500).json({ erro: "Erro na query" });
-        } else {
-            if (results.length ==0) {
-                res.status(404).json({ erro: "Ficha Tecnica not found" });
-            } else {
-                res.status(200).json(results);
-            }
-        }
-    });
+    
+	con.query('SELECT * FROM processos WHERE objeto = ?', [req.params.id],
+        function(error, results, fields) {
+			if(results.length>0){
+				let sql = "Delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?); Delete from processos where objeto = ?;";
+				// req.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [req.params.id, req.params.id], (err, results) => {
+					if (err) {
+						res.status(500).json({ erro: "Erro na query" });
+					} else {
+						res.status(200).json({message: "Ficha Tecnica removida com sucesso"});
+					}
+				});
+			}else{
+				res.status(404).json({ erro: "Ficha Tecnica not found" });
+			}
+	});
+	
+	
 
 });
 
