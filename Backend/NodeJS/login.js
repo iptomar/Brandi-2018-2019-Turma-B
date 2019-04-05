@@ -56,7 +56,7 @@ app.post('/auth', function(request, response) {
 });
 //method: post | action: logout
 //termina a sessão
-app.get('/logout', function(request, response) {
+app.post('/logout', function(request, response) {
 	//apaga as variaveis de sessão
 	request.session.loggedin = false;
 	request.session.username = null;
