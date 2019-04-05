@@ -1147,6 +1147,22 @@
 ]
 ```
 
+### GET /api/analisesSolventes/{id}/testesSolvente
+#### Mostra os testes de uma analise dado o seu id
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+	idTeste":1,
+	"solvente":"Decapante lavável E-013-0070",
+	"eficacia":2,
+	"observacao":"Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete.",
+	"analise":1
+	
+	}
+]
+```
 
 
 
