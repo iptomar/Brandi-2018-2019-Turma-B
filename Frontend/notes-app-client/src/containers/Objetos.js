@@ -28,6 +28,10 @@ toggle() {
 				isOpen: !this.state.isOpen
 	});
 }
+
+addFt = event => {
+	this.props.history.push("/adicionar")
+}
 	
 componentDidMount(){
 	
