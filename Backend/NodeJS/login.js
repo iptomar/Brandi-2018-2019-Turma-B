@@ -325,6 +325,36 @@ app.get("/objetos/:id/removeFT", (req, res) => {
 
 });
 //*********************** Ficha Tecnica **************************//
+//*********************** Register *******************************//
+
+app.post('/register',function(request,response){
+	let Nome = request.body.Nome;
+    let username = request.body.username;
+    let password = request.body.password;
+    let email = request.body.email;
+    let tipo = request.body.tipo;
+    let Habilitacoes = request.body.Habilitacoes;
+    let nivelProfissional = request.body.NivProfissional;
+    if(Nome && username && password && email && tipo && Habilitacoes && NivProfissional){
+    const tecnico = {Nome:Nome, username:username, password:password, email:email, tipo:tipo, Habilitacoes:Habilitacoes, NivProfissional:NivProfissional}
+    con.query('INSERT INTO tecnicos SET ?', [tecnico],
+    		function(error, results, fields) {
+				if(error){
+				response.send("Erro ao inserir na tabela tecnicos");
+				response.end();
+    			}else{
+    			response.send("feito");
+				response.end();
+    			}
+    		}
+    	)}
+    else {
+        response.send('Por favor peencha todos os campos.');
+        response.end();
+    }
+});
+
+//*********************** Register *******************************//
 
 //*********************** API **************************//
 
