@@ -32,6 +32,14 @@ function verificaLogin(req, res, next) {
 	}
   }
 
+  function verificaLoginAdmin(req, res, next) {
+	if (req.session.loggedin && req.session.role === "admin") { 
+	  next(); 
+	} else {
+		res.status(500).json({ erro: "Not Loggedin" });
+	}
+  }
+
 //method: post | action: auth
 //autentica o utilizador através do username e password
 app.post('/auth', function(request, response) {
@@ -388,7 +396,7 @@ app.post('/register',function(request,response){
 //*********************** API **************************//
 
 //lista de tecnicos
-app.get("/tecnicos", verificaLogin, (req,res) =>{
+app.get("/tecnicos", verificaLoginAdmin, (req,res) =>{
 	let sql = "SELECT * FROM tecnicos";
 
 		con.query(sql, (err, results) => {
