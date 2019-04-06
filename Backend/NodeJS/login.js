@@ -57,7 +57,7 @@ app.post('/auth', function(request, response) {
 				request.session.loggedin = true;
 				request.session.username = username;
 				request.session.role = results[0].tipo;
-				response.status(200).json({ message: "Logged in " + request.session.role });
+				response.status(200).json({ message: "Logged in " });
 
 			//utilizador não encontrado
 			} else {
