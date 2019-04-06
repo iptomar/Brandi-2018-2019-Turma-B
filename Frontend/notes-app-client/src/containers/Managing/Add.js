@@ -89,6 +89,10 @@ export default class Login extends Component {
       });
   }
 
+  goBack(){
+    this.props.history.push("/fichatecnica/" + this.state.fichaTecId);
+  }
+
   componentDidMount(){
 		if(window.location.pathname.split("/")[1] === "editar"){
 			//const proxyurl = "http://cors-anywhere.herokuapp.com/";
@@ -126,7 +130,7 @@ export default class Login extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                    <NavLink href={"/fichatecnica/"+fichaTecId} >Back</NavLink>
+                    <NavLink onClick={this.goBack} >Back</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink href="/">Home</NavLink>
