@@ -23,7 +23,7 @@ app.use(session({
 //define o bodyparser para trabalhar com json
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
-
+//verifica se o utilizador esta autenticado
 function verificaLogin(req, res, next) {
 	if (req.session.loggedin) { 
 	  next(); 
@@ -31,7 +31,7 @@ function verificaLogin(req, res, next) {
 		res.status(500).json({ erro: "Not Loggedin" });
 	}
   }
-
+//verifica se o utilizador esta autenticado e se a sua role é admin
   function verificaLoginAdmin(req, res, next) {
 	if (req.session.loggedin && req.session.role === "admin") { 
 	  next(); 
@@ -410,9 +410,8 @@ app.get("/tecnicos", verificaLogin, (req,res) =>{
 });
 
 //tecnico (pelo ID)
-app.get("/tecnicos/id/:id", (req, res) => {
+app.get("/tecnicos/id/:id", verificaLogin, (req, res) => {
 	
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM tecnicos WHERE idTecnico = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -428,17 +427,11 @@ app.get("/tecnicos/id/:id", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
-
 });
 
 //tecnico (pelo username)
-app.get("/tecnicos/username/:username", (req, res) => {
+app.get("/tecnicos/username/:username", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		if(req.session.username == req.params.username){
 			let sql = "SELECT * FROM tecnicos WHERE username = ?";
 
@@ -459,17 +452,12 @@ app.get("/tecnicos/username/:username", (req, res) => {
 		else{
 			res.status(500).json({ erro: "Permission denied" });
 		}
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
-
+	
 });
 
 //lista de materiais
-app.get("/materiais", (req, res) => {
+app.get("/materiais", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM materiais";
 
 		con.query(sql, (err, results) => {
@@ -479,18 +467,12 @@ app.get("/materiais", (req, res) => {
 			} else {
 				res.status(200).json(results);
 			}
-		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
-	
+		});	
 });
 
 //material (pelo ID)
-app.get("/materiais/id/:id", (req, res) => {
+app.get("/materiais/id/:id", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM materiais WHERE idMaterial = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -504,19 +486,14 @@ app.get("/materiais/id/:id", (req, res) => {
 					res.status(200).json(results);
 				}
 			}
-		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
+		});	
 });
 
 
 
 //lista de procedimentos
-app.get("/procedimentos", (req, res) => {
+app.get("/procedimentos", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM procedimentos";
 
 		con.query(sql, (err, results) => {
@@ -527,16 +504,11 @@ app.get("/procedimentos", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //procedimento (pelo ID)
-app.get("/procedimentos/id/:id", (req, res) => {
+app.get("/procedimentos/id/:id", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM procedimentos WHERE idProcedimento = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -551,16 +523,11 @@ app.get("/procedimentos/id/:id", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //lista de processosObra
-app.get("/processosObra", (req, res) => {
+app.get("/processosObra", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM processosObra";
 
 		con.query(sql, (err, results) => {
@@ -571,16 +538,11 @@ app.get("/processosObra", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //processosObra (pelo ID)
-app.get("/processosObra/id/:id", (req, res) => {
+app.get("/processosObra/id/:id", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM processosObra WHERE numProcesso = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -595,16 +557,11 @@ app.get("/processosObra/id/:id", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //lista de processos
-app.get("/processos", (req, res) => {
+app.get("/processos", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM processos";
 
 		con.query(sql, (err, results) => {
@@ -615,16 +572,11 @@ app.get("/processos", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //processo (pelo ID)
-app.get("/processos/id/:id", (req, res) => {
+app.get("/processos/id/:id", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM processos WHERE idProcesso = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -639,16 +591,11 @@ app.get("/processos/id/:id", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //tecnicos de um processo
-app.get("/processos/:id/tecnicos", (req, res) => {
+app.get("/processos/:id/tecnicos", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT tec.* FROM tecnicoProcesso, tecnicos tec WHERE tecnico = idTecnico and processo = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -664,16 +611,11 @@ app.get("/processos/:id/tecnicos", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //lista de objetos
-app.get("/objetos", (req, res) => {
+app.get("/objetos", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM objetos";
 
 		con.query(sql, (err, results) => {
@@ -684,16 +626,11 @@ app.get("/objetos", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //objeto (pelo ID)
-app.get("/objetos/id/:id", (req, res) => {
+app.get("/objetos/id/:id", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM objetos WHERE idObjeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -708,16 +645,11 @@ app.get("/objetos/id/:id", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Todas as imagens
-app.get("/imagens", (req, res) => {
+app.get("/imagens", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM imagens";
 
 		con.query(sql, (err, results) => {
@@ -728,16 +660,11 @@ app.get("/imagens", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Imagens de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/imagens", (req, res) => {
+app.get("/objetos/:id/imagens", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM imagens WHERE objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -752,16 +679,11 @@ app.get("/objetos/:id/imagens", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Interessados de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/interessados", (req, res) => {
+app.get("/objetos/:id/interessados", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select interessados.* from interessados,interessadosObjeto where interessadosObjeto.objeto = ? and interessados.idInteressado = interessadosObjeto.interessado";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -776,16 +698,11 @@ app.get("/objetos/:id/interessados", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Ciclos climatéricos de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/ciclosclimatericos", (req, res) => {
+app.get("/objetos/:id/ciclosclimatericos", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from ciclosClimatericos where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -800,16 +717,11 @@ app.get("/objetos/:id/ciclosclimatericos", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //fontes de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/fontes", (req, res) => {
+app.get("/objetos/:id/fontes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from fontes where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -824,16 +736,11 @@ app.get("/objetos/:id/fontes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //poluição de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/poluicao", (req, res) => {
+app.get("/objetos/:id/poluicao", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from poluicao where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -848,16 +755,11 @@ app.get("/objetos/:id/poluicao", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //iluminação de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/iluminacao", (req, res) => {
+app.get("/objetos/:id/iluminacao", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from iluminacao where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -872,16 +774,11 @@ app.get("/objetos/:id/iluminacao", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //pedidos de intervenção de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/pedidosintervencao", (req, res) => {
+app.get("/objetos/:id/pedidosintervencao", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from pedidosIntervencao where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -896,16 +793,12 @@ app.get("/objetos/:id/pedidosintervencao", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
+	
 });
 
 //conservações de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/conservacoes", (req, res) => {
+app.get("/objetos/:id/conservacoes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from conservacoes where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -920,17 +813,12 @@ app.get("/objetos/:id/conservacoes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 
 //lista de propostasIntervencao
-app.get("/propostasIntervencao", (req, res) => {
+app.get("/propostasIntervencao", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM propostasIntervencao";
 
 		con.query(sql, (err, results) => {
@@ -941,16 +829,11 @@ app.get("/propostasIntervencao", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //propostasIntervencao (pelo ID do objeto)
-app.get("/objetos/:id/propostasIntervencao", (req, res) => {
+app.get("/objetos/:id/propostasIntervencao", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from propostasIntervencao where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -965,16 +848,11 @@ app.get("/objetos/:id/propostasIntervencao", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //lista de intervencoes
-app.get("/intervencoes", (req, res) => {
+app.get("/intervencoes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM intervencoes";
 
 		con.query(sql, (err, results) => {
@@ -985,16 +863,11 @@ app.get("/intervencoes", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //intervencoes (pelo ID do objeto)
-app.get("/objetos/:id/intervencoes", (req, res) => {
+app.get("/objetos/:id/intervencoes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select intervencoes.* from intervencoes,propostasIntervencao  where propostasIntervencao.objeto = ? and intervencoes.proposta = propostasIntervencao.idProposta" ;
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1009,15 +882,10 @@ app.get("/objetos/:id/intervencoes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 //exames de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/exames", (req, res) => {
+app.get("/objetos/:id/exames", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM exames WHERE objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1032,16 +900,11 @@ app.get("/objetos/:id/exames", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //testes feitos num exame (pelo ID do exame)
-app.get("/exames/:id/testes", (req, res) => {
+app.get("/exames/:id/testes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM testes WHERE exame = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1056,16 +919,11 @@ app.get("/exames/:id/testes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //testes feitos por um tecnico (pelo ID do tecnico)
-app.get("/tecnicos/:id/testes", (req, res) => {
+app.get("/tecnicos/:id/testes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM testes WHERE tecnico = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1080,16 +938,11 @@ app.get("/tecnicos/:id/testes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Documentação de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/documentacao", (req, res) => {
+app.get("/objetos/:id/documentacao", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from documentacao where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1104,16 +957,11 @@ app.get("/objetos/:id/documentacao", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Testes de uma análise (pelo ID da análise)
-app.get("/analisesSolventes/:id/testesSolvente", (req, res) => {
+app.get("/analisesSolventes/:id/testesSolvente", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from testesSolvente where analise = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1128,16 +976,11 @@ app.get("/analisesSolventes/:id/testesSolvente", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //lista de analisesSolventes
-app.get("/analisesSolventes", (req, res) => {
+app.get("/analisesSolventes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM analisesSolventes";
 
 		con.query(sql, (err, results) => {
@@ -1148,16 +991,11 @@ app.get("/analisesSolventes", (req, res) => {
 				res.status(200).json(results);
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //analisesSolventes (pelo ID)
-app.get("/analisesSolventes/id/:id", (req, res) => {
+app.get("/analisesSolventes/id/:id", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "SELECT * FROM analisesSolventes WHERE idObjeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1172,16 +1010,11 @@ app.get("/analisesSolventes/id/:id", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //analisesSolventes de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/analisesSolventes", (req, res) => {
+app.get("/objetos/:id/analisesSolventes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from analisesSolventes where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1196,16 +1029,12 @@ app.get("/objetos/:id/analisesSolventes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
+	
 });
 
 //analisesSolventes de um tecnico (pelo ID do tecnico)
-app.get("/tecnicos/:id/analisesSolventes", (req, res) => {
+app.get("/tecnicos/:id/analisesSolventes", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from analisesSolventes where tecnico = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1220,16 +1049,11 @@ app.get("/tecnicos/:id/analisesSolventes", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 //Intervencoes Anteriores de um objeto (pelo ID do objeto)
-app.get("/objetos/:id/intervencoesanteriores", (req, res) => {
+app.get("/objetos/:id/intervencoesanteriores", verificaLogin, (req, res) => {
 
-	if(req.session.loggedin == true){
 		let sql = "Select * from intervencoesAnteriores where objeto = ?";
 
 		// req.params.id mapeia o :id que está no URL acima.
@@ -1244,10 +1068,6 @@ app.get("/objetos/:id/intervencoesanteriores", (req, res) => {
 				}
 			}
 		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
 });
 
 app.listen(8080);
