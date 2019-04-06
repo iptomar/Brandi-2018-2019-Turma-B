@@ -36,7 +36,7 @@ function verificaLogin(req, res, next) {
 	if (req.session.loggedin && req.session.role === "admin") { 
 	  next(); 
 	} else {
-		res.status(500).json({ erro: "Not Loggedin" });
+		res.status(500).json({ erro: "Permission denied" });
 	}
   }
 
@@ -364,7 +364,7 @@ app.get("/objetos/:id/removeFT", (req, res) => {
 //*********************** Ficha Tecnica **************************//
 //*********************** Register *******************************//
 
-app.post('/register',function(request,response){
+app.post('/register',verificaLoginAdmin,function(request,response){
 	let Nome = request.body.Nome;
     let username = request.body.username;
     let password = request.body.password;
@@ -396,7 +396,7 @@ app.post('/register',function(request,response){
 //*********************** API **************************//
 
 //lista de tecnicos
-app.get("/tecnicos", verificaLoginAdmin, (req,res) =>{
+app.get("/tecnicos", verificaLogin, (req,res) =>{
 	let sql = "SELECT * FROM tecnicos";
 
 		con.query(sql, (err, results) => {
@@ -408,26 +408,6 @@ app.get("/tecnicos", verificaLoginAdmin, (req,res) =>{
 			}
 		});
 });
-/*app.get("/tecnicos", (req, res) => {
-	
-	if(req.session.loggedin == true){
-		
-		let sql = "SELECT * FROM tecnicos";
-
-		con.query(sql, (err, results) => {
-			if (err) {
-				console.error("Erro get tecnicos", err);
-				res.status(500).json({ erro: "Erro na query" });
-			} else {
-				res.status(200).json(results);
-			}
-		});
-	}
-	else{
-		res.status(500).json({ erro: "Not Loggedin" });
-	}
-
-});*/
 
 //tecnico (pelo ID)
 app.get("/tecnicos/id/:id", (req, res) => {
