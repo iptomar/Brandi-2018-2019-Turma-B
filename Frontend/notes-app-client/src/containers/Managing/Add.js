@@ -89,8 +89,12 @@ export default class Login extends Component {
       });
   }
 
-  goBack(){
-    this.props.history.push("/fichatecnica/" + this.state.fichaTecId);
+  goBack = event => {
+    if(window.location.pathname.split("/")[1] === "editar"){
+      this.props.history.push("/fichatecnica/" + this.state.fichaTecId);
+    }else{
+      this.props.history.push("/objetos");
+    }
   }
 
   componentDidMount(){
@@ -130,7 +134,7 @@ export default class Login extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                    <NavLink onClick={this.goBack} >Back</NavLink>
+                    <NavLink onClick={this.goBack} href="">Back</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink href="/">Home</NavLink>
