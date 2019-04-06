@@ -140,7 +140,16 @@ app.post('/inserirFT', function(request, response) {
 										con.query('INSERT INTO tecnicoProcesso SET ?', [tecnicoProcesso],
 										function(error, results, fields) {
 											if(error){
-												 response.send("Erro ao inserir na tabela tecnicosProcesso");
+												con.query('delete from processos where objeto = ?', [idObjeto],
+													function(error, results, fields) {
+														if(error){
+															response.send("Erro inesperado");
+															response.end();
+														}else{
+															response.send("Erro ao inserir na tabela tecnicosProcesso");
+															response.end();
+														}
+												});
 											}else{
 												response.send("Ficha Tecnica inserida com sucesso")
 												response.end();
@@ -184,7 +193,18 @@ app.post('/inserirFT', function(request, response) {
 												con.query('INSERT INTO tecnicoProcesso SET ?', [tecnicoProcesso],
 												function(error, results, fields) {
 													if(error){
-														 response.send("Erro ao inserir na tabela tecnicosProcesso");
+														con.query('delete from processos where idProcesso = ?', [idProcesso],
+														function(error, results, fields) {
+															if(error){
+																console.log(error);
+																response.send("Erro inesperado");
+																response.end();
+															}else{
+																response.send("Erro ao inserir na tabela tecnicosProcesso");
+																response.end();
+															}
+														});
+														
 													}else{
 														response.send("Ficha Tecnica inserida com sucesso")
 														response.end();
