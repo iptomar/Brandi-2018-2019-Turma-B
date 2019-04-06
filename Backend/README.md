@@ -875,7 +875,7 @@
   }
 ]
 ```
-### GET /api/objetos/{id}/ciclosclimatericos
+### GET /api/objetos/{id}/fontes
 #### Mostra as fontes de um objeto dado o seu id
 #### Por exemplo se o id for 1 irá retornar o seguinte output:
 ```jsonc
@@ -902,9 +902,7 @@
 	},
 	{
 	"idFonte":3,
-	"fonte":"CRUZ, 
-	João – “Métodos de Exame e Análise – Espectroscopia de infravermelho”,
-	Tomar (2015/2016); pp 4-8",
+	"fonte":"CRUZ,João – Métodos de Exame e Análise – Espectroscopia de infravermelho,Tomar (2015/2016); pp 4-8",
 	"tipo":"NA",
 	"localizacao":"NA",
 	"cota":"NA",
@@ -1091,6 +1089,144 @@
 	"data":"2017-02-21T00:00:00.000Z",
 	"exame":1,
 	"tecnico":1
+	}
+]
+```
+### GET /api/tecnicos/{id}/testes
+#### Mostra os testes feitos por um tecnico dado o seu id
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+	"idTeste":1,
+	"referecia":"Observação á vista desarmada",
+	"localizacao":"Corpo da coluna e capitel",
+	"objetivosEspecificos":"Identificação dos materiais",
+	"resultados":"Confirmação do uso de folha de ouro, purpurina, massa oleica, camada de preparação de gesso ou cré, policromia.",
+	"data":"2017-02-21T00:00:00.000Z",
+	"exame":1,
+	"tecnico":1
+	}
+]
+```
+
+### GET /api//objetos/{id}/documentacao
+#### Mostra a documentação de um objeto
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+		{
+		"idDocumentacao":1,
+		"designacao":"Não identificados. Não se sabe nada sobre a história do objeto, como proveniência e local de origem.",
+		"referencias":"NA",
+		"autor":"NA",
+		"tipo":"Originais Fotográficos",
+		"objeto":1
+		},
+		{
+		"idDocumentacao":2,
+		"designacao":"Exame de FTIR",
+		"referencias":"Ver anexo digital em CD.",
+		"autor":"Dr. Vitor Gaspar; Beatriz Penas; Leonor Miranda",
+		"tipo":"Documentação Gráfica",
+		"objeto":1
+		},
+		{
+		"idDocumentacao":3,
+		"designacao":"Foi feita a análise estratigráfica. A análise estratigráfica consiste na observação microscópica, de amostras, que revelam os diferentes estratos, resultantes da aplicação de novas camadas de preparação e consequentemente, de camadas policromas (repolicromias ou repintes) e ainda, dos seus materiais.Exame de espectroscopia de absorção de infravermelho com transformada de Fourier (FTIR). É feito através de diferentes conjuntos de átomos que vibram de forma diferente. Aos diferentes conjuntos de átomos correspondem transições vibracionais com diferentes energias. Quando as moléculas são expostas a uma fonte de radiação infravermelha, estas absorvem a energia que corresponde à transições vibracionais apresentadas pelos seus grupos constituintes. O conjunto de absorções apresentadas pelas moléculas permite a identificação dos grupos constituinte das mesmas.",
+		"referencias":"Ver anexo digital em CD.",
+		"autor":"Dr. Victor Gaspar;Beatriz penas;Leonor Miranda.",
+		"tipo":"Exames e Análises",
+		"objeto":1
+		}
+	}
+]
+```
+
+### GET /api/analisesSolventes/{id}/testesSolvente
+#### Mostra os testes de uma analise dado o seu id
+#### Se o seu id for 1 mostra o seguinte output:
+```jsonc
+
+[
+	{
+	"idTeste": 1,
+	"solvente":"Decapante lavável E-013-0070",
+	"eficacia":2,
+	"observacao":"Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete.",
+	"analise":1
+	
+	}
+]
+```
+
+### GET api/analisesSolventes
+#### Mostra a lista de analise de solventes
+```jsonc
+
+[
+	{
+	"idAnalise": 1,
+	"sujidade":"Repintes",
+	"data":"1970-01-01T00:00:00.000Z",
+	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
+	"tecnico": 1,
+	"objeto": 1
+	
+	}
+]
+```
+
+### GET api/objetos/{id}/analisesSolventes"
+#### Mostra analises de solventes de um objeto pelo id do objeto.
+#### Se id for 1 irá mostrar o seguinte output:
+```jsonc
+
+[
+	{
+	"idAnalise": 1,
+	"sujidade":"Repintes",
+	"data":"1970-01-01T00:00:00.000Z",
+	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
+	"tecnico": 1,
+	"objeto": 1
+	
+	}
+]
+```
+
+### GET api/tecnicos/:id/analisesSolventes"
+#### Mostra analises de solventes de um tecnico pelo id do tecnico.
+#### Se id for 1 irá mostrar o seguinte output:
+```jsonc
+
+[
+	{
+	"idAnalise": 1,
+	"sujidade":"Repintes","data":"1970-01-01T00:00:00.000Z",
+	"caracteristicas":"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração",
+	"tecnico": 1,
+	"objeto": 1
+	}
+]
+```
+
+### GET api/objetos/{id}/intervencoesanteriores"
+#### Mostra as intervenções anterioes que um objeto esteve sujeito dado o seu id.
+#### Se id for 1 irá mostrar o seguinte output:
+```jsonc
+
+[
+	{
+	"idIntervencao":1,
+	"estrutura":"Desmontagem do capitel. O capitel foi entalhado num bloco separado, que se une à coluna através de uma ligação simples (macho-fêmea), essa fixação é reforçada com adesivo.Foram colocados blocos de madeira nos locais de lacuna de suporte do capitel. O seu entalhe foi iniciado, porém não foi finalizado.",
+	"superficie":"Foram realizadas repolicromia e repintes anteriormente. Também foi colocada massa oleica numa das faces na zona inferior o motivo é desconhecido. Em alguns dos casos foram usadas purpurinas para substituir a falta de folha de ouro, de uma forma mais económica.",
+	"elementos":"Os frisos de madeira foram retirados do corpo da escultura e os elementos metálicos também.",
+	"observacoes":"Os restauros anteriores observam-se sobretudo a nível da superfície. Maior parte dos restauros anteriores, ao nível de policromia, verificaram-se incoerentes, uma vez que não respeitam de qualquer modo a policromia original. Tudo isto muda a sua leitura a nível artístico.",
+	"objeto":1
 	}
 ]
 ```
