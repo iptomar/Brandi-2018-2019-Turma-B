@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import "./Objetos.css";
 import axios from 'axios';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink} from 'reactstrap';
+Collapse,
+Navbar,
+NavbarToggler,
+NavbarBrand,
+Nav,
+NavItem,
+NavLink,
+Button} from 'reactstrap';
 export default class Objetos extends Component {
 	constructor(props) {
 	    super(props);
@@ -128,6 +129,7 @@ componentDidMount(){
 			</Navbar> 
 
 		    <div id="grid" className="container">
+				<Button className="btAddObj pull-right" onClick = {this.addFt}>Adicionar</Button>
 		        <div id="row1" className="row"></div>
 		    </div>
 	    </div>
