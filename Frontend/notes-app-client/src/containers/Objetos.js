@@ -121,7 +121,7 @@ componentDidMount(){
 	                	<NavLink href="/profile">Profile</NavLink>
 	             	</NavItem>
 	            	<NavItem>
-	                	<NavLink href="">Logout</NavLink>
+	                	<NavLink href="/logout">Logout</NavLink>
 	             	</NavItem>
             	</Nav>
 				</Collapse>

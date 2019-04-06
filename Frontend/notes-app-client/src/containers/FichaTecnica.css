@@ -1,0 +1,35 @@
+.pageFT {
+	background: #f2994a;
+    width: 100%;
+    height: 100vh;
+}
+
+.navbarFT {
+	background-color: #4b2402;
+	border-radius: 0px;
+}
+
+.navbarbrandFT {
+    color: #ffffff !important;
+  	padding-top: 15px;
+}
+
+.tableFT {
+	width: 40%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.trButtonFT{
+	background-color: #f2994a;
+	border: 2px solid #f2994a;
+}
+
+.divButtonFT{
+	display: flex;
+	justify-content: flex-end;
+	align-items: right;
+}
+.divButtonFT button {
+	margin-left: 5px;
+}

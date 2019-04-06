@@ -1,0 +1,16 @@
+.editFT {
+	background: #f2994a;
+    width: 100%;
+    height: 100vh;
+}
+
+.formFT {
+	background: #ffffff;
+	width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 15px;
+    padding-bottom: 45px;
+	border-radius: 15px;
+}
+

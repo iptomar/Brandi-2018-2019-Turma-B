@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import "./FichaTecnica.css";
 import axios from 'axios';
-
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Table,
+  Button} from 'reactstrap';
 export default class FichaTecnica extends Component {
 	constructor(props) {
 	    super(props);
@@ -38,46 +47,102 @@ componentDidMount(){
 		return response.data[0]
 	})
 	.then(data => {
-		let btn1 = document.createElement("button");
-		btn1.innerHTML = "Eliminar";
-		btn1.onclick = this.deleteFt;
-		document.getElementById("main").appendChild(btn1);
-
-		let btn2 = document.createElement("button");
-		btn2.innerHTML = "Editar";
-		btn2.onclick = this.editarFT;
-		document.getElementById("main").appendChild(btn2);
-
-		document.getElementById("1").innerHTML = data.CEARC;
-		document.getElementById("2").innerHTML = data.LCRM;
-		document.getElementById("3").innerHTML = data.dataAberturaCEARC;
-		document.getElementById("4").innerHTML = data.dataAberturaLCRM;
-		document.getElementById("5").innerHTML = data.dataEntradaCEARC;
-		document.getElementById("6").innerHTML = data.dataEntradaLCRM;
-		document.getElementById("7").innerHTML = data.designacao;
-		document.getElementById("8").innerHTML = data.funcao;
-		document.getElementById("9").innerHTML = data.nome;
+		document.getElementById("tdDesignacao").innerHTML = data.designacao;
+		document.getElementById("tdCEARC").innerHTML = data.CEARC;
+		document.getElementById("tdLCRMN").innerHTML = data.LCRM;
+		document.getElementById("tdDataAberturaCEARC").innerHTML = data.dataAberturaCEARC.substring(0,10);
+		document.getElementById("tdDataAberturaLRCM").innerHTML = data.dataAberturaLCRM.substring(0,10);
+		document.getElementById("tdDataEntradaCEARC").innerHTML = data.dataEntradaCEARC.substring(0,10);
+		document.getElementById("tdDataEntradaLCRM").innerHTML = data.dataEntradaLCRM.substring(0,10);
+		document.getElementById("tdNome").innerHTML = data.nome;
+		document.getElementById("tdFuncao").innerHTML = data.funcao;
 	})
 	.catch(err => {
-		let btn = document.createElement("button");
-		btn.innerHTML = "adicionar";
-		btn.onclick = this.addFt;
-		document.getElementById("main").appendChild(btn);
+		let btAdd = document.getElementById("btAdd");
+		let btDel = document.getElementById("btDel");
+		let btEdi = document.getElementById("btEdi");
+		btAdd.removeAttribute('hidden');
+		btDel.setAttribute('hidden','hidden');
+		btEdi.setAttribute('hidden','hidden');
 	});
 }
 	render() {
     return (
-			<div id="main">
-				<span id = "1"></span><br/>
-				<span id = "2"></span><br/>
-				<span id = "3"></span><br/>
-				<span id = "4"></span><br/>
-				<span id = "5"></span><br/>
-				<span id = "6"></span><br/>
-				<span id = "7"></span><br/>
-				<span id = "8"></span><br/>
-				<span id = "9"></span><br/>
-			</div>
+		<div id="pageFT" className="pageFT">
+	    	<Navbar className="navbarFT" dark expand="sm">
+          		<NavbarBrand className="navbarbrandFT" href="/">Conservação e Restauro</NavbarBrand>
+          		<NavbarToggler onClick={this.toggle} />
+          		<Collapse isOpen={this.state.isOpen} navbar>
+            	<Nav className="ml-auto" navbar>
+	            	<NavItem>
+	                	<NavLink href="/objetos">Back</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/">Home</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/menu">Menu</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/profile">Profile</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/logout">Logout</NavLink>
+	             	</NavItem>
+            	</Nav>
+				</Collapse>
+			</Navbar>
+			<Table className="tableFT table-borderless">
+				<tbody className="tbodyButtonFT">
+					<tr className="trButtonFT">
+				    	<th className="thButtonFT"></th>
+				    	<td className="tdButtonFT">
+				    		<div className="divButtonFT">
+						        <Button id="btAdd" hidden="hidden" onClick = {this.addFt}>Adicionar</Button>
+						        <Button id="btDel" onClick = {this.deleteFt}>Eliminar</Button>
+						        <Button id="btEdi" onClick = {this.editarFT}>Editar</Button>
+				    		</div>
+				    	</td>
+					</tr>
+					<tr>
+				    	<th className="thFT" >Designação do objeto</th>
+				    	<td className="tdFT"  id = "tdDesignacao"></td>
+					</tr>
+				 	<tr>
+				    	<th className="thFT" >CEARC</th>
+				    	<td className="tdFT"   id = "tdCEARC"></td>
+				 	 </tr>
+				  	<tr>
+				    	<th className="thFT" >LCRM</th>
+				    	<td className="tdFT"   id = "tdLCRMN"></td>
+				  	</tr>
+				  	<tr>
+				    	<th className="thFT" >Data de abertura do processo CEARC</th>
+				    	<td className="tdFT"   id = "tdDataAberturaCEARC"></td>
+				  	</tr>
+				  	<tr>
+				    	<th className="thFT" >Data de abertura do processo LCRM</th>
+				    	<td className="tdFT"  id = "tdDataAberturaLRCM"></td>
+				  	</tr>
+				  	<tr>
+				    	<th className="thFT" >Data de entrada no CEARC</th>
+				    	<td className="tdFT"   id = "tdDataEntradaCEARC"></td>
+				 	 </tr>
+				  	<tr>
+				    	<th className="thFT" >Data de entrada no LCRM</th>
+				    	<td className="tdFT"   id = "tdDataEntradaLCRM"></td>
+				 	 </tr>
+				  	<tr>
+				   		<th className="thFT" >Nome do responsável</th>
+				    	<td className="tdFT"   id = "tdNome"></td>
+				  	</tr>
+				  	<tr>
+				    	<th className="thFT" >Funções do responsável</th>
+				    	<td className="tdFT"   id = "tdFuncao"></td>
+				  	</tr>
+				</tbody>
+			</Table>
+		</div>
 		);
 	}
 }
