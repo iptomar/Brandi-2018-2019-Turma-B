@@ -18,6 +18,7 @@ export default () =>
     <Route path="/objetos" exact component={Objetos} />
     <Route path="/menu" exact component={Menu} />
     <Route path="/adicionar" exact component={Add} />
+    <Route path="/editar" component={Add} />
     <Route path="/fichatecnica" component={FichaTecnica} />
     <Route path="/register" component={Register} />
   </Switch>;

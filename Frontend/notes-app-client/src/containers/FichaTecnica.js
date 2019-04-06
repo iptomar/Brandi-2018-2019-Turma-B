@@ -7,7 +7,7 @@ export default class FichaTecnica extends Component {
 	    super(props);
 
 	    this.state = { 
-			fichaTecId:(window.location.pathname).split("/")[2],
+			fichaTecId:(window.location.pathname).split("/")[2]
 		};
   	}
 
@@ -26,14 +26,14 @@ addFt = event => {
 }
 
 editarFT = event => {
-	this.props.history.push("/adicionar")
+	this.props.history.push("/editar/"+ this.state.fichaTecId)
 }
 	
 componentDidMount(){
 	const FtId = (window.location.pathname).split("/")[2];
 
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos/'+ FtId +'/consultarFT')
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ FtId +'/consultarFT')
 	.then((response) => {
 		return response.data[0]
 	})

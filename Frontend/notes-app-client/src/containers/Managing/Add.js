@@ -8,6 +8,7 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
+      fichaTecId:(window.location.pathname).split("/")[2],
       LCRM:"",
       CEARC:"",
       dataAberturaLCRM:"",
@@ -26,7 +27,7 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit = event => {
+  handleSubmit1 = event => {
     event.preventDefault();
     console.log("submit")
 
@@ -51,6 +52,58 @@ export default class Login extends Component {
       });
   }
 
+  handleSubmit2 = event => {
+    event.preventDefault();
+    console.log("submit")
+
+    let LCRM = this.state.LCRM;
+    let CEARC = this.state.CEARC;
+    let dataAberturaLCRM = this.state.dataAberturaLCRM;
+    let dataAberturaCEARC = this.state.dataAberturaCEARC;
+    let dataEntradaLCRM = this.state.dataEntradaLCRM;
+    let dataEntradaCEARC = this.state.dataEntradaCEARC;
+    let coordenador = this.state.coordenador;
+    let funcao = this.state.funcao;
+    let objeto = this.state.objeto;
+
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/updateFT', { LCRM, CEARC, dataAberturaLCRM, dataAberturaCEARC, dataEntradaLCRM, dataEntradaCEARC, coordenador, funcao, objeto})
+      .then(res => {
+        console.log(res)
+        this.props.history.push("/objetos");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  componentDidMount(){
+		if(window.location.pathname.split("/")[1] === "editar"){
+			//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+      axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'api/objetos/'+ this.state.fichaTecId +'/consultarFT')
+      .then((response) => {
+        return response.data[0]
+      })
+      .then(data => {
+        console.log(data)
+        this.setState({ LCRM: data.LCRM });
+        this.setState({ CEARC: data.CEARC });
+        this.setState({ dataAberturaCEARC: data.dataAberturaCEARC });
+        this.setState({ dataAberturaLCRM: data.dataAberturaLCRM });
+        this.setState({ dataEntradaCEARC: data.dataEntradaCEARC });
+        this.setState({ dataEntradaLCRM: data.dataEntradaLCRM });
+        this.setState({ objeto: data.designacao });
+        this.setState({ funcao: data.funcao });
+        this.setState({ coordenador: data.nome });
+      });
+      document.getElementById("idBtn").onclick = this.handleSubmit2
+      document.getElementById("idBtn").innerHTML = "Editar"
+		}else{
+      document.getElementById("idBtn").onclick = this.handleSubmit1
+      document.getElementById("idBtn").innerHTML = "Adicionar"
+    }
+  }
+
   render() {
 
     return (
@@ -60,6 +113,7 @@ export default class Login extends Component {
         LCRM
         </ControlLabel>
         <FormControl
+          value={this.state.LCRM}
           id="LCRM"
           className="FormField__Input"
           placeholder="LCRM"
@@ -73,6 +127,7 @@ export default class Login extends Component {
         CEARC
         </ControlLabel>
         <FormControl
+          value={this.state.CEARC}
           id="CEARC"
           className="FormField__Input"
           placeholder="CEARC"
@@ -86,6 +141,7 @@ export default class Login extends Component {
           Data de Abertura LCRM
         </ControlLabel>
         <FormControl
+          value={this.state.dataAberturaLCRM}
           id="dataAberturaLCRM"
           className="FormField__Input"
           placeholder="Data de Abertura LCRM"
@@ -99,6 +155,7 @@ export default class Login extends Component {
           Data de Abertura CEARC
         </ControlLabel>
         <FormControl
+          value={this.state.dataAberturaCEARC}
           id="dataAberturaCEARC"
           className="FormField__Input"
           placeholder="Data de Abertura CEARC"
@@ -112,6 +169,7 @@ export default class Login extends Component {
           Data de Entrada LCRM
         </ControlLabel>
         <FormControl
+          value={this.state.dataEntradaLCRM}
           id="dataEntradaLCRM"
           className="FormField__Input"
           placeholder="Data de Entrada LCRM"
@@ -125,6 +183,7 @@ export default class Login extends Component {
           Data de Entrada CEARC
         </ControlLabel>
         <FormControl
+          value={this.state.dataEntradaCEARC}
           id="dataEntradaCEARC"
           className="FormField__Input"
           placeholder="Data de Entrada CEARC"
@@ -138,6 +197,7 @@ export default class Login extends Component {
           Coordenador
         </ControlLabel>
         <FormControl
+          value={this.state.coordenador}
           id="coordenador"
           className="FormField__Input"
           placeholder="Coordenador"
@@ -151,6 +211,7 @@ export default class Login extends Component {
           Funcao
         </ControlLabel>
         <FormControl
+          value={this.state.funcao}
           id="funcao"
           className="FormField__Input"
           placeholder="Funcao"
@@ -164,6 +225,7 @@ export default class Login extends Component {
           Objeto
         </ControlLabel>
         <FormControl
+          value={this.state.objeto}
           id="objeto"
           className="FormField__Input"
           placeholder="Objeto"
@@ -171,8 +233,7 @@ export default class Login extends Component {
           onChange={this.handleChange}
         />
         </FormGroup>
-        <button id="idBtn"className="FormField__Button mr-20" onClick = {this.handleSubmit}>
-          Adicionar
+        <button id="idBtn"className="FormField__Button mr-20">
         </button>
        </div>  
     );
