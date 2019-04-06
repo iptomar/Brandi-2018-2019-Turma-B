@@ -81,7 +81,7 @@ app.get("/objetos/:id/consultarFT", (req, res) => {
 			res.status(500).json({ erro: "Erro na query" });
 		} else {
 			if (results.length ==0) {
-				res.status(404).json({ erro: "Ficha Tecnica not found" });
+				res.status(404).json({ erro: "Ficha Tecnica não encontrada" });
 			} else {
 				res.status(200).json(results);
 			}
@@ -142,7 +142,7 @@ app.post('/inserirFT', function(request, response) {
 											if(error){
 												 response.send("Erro ao inserir na tabela tecnicosProcesso");
 											}else{
-												response.send("done")
+												response.send("Ficha Tecnica inserida com sucesso")
 												response.end();
 											}
 	
@@ -252,7 +252,7 @@ app.post('/objetos/:id/updateFT', function(request, response) {
 				con.query('select * from processos WHERE objeto = ?', [request.params.id],
 				function(error, results, fields) {
 					if (error) {
-						response.send( "Erro na query1" );
+						response.send( "Erro ao procurar o objeto" );
 						response.end();
 					} else {
 						if(results.length>0){
@@ -261,7 +261,7 @@ app.post('/objetos/:id/updateFT', function(request, response) {
 							con.query('UPDATE processos SET  ? WHERE objeto = ?', [processo, request.params.id],
 							function(error, results, fields) {
 								if (error) {
-									response.send( "Erro na query" );
+									response.send( "Erro ao atualizar os dados na tabela processos" );
 									response.end();
 								} else {
 									//update na tabela tecnicoProcesso dos dados
@@ -269,7 +269,7 @@ app.post('/objetos/:id/updateFT', function(request, response) {
 									con.query('update tecnicoProcesso SET ? WHERE processo=(SELECT idProcesso FROM processos WHERE objeto = ?)', [tecnicoProcesso,request.params.id],
 									function(error, results, fields) {
 										if (error) {
-											response.send( "Erro na query" );
+											response.send( "Erro ao atualizar os dados na tabela tecnicoProcesso" );
 											response.end();
 										} else {
 											response.send("Ficha Tecnica alterada com sucesso");
@@ -279,7 +279,7 @@ app.post('/objetos/:id/updateFT', function(request, response) {
 								}
 							});
 						}else{
-						response.send("ficha tecnica not found");
+						response.send("Ficha Tecnica não encontrada");
 						response.end();
 						
 						}
@@ -311,13 +311,13 @@ app.get("/objetos/:id/removeFT", (req, res) => {
 				// req.params.id mapeia o :id que está no URL acima.
 				con.query(sql, [req.params.id, req.params.id], (err, results) => {
 					if (err) {
-						res.status(500).json({ erro: "Erro na query" });
+						res.status(500).json({ erro: "Erro ao remover Ficha Tecnica" });
 					} else {
 						res.status(200).json({message: "Ficha Tecnica removida com sucesso"});
 					}
 				});
 			}else{
-				res.status(404).json({ erro: "Ficha Tecnica not found" });
+				res.status(404).json({ erro: "Ficha Tecnica não encontrada" });
 			}
 	});
 	
