@@ -24,6 +24,14 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
+function verificaLogin(req, res, next) {
+	if (req.session.loggedin) { 
+	  next(); 
+	} else {
+		res.status(500).json({ erro: "Not Loggedin" });
+	}
+  }
+
 //method: post | action: auth
 //autentica o utilizador através do username e password
 app.post('/auth', function(request, response) {
@@ -379,7 +387,19 @@ app.post('/register',function(request,response){
 //*********************** API **************************//
 
 //lista de tecnicos
-app.get("/tecnicos", (req, res) => {
+app.get("/tecnicos", verificaLogin, (req,res) =>{
+	let sql = "SELECT * FROM tecnicos";
+
+		con.query(sql, (err, results) => {
+			if (err) {
+				console.error("Erro get tecnicos", err);
+				res.status(500).json({ erro: "Erro na query" });
+			} else {
+				res.status(200).json(results);
+			}
+		});
+});
+/*app.get("/tecnicos", (req, res) => {
 	
 	if(req.session.loggedin == true){
 		
@@ -398,7 +418,7 @@ app.get("/tecnicos", (req, res) => {
 		res.status(500).json({ erro: "Not Loggedin" });
 	}
 
-});
+});*/
 
 //tecnico (pelo ID)
 app.get("/tecnicos/id/:id", (req, res) => {
