@@ -13,7 +13,7 @@
 }
 
 .deckObj {
-	margin-top: 100px;
+	margin-top: 20px;
 	margin-left: 0px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .titleObj {
-    padding-top: 10px;
+    padding: 10px;
     font-size: 16px;
 	color: #ffffff;
 }
