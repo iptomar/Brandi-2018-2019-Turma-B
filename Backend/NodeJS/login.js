@@ -40,14 +40,6 @@ function verificaLogin(req, res, next) {
 	}
   }
 
-	app.get('/sessions',function(req, res){
-			session.Store.length(function(err, len) {
-				
-				
-				res.status(200).json(len);
-		});
-	});
-
 //method: post | action: auth
 //autentica o utilizador através do username e password
 app.post('/auth', function(request, response) {
