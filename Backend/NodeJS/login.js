@@ -41,11 +41,9 @@ function verificaLogin(req, res, next) {
   }
 
 	app.get('/sessions',function(req, res){
-			session.Store.length(function(err, sessions) {
-				// if err handle err
-				// iterate over sessions array
-				res.status(200).json(sessions);
-		});
+	
+				res.status(200).json(session.Store.length);
+		
 	});
 
 //method: post | action: auth
