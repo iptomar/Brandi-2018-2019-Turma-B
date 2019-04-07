@@ -41,9 +41,11 @@ function verificaLogin(req, res, next) {
   }
 
 	app.get('/sessions',function(req, res){
-	
-				res.status(200).json(session.Store.length);
-		
+			session.Store.length(function(err, len) {
+				
+				
+				res.status(200).json(len);
+		});
 	});
 
 //method: post | action: auth
