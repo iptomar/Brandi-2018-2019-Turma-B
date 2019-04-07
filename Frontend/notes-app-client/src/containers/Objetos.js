@@ -53,7 +53,7 @@ componentDidMount(){
 			let nome = objeto.designacao;
 			
 			let deck = document.querySelector('#row1');
-      deck.classList.add("deckObj");
+			deck.classList.add("deckObj");
 			
 			let col = document.createElement('div');
 			col.classList.add('col');
@@ -67,7 +67,7 @@ componentDidMount(){
 			deck.appendChild(col);
 
 			let card = document.createElement('div');
-			card.id = i;
+			card.id = objeto.idObjeto;
 			card.classList.add('card');
 			card.classList.add('cardObj');
 			card.classList.add("m-3");

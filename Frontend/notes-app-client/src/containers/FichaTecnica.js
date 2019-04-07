@@ -20,6 +20,16 @@ export default class FichaTecnica extends Component {
 		};
   	}
 
+deleteObj = event => {
+	event.preventDefault();
+
+	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/remove')
+	.then((response) => {
+		 window.location = "/objetos"
+	})
+}
+
 deleteFt = event => {
 	event.preventDefault();
 
@@ -59,10 +69,13 @@ componentDidMount(){
 	})
 	.catch(err => {
 		let btAdd = document.getElementById("btAdd");
-		let btDel = document.getElementById("btDel");
+		let btDelFT = document.getElementById("btDelFT");
+		let btDelObj = document.getElementById("btDelObj");
 		let btEdi = document.getElementById("btEdi");
 		btAdd.removeAttribute('hidden');
-		btDel.setAttribute('hidden','hidden');
+		btDelFT.setAttribute('hidden','hidden');
+		btDelObj.removeAttribute('onClick');
+		btDelObj.removeAttribute('hidden');
 		btEdi.setAttribute('hidden','hidden');
 	});
 }
@@ -99,7 +112,8 @@ componentDidMount(){
 				    	<td className="tdButtonFT">
 				    		<div className="divButtonFT">
 						        <Button id="btAdd" hidden="hidden" onClick = {this.addFt}>Adicionar</Button>
-						        <Button id="btDel" onClick = {this.deleteFt}>Eliminar</Button>
+						        <Button id="btDelFT" onClick = {this.deleteFt}>Eliminar</Button>
+						        <Button id="btDelObj" hidden="hidden" onClick = {this.deleteObj}>Eliminar</Button>
 						        <Button id="btEdi" onClick = {this.editarFT}>Editar</Button>
 				    		</div>
 				    	</td>
