@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 //verifica se o utilizador esta autenticado
 function verificaLogin(req, res, next) {
 	if (req.session.loggedin) { 
-	  next(); 
+	  next();
 	} else {
 		res.status(500).json({ erro: "Not Loggedin" });
 	}
@@ -39,6 +39,14 @@ function verificaLogin(req, res, next) {
 		res.status(500).json({ erro: "Permission denied" });
 	}
   }
+
+	app.get('/sessions',function(req, res){
+			session.all(function(err, sessions) {
+				// if err handle err
+				// iterate over sessions array
+				res.status(200).json(sessions);
+		});
+	});
 
 //method: post | action: auth
 //autentica o utilizador através do username e password
