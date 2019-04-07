@@ -41,7 +41,7 @@ function verificaLogin(req, res, next) {
   }
 
 	app.get('/sessions',function(req, res){
-			sessionStorage.all(function(err, sessions) {
+			session.Store.all(function(err, sessions) {
 				// if err handle err
 				// iterate over sessions array
 				res.status(200).json(sessions);
