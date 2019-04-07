@@ -357,10 +357,25 @@ app.get("/objetos/:id/removeFT", (req, res) => {
 				res.status(404).json({ erro: "Ficha Tecnica não encontrada" });
 			}
 	});
-	
-	
-
 });
+
+//method: get | action: remove
+//metodo que permite remover um objeto
+app.get("/objetos/:id/remove", (req, res) => {
+		let sql = "Delete from objetos where idObjeto = ?";
+		// req.params.id mapeia o :id que está no URL acima.
+		con.query(sql, [req.params.id], (err, results) => {
+			if (err) {
+				res.status(500).json({ erro: "Erro ao remover Objeto" });
+			} else {
+				res.status(200).json({message: "Objeto removido com sucesso"});
+			}
+		});
+
+	});
+});
+
+
 //*********************** Ficha Tecnica **************************//
 //*********************** Register *******************************//
 
