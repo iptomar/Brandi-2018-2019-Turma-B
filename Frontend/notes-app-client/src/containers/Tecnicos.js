@@ -13,8 +13,8 @@ export default class Tecnicos extends Component {
   }
 
 componentDidMount(){
-	const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/')
+	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/')
 	.then((response) => {
 		return response.data;
 	})
