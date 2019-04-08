@@ -409,7 +409,7 @@ app.post('/register',verificaLoginAdmin,function(request,response){
 //*********************** API **************************//
 
 //lista de tecnicos
-app.get("/tecnicos", verificaLogin, (req,res) =>{
+app.get("/tecnicos", verificaLoginAdmin, (req,res) =>{
 	let sql = "SELECT * FROM tecnicos";
 
 		con.query(sql, (err, results) => {
