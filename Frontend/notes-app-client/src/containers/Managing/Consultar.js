@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import "./Consultar.css";
 
 export default class Login extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
-  }
+  }*/
 
   componentDidMount(){
-    if(sessionStorage.getItem("loginState") === "idle"){
+    if(sessionStorage.getItem("loginState") === "idle" || sessionStorage.getItem("loginState") === null){
       this.props.history.push("/login");
     }
   }

@@ -49,7 +49,7 @@ editarFT = event => {
 }
 	
 componentDidMount(){
-	if(sessionStorage.getItem("loginState") === "idle"){
+	if(sessionStorage.getItem("loginState") === "idle" || sessionStorage.getItem("loginState") === null){
 		this.props.history.push("/login");
 	}
 

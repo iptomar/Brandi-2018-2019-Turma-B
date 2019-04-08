@@ -17,7 +17,6 @@ export default class Login extends Component {
       sessionStorage.setItem("loginState", "idle");
       alert("Logged out");
       this.props.history.push("/");
-      
     }else{
       alert("You are not logged in");
       this.props.history.push("/login");
