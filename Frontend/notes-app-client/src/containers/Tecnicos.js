@@ -13,72 +13,94 @@ export default class Tecnicos extends Component {
   }
 
 componentDidMount(){
-	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/')
-	.then((response) => {
-		return response.data;
-	})
-	.then(data => {
-		for (var i = 1; i < data.length+1; i++) {
-			
-			// um objeto do array
-			let user = data[i-1];
-			
-			// designação do objeto
-			let nome = user.nome;
-			
-			let deck = document.querySelector('#row1');
-			deck.classList.add("deckObj");
-			
-			let col = document.createElement('div');
-			col.classList.add('col');
-			col.classList.add('colObj');
-			col.classList.add("col-xs-12");
-			col.classList.add("col-sm-6");
-			col.classList.add("col-md-4");
-			col.classList.add("col-lg-3");
-			col.classList.add("d-flex");
-			col.classList.add("align-items-stretch");
-			deck.appendChild(col);
+	if(window.location.pathname === "/tecnicos"){
 
-			let card = document.createElement('div');
-			card.id = user.idTecnico;
-			card.classList.add('card');
-			card.classList.add('cardObj');
-			card.classList.add("m-3");
-			card.addEventListener('click', function(){
-				this.props.history.push("/tecnicos/"+this.id);
-			});
-			col.appendChild(card);
-			
-			let image = document.createElement('img');
-			image.setAttribute('alt','alt');
-			image.classList.add('card-img');
-			image.classList.add('imgObj');
-			image.classList.add('img-fluid');
-			card.appendChild(image);
+		let main = document.getElementById("main")
+
+		let divInic = document.createElement("div");
+		divInic.id = "grid";
+		divInic.className = "container"
+
+		let divSec = document.createElement("div");
+		divSec.id = "row1";
+		divSec.className = "row"
+
+		divInic.appendChild(divSec);
+		main.appendChild(divInic);
 		
-			let body = document.createElement('div');
-			body.classList.add('card-body');
-			body.classList.add('bodyObj');
-			card.appendChild(body);
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+		axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/')
+		.then((response) => {
+			return response.data;
+		})
+		.then(data => {
+			let propsHistory = this.props.history;
+			for (var i = 1; i < data.length+1; i++) {
+				
+				// um objeto do array
+				let user = data[i-1];
+				
+				// designação do objeto
+				let nome = user.nome;
+				
+				let deck = document.querySelector('#row1');
+				deck.classList.add("deckObj");
+				
+				let col = document.createElement('div');
+				col.classList.add('col');
+				col.classList.add('colObj');
+				col.classList.add("col-xs-12");
+				col.classList.add("col-sm-6");
+				col.classList.add("col-md-4");
+				col.classList.add("col-lg-3");
+				col.classList.add("d-flex");
+				col.classList.add("align-items-stretch");
+				deck.appendChild(col);
 
-			let titulo = document.createElement('div');
-			titulo.classList.add('card-title');
-			titulo.classList.add('titleObj');
-			titulo.textContent = nome;
-			body.appendChild(titulo);
-		}
-	})
-	.catch(err => {
+				let card = document.createElement('div');
+				card.id = user.username
+				card.classList.add('card');
+				card.classList.add('cardObj');
+				card.classList.add("m-3");
+				card.addEventListener('click', function(){
+					propsHistory.push("/tecnicos/"+this.id);
+				});
+				col.appendChild(card);
+				
+				let image = document.createElement('img');
+				image.setAttribute('alt','alt');
+				image.classList.add('card-img');
+				image.classList.add('imgObj');
+				image.classList.add('img-fluid');
+				card.appendChild(image);
+			
+				let body = document.createElement('div');
+				body.classList.add('card-body');
+				body.classList.add('bodyObj');
+				card.appendChild(body);
 
-	});
+				let titulo = document.createElement('div');
+				titulo.classList.add('card-title');
+				titulo.classList.add('titleObj');
+				titulo.textContent = nome;
+				body.appendChild(titulo);
+			}
+		})
+		.catch(err => {
+
+		});
+	}else{
+		let userName = (window.location.pathname).split("/")[2];
+
+		this.props.history.push("/profile" + userName);
+	}  
+
+
+	
 }
 	render() {
     return (
-			<div id="grid" className="container">
-			<Button className="btAddObj pull-right" onClick = {this.addFt}>Adicionar</Button>
-					<div id="row1" className="row"></div>
+			<div id="main" className="container">
 			</div>
 		);
 	}
