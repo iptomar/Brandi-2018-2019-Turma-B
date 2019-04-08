@@ -15,11 +15,9 @@ export default class Login extends Component {
     const loginState = sessionStorage.getItem("loginState");
     if(loginState === "success"){
       sessionStorage.setItem("loginState", "idle");
-      alert("Logged out");
-      this.props.history.push("/");
-    }else{
-      alert("You are not logged in");
       this.props.history.push("/login");
+    }else{
+      this.props.history.push("/menu");
     }
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
