@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from 'axios';
 import "./Register.css";
 
 export default class Login extends Component {
@@ -7,7 +8,13 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      
+      Nome : "",
+      username : "",
+      password : "",
+      email : "",
+      tipo : "",
+      Habilitacoes: "",
+      NivProfissional : "" 
     };
   }
 
@@ -18,6 +25,26 @@ export default class Login extends Component {
   }
 
   handleSubmit = event => {
+    event.preventDefault();
+
+    let Nome = this.state.Nome;
+    let username = this.state.username;
+    let password = this.state.password;
+    let email = this.state.email;
+    let tipo = this.state.tipo;
+    let Habilitacoes = this.state.Habilitacoes;
+    let NivProfissional = this.state.NivProfissional;
+
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/register', { Nome, username, password, email, tipo, Habilitacoes, NivProfissional})
+      .then(res => {
+        console.log(res)
+        alert("success")
+      })
+      .catch(err => {
+        console.log(err);
+        alert("fail")
+      });
   }
 
   componentDidMount(){

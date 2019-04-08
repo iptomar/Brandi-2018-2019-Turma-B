@@ -32,6 +32,7 @@ export default class Login extends Component {
             <Navigation>
               <Link to="/profile">Perfil</Link>
               <Link to="/logout">Logout</Link>
+              <Link to="/register">Register</Link>
             </Navigation>
           </Drawer>
           <Content>
