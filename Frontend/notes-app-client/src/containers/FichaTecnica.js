@@ -49,6 +49,11 @@ editarFT = event => {
 }
 	
 componentDidMount(){
+	if(sessionStorage.getItem("loginState") === "idle"){
+		this.props.history.push("/login");
+	}
+
+
 	const FtId = (window.location.pathname).split("/")[2];
 
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";

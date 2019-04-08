@@ -14,6 +14,11 @@ export default class Login extends Component {
   }
 
   componentDidMount(){
+		if(sessionStorage.getItem("loginState") === "idle"){
+      this.props.history.push("/login");
+    }
+
+
 		let sessionName;
 		if(window.location.pathname === "/profile"){
 			sessionName = sessionStorage.getItem("username");

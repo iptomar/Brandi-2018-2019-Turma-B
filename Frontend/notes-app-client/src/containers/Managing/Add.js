@@ -98,6 +98,11 @@ export default class Login extends Component {
   }
 
   componentDidMount(){
+    if(sessionStorage.getItem("loginState") === "idle"){
+      this.props.history.push("/login");
+    }
+
+
 		if(window.location.pathname.split("/")[1] === "editar"){
 			//const proxyurl = "http://cors-anywhere.herokuapp.com/";
       axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos/'+ this.state.fichaTecId +'/consultarFT')

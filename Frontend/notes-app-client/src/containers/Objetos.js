@@ -34,7 +34,9 @@ addFt = event => {
 }
 	
 componentDidMount(){
-	
+	if(sessionStorage.getItem("loginState") === "idle"){
+		this.props.history.push("/login");
+	}
 
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
 	axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos')

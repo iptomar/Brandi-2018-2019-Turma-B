@@ -48,7 +48,9 @@ export default class Login extends Component {
   }
 
   componentDidMount(){
-
+    if(sessionStorage.getItem("loginState") === "idle"){
+      this.props.history.push("/login");
+    }
   }
   render(){
     return (
