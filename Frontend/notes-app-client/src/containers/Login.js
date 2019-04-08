@@ -43,6 +43,7 @@ export default class Login extends Component {
           this.setState({ loginState: 'error' })
         }else{
           this.setState({ loginState: 'success' })
+          console.log(res);
         }
       })
       .catch(err => {
