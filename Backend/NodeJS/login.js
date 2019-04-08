@@ -378,15 +378,15 @@ app.get("/objetos/:id/remove", (req, res) => {
 //*********************** Register *******************************//
 
 app.post('/register',verificaLoginAdmin,function(request,response){
-	let Nome = request.body.Nome;
+	  let Nome = request.body.Nome;
     let username = request.body.username;
     let password = request.body.password;
     let email = request.body.email;
     let tipo = request.body.tipo;
     let Habilitacoes = request.body.Habilitacoes;
-    let nivelProfissional = request.body.NivProfissional;
+    let NivProfissional = request.body.NivProfissional;
     if(Nome && username && password && email && tipo && Habilitacoes && NivProfissional){
-    const tecnico = {Nome:Nome, username:username, password:password, email:email, tipo:tipo, Habilitacoes:Habilitacoes, NivProfissional:NivProfissional}
+    const tecnico = {nome:Nome, username:username, password:password, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional}
     con.query('INSERT INTO tecnicos SET ?', [tecnico],
     		function(error, results, fields) {
 				if(error){
