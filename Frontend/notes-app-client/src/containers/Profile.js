@@ -23,7 +23,7 @@ export default class Login extends Component {
 		if(window.location.pathname === "/profile"){
 			sessionName = sessionStorage.getItem("username");
 		}else{
-			if(sessionStorage.getItem("tipo") != "admin"){
+			if(sessionStorage.getItem("tipo") !== "admin"){
 				this.props.history.push("/login");
 			}else{
 				sessionName = (window.location.pathname).split("/")[2];

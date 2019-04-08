@@ -51,6 +51,9 @@ export default class Login extends Component {
     if(sessionStorage.getItem("loginState") === "idle"){
       this.props.history.push("/login");
     }
+    if(sessionStorage.getItem("tipo") !== "admin"){
+      this.props.history.push("/login");
+    }
   }
   render(){
     return (
