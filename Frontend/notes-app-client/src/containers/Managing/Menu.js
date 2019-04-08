@@ -12,17 +12,24 @@ export default class Login extends Component {
   }*/
 
   componentDidMount(){
-    if(sessionStorage.getItem("loginState") === "idle" || sessionStorage.getItem("loginState") === null){
+    if(sessionStorage.getItem("loginState") !== "success"){
       this.props.history.push("/login");
     }
 
 
     if(sessionStorage.getItem("tipo") === "admin"){
       let nav = document.getElementById("navi");
+
       let registLink = document.createElement("a");
       registLink.href = "/register"
       registLink.innerHTML = "Registar";
+
+      let tecnicLink = document.createElement("a");
+      tecnicLink.href = "/tecnicos"
+      tecnicLink.innerHTML = "Tecnicos";
+
       nav.appendChild(registLink);
+      nav.appendChild(tecnicLink);
     }    
   }
 

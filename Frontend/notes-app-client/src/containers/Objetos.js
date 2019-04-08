@@ -34,12 +34,12 @@ addFt = event => {
 }
 	
 componentDidMount(){
-	if(sessionStorage.getItem("loginState") === "idle" || sessionStorage.getItem("loginState") === null){
+	if(sessionStorage.getItem("loginState") !== "success"){
 		this.props.history.push("/login");
 	}
 
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos')
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos')
 	.then((response) => {
 		return response.data
 	})

@@ -8,6 +8,7 @@ import Menu from "./containers/Managing/Menu";
 import Add from "./containers/Managing/Add";
 import FichaTecnica from "./containers/FichaTecnica";
 import Register from "./containers/Register";
+import Tecnicos from "./containers/Tecnicos";
 
 export default () =>
   <Switch>
@@ -21,4 +22,5 @@ export default () =>
     <Route path="/editar" component={Add} />
     <Route path="/fichatecnica" component={FichaTecnica} />
     <Route path="/register" component={Register} />
+    <Route path="/tecnicos" component={Tecnicos} />
   </Switch>;

@@ -21,7 +21,7 @@ export default class Login extends Component {
     }
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/logout')
+    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/logout')
       .then(res => {
         console.log(res)
       })
