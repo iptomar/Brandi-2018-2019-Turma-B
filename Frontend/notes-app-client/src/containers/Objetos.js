@@ -76,6 +76,24 @@ componentDidMount(){
 			});
 			col.appendChild(card);
 			
+			let image = document.createElement('img');
+			image.setAttribute('alt','alt');
+			image.classList.add('card-img');
+			image.classList.add('imgObj');
+			image.classList.add('img-fluid');
+			card.appendChild(image);
+		
+			let body = document.createElement('div');
+			body.classList.add('card-body');
+			body.classList.add('bodyObj');
+			card.appendChild(body);
+
+			let titulo = document.createElement('div');
+			titulo.classList.add('card-title');
+			titulo.classList.add('titleObj');
+			titulo.textContent = nome;
+			body.appendChild(titulo);
+			
 			axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos/'+objeto.idObjeto+'/imagens')
 			.then((response) => {
 				return response.data
@@ -85,25 +103,11 @@ componentDidMount(){
 				
 				let imgname = this.state.imagens[0].imagem;
 				let imgpath = './img/'+ imgname;
-				let image = document.createElement('img');
 				image.setAttribute('src',require(""+imgpath));
-				image.setAttribute('alt','alt');
-				image.classList.add('card-img');
-				image.classList.add('imgObj');
-				image.classList.add('img-fluid');
-				card.appendChild(image);
-			
-				let body = document.createElement('div');
-				body.classList.add('card-body');
-				body.classList.add('bodyObj');
-				card.appendChild(body);
-
-				let titulo = document.createElement('div');
-				titulo.classList.add('card-title');
-				titulo.classList.add('titleObj');
-				titulo.textContent = nome;
-				body.appendChild(titulo);
 			})
+			.catch(err => {
+				image.setAttribute('src',require("./img/img.png"));				
+			});
     	}
 	})
 }
