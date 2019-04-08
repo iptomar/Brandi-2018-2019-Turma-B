@@ -41,7 +41,6 @@ export default class Login extends Component {
 
   handleSubmit1 = event => {
     event.preventDefault();
-    console.log("submit")
 
     let LCRM = this.state.LCRM;
     let CEARC = this.state.CEARC;
@@ -66,7 +65,6 @@ export default class Login extends Component {
 
   handleSubmit2 = event => {
     event.preventDefault();
-    console.log("submit")
 
     let LCRM = this.state.LCRM;
     let CEARC = this.state.CEARC;

@@ -13,7 +13,6 @@ export default class Login extends Component {
 
   componentDidMount(){
     const loginState = sessionStorage.getItem("loginState");
-    console.log(loginState);
     if(loginState === "success"){
       sessionStorage.setItem("loginState", "idle");
       alert("Logged out");

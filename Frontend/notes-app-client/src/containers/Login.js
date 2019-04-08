@@ -42,8 +42,8 @@ export default class Login extends Component {
         if(res.data === "Incorrect Username and/or Password!"){
           this.setState({ loginState: 'error' })
         }else{
+          sessionStorage.setItem("tipo", res.data);
           this.setState({ loginState: 'success' })
-          console.log(res);
         }
       })
       .catch(err => {

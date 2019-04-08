@@ -23,7 +23,11 @@ export default class Login extends Component {
 		if(window.location.pathname === "/profile"){
 			sessionName = sessionStorage.getItem("username");
 		}else{
-			sessionName = (window.location.pathname).split("/")[2];
+			if(sessionStorage.getItem("tipo") != "admin"){
+				this.props.history.push("/login");
+			}else{
+				sessionName = (window.location.pathname).split("/")[2];
+			}
 		}    
     this.setState({name: sessionName })
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";

@@ -12,6 +12,14 @@ export default class Login extends Component {
   }*/
 
   componentDidMount(){
+    if(sessionStorage.getItem("tipo") === "admin"){
+      let nav = document.getElementById("navi");
+      let registLink = document.createElement("a");
+      registLink.href = "/register"
+      registLink.innerHTML = "Registar";
+      nav.appendChild(registLink);
+    }
+
     if(sessionStorage.getItem("loginState") === "idle"){
       this.props.history.push("/login");
     }
@@ -35,10 +43,9 @@ export default class Login extends Component {
             </Navigation>
           </Header>
           <Drawer title="Conservação e Restauro ">
-            <Navigation>
+            <Navigation id="navi">
               <Link to="/profile">Perfil</Link>
               <Link to="/logout">Logout</Link>
-              <Link to="/register">Register</Link>
             </Navigation>
           </Drawer>
           <Content>
