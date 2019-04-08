@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import "./Objetos.css";
 import axios from 'axios';
-import {
-Collapse,
-Navbar,
-NavbarToggler,
-NavbarBrand,
-Nav,
-NavItem,
-NavLink,
-Button} from 'reactstrap';
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
 export default class Objetos extends Component {
 	constructor(props) {
 	    super(props);

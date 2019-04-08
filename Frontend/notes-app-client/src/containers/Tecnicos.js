@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Tecnicos.css";
 import axios from 'axios';
-import {Button} from 'reactstrap';
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
 
 export default class Tecnicos extends Component {
 	constructor(props) {
@@ -92,6 +92,26 @@ componentDidMount(){
 	render() {
     return (
 			<div id="main" className="container">
+				<Navbar className="navbarObj" dark expand="sm">
+          		<NavbarBrand className="navbarbrandObj" href="/">Conservação e Restauro</NavbarBrand>
+          		<NavbarToggler onClick={this.toggle} />
+          		<Collapse isOpen={this.state.isOpen} navbar>
+            	<Nav className="ml-auto" navbar>
+	            	<NavItem>
+	                	<NavLink href="/">Home</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/menu">Menu</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/profile">Profile</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink href="/logout">Logout</NavLink>
+	             	</NavItem>
+            	</Nav>
+				</Collapse>
+			</Navbar> 
 			</div>
 		);
 	}
