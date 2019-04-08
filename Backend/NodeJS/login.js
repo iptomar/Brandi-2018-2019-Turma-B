@@ -436,7 +436,12 @@ app.get("/tecnicos/id/:id", verificaLogin, (req, res) => {
 				if (results.length ==0) {
 					res.status(404).json({ erro: "Tecnico not found" });
 				} else {
-					res.status(200).json(results);
+					if(results[0].username === req.session.username || req.session.role === "admin"){
+						res.status(200).json(results);
+					}
+					else{
+						res.status(500).json({ erro: "Permission denied" });
+					}
 				}
 			}
 		});
