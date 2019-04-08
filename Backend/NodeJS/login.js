@@ -445,7 +445,7 @@ app.get("/tecnicos/id/:id", verificaLogin, (req, res) => {
 //tecnico (pelo username)
 app.get("/tecnicos/username/:username", verificaLogin, (req, res) => {
 
-		if(req.session.username == req.params.username){
+		if(req.session.username == req.params.username || req.session.role === "admin"){
 			let sql = "SELECT * FROM tecnicos WHERE username = ?";
 
 			// req.params.id mapeia o :username que está no URL acima.
