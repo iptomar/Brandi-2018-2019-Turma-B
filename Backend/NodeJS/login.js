@@ -24,10 +24,10 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
-function verificaLogin(req, res, next) { next();}
-function verificaLoginAdmin(req, res, next) { next();}
+//function verificaLogin(req, res, next) { next();}
+//function verificaLoginAdmin(req, res, next) { next();}
 
-/*
+
 //verifica se o utilizador esta autenticado
 function verificaLogin(req, res, next) {
 	if (req.session.loggedin) { 
@@ -44,7 +44,7 @@ function verificaLogin(req, res, next) {
 		res.status(500).json({ erro: "Permission denied" });
 	}
   }
-*/
+
 
 //method: post | action: auth
 //autentica o utilizador através do username e password
