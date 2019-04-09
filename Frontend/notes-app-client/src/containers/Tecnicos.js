@@ -42,11 +42,11 @@ componentDidMount(){
 			let nome = user.nome;
 			
 			let deck = document.querySelector('#row1');
-			deck.classList.add("deckObj");
+			deck.classList.add("deckTec");
 			
 			let col = document.createElement('div');
 			col.classList.add('col');
-			col.classList.add('colObj');
+			col.classList.add('colTec');
 			col.classList.add("col-xs-12");
 			col.classList.add("col-sm-6");
 			col.classList.add("col-md-4");
@@ -58,7 +58,7 @@ componentDidMount(){
 			let card = document.createElement('div');
 			card.id = user.username
 			card.classList.add('card');
-			card.classList.add('cardObj');
+			card.classList.add('cardTec');
 			card.classList.add("m-3");
 			card.addEventListener('click', function(){
 				propsHistory.push("/profile/" + this.id);
@@ -68,18 +68,18 @@ componentDidMount(){
 			let image = document.createElement('img');
 			image.setAttribute('alt','alt');
 			image.classList.add('card-img');
-			image.classList.add('imgObj');
+			image.classList.add('imgTec');
 			image.classList.add('img-fluid');
 			card.appendChild(image);
 		
 			let body = document.createElement('div');
 			body.classList.add('card-body');
-			body.classList.add('bodyObj');
+			body.classList.add('bodyTec');
 			card.appendChild(body);
 
 			let titulo = document.createElement('div');
 			titulo.classList.add('card-title');
-			titulo.classList.add('titleObj');
+			titulo.classList.add('titleTec');
 			titulo.textContent = nome;
 			body.appendChild(titulo);
 		}
@@ -91,9 +91,9 @@ componentDidMount(){
 }
 	render() {
     return (
-			<div id="main" className="container">
-				<Navbar className="navbarObj" dark expand="sm">
-          		<NavbarBrand className="navbarbrandObj" href="/">Conservação e Restauro</NavbarBrand>
+			<div id="main" className="pageObj">
+				<Navbar className="navbarTec" dark expand="sm">
+          		<NavbarBrand className="navbarbrandTec" href="/">Conservação e Restauro</NavbarBrand>
           		<NavbarToggler onClick={this.toggle} />
           		<Collapse isOpen={this.state.isOpen} navbar>
             	<Nav className="ml-auto" navbar>
