@@ -13,6 +13,11 @@ export default class Tecnicos extends Component {
   }
 
 componentDidMount(){
+
+	if(sessionStorage.getItem("loginState") !== "success"){
+		this.props.history.push("/login");
+	}
+
 	let main = document.getElementById("main")
 
 	let divInic = document.createElement("div");
