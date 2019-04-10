@@ -12,5 +12,5 @@ sudo npm run build
 
 sudo cp -avr /home/operador/brandiB/Frontend/notes-app-client/build/* /home/operador/brandiB_FE
 
-pm2 reload login
+pm2 reload app
 sudo service nginx restart
