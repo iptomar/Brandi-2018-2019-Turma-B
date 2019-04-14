@@ -51,16 +51,17 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let tipo = request.body.tipo
 	    let Habilitacoes = request.body.Habilitacoes
 	    let NivProfissional = request.body.NivProfissional
-	    if(Nome && username && password && email && tipo && Habilitacoes && NivProfissional){
-	    const tecnico = {nome:Nome, username:username, password:password, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional}
+	    let fotografia = request.body.fotografia
+	    if(Nome && username && password && email && tipo && Habilitacoes && NivProfissional && fotografia){
+	    const tecnico = {nome:Nome, username:username, password:password, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional, fotografia:fotografia}
 	    con.query('INSERT INTO tecnicos SET ?', [tecnico],
 	    		function(error, results, fields) {
 					if(error){
-					response.send("Erro ao inserir na tabela tecnicos")
-					response.end()
+						response.send("Erro ao inserir na tabela tecnicos")
+						response.end()
 	    			}else{
-	    			response.send("feito")
-					response.end()
+	    				response.send("Sucesso")
+						response.end()
 	    			}
 	    		}
 	    	)}
@@ -69,5 +70,4 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	        response.end()
 	    }
 	})
-
 }

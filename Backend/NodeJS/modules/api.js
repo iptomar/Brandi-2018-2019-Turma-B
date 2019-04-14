@@ -496,29 +496,11 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 				}
 			})
 	})
-	//exames de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/exames", verificaLogin, (req, res) => {
 
-			let sql = "SELECT * FROM exames WHERE objeto = ?"
+	//testes feitos num exame (pelo ID do objeto)
+	app.get("/objetos/:id/testes", verificaLogin, (req, res) => {
 
-			// req.params.id mapeia o :id que está no URL acima.
-			con.query(sql, [req.params.id], (err, results) => {
-				if (err) {
-					res.status(500).json({ erro: "Erro na query" })
-				} else {
-					if (results.length ==0) {
-						res.status(404).json({ erro: "Objeto not found" })
-					} else {
-						res.status(200).json(results)
-					}
-				}
-			})
-	})
-
-	//testes feitos num exame (pelo ID do exame)
-	app.get("/exames/:id/testes", verificaLogin, (req, res) => {
-
-			let sql = "SELECT * FROM testes WHERE exame = ?"
+			let sql = "SELECT * FROM testes WHERE objeto = ?"
 
 			// req.params.id mapeia o :id que está no URL acima.
 			con.query(sql, [req.params.id], (err, results) => {
