@@ -7,6 +7,7 @@ var path = require('path')
 var api = require('./modules/api')
 var auth = require('./modules/auth')
 var ft = require('./modules/ficha_tecnica')
+var ft2 = require('./modules/ficha_tecnica2')
 //coneção com db
 var con = mysql.createConnection({
 	host     : 'localhost',
@@ -50,5 +51,6 @@ function verificaLogin(req, res, next) {
 api(app, con, verificaLogin, verificaLoginAdmin)
 auth(app, con, verificaLogin, verificaLoginAdmin)
 ft(app, con, verificaLogin, verificaLoginAdmin)
+ft2(app, con, verificaLogin, verificaLoginAdmin)
 
 app.listen(8080)
