@@ -18,6 +18,7 @@ class App extends Component {
               <Link to="/">Home</Link>
               <Link to="/PP">Perfil</Link>
               <Link to="/Projectos">Projetos</Link>
+              <Link to="/TesteSolub">Projetos 2</Link>
               <Link to="/FichaTecnicos">Fichas Tecnicas</Link>
             </Navigation>
           </Header>
@@ -26,6 +27,7 @@ class App extends Component {
               <Link to="/">Home</Link>
               <Link to="/PP">Perfil</Link>
               <Link to="/Projectos">Projetos</Link>
+              <Link to="/TesteSolub">Projetos 2</Link>
               <Link to="/FichaTecnicos">Fichas Tecnicas</Link>
             </Navigation>
           </Drawer>
