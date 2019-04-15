@@ -22,10 +22,12 @@ export default class Login extends Component {
 
       let registLink = document.createElement("a");
       registLink.href = "/register"
+      registLink.className = "mdl-navigation__link"
       registLink.innerHTML = "Registar";
 
       let tecnicLink = document.createElement("a");
       tecnicLink.href = "/tecnicos"
+      tecnicLink.className = "mdl-navigation__link"
       tecnicLink.innerHTML = "Tecnicos";
 
       nav.appendChild(registLink);
