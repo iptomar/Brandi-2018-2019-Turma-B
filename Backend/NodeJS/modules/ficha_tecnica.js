@@ -275,7 +275,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//method: get | action: remove
 	//metodo que permite remover um objeto
-	app.get("/objetos/:id/remove", (req, res) => {
+	app.get("/objetos/:id/removeObj", (req, res) => {
 		let sql = "Delete from objetos where idObjeto = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {

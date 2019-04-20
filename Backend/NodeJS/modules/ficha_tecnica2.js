@@ -1,10 +1,10 @@
 ﻿//export
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
-	//method: get | action: consultarFT
 	//metodo que permite consultar uma ficha tecnica
 	app.get("/objetos/:id/ft", (req, res) => {
-		let json = [{
+		let json = [
+		{
 			idObjeto: null,
 			designacao: null,
 			processo: [{
@@ -178,10 +178,15 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		let conclusoesAmbientais = request.body.conclusoesAmbientais
 		let objetivosExames = request.body.objetivosExames
 		let resultadosExames = request.body.resultadosExames
-		let conclusoesExames = request.body.conclusoesExames
-	    
+		let conclusoesExames = request.body.conclusoesExames 
 	    //foram recebidos dados
-	    if (LCRM) {
+	    if (designacao && LCRM && CEARC && dataAberturaLCRM && dataAberturaCEARC && dataEntradaLCRM && dataEntradaCEARC &&
+	    	coordenador && funcao && superCategoria && categoria && subCategoria && tipologia && dimensoes && outrasDimensoes
+	    	&& localizacao && conjunto && elementosConjunto && elementosAcessorios && marcasAutoria && marcasMontagem &&
+	    	marcasConstrucao && classificacaoPatrimonial && estilo && epoca && qualidade && estruturaMaterial &&
+	    	superficieMaterial && tecnicaEstrutura && tecnicaSuperficie && descricao && analogias && conclusoes &&
+	    	autoria && datacao && localOrigem && condicoesAmbientais && conclusoesAmbientais && objetivosExames &&
+	    	resultadosExames && conclusoesExames) {
 		    //procura utilizador na db
 	        con.query('select * from tecnicos where idTecnico = ?', [coordenador],
 	        function(error, results, fields) {
@@ -244,9 +249,12 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
-	
+
 	//metodo que permite adicionar imagens a um objeto
 	app.post('/objetos/:id/imagens/new', function(request, response) {
 	    //guarda os dados recebidos
@@ -256,7 +264,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let referencia = request.body.referencia
 	    let documentacao = request.body.documentacao
 	    //foram recebidos dados
-	    if (imagem) {
+	    if (imagem && tipo && formato && referencia && documentacao) {
 		    //procura utilizador na db
 	        con.query('select * from objetos where idObjeto = ?', [request.params.id],
 	        function(error, results, fields) {
@@ -287,6 +295,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
 
@@ -296,10 +307,10 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let nome = request.body.nome
 	    let NIF = request.body.NIF
 	    let enderecoPostal = request.body.enderecoPostal
-	    let enderecoEletronico = request.body.formato
+	    let enderecoEletronico = request.body.enderecoEletronico
 	    let contacto = request.body.contacto
 	    //foram recebidos dados
-	    if (nome) {
+	    if (nome && NIF && enderecoPostal && enderecoEletronico && contacto) {
 		    //procura utilizador na db
 	        con.query('select * from interessados where NIF = ?', [NIF],
 	        function(error, results, fields) {
@@ -329,6 +340,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
 
@@ -338,7 +352,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let interessado = request.body.interessado
 	    let tipo = request.body.tipo
 	    //foram recebidos dados
-	    if (interessado) {
+	    if (interessado && tipo) {
 		    //procura objeto e interessado na db
 		    sql1 = 'select * from objetos where idObjeto = ?'
 		    sql2 = 'select * from interessados where idInteressado = ?'
@@ -371,6 +385,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})								
 
@@ -381,7 +398,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let humidade = request.body.humidade
 	    let periodoAno = request.body.periodoAno
 	    //foram recebidos dados
-	    if (temperatura) {
+	    if (temperatura && humidade && periodoAno) {
 		    //procura utilizador na db
 	        con.query('select * from objetos where idObjeto = ?', [request.params.id],
 	        function(error, results, fields) {
@@ -410,6 +427,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
 
@@ -422,7 +442,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let UVreal = request.body.UVreal
 	    let tipo = request.body.tipo
 	    //foram recebidos dados
-	    if (fonte) {
+	    if (fonte && iluminancia && UVmedido && UVreal && tipo) {
 		    //procura utilizador na db
 	        con.query('select * from objetos where idObjeto = ?', [request.params.id],
 	        function(error, results, fields) {
@@ -453,6 +473,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
 
@@ -463,7 +486,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let fonte = request.body.fonte
 	    let resultados = request.body.resultados
 	    //foram recebidos dados
-	    if (agente) {
+	    if (agente && fonte && resultados) {
 		    //procura utilizador na db
 	        con.query('select * from objetos where idObjeto = ?', [request.params.id],
 	        function(error, results, fields) {
@@ -492,6 +515,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
 
@@ -505,7 +531,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let data = request.body.data
 	    let tecnico = request.body.tecnico
 	    //foram recebidos dados
-	    if (referencia) {
+	    if (referencia && localizacao && objetivos && resultados && data && tecnico) {
 		    //procura utilizador na db
 		    sql1 = 'select * from objetos where idObjeto = ?'
 		    sql2 = 'select * from tecnicos where idTecnico = ?'
@@ -542,6 +568,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
 		}
 	})
 
@@ -555,7 +584,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let elementos = request.body.elementos
 	    let observacoes = request.body.observacoes
 	    //foram recebidos dados
-	    if (tipo) {
+	    if (tipo && estado && estrutura && superficie && elementos && observacoes) {
 		    //procura utilizador na db
 	        con.query('select * from objetos where idObjeto = ?', [request.params.id],
 	        function(error, results, fields) {
@@ -587,89 +616,140 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					})
 				}
 			})
-		}
-	})
-/*
-	//method: post | action: updateFT
-	//metodo que permite dar update a uma ficha tecnica
-	app.post('/objetos/:id/updateFT', function(request, response) {
-		//guarda os dados recebidos
-		var LCRM = request.body.LCRM
-		var CEARC = request.body.CEARC
-		var dataAberturaLCRM = request.body.dataAberturaLCRM
-		var dataAberturaCEARC = request.body.dataAberturaCEARC
-		var dataEntradaLCRM = request.body.dataEntradaLCRM
-		var dataEntradaCEARC = request.body.dataEntradaCEARC
-		var coordenador = request.body.coordenador
-		var funcao = request.body.funcao
-		
-		
-		//guardar o id do tecnico, id do processo e id do objetos
-		var idTecnico
-		var idProcesso
-		
-		
-		//foram recebidos dados
-		if (LCRM && CEARC && dataAberturaLCRM && dataAberturaCEARC && dataEntradaLCRM && dataEntradaCEARC && coordenador && funcao) {
-			//procura utilizador na db
-			con.query('SELECT idTecnico FROM tecnicos WHERE nome = ?', [coordenador],
-			function(error, results, fields) {
-				//utilizador encontrado
-				if (results.length > 0) {
-					idTecnico=results[0].idTecnico
-					//verifica se existe a ficha tecnica
-					const tecnicoProcesso = {tecnico:idTecnico, funcao:funcao }
-					con.query('select * from processos WHERE objeto = ?', [request.params.id],
-					function(error, results, fields) {
-						if (error) {
-							response.send( "Erro ao procurar o objeto" )
-							response.end()
-						} else {
-							if(results.length>0){
-								//update na tabela processo dos dados
-								const processo= {LCRM:LCRM, CEARC:CEARC, dataAberturaLCRM:dataAberturaLCRM, dataAberturaCEARC:dataAberturaCEARC, dataEntradaLCRM:dataEntradaLCRM, dataEntradaCEARC:dataEntradaCEARC}
-								con.query('UPDATE processos SET  ? WHERE objeto = ?', [processo, request.params.id],
-								function(error, results, fields) {
-									if (error) {
-										response.send( "Erro ao atualizar os dados na tabela processos" )
-										response.end()
-									} else {
-										//update na tabela tecnicoProcesso dos dados
-										const tecnicoProcesso = {tecnico:idTecnico, funcao:funcao }
-										con.query('update tecnicoProcesso SET ? WHERE processo=(SELECT idProcesso FROM processos WHERE objeto = ?)', [tecnicoProcesso,request.params.id],
-										function(error, results, fields) {
-											if (error) {
-												response.send( "Erro ao atualizar os dados na tabela tecnicoProcesso" )
-												response.end()
-											} else {
-												response.send("Ficha Tecnica alterada com sucesso")
-												response.end()
-											}	
-										})
-									}
-								})
-							}else{
-							response.send("Ficha Tecnica não encontrada")
-							response.end()
-							
-							}
-						}	
-					})
-
-					
-				//utilizador não encontrado
-				} else {
-					response.send('Coordenador inválido.')
-					response.end()
-				}		
-			})
-		//não foram recebidos dados
 		} else {
-			response.send('Por favor peencha todos os campos.')
+			response.send("Dados incompletos")
 			response.end()
 		}
 	})
-*/
+
+	//metodo que permite alterar a ficha tecnica de um objeto
+	app.post('/objetos/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let designacao = request.body.designacao
+	    let LCRM = request.body.LCRM
+	    let CEARC = request.body.CEARC
+	    let dataAberturaLCRM = request.body.dataAberturaLCRM
+	    let dataAberturaCEARC = request.body.dataAberturaCEARC
+	    let dataEntradaLCRM = request.body.dataEntradaLCRM
+	    let dataEntradaCEARC = request.body.dataEntradaCEARC
+	    let coordenador = request.body.coordenador
+	    let funcao = request.body.funcao
+	    let superCategoria = request.body.superCategoria
+		let categoria = request.body.categoria
+		let subCategoria = request.body.subCategoria
+		let tipologia = request.body.tipologia
+		let dimensoes = request.body.dimensoes
+		let outrasDimensoes = request.body.outrasDimensoes
+		let localizacao = request.body.localizacao
+		let conjunto = request.body.conjunto
+		let elementosConjunto = request.body.elementosConjunto
+		let elementosAcessorios = request.body.elementosAcessorios
+		let marcasAutoria = request.body.marcasAutoria
+		let marcasMontagem = request.body.marcasMontagem
+		let marcasConstrucao = request.body.marcasConstrucao
+		let classificacaoPatrimonial = request.body.classificacaoPatrimonial
+		let estilo = request.body.estilo
+		let epoca = request.body.epoca
+		let qualidade = request.body.qualidade
+		let estruturaMaterial = request.body.estruturaMaterial
+		let superficieMaterial = request.body.superficieMaterial
+		let tecnicaEstrutura = request.body.tecnicaEstrutura
+		let tecnicaSuperficie = request.body.tecnicaSuperficie
+		let descricao = request.body.descricao
+		let analogias = request.body.analogias
+		let conclusoes = request.body.conclusoes
+		let autoria = request.body.autoria
+		let datacao = request.body.datacao
+		let localOrigem = request.body.localOrigem
+		let condicoesAmbientais = request.body.condicoesAmbientais
+		let conclusoesAmbientais = request.body.conclusoesAmbientais
+		let objetivosExames = request.body.objetivosExames
+		let resultadosExames = request.body.resultadosExames
+		let conclusoesExames = request.body.conclusoesExames
+		//foram recebidos dados
+	    if (designacao && LCRM && CEARC && dataAberturaLCRM && dataAberturaCEARC && dataEntradaLCRM && dataEntradaCEARC &&
+	    	coordenador && funcao && superCategoria && categoria && subCategoria && tipologia && dimensoes && outrasDimensoes
+	    	&& localizacao && conjunto && elementosConjunto && elementosAcessorios && marcasAutoria && marcasMontagem &&
+	    	marcasConstrucao && classificacaoPatrimonial && estilo && epoca && qualidade && estruturaMaterial &&
+	    	superficieMaterial && tecnicaEstrutura && tecnicaSuperficie && descricao && analogias && conclusoes &&
+	    	autoria && datacao && localOrigem && condicoesAmbientais && conclusoesAmbientais && objetivosExames &&
+	    	resultadosExames && conclusoesExames) {
+		    //procura utilizador na db
+	        con.query('select * from tecnicos where idTecnico = ?', [coordenador],
+	        function(error, results, fields) {
+	            //utilizador não encontrado
+	            if (results.length <= 0) {
+	            	response.send('Coordenador inválido.')
+					response.end() 
+				} else {
+					const obj = {
+						designacao: designacao,
+						superCategoria: superCategoria,
+						categoria: categoria,
+						subCategoria: subCategoria,
+						tipologia: tipologia,
+						localizacao: localizacao,
+						dimensoes: dimensoes,
+						outrasDimensoes: outrasDimensoes,
+						conjunto: conjunto,
+						elementosConjunto: elementosConjunto,
+						elementosAcessorios: elementosAcessorios,
+						marcasAutoria: marcasAutoria,
+						marcasMontagem: marcasMontagem,
+						marcasConstrucao: marcasConstrucao,
+						classificacaoPatrimonial: classificacaoPatrimonial,
+						estilo: estilo,
+						epoca: epoca,
+						qualidade: qualidade,
+						estruturaMaterial: estruturaMaterial,
+						superficieMaterial: superficieMaterial,
+						tecnicaEstrutura: tecnicaEstrutura,
+						tecnicaSuperficie: tecnicaSuperficie,
+						descricao: descricao,
+						analogias: analogias,
+						conclusoes: conclusoes,
+						autoria: autoria,
+						datacao: datacao,
+						localOrigem: localOrigem, 
+						condicoesAmbientais: condicoesAmbientais,
+						conclusoesAmbientais: conclusoesAmbientais,
+						objetivosExames: objetivosExames,
+						resultadosExames: resultadosExames,
+						conclusoesExames: conclusoesExames
+					}
+					const processo = {
+						LCRM:LCRM,
+						CEARC:CEARC,
+						dataAberturaLCRM:dataAberturaLCRM,
+						dataAberturaCEARC:dataAberturaCEARC,
+						dataEntradaLCRM:dataEntradaLCRM,
+						dataEntradaCEARC:dataEntradaCEARC
+					}
+					sql0 = 'start transaction'
+					sql1 = 'update objetos set ? where idObjeto = ?'
+					sql2 = 'update processos set ? where objeto = ?'
+					sql3 = 'update tecnicoProcesso set tecnico = ?, funcao = ? where processo = (select idProcesso from processos where objeto = ?)'
+					con.query(sql0+';'+sql1+';'+sql2+';'+sql3, [obj,request.params.id,processo, request.params.id, coordenador, funcao, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							con.query('rollback')
+							response.send("Erro ao criar objeto")
+							response.end()
+						} else {
+							con.query('commit')
+							response.send("Sucesso")
+							response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
 	//metodo que permite remover uma ficha tecnica
 	app.get("/objetos/:id/remove", (request, response) => {
 		con.query('select * from objetos where idObjeto = ?', [request.params.id],
@@ -704,7 +784,303 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//method: get | action: remove
+//metodo que permite alterar uma imagem
+	app.post('/imagens/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let imagem = request.body.imagem
+	    let tipo = request.body.tipo
+	    let formato = request.body.formato
+	    let referencia = request.body.referencia
+	    let documentacao = request.body.documentacao
+	    //foram recebidos dados
+	    if (imagem && tipo && formato && referencia && documentacao) {
+			const img = {
+				imagem: imagem,
+				tipo: tipo,
+				formato: formato,
+				referencia: referencia,
+				documentacao: documentacao
+			}
+			sql1 = 'update imagens set ? where idImagem = ?'
+			con.query(sql1, [img, request.params.id],
+			function(error, results, fields) {
+				if(error){
+					console.log(error)
+					response.send("Erro ao alterar imagem")
+					response.end()
+				} else {
+					response.send("Sucesso")
+					response.end()
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite alterar um interessado
+	app.post('/interessados/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let nome = request.body.nome
+	    let NIF = request.body.NIF
+	    let enderecoPostal = request.body.enderecoPostal
+	    let enderecoEletronico = request.body.enderecoEletronico
+	    let contacto = request.body.contacto
+	    //foram recebidos dados
+	    if (nome && NIF && enderecoPostal && enderecoEletronico && contacto) {
+			const int = {
+				nome: nome,
+				NIF: NIF,
+				enderecoPostal: enderecoPostal,
+				enderecoEletronico: enderecoEletronico,
+				contacto: contacto
+			}
+			sql1 = 'update interessados set ? where idInteressado = ?'
+			con.query(sql1, [int, request.params.id],
+			function(error, results, fields) {
+				if(error){
+					console.log(error)
+					response.send("Erro ao alterar interessado")
+					response.end()
+				} else {
+					response.send("Sucesso")
+					response.end()
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite alterar interessados de um objeto
+	app.post('/objetos/:id/interessados/:idInteressado/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let tipo = request.body.tipo
+	    //foram recebidos dados
+	    if (tipo) {
+		    //procura objeto e interessado na db
+		    sql1 = 'select * from objetos where idObjeto = ?'
+		    sql2 = 'select * from interessados where idInteressado = ?'
+	        con.query(sql1+';'+sql2, [request.params.id, request.params.idInteressado],
+	        function(error, results, fields) {
+	            //utilizador não encontrado
+	            if (results[0].length <= 0) {
+	            	response.send('Objeto inválido.')
+					response.end() 
+				} else if (results[1].length <= 0) {
+	            	response.send('interessado inválido.')
+					response.end() 
+				} else {
+					const int = {
+						tipo: tipo
+					}
+					sql1 = 'update interessadosObjeto set ? where objeto = ? and interessado = ?'
+					con.query(sql1, [int, request.params.id, request.params.idInteressado],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar interessado")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})								
+
+	//metodo que permite alterar ciclos climatericos
+	app.post('/ciclosClimatericos/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let temperatura = request.body.temperatura
+	    let humidade = request.body.humidade
+	    let periodoAno = request.body.periodoAno
+	    //foram recebidos dados
+	    if (temperatura && humidade && periodoAno) {
+			const ciclo = {
+				temperatura: temperatura,
+				humidade: humidade,
+				periodoAno: periodoAno,
+				objeto: request.params.id
+			}
+			sql1 = 'update ciclosClimatericos set ? where idCiclo = ?'
+			con.query(sql1, [ciclo, request.params.id],
+			function(error, results, fields) {
+				if(error){
+					console.log(error)
+					response.send("Erro ao alterar ciclo climatérico")
+					response.end()
+				} else {
+					response.send("Sucesso")
+					response.end()
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite alterar um registo da iluminação 
+	app.post('/iluminacao/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let fonte = request.body.fonte
+	    let iluminancia = request.body.iluminancia
+	    let UVmedido = request.body.UVmedido
+	    let UVreal = request.body.UVreal
+	    let tipo = request.body.tipo
+	    //foram recebidos dados
+	    if (fonte && iluminancia && UVmedido && UVreal && tipo) {
+			const ilum = {
+				fonte: fonte,
+				iluminancia: iluminancia,
+				UVmedido: UVmedido,
+				UVreal: UVreal,
+				tipo: tipo
+			}
+			sql1 = 'update iluminacao set ? where idIluminacao = ?'
+			con.query(sql1, [ilum, request.params.id],
+			function(error, results, fields) {
+				if(error){
+					console.log(error)
+					response.send("Erro ao alterar iluminação")
+					response.end()
+				} else {
+					response.send("Sucesso")
+					response.end()
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite alterar um registo de poluição
+	app.post('/poluicao/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let agente = request.body.agente
+	    let fonte = request.body.fonte
+	    let resultados = request.body.resultados
+	    //foram recebidos dados
+	    if (agente && fonte && resultados) {
+			const pol = {
+				agente: agente,
+				fonte: fonte,
+				resultados: resultados
+			}
+			sql1 = 'update poluicao set ? where idPoluicao = ?'
+			con.query(sql1, [pol, request.params.id],
+			function(error, results, fields) {
+				if(error){
+					console.log(error)
+					response.send("Erro ao alterar poluição")
+					response.end()
+				} else {
+					response.send("Sucesso")
+					response.end()
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite alterar um teste a um objeto
+	app.post('/testes/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let referencia = request.body.referencia
+	    let localizacao = request.body.localizacao
+	    let objetivos = request.body.objetivos
+	    let resultados = request.body.resultados
+	    let data = request.body.data
+	    let tecnico = request.body.tecnico
+	    //foram recebidos dados
+	    if (referencia && localizacao && objetivos && resultados && data && tecnico) {
+		    //procura utilizador na db
+		    sql1 = 'select * from tecnicos where idTecnico = ?'
+	        con.query(sql1, [tecnico],
+	        function(error, results, fields) {
+	            //utilizador não encontrado
+	            if (results.length <= 0) {
+	            	response.send('Técnico inválido.')
+					response.end() 
+				} else {
+					const pol = {
+						referencia: referencia,
+						localizacao: localizacao,
+						objetivos: objetivos,
+						resultados: resultados,
+						data: data,
+						tecnico: tecnico,
+						objeto: request.params.id
+					}
+					sql2= 'update testes set ? where idTeste = ?'
+					con.query(sql2, [pol, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar teste")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite alterar um estado de conservação de um objeto
+	app.post('/conservacao/:id/update', function(request, response) {
+	    //guarda os dados recebidos
+	    let tipo = request.body.tipo
+	    let estado = request.body.estado
+	    let estrutura = request.body.estrutura
+	    let superficie = request.body.superficie
+	    let elementos = request.body.elementos
+	    let observacoes = request.body.observacoes
+	    //foram recebidos dados
+	    if (tipo && estado && estrutura && superficie && elementos && observacoes) {
+			const conserv = {
+				tipo: tipo,
+				estado: estado,
+				estrutura: estrutura,
+				superficie: superficie,
+				elementos: elementos,
+				observacoes: observacoes,
+				objeto: request.params.id
+			}
+			sql1 = 'update conservacoes set ? where idConservacao = ?'
+			con.query(sql1, [conserv, request.params.id],
+			function(error, results, fields) {
+				if(error){
+					console.log(error)
+					response.send("Erro ao alterar estado de conservação")
+					response.end()
+				} else {
+					response.send("Sucesso")
+					response.end()
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
 	//metodo que permite remover uma imagem
 	app.get("/imagens/:id/remove", (req, res) => {
 		let sql = 'delete from imagens where idImagem = ?'
@@ -718,7 +1094,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//method: get | action: remove
 	//metodo que permite remover um interessado
 	app.get("/interessados/:id/remove", (req, res) => {
 		let sql0 = 'start transaction'
@@ -736,9 +1111,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-
-	//method: get | action: remove
-	//metodo que permite remover uma interessadosObejtos
+	//metodo que permite remover um interessado de um objeto
 	app.get("/objetos/:id/interessados/:id2/remove", (request, response) => {
 		let sql = 'delete from interessadosObjeto where objeto = ? and interessado = ?'
 		// request.params.id mapeia o :id que está no URL acima.
@@ -751,8 +1124,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-
-	//method: get | action: remove
 	//metodo que permite remover um ciclosClimaterico
 	app.get("/ciclosClimatericos/:id/remove", (req, res) => {
 		let sql = 'delete from ciclosClimatericos where idCiclo = ?'
@@ -766,7 +1137,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//method: get | action: remove
 	//metodo que permite remover uma iluminação
 	app.get("/iluminacao/:id/remove", (req, res) => {
 		let sql = 'delete from iluminacao where idIluminacao = ?'
@@ -781,7 +1151,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})
 
 
-	//method: get | action: remove
 	//metodo que permite remover uma poluição
 	app.get("/poluicao/:id/remove", (req, res) => {
 		let sql = 'delete from poluicao where idPoluicao = ?'
@@ -795,8 +1164,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-
-	//method: get | action: remove
 	//metodo que permite remover um teste
 	app.get("/testes/:id/remove", (req, res) => {
 		let sql = 'delete from testes where idTeste = ?'
@@ -810,7 +1177,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		});
 	});
 
-	//method: get | action: remove
 	//metodo que permite remover uma conservação
 	app.get("/conservacoes/:id/remove", (req, res) => {
 		let sql = 'delete from conservacoes where idConservacao = ?'

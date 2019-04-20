@@ -24,7 +24,7 @@ deleteObj = event => {
 	event.preventDefault();
 
 	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/remove')
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/removeObj')
 	.then((response) => {
 		 window.location = "/objetos"
 	})
