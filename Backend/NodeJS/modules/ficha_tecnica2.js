@@ -754,40 +754,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		}
 	})
 
-	//metodo que permite remover uma ficha tecnica
-	app.get("/objetos/:id/remove", (request, response) => {
-		con.query('select * from objetos where idObjeto = ?', [request.params.id],
-		function(error, results, fields) {
-            //utilizador não encontrado
-            if (results.length <= 0) {
-            	response.send('Objeto inválido.')
-				response.end() 
-			} else {
-				let sql0 = 'start transaction'
-				let sql1 = 'delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?)'
-				let sql2 = 'delete from processos where objeto = ?'
-				let sql3 = 'delete from imagens where objeto = ?'
-				let sql4 = 'delete from ciclosClimatericos where objeto = ?'
-				let sql5 = 'delete from iluminacao where objeto = ?'
-				let sql6 = 'delete from testes where objeto = ?'
-				let sql7 = 'delete from conservacoes where objeto = ?'
-				let sql8 = 'delete from objetos where idObjeto = ?'
-
-				// req.params.id mapeia o :id que está no URL acima.
-				con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
-					if (err) {
-						console.log(err)
-						con.query('rollback')
-						response.status(500).json({ erro: "Erro ao remover Ficha Tecnica" })
-					} else {
-						con.query('commit')
-						response.status(200).json({message: "Ficha Tecnica removida com sucesso"})
-					}
-				})
-			}
-		})
-	})
-
 //metodo que permite alterar uma imagem
 	app.post('/imagens/:id/update', function(request, response) {
 	    //guarda os dados recebidos
@@ -1083,6 +1049,40 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 			response.send("Dados incompletos")
 			response.end()
 		}
+	})
+
+	//metodo que permite remover uma ficha tecnica
+	app.get("/objetos/:id/remove", (request, response) => {
+		con.query('select * from objetos where idObjeto = ?', [request.params.id],
+		function(error, results, fields) {
+            //utilizador não encontrado
+            if (results.length <= 0) {
+            	response.send('Objeto inválido.')
+				response.end() 
+			} else {
+				let sql0 = 'start transaction'
+				let sql1 = 'delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?)'
+				let sql2 = 'delete from processos where objeto = ?'
+				let sql3 = 'delete from imagens where objeto = ?'
+				let sql4 = 'delete from ciclosClimatericos where objeto = ?'
+				let sql5 = 'delete from iluminacao where objeto = ?'
+				let sql6 = 'delete from testes where objeto = ?'
+				let sql7 = 'delete from conservacoes where objeto = ?'
+				let sql8 = 'delete from objetos where idObjeto = ?'
+
+				// req.params.id mapeia o :id que está no URL acima.
+				con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
+					if (err) {
+						console.log(err)
+						con.query('rollback')
+						response.status(500).json({ erro: "Erro ao remover Ficha Tecnica" })
+					} else {
+						con.query('commit')
+						response.status(200).json({message: "Ficha Tecnica removida com sucesso"})
+					}
+				})
+			}
+		})
 	})
 
 	//metodo que permite remover uma imagem
