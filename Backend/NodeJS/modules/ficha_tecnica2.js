@@ -293,8 +293,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao adicionar imagem")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
@@ -338,8 +343,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao registar interessado")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
@@ -425,8 +435,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao adicionar ciclo climatérico")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
@@ -471,8 +486,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao adicionar iluminação")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
@@ -513,8 +533,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao adicionar poluição")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
@@ -566,8 +591,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao adicionar teste")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
@@ -614,8 +644,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao adicionar estado de conservação")
 							response.end()
 						} else {
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
