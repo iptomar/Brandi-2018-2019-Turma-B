@@ -377,7 +377,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	            	response.send('Objeto inválido.')
 					response.end() 
 				} else if (results[1].length <= 0) {
-	            	response.send('interessado inválido.')
+	            	response.send('Interessado inválido.')
 					response.end() 
 				} else {
 					const int = {
@@ -773,7 +773,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 						if(error){
 							console.log(error)
 							con.query('rollback')
-							response.send("Erro ao criar objeto")
+							response.send("Erro ao alterar objeto")
 							response.end()
 						} else {
 							con.query('commit')
@@ -875,7 +875,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	            	response.send('Objeto inválido.')
 					response.end() 
 				} else if (results[1].length <= 0) {
-	            	response.send('interessado inválido.')
+	            	response.send('Interessado inválido.')
 					response.end() 
 				} else {
 					const int = {
@@ -886,7 +886,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					function(error, results, fields) {
 						if(error){
 							console.log(error)
-							response.send("Erro ao alterar interessado")
+							response.send("Erro ao alterar interessado do objeto")
 							response.end()
 						} else {
 							response.send("Sucesso")
@@ -1103,7 +1103,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
                 let sql8 = 'delete from testes where objeto = ?'
                 let sql9 = 'delete from conservacoes where objeto = ?'
                 let sql10 = 'delete from objetos where idObjeto = ?'
-                // req.params.id mapeia o :id que está no URL acima.
+                // request.params.id mapeia o :id que está no URL acima.
                 con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8+';'+sql9+';'+sql10, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
                     if (err) {
                         console.log(err)
@@ -1118,110 +1118,182 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
         })
     })
 	//metodo que permite remover uma imagem
-	app.get("/imagens/:id/remove", (req, res) => {
-		let sql = 'delete from imagens where idImagem = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro ao remover imagem" })
-			} else {
-				res.status(200).json({message: "Imagem removida com sucesso"})
+	app.get("/imagens/:id/remove", (request, response) => {
+		let sql1 = 'select * from imagens where idImagem = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Imagem não encontrada" })
+			}else{
+				let sql2 = 'delete from imagens where idImagem = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql2, [request.params.id], (err, results) => {
+					if (err) {
+						response.status(500).json({ erro: "Erro ao remover imagem" })
+					} else {
+						response.status(200).json({message: "Imagem removida com sucesso"})
+					}
+				})
 			}
 		})
 	})
 
 	//metodo que permite remover um interessado
-	app.get("/interessados/:id/remove", (req, res) => {
-		let sql0 = 'start transaction'
-		let sql1 = 'delete from interessadosObjeto where interessado = ?'
-		let sql2 = 'delete from interessados where idInteressado = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql0+';'+sql1+';'+sql2, [req.params.id,req.params.id], (err, results) => {
-			if (err) {
-				con.query('rollback')
-				res.status(500).json({ erro: "Erro ao eliminar interessado" })
-			} else {
-				con.query('commit')
-				res.status(200).json({message: "Interessado removido com sucesso"})
+	app.get("/interessados/:id/remove", (request, response) => {
+		let sql1 = 'select * from interessados where idInteressado = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Interessado não encontrado" })
+			}else{
+				let sql0 = 'start transaction'
+				let sql1 = 'delete from interessadosObjeto where interessado = ?'
+				let sql2 = 'delete from interessados where idInteressado = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql0+';'+sql1+';'+sql2, [request.params.id,request.params.id], (err, results) => {
+					if (err) {
+						con.query('rollback')
+						response.status(500).json({ erro: "Erro ao eliminar interessado" })
+					} else {
+						con.query('commit')
+						response.status(200).json({message: "Interessado removido com sucesso"})
+					}
+				})
 			}
 		})
 	})
 
 	//metodo que permite remover um interessado de um objeto
 	app.get("/objetos/:id/interessados/:id2/remove", (request, response) => {
-		let sql = 'delete from interessadosObjeto where objeto = ? and interessado = ?'
+		let sql1 = 'select * from interessadosObjeto where interessado = ? and objeto = ?'
 		// request.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [request.params.id, request.params.id2], (error, results) => {
-			if (error) {
-				response.status(500).json({ erro: "Erro ao remover interessado" })
-			} else {
-				response.status(200).json({message: "Interessado de um objeto removido com sucesso"})
+		con.query(sql1, [request.params.id2, request.params.id], (err, results) => {
+			console.log(results)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Interessado do objeto não encontrado" })
+			}else{
+				let sql = 'delete from interessadosObjeto where objeto = ? and interessado = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [request.params.id, request.params.id2], (error, results) => {
+					if (error) {
+						response.status(500).json({ erro: "Erro ao remover interessado" })
+					} else {
+						response.status(200).json({message: "Interessado de um objeto removido com sucesso"})
+					}
+				})
 			}
 		})
 	})
 
 	//metodo que permite remover um ciclosClimaterico
-	app.get("/ciclosClimatericos/:id/remove", (req, res) => {
-		let sql = 'delete from ciclosClimatericos where idCiclo = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro ao remover ciclosClimatericos" })
-			} else {
-				res.status(200).json({ message: "Ciclos climaterico removido com sucesso"})
+	app.get("/ciclosClimatericos/:id/remove", (request, response) => {
+		let sql1 = 'select * from ciclosClimatericos where idCiclo = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Ciclo climatérico não encontrado" })
+			}else{
+				let sql = 'delete from ciclosClimatericos where idCiclo = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [request.params.id], (err, results) => {
+					if (err) {
+						response.status(500).json({ erro: "Erro ao remover ciclo climatérico" })
+					} else {
+						response.status(200).json({ message: "Ciclo climatérico removido com sucesso"})
+					}
+				})
 			}
 		})
 	})
 
 	//metodo que permite remover uma iluminação
-	app.get("/iluminacao/:id/remove", (req, res) => {
-		let sql = 'delete from iluminacao where idIluminacao = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro ao remover iluminação" })
-			} else {
-				res.status(200).json({message: "Iluminação removida com sucesso"})
+	app.get("/iluminacao/:id/remove", (request, response) => {
+		let sql1 = 'select * from iluminacao where idIluminacao = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Iluminação não encontrada" })
+			}else{
+				let sql = 'delete from iluminacao where idIluminacao = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [request.params.id], (err, results) => {
+					if (err) {
+						response.status(500).json({ erro: "Erro ao remover iluminação" })
+					} else {
+						response.status(200).json({message: "Iluminação removida com sucesso"})
+					}
+				})
 			}
 		})
 	})
 
 
 	//metodo que permite remover uma poluição
-	app.get("/poluicao/:id/remove", (req, res) => {
-		let sql = 'delete from poluicao where idPoluicao = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro ao remover poluição" })
-			} else {
-				res.status(200).json({message: "Poluição removida com sucesso"})
+	app.get("/poluicao/:id/remove", (request, response) => {
+		let sql1 = 'select * from poluicao where idPoluicao = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Poluição não encontrada" })
+			}else{
+				let sql = 'delete from poluicao where idPoluicao = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [request.params.id], (err, results) => {
+					if (err) {
+						response.status(500).json({ erro: "Erro ao remover poluição" })
+					} else {
+						response.status(200).json({message: "Poluição removida com sucesso"})
+					}
+				})
 			}
 		})
 	})
 
 	//metodo que permite remover um teste
-	app.get("/testes/:id/remove", (req, res) => {
-		let sql = 'delete from testes where idTeste = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro ao remover teste" });
-			} else {
-				res.status(200).json({message: "Teste removido com sucesso"});
+	app.get("/testes/:id/remove", (request, response) => {
+		let sql1 = 'select * from testes where idTeste = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Teste não encontrado" })
+			}else{
+				let sql = 'delete from testes where idTeste = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [request.params.id], (err, results) => {
+					if (err) {
+						response.status(500).json({ erro: "Erro ao remover teste" });
+					} else {
+						response.status(200).json({message: "Teste removido com sucesso"});
+					}
+				});
 			}
-		});
+		})
 	});
 
 	//metodo que permite remover uma conservação
-	app.get("/conservacoes/:id/remove", (req, res) => {
-		let sql = 'delete from conservacoes where idConservacao = ?'
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro ao remover conservação" })
-			} else {
-				res.status(200).json({message: "Conservação removida com sucesso"})
+	app.get("/conservacoes/:id/remove", (request, response) => {
+		let sql1 = 'select * from conservacoes where idConservacao = ?'
+		// request.params.id mapeia o :id que está no URL acima.
+		con.query(sql1, [request.params.id], (err, results) => {
+			console.log(err)
+			if(results.length<=0){
+				response.status(404).json({ erro: "Conservação não encontrada" })
+			}else{
+				let sql = 'delete from conservacoes where idConservacao = ?'
+				// request.params.id mapeia o :id que está no URL acima.
+				con.query(sql, [request.params.id], (err, results) => {
+					if (err) {
+						response.status(500).json({ erro: "Erro ao remover conservação" })
+					} else {
+						response.status(200).json({message: "Conservação removida com sucesso"})
+					}
+				})
 			}
 		})
 	})
