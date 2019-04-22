@@ -242,9 +242,13 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.send("Erro ao criar objeto")
 							response.end()
 						} else {
-							con.query('commit')
-							response.send("Sucesso")
-							response.end()
+							let resposta = {
+                                message: "Sucesso",
+                                id: results[1].insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
 						}
 					})
 				}
