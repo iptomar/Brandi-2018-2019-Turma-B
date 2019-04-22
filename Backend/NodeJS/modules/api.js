@@ -297,7 +297,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	//Interessados de um objeto (pelo ID do objeto)
 	app.get("/objetos/:id/interessados", verificaLogin, (req, res) => {
 
-			let sql = "Select interessados.* from interessados,interessadosObjeto where interessadosObjeto.objeto = ? and interessados.idInteressado = interessadosObjeto.interessado"
+			let sql = "Select interessados.*,interessadosObjeto.tipo from interessados,interessadosObjeto where interessadosObjeto.objeto = ? and interessados.idInteressado = interessadosObjeto.interessado"
 
 			// req.params.id mapeia o :id que está no URL acima.
 			con.query(sql, [req.params.id], (err, results) => {
