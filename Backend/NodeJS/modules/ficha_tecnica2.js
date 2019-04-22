@@ -1099,12 +1099,12 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
                 let sql4 = 'delete from imagens where objeto = ?'
                 let sql5 = 'delete from ciclosClimatericos where objeto = ?'
                 let sql6 = 'delete from iluminacao where objeto = ?'
-                let sql7 = 'delete from testes where objeto = ?'
-                let sql8 = 'delete from conservacoes where objeto = ?'
-                let sql9 = 'delete from objetos where idObjeto = ?'
-
+                let sql7 = 'delete from poluicao where objeto = ?'
+                let sql8 = 'delete from testes where objeto = ?'
+                let sql9 = 'delete from conservacoes where objeto = ?'
+                let sql10 = 'delete from objetos where idObjeto = ?'
                 // req.params.id mapeia o :id que está no URL acima.
-                con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8+';'+sql9, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
+                con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8+';'+sql9+';'+sql10, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
                     if (err) {
                         console.log(err)
                         con.query('rollback')
