@@ -1,7 +1,5 @@
 ﻿//modules
 var session = require('express-session')
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 //export
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
