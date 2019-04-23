@@ -660,7 +660,6 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 			response.end()
 		}
 	})
-
 	//metodo que permite alterar a ficha tecnica de um objeto
 	app.post('/objetos/:id/update', function(request, response) {
 	    //guarda os dados recebidos
@@ -714,10 +713,15 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    	autoria && datacao && localOrigem && condicoesAmbientais && conclusoesAmbientais && objetivosExames &&
 	    	resultadosExames && conclusoesExames) {
 		    //procura utilizador na db
-	        con.query('select * from tecnicos where idTecnico = ?', [coordenador],
+			sql1 = 'select * from objetos where idObjeto= ?'
+			sql2 = 'select * from tecnicos where idTecnico = ?'
+	        con.query(sql1 + ';' + sql2, [request.params.id, coordenador],
 	        function(error, results, fields) {
 	            //utilizador não encontrado
-	            if (results.length <= 0) {
+	            if (results[0].length <= 0) {
+	            	response.send('Objeto inválido.')
+					response.end() 
+				} else if (results[1].length <= 0) {
 	            	response.send('Coordenador inválido.')
 					response.end() 
 				} else {
@@ -799,23 +803,32 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let documentacao = request.body.documentacao
 	    //foram recebidos dados
 	    if (imagem && tipo && formato && referencia && documentacao) {
-			const img = {
-				imagem: imagem,
-				tipo: tipo,
-				formato: formato,
-				referencia: referencia,
-				documentacao: documentacao
-			}
-			sql1 = 'update imagens set ? where idImagem = ?'
-			con.query(sql1, [img, request.params.id],
+			sql1 = 'select * from imagens where idImagem = ?'
+			con.query(sql1, [request.params.id],
 			function(error, results, fields) {
-				if(error){
-					console.log(error)
-					response.send("Erro ao alterar imagem")
-					response.end()
+				if (results.length <= 0) {
+	            	response.send('Imagem inválida.')
+					response.end() 
 				} else {
-					response.send("Sucesso")
-					response.end()
+					const img = {
+						imagem: imagem,
+						tipo: tipo,
+						formato: formato,
+						referencia: referencia,
+						documentacao: documentacao
+					}
+					sql1 = 'update imagens set ? where idImagem = ?'
+					con.query(sql1, [img, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar imagem")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
 				}
 			})
 		} else {
@@ -834,23 +847,32 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let contacto = request.body.contacto
 	    //foram recebidos dados
 	    if (nome && NIF && enderecoPostal && enderecoEletronico && contacto) {
-			const int = {
-				nome: nome,
-				NIF: NIF,
-				enderecoPostal: enderecoPostal,
-				enderecoEletronico: enderecoEletronico,
-				contacto: contacto
-			}
-			sql1 = 'update interessados set ? where idInteressado = ?'
-			con.query(sql1, [int, request.params.id],
+			sql1 = 'select * from interessados where idInteressado = ?'
+			con.query(sql1, [request.params.id],
 			function(error, results, fields) {
-				if(error){
-					console.log(error)
-					response.send("Erro ao alterar interessado")
-					response.end()
+				if (results.length <= 0) {
+	            	response.send('Interessado inválido.')
+					response.end() 
 				} else {
-					response.send("Sucesso")
-					response.end()
+					const int = {
+						nome: nome,
+						NIF: NIF,
+						enderecoPostal: enderecoPostal,
+						enderecoEletronico: enderecoEletronico,
+						contacto: contacto
+					}
+					sql1 = 'update interessados set ? where idInteressado = ?'
+					con.query(sql1, [int, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar interessado")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
 				}
 			})
 		} else {
@@ -909,21 +931,30 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let periodoAno = request.body.periodoAno
 	    //foram recebidos dados
 	    if (temperatura && humidade && periodoAno) {
-			const ciclo = {
-				temperatura: temperatura,
-				humidade: humidade,
-				periodoAno: periodoAno
-			}
-			sql1 = 'update ciclosClimatericos set ? where idCiclo = ?'
-			con.query(sql1, [ciclo, request.params.id],
+	    	sql1 = 'select * from ciclosClimatericos where idCiclo = ?'
+			con.query(sql1, [request.params.id],
 			function(error, results, fields) {
-				if(error){
-					console.log(error)
-					response.send("Erro ao alterar ciclo climatérico")
-					response.end()
+				if (results.length <= 0) {
+	            	response.send('Ciclo climatérico inválido.')
+					response.end() 
 				} else {
-					response.send("Sucesso")
-					response.end()
+					const ciclo = {
+						temperatura: temperatura,
+						humidade: humidade,
+						periodoAno: periodoAno
+					}
+					sql1 = 'update ciclosClimatericos set ? where idCiclo = ?'
+					con.query(sql1, [ciclo, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar ciclo climatérico")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
 				}
 			})
 		} else {
@@ -942,23 +973,32 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let tipo = request.body.tipo
 	    //foram recebidos dados
 	    if (fonte && iluminancia && UVmedido && UVreal && tipo) {
-			const ilum = {
-				fonte: fonte,
-				iluminancia: iluminancia,
-				UVmedido: UVmedido,
-				UVreal: UVreal,
-				tipo: tipo
-			}
-			sql1 = 'update iluminacao set ? where idIluminacao = ?'
-			con.query(sql1, [ilum, request.params.id],
+			sql1 = 'select * from iluminacao where idIluminacao = ?'
+			con.query(sql1, [request.params.id],
 			function(error, results, fields) {
-				if(error){
-					console.log(error)
-					response.send("Erro ao alterar iluminação")
-					response.end()
+				if (results.length <= 0) {
+	            	response.send('Iluminação inválida.')
+					response.end() 
 				} else {
-					response.send("Sucesso")
-					response.end()
+					const ilum = {
+						fonte: fonte,
+						iluminancia: iluminancia,
+						UVmedido: UVmedido,
+						UVreal: UVreal,
+						tipo: tipo
+					}
+					sql1 = 'update iluminacao set ? where idIluminacao = ?'
+					con.query(sql1, [ilum, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar iluminação")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
 				}
 			})
 		} else {
@@ -975,21 +1015,30 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let resultados = request.body.resultados
 	    //foram recebidos dados
 	    if (agente && fonte && resultados) {
-			const pol = {
-				agente: agente,
-				fonte: fonte,
-				resultados: resultados
-			}
-			sql1 = 'update poluicao set ? where idPoluicao = ?'
-			con.query(sql1, [pol, request.params.id],
+	    	sql1 = 'select * from poluicao where idPoluicao = ?'
+			con.query(sql1, [request.params.id],
 			function(error, results, fields) {
-				if(error){
-					console.log(error)
-					response.send("Erro ao alterar poluição")
-					response.end()
+				if (results.length <= 0) {
+	            	response.send('Poluição inválida.')
+					response.end() 
 				} else {
-					response.send("Sucesso")
-					response.end()
+					const pol = {
+						agente: agente,
+						fonte: fonte,
+						resultados: resultados
+					}
+					sql1 = 'update poluicao set ? where idPoluicao = ?'
+					con.query(sql1, [pol, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar poluição")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
 				}
 			})
 		} else {
@@ -1011,11 +1060,15 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    if (referencia && localizacao && objetivos && resultados && data && tecnico) {
 		    //procura utilizador na db
 		    sql1 = 'select * from tecnicos where idTecnico = ?'
-	        con.query(sql1, [tecnico],
+		    sql2 = 'select * from testes where idTeste = ?'
+	        con.query(sql1+';'+sql2, [tecnico, request.params.id],
 	        function(error, results, fields) {
 	            //utilizador não encontrado
-	            if (results.length <= 0) {
+	            if (results[0].length <= 0) {
 	            	response.send('Técnico inválido.')
+					response.end() 
+				} else if (results[1].length <= 0) {
+	            	response.send('Teste inválido.')
 					response.end() 
 				} else {
 					const pol = {
@@ -1057,24 +1110,33 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let observacoes = request.body.observacoes
 	    //foram recebidos dados
 	    if (tipo && estado && estrutura && superficie && elementos && observacoes) {
-			const conserv = {
-				tipo: tipo,
-				estado: estado,
-				estrutura: estrutura,
-				superficie: superficie,
-				elementos: elementos,
-				observacoes: observacoes
-			}
-			sql1 = 'update conservacoes set ? where idConservacao = ?'
-			con.query(sql1, [conserv, request.params.id],
+	    	sql1 = 'select * from conservacoes where idConservacao = ?'
+			con.query(sql1, [request.params.id],
 			function(error, results, fields) {
-				if(error){
-					console.log(error)
-					response.send("Erro ao alterar estado de conservação")
-					response.end()
+				if (results.length <= 0) {
+	            	response.send('Conservação inválida.')
+					response.end() 
 				} else {
-					response.send("Sucesso")
-					response.end()
+					const conserv = {
+						tipo: tipo,
+						estado: estado,
+						estrutura: estrutura,
+						superficie: superficie,
+						elementos: elementos,
+						observacoes: observacoes
+					}
+					sql1 = 'update conservacoes set ? where idConservacao = ?'
+					con.query(sql1, [conserv, request.params.id],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao alterar estado de conservação")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
 				}
 			})
 		} else {
@@ -1089,8 +1151,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
         function(error, results, fields) {
             //utilizador não encontrado
             if (results.length <= 0) {
-                response.send('Objeto inválido.')
-                response.end() 
+				response.status(404).json({ erro: "Objeto não encontrado" })
             } else {
                 let sql0 = 'start transaction'
                 let sql1 = 'delete from tecnicoProcesso where processo = (Select idProcesso from processos where objeto = ?)'
