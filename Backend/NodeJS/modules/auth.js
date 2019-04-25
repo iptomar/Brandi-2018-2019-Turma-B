@@ -54,18 +54,24 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let NivProfissional = request.body.NivProfissional
 	    let fotografia = request.body.fotografia
 	    if(Nome && username && password && email && tipo && Habilitacoes && NivProfissional && fotografia){
-	    const tecnico = {nome:Nome, username:username, password:password, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional, fotografia:fotografia}
-	    con.query('INSERT INTO tecnicos SET ?', [tecnico],
-	    		function(error, results, fields) {
-					if(error){
-						response.send("Erro ao inserir na tabela tecnicos")
-						response.end()
-	    			}else{
-	    				response.send("Sucesso")
-						response.end()
-	    			}
-	    		}
-	    	)}
+		
+			bcrypt.genSalt(10, function(err, salt) {
+				bcrypt.hash(password, salt, function(err, hash) {
+					// Store hash in your password DB.
+					const tecnico = {nome:Nome, username:username, password:hash, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional, fotografia:fotografia}
+	    			con.query('INSERT INTO tecnicos SET ?', [tecnico], function(error, results, fields) {
+						if(error){
+							response.send("Erro ao inserir na tabela tecnicos")
+							response.end()
+	    				}else{
+	    					response.send("Sucesso")
+							response.end()
+	    				}
+	    			})
+				});
+			});
+		
+		}
 	    else {
 	        response.send('Por favor peencha todos os campos.')
 	        response.end()
