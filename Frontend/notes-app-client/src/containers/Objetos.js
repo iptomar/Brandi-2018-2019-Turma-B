@@ -88,7 +88,7 @@ componentDidMount(){
 			titulo.textContent = nome;
 			body.appendChild(titulo);
 			
-			axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos/'+objeto.idObjeto+'/imagens')
+			axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+objeto.idObjeto+'/imagens')
 			.then((response) => {
 				return response.data
 			})		
@@ -128,8 +128,7 @@ componentDidMount(){
 	             	</NavItem>
             	</Nav>
 				</Collapse>
-			</Navbar> 
-
+			</Navbar>
 		    <div id="grid" className="container">
 				<Button className="btAddObj pull-right" onClick = {this.addFt}>Adicionar</Button>
 		        <div id="row1" className="row"></div>

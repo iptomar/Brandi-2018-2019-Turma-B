@@ -16,8 +16,8 @@ export default class FichaTecnica extends Component {
 	    super(props);
 
 	    this.state = { 
-			fichaTecId:(window.location.pathname).split("/")[2]
-		};
+				fichaTecId:(window.location.pathname).split("/")[2]
+			};
   	}
 
 deleteObj = event => {
@@ -46,6 +46,10 @@ addFt = event => {
 
 editarFT = event => {
 	this.props.history.push("/editar/"+ this.state.fichaTecId)
+}
+
+mudarTestesSolub = event => {
+	this.props.history.push("/testesSolub/")
 }
 	
 componentDidMount(){
@@ -110,6 +114,12 @@ componentDidMount(){
             	</Nav>
 				</Collapse>
 			</Navbar>
+
+			
+			<button class="btAddObj pull-right btn btn-secondary">Ficha Tecnica</button>
+			<button class="btAddObj pull-right btn btn-secondary">Folha de obra</button>
+			<button class="btAddObj pull-right btn btn-secondary" onClick = {this.mudarTestesSolub}>Testes de solubilidade</button>
+
 			<Table className="tableFT table-borderless">
 				<tbody className="tbodyButtonFT">
 					<tr className="trButtonFT">
