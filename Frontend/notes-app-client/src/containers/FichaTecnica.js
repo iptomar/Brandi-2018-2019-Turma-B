@@ -115,10 +115,11 @@ componentDidMount(){
 				</Collapse>
 			</Navbar>
 
-			
-			<button class="btAddObj pull-right btn btn-secondary">Ficha Tecnica</button>
-			<button class="btAddObj pull-right btn btn-secondary">Folha de obra</button>
-			<button class="btAddObj pull-right btn btn-secondary" onClick = {this.mudarTestesSolub}>Testes de solubilidade</button>
+			<div class="menudiv">
+				<button class="btn btnmenu btn-outline-dark">Ficha Tecnica</button>
+				<button class="btn btnmenu btn-outline-dark">Folha de obra</button>
+				<button class="btn btnmenu btn-outline-dark" onClick = {this.mudarTestesSolub}>Testes de solubilidade</button>
+			</div>	
 
 			<Table className="tableFT table-borderless">
 				<tbody className="tbodyButtonFT">
