@@ -21,7 +21,8 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					request.session.loggedin = true
 					request.session.username = username
 					request.session.role = results[0].tipo
-					request.session.cookie.expires = new Date(Date.now() + 10000)
+					//1 hora = 3600000 ms
+					request.session.cookie.expires = new Date(Date.now() + 18000000)
 					response.send(request.session.role)
 
 				//utilizador não encontrado
