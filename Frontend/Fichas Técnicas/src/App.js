@@ -16,7 +16,8 @@ class App extends Component {
           >
             <Navigation>
             <Link to="/CondicoesAmbientais">Condicoes Ambientais</Link>
-            <Link to="/EstadoConservacao">Condicoes Ambientais</Link>
+            <Link to="/EstadoConservacao">Estado de Conservação</Link>
+            <Link to="/Documentacao">Documentação</Link>
 
               </Navigation>
           </Header>

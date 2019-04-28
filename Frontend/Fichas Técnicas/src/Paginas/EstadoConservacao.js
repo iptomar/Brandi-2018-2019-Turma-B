@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-class CondicoesAmbientais extends Component {
+class EstadoConservacao extends Component {
 	render() {
   return (
     <div className="App">
