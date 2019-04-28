@@ -1,0 +1,9 @@
+<Link exact path="/Inicio" component={Inicio} />
+ <Link exact path="/ExamesAnalises" component={ExamesAnalises} />
+<Link exact path="/Estadoconservacao" component={Estadoconservacao} />~
+<Link exact path="/IntervencoesAmbientais" component={IntervencoesAmbientais} />
+<Link exact path="/TipoIntervencao" component={TipoIntervencao} />
+<Link exact path="/IntervencaoRealizada" component={IntervencaoRealizada} />
+<Link exact path="/Documentacao" component={Documentacao} />
+<Link exact path="/Fontes" component={Fontes} />
+<Link exact path="/Equipa" component={Equipa} />

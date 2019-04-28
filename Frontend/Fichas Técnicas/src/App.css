@@ -1,0 +1,57 @@
+
+
+
+h1{
+  text-align: center;
+}
+h3{
+  background-color: #dddddd;
+}
+
+h4{
+  text-align: center;
+}
+.left{
+  height: 100%;
+  width: 45%;
+  margin-left: 5%;
+}
+.right{
+  right: 0;
+  width: 45%;
+  height: 100%;
+  float: right;
+  margin-right: 5%;
+}
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+.message{
+  resize: none;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width:70%;
+}
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+  text-align: left; 
+}
+input{
+
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+
