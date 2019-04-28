@@ -1,0 +1,43 @@
+.bodydiv{
+    background: #f2994a;
+    /********************/
+    position: fixed;
+    top: 0px;
+    left:0px;
+    height: 100%;
+	width: 100%;
+	overflow-y: auto;
+    /********************/
+
+}
+
+.registerform{
+    border-radius: 50px;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    background: #4b2402;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+	
+}
+
+.regField{
+    padding: 20px;
+    border-radius: 100px;
+    background: #ffffff;
+    width: 100%;
+}
+
+.Fielddiv{
+    flex-basis: 80%;
+}
+
+.buttondiv{
+    flex-basis: 60%;
+}
