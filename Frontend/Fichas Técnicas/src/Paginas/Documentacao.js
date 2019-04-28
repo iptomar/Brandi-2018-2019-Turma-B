@@ -13,6 +13,7 @@ class Documentacao extends Component {
       <h4>Referências</h4>
       <textarea>
       </textarea>
+      <h4>Entidade|Autor</h4>
       <textarea>
       </textarea>
 
