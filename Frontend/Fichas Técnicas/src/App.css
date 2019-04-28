@@ -32,10 +32,10 @@ hr {
   border-style: inset;
   border-width: 1px;
 }
-.message{
-  resize: none;
-}
+textarea{
+  border: 2px solid black;
 
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
