@@ -4090,7 +4090,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://brandi.ipt.pt/api/objetos/1/ft",
+							"raw": "http://brandi.ipt.pt/api/objetos/{{ObjetoID}}/ft",
 							"protocol": "http",
 							"host": [
 								"brandi",
@@ -4100,7 +4100,7 @@
 							"path": [
 								"api",
 								"objetos",
-								"1",
+								"{{ObjetoID}}",
 								"ft"
 							]
 						}
