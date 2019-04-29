@@ -29,7 +29,7 @@ class CondicoesAmbientais extends Component {
         <label>Valor Rela de U.V.</label>
         <input className="radiacao"/>
         <h3>Observações|Conclusões</h3>
-        <textarea></textarea>
+        <textarea cols="83" rows="7"></textarea>
 
 
 
@@ -39,7 +39,7 @@ class CondicoesAmbientais extends Component {
         <h1>Condições Ambientais</h1>
 
         <h3>Descrição</h3>
-        <textarea name="descicao" cols="0" rows="10"></textarea><br></br>
+        <textarea  cols="80" rows="10"></textarea><br></br>
         <h3>Ciclos das Estações Climatérias Anuais</h3>
         <table  align="left" >
           <tr>

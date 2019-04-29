@@ -9,16 +9,16 @@ class EstadoConservacao extends Component {
       <h3>Deterioração Biológica dos Materiais</h3>
         <p>Identificação de Patologias e Agentes de Biodeterioração - Diagnóstico</p>
       <h3>Estrutura</h3>
-      <textarea>
+      <textarea cols="80" rows="7">
       </textarea>
       <h3>Superfície</h3>
-      <textarea>
+      <textarea cols="80" rows="7">
       </textarea>
       <h3>Elementos Acessórios</h3>
-      <textarea>
+      <textarea cols="80" rows="7">
       </textarea>
       <h3>Observações|Conclusões</h3>
-      <textarea>
+      <textarea cols="80" rows="7">
       </textarea>
       </div>
       <div className="left">
@@ -27,13 +27,13 @@ class EstadoConservacao extends Component {
       <p>Alterabilidades: Decorrente de envelhecimento natural</p>
       <p>Alteração: Decorrente de fatores físicos, químicos, biológicos e antrópicos</p>
       <h3>Estrutura</h3>
-      <textarea>
-      </textarea>
+      <textarea cols="80" rows="7">
+      </textarea >
       <h3>Superfície</h3>
-      <textarea>
+      <textarea cols="80" rows="7">
       </textarea>
       <h3>Elementos Acessórios</h3>
-      <textarea>
+      <textarea cols="80" rows="7">
       </textarea>
 
        
