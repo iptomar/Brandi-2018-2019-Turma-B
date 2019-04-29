@@ -39,10 +39,11 @@ export default class Login extends Component {
     axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/register', { Nome, username, password, email, tipo, Habilitacoes, NivProfissional})
       .then(res => {
         console.log(res)
-        alert("success")
+        this.props.history.push("/tecnicos");
       })
       .catch(err => {
         console.log(err);
+        /*Alterar este alerta para outra coisa, alertas são bad guys ;)*/
         alert("fail")
       });
   }
