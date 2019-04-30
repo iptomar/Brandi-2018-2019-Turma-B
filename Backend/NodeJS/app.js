@@ -8,6 +8,7 @@ var api = require('./modules/api')
 var auth = require('./modules/auth')
 var ft = require('./modules/ficha_tecnica')
 var ft2 = require('./modules/ficha_tecnica2')
+var edit = require('./modules/edit')
 //coneção com db
 var con = mysql.createConnection({
 	host     : 'localhost',
@@ -52,5 +53,6 @@ api(app, con, verificaLogin, verificaLoginAdmin)
 auth(app, con, verificaLogin, verificaLoginAdmin)
 ft(app, con, verificaLogin, verificaLoginAdmin)
 ft2(app, con, verificaLogin, verificaLoginAdmin)
+edit(app, con, verificaLogin, verificaLoginAdmin)
 
 app.listen(8080)
