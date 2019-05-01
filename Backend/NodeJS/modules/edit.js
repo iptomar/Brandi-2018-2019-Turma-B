@@ -189,3 +189,4 @@ app.post('/tecnicos/username/:username/updatenivelProfissional', function (reque
 	}
 
 });
+}
