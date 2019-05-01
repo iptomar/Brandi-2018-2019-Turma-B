@@ -12,26 +12,40 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		var password = request.body.password
 		//foram recebidos dados
 		if (username && password) {
-			//procura utilizador na db
-			con.query('SELECT * FROM tecnicos WHERE username = ? AND password = ?', [username, password],
-			function(error, results, fields) {
-				//utilizador encontrado
-				if (results.length > 0) {
-					//guarda a informação do utilizador logged in
-					request.session.loggedin = true
-					request.session.username = username
-					request.session.role = results[0].tipo
-					//1 hora = 3600000 ms
-					request.session.cookie.expires = new Date(Date.now() + 18000000)
-					response.send(request.session.role)
+			con.query('SELECT * FROM tecnicos WHERE username = ?',[username],function(error, results, fields) {
+				if(error){
+					response.send("User not found")
+					response.end()
+				}
 
-				//utilizador não encontrado
-				} else {
-					response.send('Incorrect Username and/or Password!')
-				}			
-				response.end()
+				else{
+
+					bcrypt.compare(password, results[0].password, function(err, res) {
+						// res === true
+						if(err){
+							response.send("Unexpected error")
+							response.end()
+						}
+						else{
+							if(res === true){
+								//guarda a informação do utilizador logged in
+								request.session.loggedin = true
+								request.session.username = username
+								request.session.role = results[0].tipo
+								//1 hora = 3600000 ms
+								request.session.cookie.expires = new Date(Date.now() + 18000000)
+								response.send(request.session.role)
+							}
+							else{
+								response.send("Incorrect username and/or password, please try again")
+								response.end()
+							}
+						}
+					});
+
+				}
+
 			})
-		//não foram recebidos dados
 		} else {
 			response.send('Please enter Username and Password!')
 			response.end()
@@ -67,7 +81,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							response.end()
 	    				}else{
 	    					response.send("Sucesso")
-							response.end()
+								response.end()
 	    				}
 	    			})
 				});
