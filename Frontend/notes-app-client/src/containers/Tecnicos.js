@@ -18,6 +18,10 @@ componentDidMount(){
 		this.props.history.push("/login");
 	}
 
+	if(sessionStorage.getItem("tipo") !== "admin"){
+		this.props.history.push("/menu");
+	}
+
 	let main = document.getElementById("main")
 
 	let divInic = document.createElement("div");

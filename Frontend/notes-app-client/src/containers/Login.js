@@ -47,13 +47,13 @@ export default class Login extends Component {
         }
       })
       .catch(err => {
-        console.log(err);
+        console.log(err)
       });
   }
 
   render() {
 
-    if(this.state.loginState === "success"){
+    if(sessionStorage.getItem("loginState") === "success"){
     	this.props.history.push("/menu");
     }
 
