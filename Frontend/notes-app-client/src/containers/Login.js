@@ -80,9 +80,7 @@ export default class Login extends Component {
           </div>
           <div className="App__Form">
             <div className="FormTitle">
-              <Link to="/login" className="FormTitle__Link ">
                 Iniciar Sessao
-              </Link>
             </div>
             <Route exact path="/login">
               <div className="FormCenter">
