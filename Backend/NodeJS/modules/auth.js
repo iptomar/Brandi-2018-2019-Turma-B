@@ -24,7 +24,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 						// res === true
 						if(err){
 							response.send("Unexpected error")
-							response.end()
+							
 						}
 						else{
 							if(res === true){
@@ -35,13 +35,14 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 								//1 hora = 3600000 ms
 								request.session.cookie.expires = new Date(Date.now() + 18000000)
 								response.send(request.session.role)
-								response.end()
+								
 							}
 							else{
 								response.send("Incorrect username and/or password, please try again")
-								response.end()
+								
 							}
 						}
+						response.end()
 					});
 
 				}
