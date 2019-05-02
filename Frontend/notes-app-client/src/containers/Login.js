@@ -39,7 +39,7 @@ export default class Login extends Component {
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
     axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth', { username, password })
       .then(res => {
-        if(res.data === "Incorrect Username and/or Password!"){
+        if(res.data === "User not found" || res.data === "Unexpected error" || res.data === "Incorrect username and/or password, please try again" ){
           this.setState({ loginState: 'error' })
         }else{
           sessionStorage.setItem("tipo", res.data);
