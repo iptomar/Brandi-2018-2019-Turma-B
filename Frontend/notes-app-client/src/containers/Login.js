@@ -53,7 +53,7 @@ export default class Login extends Component {
 
   render() {
 
-    if(loginState === "success"){
+    if(this.state.loginState === "success"){
     	this.props.history.push("/menu");
     }
 
