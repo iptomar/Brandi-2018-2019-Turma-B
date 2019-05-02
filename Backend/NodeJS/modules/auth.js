@@ -22,16 +22,12 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 					bcrypt.compare(password, results[0].password, function(err, res) {
 						// res === true
-						console.log('1')
 						if(err){
 							response.send("Unexpected error")
 							response.end()
-							console.log('2')
 						}
 						else{
-							console.log('3')
 							if(res === true){
-								console.log('4')
 								//guarda a informação do utilizador logged in
 								request.session.loggedin = true
 								request.session.username = username
@@ -42,13 +38,11 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 								response.end()
 							}
 							else{
-								console.log('5')
 								response.send("Incorrect username and/or password, please try again")
 								response.end()
 							}
 						}
 					});
-					console.log('6')
 				}
 
 			})
