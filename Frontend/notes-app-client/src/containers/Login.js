@@ -53,6 +53,10 @@ export default class Login extends Component {
 
   render() {
 
+    if(loginState === "success"){
+    	this.props.history.push("/menu");
+    }
+
     let alertBox = document.getElementById("alertBox");
     if(alertBox != null){
       document.getElementById("divBtn").removeChild(alertBox);

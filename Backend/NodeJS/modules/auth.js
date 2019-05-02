@@ -19,7 +19,11 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 				}
 
 				else{
-
+					if(results.length < 1){
+						response.send("User not found")
+						response.end()
+					}
+					else{
 					bcrypt.compare(password, results[0].password, function(err, res) {
 						// res === true
 						if(err){
@@ -42,7 +46,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 								response.end()
 							}
 						}
-					});
+					});}
 				}
 
 			})
