@@ -1,0 +1,49 @@
+.imagem{
+    float: left;
+    width: 33.33%;
+    padding: 30px;
+    text-align: center;
+
+}
+
+.estt, .lab{
+    width: 60%;
+    height: 30%;
+}
+.imagens{
+    text-align: center;
+}
+#root > div > div > div > div.mdl-layout__content > div:nth-child(2) > div.imagens > div:nth-child(1){
+    margin-left: 10%;
+}
+
+.imagens::after{
+  content: "";
+  clear: both;
+  display: table;
+  text-align: center;
+}
+
+.btn{
+    border: none;
+    color: white; 
+    padding: 14px 28px; 
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+/*definição da cor de fundo dos botões*/
+.sucesso{
+    text-decoration: none;
+    background-color: #4B2402;
+    position:relative;
+    top: 100px;
+}
+
+/*definição da cor dos botões quando o rato passa por cima dos mesmos*/
+.mdl-layout__content{
+    background-color: #F2B54B;
+}
+::placeholder {
+    opacity: 0.4;
+  }
