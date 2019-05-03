@@ -3,7 +3,7 @@ import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
 import { Redirect } from 'react-router-dom'
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default class Login extends Component {
   constructor(props) {

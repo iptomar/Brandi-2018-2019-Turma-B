@@ -74,11 +74,12 @@ th{
     height: 100%;
     width: 100%;
     overflow: scroll;
+	margin-top: 66px !important;
 }
 
 .avatarImg {
-	height: 250px;
-	padding-top: 5em;
+	height: 180px !important;
+	padding-top: 1em !important;
 }
 .logoImg {
     height: 550px;
