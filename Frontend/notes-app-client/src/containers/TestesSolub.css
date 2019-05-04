@@ -53,7 +53,8 @@ table {
 	text-align: center;
 	font-size: 18px;
 	color:orange;
-  }
+	}
+	/*
   h2{
 	  font-family: Verdana, Geneva, Tahoma, sans-serif;
 	  text-align: center;
@@ -88,12 +89,14 @@ table {
   }
   .grau{
 	margin-top:60px;
-  }
+	}
+	/*
   h3{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 16px;
 	color:#4b2402;
-  }
+	}
+	*/
   .eficacia{
 	font-size:14px;
 	margin-top:-30px;
@@ -145,7 +148,7 @@ table {
   }
   .ident2{
 	width:40%;
-  }
+	}
   hr{
 	display: block;
 	margin-top: 0.5em;

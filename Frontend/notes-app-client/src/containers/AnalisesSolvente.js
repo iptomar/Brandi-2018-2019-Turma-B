@@ -5,7 +5,7 @@ import logo from './img/logos2.png';
 import "./AnalisesSolvente.css";
 import "./navbar.css";
 
-export default class TestesSolub extends Component {
+export default class AnalisesSolvente extends Component {
     constructor(props) {
         super(props);
 
@@ -82,8 +82,8 @@ export default class TestesSolub extends Component {
                 table.appendChild(tr);
 
                 let info = document.createElement('a');
-                //ALTERAR PARA O LINK CORRECTO QUANDO EXISTIR A PAGINA
-                info.href = "http://brandi.ipt.pt/objetos/";
+                info.href = "http://brandi.ipt.pt/detalhesAnalises/"+an[i].idAnalise+"";
+                //info.href = "http://localhost:3000/detalhesAnalises/"+an[i].idAnalise+"";
                 info.textContent = "Detalhes"
                 tr.appendChild(info);
                 table.appendChild(tr);
