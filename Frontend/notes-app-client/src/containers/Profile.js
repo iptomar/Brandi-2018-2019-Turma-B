@@ -63,40 +63,66 @@ export default class Login extends Component {
 	}
 
 	editEmail = event => {
-		let textField = document.createElement("input");
-		textField.id = "TfEmail";
-		let emailAluno = document.getElementById("emailAluno");
-		let btn = document.getElementById("CampoEmail");
-		btn.innerHTML = "Save";
-		btn.removeEventListener('click', this.editEmail);
-		btn.addEventListener('click', this.submitEmail);
-		document.getElementById("CampoUsername").remove();
-		document.getElementById("CampoNome").remove();
-		document.getElementById("CampoPass").remove();
-		document.getElementById("CampoTipo").remove();
-		document.getElementById("CampoHab").remove();
-		document.getElementById("CampoNivel").remove();
-		
-		emailAluno.innerHTML = "";
-		emailAluno.appendChild(textField);
+		try{
+			let textField = document.createElement("input");
+			textField.id = "TfEmail";
+			let emailAluno = document.getElementById("emailAluno");
+			let btn = document.getElementById("CampoEmail");
+			btn.innerHTML = "Save";
+			btn.removeEventListener('click', this.editEmail);
+			btn.addEventListener('click', this.submitEmail);
+			document.getElementById("CampoUsername").remove();
+			document.getElementById("CampoNome").remove();
+			document.getElementById("CampoPass").remove();
+			document.getElementById("CampoTipo").remove();
+			document.getElementById("CampoHab").remove();
+			document.getElementById("CampoNivel").remove();
+			
+			emailAluno.innerHTML = "";
+			emailAluno.appendChild(textField);
+		}catch(err){
+			let textField = document.createElement("input");
+			textField.id = "TfEmail";
+			let emailAluno = document.getElementById("emailAluno");
+			let btn = document.getElementById("CampoEmail");
+			btn.innerHTML = "Save";
+			btn.removeEventListener('click', this.editEmail);
+			btn.addEventListener('click', this.submitEmail);
+			document.getElementById("CampoPass").remove();
+			emailAluno.innerHTML = "";
+			emailAluno.appendChild(textField);
+		}
 	}
 
 	editPass = event => {
-		let textField = document.createElement("input");
-		textField.id = "TfPass";
-		let passAluno = document.getElementById("passAluno");
-		let btn = document.getElementById("CampoPass");
-		btn.innerHTML = "Save";
-		btn.removeEventListener('click', this.editPass);
-		btn.addEventListener('click', this.submitPass);
-		document.getElementById("CampoUsername").remove();
-		document.getElementById("CampoNome").remove();
-		document.getElementById("CampoEmail").remove();
-		document.getElementById("CampoTipo").remove();
-		document.getElementById("CampoHab").remove();
-		document.getElementById("CampoNivel").remove();
-		passAluno.innerHTML = "";
-		passAluno.appendChild(textField);
+		try{
+			let textField = document.createElement("input");
+			textField.id = "TfPass";
+			let passAluno = document.getElementById("passAluno");
+			let btn = document.getElementById("CampoPass");
+			btn.innerHTML = "Save";
+			btn.removeEventListener('click', this.editPass);
+			btn.addEventListener('click', this.submitPass);
+			document.getElementById("CampoUsername").remove();
+			document.getElementById("CampoNome").remove();
+			document.getElementById("CampoEmail").remove();
+			document.getElementById("CampoTipo").remove();
+			document.getElementById("CampoHab").remove();
+			document.getElementById("CampoNivel").remove();
+			passAluno.innerHTML = "";
+			passAluno.appendChild(textField);
+		}catch(err){
+			let textField = document.createElement("input");
+			textField.id = "TfPass";
+			let passAluno = document.getElementById("passAluno");
+			let btn = document.getElementById("CampoPass");
+			btn.innerHTML = "Save";
+			btn.removeEventListener('click', this.editPass);
+			btn.addEventListener('click', this.submitPass);
+			document.getElementById("CampoEmail").remove();
+			passAluno.innerHTML = "";
+			passAluno.appendChild(textField);
+		}
 	}
 
 	editTipo = event => {
