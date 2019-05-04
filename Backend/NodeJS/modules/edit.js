@@ -10,7 +10,7 @@ app.post('/tecnicos/username/:username/updateNome', function (request, response)
 
 	if (Nome) {
 		const tecnico = { nome: Nome };
-		con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
+		con.query('UPDATE tecnicos SET nome = ? WHERE username = ? ', [Nome, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
