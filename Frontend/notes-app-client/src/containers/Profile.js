@@ -158,7 +158,7 @@ export default class Login extends Component {
 
 	submitNome = event => {
 		const nomeActual = this.state.user.nome;
-		const Nome = document.getElementById("TfNome").innerHTML;
+		const Nome = document.getElementById("TfNome").value;
 
 		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
     axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateNome', { Nome })
