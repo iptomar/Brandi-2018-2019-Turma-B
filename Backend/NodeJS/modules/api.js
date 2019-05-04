@@ -557,21 +557,21 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})
 
 	//analisesSolventes (pelo ID)
-	app.get("/analisesSolventes/id/:id", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM analisesSolventes WHERE idAnalise = ?"
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro na query" })
-			} else {
-				if (results.length ==0) {
-					res.status(404).json({ erro: "analisesSolventes not found" })
-				} else {
-					res.status(200).json(results)
-				}
-			}
-		})
-	})
+    app.get("/analisesSolventes/id/:id", verificaLogin, (req, res) => {
+        let sql = "SELECT analisesSolventes.*,  tecnicos.nome as nomeTecnico FROM analisesSolventes, tecnicos WHERE analisesSolventes.idAnalise = ? and analisesSolventes.tecnico =  tecnicos.idTecnico"
+        // req.params.id mapeia o :id que está no URL acima.
+        con.query(sql, [req.params.id], (err, results) => {
+            if (err) {
+                res.status(500).json({ erro: "Erro na query" })
+            } else {
+                if (results.length ==0) {
+                    res.status(404).json({ erro: "analisesSolventes not found" })
+                } else {
+                    res.status(200).json(results)
+                }
+            }
+        })
+    })
 
 	//analisesSolventes de um objeto (pelo ID do objeto)
 	app.get("/objetos/:id/analisesSolventes", verificaLogin, (req, res) => {
