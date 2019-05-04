@@ -9,7 +9,8 @@ app.post('/tecnicos/username/:username/updateNome', function (request, response)
 	let Nome = request.body.Nome;
 
 	if (Nome) {
-		con.query('UPDATE tecnicos SET nome = ? WHERE username = ? ', [Nome, request.params.username],
+		const tecnico = { nome: Nome };
+		con.query('UPDATE tecnicos SET ? WHERE username = ? ', [tecnico, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
@@ -32,7 +33,8 @@ app.post('/tecnicos/username/:username/updateUsername', function (request, respo
 	let username = request.body.username;
 
 	if (username) {
-		con.query('UPDATE tecnicos SET username = ? WHERE username = ? ', [username, request.params.username],
+		const tecnico = { username: username };
+		con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
@@ -57,7 +59,8 @@ app.post('/tecnicos/username/:username/updateEmail', function (request, response
 	let email = request.body.email;
 
 	if (email) {
-		con.query('UPDATE tecnicos SET email =  ? WHERE username = ? ', [email, request.params.username],
+		const tecnico = { email: email };
+		con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
@@ -84,7 +87,8 @@ app.post('/tecnicos/username/:username/updatePassword', function (request, respo
 	if (password) {
 		bcrypt.genSalt(10, function (err, salt) {
 			bcrypt.hash(password, salt, function (err, hash) {
-				con.query('UPDATE tecnicos SET password = WHERE username = ? ', [hash, request.params.username],
+				const tecnico = { password: hash };
+				con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
 					function (error, results, fields) {
 						if (error) {
 							response.send("Erro ao inserir na tabela tecnicos");
@@ -113,7 +117,9 @@ app.post('/tecnicos/username/:username/updateTipo', function (request, response)
 	let tipo = request.body.tipo;
 
 	if (tipo) {
-		con.query('UPDATE tecnicos SET tipo = WHERE username = ? ', [tipo, request.params.username],
+
+		const tecnico = { tipo: tipo };
+		con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
@@ -139,7 +145,7 @@ app.post('/tecnicos/username/:username/updateHabilitacoes', function (request, r
 
 	if (habilitacoes) {
 		const tecnico = { habilitacoes: habilitacoes };
-		con.query('UPDATE tecnicos SET habilitacoes = ? WHERE username = ? ', [habilitacoes, request.params.username],
+		con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
@@ -165,7 +171,7 @@ app.post('/tecnicos/username/:username/updatenivelProfissional', function (reque
 
 	if (nivelProfissional) {
 		const tecnico = { nivelProfissional: nivelProfissional };
-		con.query('UPDATE tecnicos SET nivelProfissional = ? WHERE username = ? ', [nivelProfissional, request.params.username],
+		con.query('UPDATE tecnicos SET  ? WHERE username = ? ', [tecnico, request.params.username],
 			function (error, results, fields) {
 				if (error) {
 					response.send("Erro ao inserir na tabela tecnicos");
