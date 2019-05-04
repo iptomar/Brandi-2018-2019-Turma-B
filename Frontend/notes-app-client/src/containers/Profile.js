@@ -158,6 +158,7 @@ export default class Login extends Component {
 
 	submitNome = event => {
 		const nomeActual = this.state.user.nome;
+		console.log(this.state.user.nome);
 		const Nome = document.getElementById("TfNome").value;
 
 		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
