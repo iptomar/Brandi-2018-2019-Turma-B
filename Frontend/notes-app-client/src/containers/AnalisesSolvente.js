@@ -77,7 +77,7 @@ export default class TestesSolub extends Component {
                 tr.appendChild(data);
 
                 let tecnico = document.createElement('td');
-                tecnico.textContent = an[i].tecnico;
+                tecnico.textContent = an[i].nomeTecnico;
                 tr.appendChild(tecnico);
                 table.appendChild(tr);
 

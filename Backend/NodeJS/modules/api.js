@@ -575,7 +575,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//analisesSolventes de um objeto (pelo ID do objeto)
 	app.get("/objetos/:id/analisesSolventes", verificaLogin, (req, res) => {
-		let sql = "Select analisesSolventes.*, tecnicos.nome from analisesSolventes,tecnicos where analisesSolventes.objeto = ? and tecnicos.idTecnico = analisesSolventes.tecnico"
+		let sql = "Select analisesSolventes.*, tecnicos.nome as nomeTecnico from analisesSolventes,tecnicos where analisesSolventes.objeto = ? and tecnicos.idTecnico = analisesSolventes.tecnico"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
