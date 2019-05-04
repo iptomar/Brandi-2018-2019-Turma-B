@@ -157,8 +157,8 @@ export default class Login extends Component {
 	//Submeter Valores
 
 	submitNome = event => {
-		const nomeActual = this.state.user.nome;
-		console.log(this.state.user.nome);
+		const nomeActual = this.state.user.username;
+		console.log(this.state.user.username);
 		const Nome = document.getElementById("TfNome").value;
 
 		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
