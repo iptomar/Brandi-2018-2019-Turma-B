@@ -80,6 +80,13 @@ export default class TestesSolub extends Component {
                 tecnico.textContent = an[i].tecnico;
                 tr.appendChild(tecnico);
                 table.appendChild(tr);
+
+                let info = document.createElement('a');
+                //ALTERAR PARA O LINK CORRECTO QUANDO EXISTIR A PAGINA
+                info.href = "http://brandi.ipt.pt/objetos/";
+                info.textContent = "Detalhes"
+                tr.appendChild(info);
+                table.appendChild(tr);
             }
         })
         .catch(error =>{
@@ -87,7 +94,7 @@ export default class TestesSolub extends Component {
             let table = document.getElementById('tableAnalises');
             let tr = document.createElement('tr');
             let td = document.createElement('td');
-            td.colSpan = 3;
+            td.colSpan = 4;
             td.textContent = "Não existem dados disponiveis";
             tr.appendChild(td);
             table.appendChild(tr);
@@ -138,6 +145,7 @@ export default class TestesSolub extends Component {
                     <th>Sujidade</th>
                     <th>data</th>
                     <th>tecnico</th>
+                    <th>Info</th>
                 </tr>
             </table>
         </div>
