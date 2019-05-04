@@ -158,13 +158,12 @@ export default class Login extends Component {
 
 	submitNome = event => {
 		const nomeActual = this.state.user.username;
-		console.log(this.state.user.username);
 		const Nome = document.getElementById("TfNome").value;
 
 		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
     axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateNome', { Nome })
       .then(res => {
-        console.log(res.data);
+        window.location.reload();
       })
       .catch(err => {
         console.log(err)
@@ -172,27 +171,87 @@ export default class Login extends Component {
 	}
 
 	submitUsername = event => {
-		console.log("submitUsername");
+		const nomeActual = this.state.user.username;
+		const username = document.getElementById("TfUser").value;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateUsername', { username })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
 	submitEmail = event => {
-		console.log("submitEmail");
+		const nomeActual = this.state.user.username;
+		const email = document.getElementById("TfEmail").value;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateEmail', { email })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
 	submitPass = event => {
-		console.log("submitPass");
+		const nomeActual = this.state.user.username;
+		const password = document.getElementById("TfPass").value;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updatePassword', { password })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
 	submitHab = event => {
-		console.log("submitHab");
+		const nomeActual = this.state.user.username;
+		const habilitacoes = document.getElementById("TfHab").value;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateHabilitacoes', { habilitacoes })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
 	submitTipo = event => {
-		console.log("submitTipo");
+		const nomeActual = this.state.user.username;
+		const tipo = document.getElementById("TfTipo").value;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateTipo', { tipo })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
 	submitNivel = event => {
-		console.log("submitNivel");
+		const nomeActual = this.state.user.username;
+		const nivelProfissional = document.getElementById("TfNivel").value;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updatenivelProfissional', { nivelProfissional })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
   componentDidMount(){
