@@ -558,7 +558,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//analisesSolventes (pelo ID)
 	app.get("/analisesSolventes/id/:id", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM analisesSolventes WHERE idObjeto = ?"
+		let sql = "SELECT * FROM analisesSolventes WHERE idAnalise = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
