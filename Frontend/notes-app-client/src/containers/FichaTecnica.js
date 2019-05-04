@@ -48,8 +48,8 @@ editarFT = event => {
 	this.props.history.push("/editar/"+ this.state.fichaTecId)
 }
 
-mudarTestesSolub = event => {
-	this.props.history.push("/testesSolub/")
+mudarAnalisesSolvente = event => {
+	this.props.history.push("/analisesSolvente/"+ this.state.fichaTecId);
 }
 	
 componentDidMount(){
@@ -153,7 +153,7 @@ componentDidMount(){
 			<div className="menudiv">
 				<button className="btn btnmenu btn-outline-dark">Ficha Tecnica</button>
 				<button className="btn btnmenu btn-outline-dark">Folha de obra</button>
-				<button className="btn btnmenu btn-outline-dark" onClick = {this.mudarTestesSolub}>Testes de solubilidade</button>
+				<button className="btn btnmenu btn-outline-dark" onClick = {this.mudarAnalisesSolvente}>Analises Solvente</button>
 			</div>	
 
 			<Table className="tableFT table-borderless">

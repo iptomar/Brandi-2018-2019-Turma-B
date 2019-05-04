@@ -101,25 +101,8 @@ export default class TestesSolub extends Component {
         <div className="div3">
             <h3 className="ident"><b>Identificação do Estrato/Sujidade: </b><input className="ident2"type="text" maxLength="50"/></h3>
             <h3 className="caract"><b>Características: </b><textarea cols={40} rows={10}/></h3> 
-            <h3 input type="button" className="button">Seguinte</h3>
         </div>
 
-
-
-
-
-
-
-        <div className="div4">
-          <img alt="" src={logo}/>
-          <h1 className="info"><b>Laboratório de Conservação e Restauro - Madeiras | Lab.CR-M |</b></h1>
-        <h2><b>| Artefactos e Estruturas em Madeira | Mobiliário | Retabulística e Talha |</b></h2>
-        </div>
-        
-    <div className="div1">
-        <h1><b>TESTE DE EFICÁCIA DOS SOLVENTES NA LIMPEZA E SOLUBILIZAÇÃO DE ESTRATOS E SUJIDADE</b></h1>
-        <hr />
-    </div>
     <div className="div2">
         <table  align="center">
             <tr className="cab">

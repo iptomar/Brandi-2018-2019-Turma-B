@@ -453,7 +453,7 @@ export default class Login extends Component {
 								e Talha I
               				</p>
 
-							<table align="center">
+							<table className="profileTable" align="center">
 								<tbody>
 									<tr className="Campos">
 										<th>Campo</th>

@@ -122,7 +122,7 @@ th{
 	margin-top: 1%;
 }
 
-table {
+.profileTable {
 	font-family: arial, sans-serif;
 	border: 1px;
 	border-color: black;
@@ -130,17 +130,17 @@ table {
 	margin-top: 3%;
 }
 
-tr {
+.profileTable tr {
 	background-color: #dddddd;
 }
 
-td {
+.profileTable td {
 	border: 1px solid #dddddd;
 	text-align: center;
 	padding: 8px;
 }
 
-th {
+.profileTable th {
 	border: 1px solid #dddddd;
 	text-align: center;
 	padding: 1px;

@@ -1,0 +1,36 @@
+.bodyAnalises{
+    background: #f2994a;
+    /********************/
+    position: fixed;
+    top: 0px;
+    left:0px;
+    height: 100%;
+	width: 100%;
+	overflow-y: auto;
+    /********************/
+
+}
+
+.divInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analisesTableDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analisesTable{
+    margin-top: 25px;
+    width: 50%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #ffffff;
+}
+
+.analisesTable th, td{
+    border: 1px solid black;
+}

@@ -1,3 +1,4 @@
+/*
 table {
 	border-collapse: collapse;
 	border-radius: 1em;
@@ -8,7 +9,8 @@ table {
 	padding: 1em;
 	background: #ddd;
 	border-bottom: 2px solid white; 
-  }               
+	}  
+	*/             
   .cab{
 	text-align:center; 
 	padding:10px;
@@ -31,7 +33,7 @@ table {
 	width: 60%;
   }
   .div2{
-	margin-top:0px;
+	margin-top:75px;
   }
   .div3{
 	width: 100%;
@@ -64,13 +66,15 @@ table {
 	text-align: center;
 	font-size: 22px;
 	color:#4b2402;
-  }
+	}
+	/*
   td{
 	text-align:center; 
 	padding: 10px;
 	font-family:"Arial Black"; 
 	font-size:16px;
-  }
+	}
+	*/
   .tecnico{
 	margin-left: 405px;
 	margin-top: -110px;
@@ -115,13 +119,13 @@ table {
 	transform: translateY(4px);
   }
   .principal{
-	background-color: orange;
+	background-color: #f2994a;
 	height:100%;
   }
   .caract{
 	align-items: flex-start;
 	display: flex;
-	margin-left: 350px;
+	margin-left: 528px;
   }
   .ident{
 	text-align: left;

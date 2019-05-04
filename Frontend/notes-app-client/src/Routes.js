@@ -10,6 +10,7 @@ import FichaTecnica from "./containers/FichaTecnica";
 import Register from "./containers/Register";
 import Tecnicos from "./containers/Tecnicos";
 import TestesSolub from "./containers/TestesSolub";
+import AnalisesSolvente from "./containers/AnalisesSolvente";
 
 export default () =>
   <Switch>
@@ -25,4 +26,5 @@ export default () =>
     <Route path="/register" component={Register} />
     <Route path="/tecnicos" component={Tecnicos} />
     <Route path="/testesSolub" component={TestesSolub} />
+    <Route path="/analisesSolvente" component={AnalisesSolvente} />
   </Switch>;
