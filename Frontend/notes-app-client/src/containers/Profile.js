@@ -163,7 +163,7 @@ export default class Login extends Component {
 		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
     axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateNome', { Nome })
       .then(res => {
-        window.location.reload();
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err)
