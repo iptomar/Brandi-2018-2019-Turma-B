@@ -17,16 +17,230 @@ export default class Login extends Component {
     };
   }
 
-toggle() {
-	this.setState({
-		isOpen: !this.state.isOpen
-	});
-}
+	toggle() {
+		this.setState({
+			isOpen: !this.state.isOpen
+		});
+	}
+
+	////////////////////
+	//Alterar butoes
+
+	editNome = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfNome";
+		let nomeAluno = document.getElementById("nomeAluno");
+		let btn = document.getElementById("CampoNome");
+		btn.removeEventListener('click', this.editNome);
+		btn.innerHTML = "Save";
+		btn.addEventListener('click', this.submitNome);
+		document.getElementById("CampoUsername").remove();
+		document.getElementById("CampoEmail").remove();
+		document.getElementById("CampoPass").remove();
+		document.getElementById("CampoTipo").remove();
+		document.getElementById("CampoHab").remove();
+		document.getElementById("CampoNivel").remove();
+		nomeAluno.innerHTML = "";
+		nomeAluno.appendChild(textField);
+	}
+
+	editUser = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfUser";
+		let userAluno = document.getElementById("userAluno");
+		let btn = document.getElementById("CampoUsername");
+		btn.innerHTML = "Save";
+		btn.removeEventListener('click', this.editUser);
+		btn.addEventListener('click', this.submitUsername);
+		document.getElementById("CampoNome").remove();
+		document.getElementById("CampoEmail").remove();
+		document.getElementById("CampoPass").remove();
+		document.getElementById("CampoTipo").remove();
+		document.getElementById("CampoHab").remove();
+		document.getElementById("CampoNivel").remove();
+		userAluno.innerHTML = "";
+		userAluno.appendChild(textField);
+	}
+
+	editEmail = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfEmail";
+		let emailAluno = document.getElementById("emailAluno");
+		let btn = document.getElementById("CampoEmail");
+		btn.innerHTML = "Save";
+		btn.removeEventListener('click', this.editEmail);
+		btn.addEventListener('click', this.submitEmail);
+		document.getElementById("CampoUsername").remove();
+		document.getElementById("CampoNome").remove();
+		document.getElementById("CampoPass").remove();
+		document.getElementById("CampoTipo").remove();
+		document.getElementById("CampoHab").remove();
+		document.getElementById("CampoNivel").remove();
+		
+		emailAluno.innerHTML = "";
+		emailAluno.appendChild(textField);
+	}
+
+	editPass = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfPass";
+		let passAluno = document.getElementById("passAluno");
+		let btn = document.getElementById("CampoPass");
+		btn.innerHTML = "Save";
+		btn.removeEventListener('click', this.editPass);
+		btn.addEventListener('click', this.submitPass);
+		document.getElementById("CampoUsername").remove();
+		document.getElementById("CampoNome").remove();
+		document.getElementById("CampoEmail").remove();
+		document.getElementById("CampoTipo").remove();
+		document.getElementById("CampoHab").remove();
+		document.getElementById("CampoNivel").remove();
+		passAluno.innerHTML = "";
+		passAluno.appendChild(textField);
+	}
+
+	editTipo = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfTipo";
+		let tipoAluno = document.getElementById("tipoAluno");
+		let btn = document.getElementById("CampoTipo");
+		btn.innerHTML = "Save";
+		btn.removeEventListener('click', this.editTipo);
+		btn.addEventListener('click', this.submitTipo);
+		document.getElementById("CampoPass").remove();
+		document.getElementById("CampoUsername").remove();
+		document.getElementById("CampoNome").remove();
+		document.getElementById("CampoEmail").remove();
+		document.getElementById("CampoHab").remove();
+		document.getElementById("CampoNivel").remove();
+		tipoAluno.innerHTML = "";
+		tipoAluno.appendChild(textField);
+	}
+
+	editHab = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfHab";
+		let habAluno = document.getElementById("habAluno");
+		let btn = document.getElementById("CampoHab");
+		btn.innerHTML = "Save";
+		btn.removeEventListener('click', this.editHab);
+		btn.addEventListener('click', this.submitHab);
+		document.getElementById("CampoPass").remove();
+		document.getElementById("CampoUsername").remove();
+		document.getElementById("CampoNome").remove();
+		document.getElementById("CampoEmail").remove();
+		document.getElementById("CampoTipo").remove();
+		document.getElementById("CampoNivel").remove();
+		habAluno.innerHTML = "";
+		habAluno.appendChild(textField);
+	}
+
+	editNivel = event => {
+		let textField = document.createElement("input");
+		textField.id = "TfNivel";
+		let nivelAluno = document.getElementById("nivelAluno");
+		let btn = document.getElementById("CampoNivel");
+		btn.innerHTML = "Save";
+		btn.removeEventListener('click', this.editNivel);
+		btn.addEventListener('click', this.submitNivel);
+		document.getElementById("CampoPass").remove();
+		document.getElementById("CampoUsername").remove();
+		document.getElementById("CampoNome").remove();
+		document.getElementById("CampoEmail").remove();
+		document.getElementById("CampoTipo").remove();
+		document.getElementById("CampoHab").remove();
+		nivelAluno.innerHTML = "";
+		nivelAluno.appendChild(textField);
+	}
+
+	///////////////////
+	//Submeter Valores
+
+	submitNome = event => {
+		const nomeActual = this.state.user.nome;
+		const Nome = document.getElementById("TfNome").innerHTML;
+
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateNome', { Nome })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
+	}
+
+	submitUsername = event => {
+		console.log("submitUsername");
+	}
+
+	submitEmail = event => {
+		console.log("submitEmail");
+	}
+
+	submitPass = event => {
+		console.log("submitPass");
+	}
+
+	submitHab = event => {
+		console.log("submitHab");
+	}
+
+	submitTipo = event => {
+		console.log("submitTipo");
+	}
+
+	submitNivel = event => {
+		console.log("submitNivel");
+	}
 
   componentDidMount(){
 		if(sessionStorage.getItem("loginState") !== "success"){
       this.props.history.push("/login");
-    }
+		}
+		
+		let CampoNome = document.createElement("button");
+		CampoNome.id = "CampoNome";
+		CampoNome.innerHTML = "Edit";
+		CampoNome.addEventListener('click', this.editNome);
+
+		let CampoUsername = document.createElement("button");
+		CampoUsername.id = "CampoUsername";
+		CampoUsername.innerHTML = "Edit"
+		CampoUsername.addEventListener('click', this.editUser);
+
+		let CampoEmail = document.createElement("button");
+		CampoEmail.id = "CampoEmail";
+		CampoEmail.innerHTML = "Edit"
+		CampoEmail.addEventListener('click', this.editEmail);
+
+		let CampoPass = document.createElement("button");
+		CampoPass.id = "CampoPass";
+		CampoPass.innerHTML = "Edit"
+		CampoPass.addEventListener('click', this.editPass);
+
+		let CampoTipo = document.createElement("button");
+		CampoTipo.id = "CampoTipo";
+		CampoTipo.innerHTML = "Edit"
+		CampoTipo.addEventListener('click', this.editTipo);
+
+		let CampoHab = document.createElement("button");
+		CampoHab.id = "CampoHab";
+		CampoHab.innerHTML = "Edit"
+		CampoHab.addEventListener('click', this.editHab);
+
+		let CampoNivel = document.createElement("button");
+		CampoNivel.id = "CampoNivel";
+		CampoNivel.innerHTML = "Edit"
+		CampoNivel.addEventListener('click', this.editNivel);
+
+		let tdNome = document.getElementById("tdNome");
+		let tdUsername = document.getElementById("tdUsername");
+		let tdEmail = document.getElementById("tdEmail");
+		let tdPass = document.getElementById("tdPass");
+		let tdTipo = document.getElementById("tdTipo");
+		let tdHab = document.getElementById("tdHab");
+		let tdNivel = document.getElementById("tdNivel");
 
     if(sessionStorage.getItem("tipo") === "admin"){
       let prof = document.querySelector(".dropdown-item")
@@ -56,8 +270,25 @@ toggle() {
       tecnicosLink.appendChild(tecnicosText)
 
       prof.parentNode.insertBefore(registarLink, prof.nextSibling);
-      registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
-    } 
+			registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
+			
+			
+			tdNome.appendChild(CampoNome);
+			tdUsername.appendChild(CampoUsername);
+			tdEmail.appendChild(CampoEmail);
+			tdPass.appendChild(CampoPass);
+			tdTipo.appendChild(CampoTipo);
+			tdHab.appendChild(CampoHab);
+			tdNivel.appendChild(CampoNivel);
+
+		}else{
+
+			tdEmail.appendChild(CampoEmail);
+			tdPass.appendChild(CampoPass);
+
+		}
+		
+		
 
 		let sessionName;
 		if(window.location.pathname === "/profile"){
@@ -146,51 +377,43 @@ toggle() {
 									<tr>
 										<td>Nome</td>
 										<td id="nomeAluno"></td>
-										<td>
-											<button id="editNome">Edit</button>
+										<td id="tdNome">
 										</td>
 									</tr>
 									<tr>
 										<td>Username</td>
 										<td id="userAluno"></td>
-										<td>
-											<button id="editUsername">Edit</button>
-
+										<td id="tdUsername">
 										</td>
 									</tr>
 									<tr>
 										<td>E-mail</td>
 										<td id="emailAluno"></td>
-										<td>
-											<button id="editEmail">Edit</button>
+										<td id="tdEmail">
 										</td>
 									</tr>
 									<tr>
 										<td>Password</td>
-										<td>********</td>
-										<td>
-											<button id="editPassword">Edit</button>
+										<td id="passAluno">********</td>
+										<td id="tdPass">
 										</td>
 									</tr>
 									<tr>
 										<td>Tipo</td>
 										<td id="tipoAluno"></td>
-										<td>
-											<button id="editTipo">Edit</button>
+										<td id="tdTipo">
 										</td>
 									</tr>
 									<tr>
 										<td>Habilitacões</td>
 										<td id="habAluno"></td>
-										<td>
-											<button id="editHab">Edit</button>
+										<td id="tdHab">
 										</td>
 									</tr>
 									<tr>
 										<td>Nível Profissional</td>
 										<td id="nivelAluno"></td>
-										<td>
-											<button id="editNProf">Edit</button>
+										<td id="tdNivel">
 										</td>
 									</tr>
 								</tbody>
