@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import axios from 'axios';
 import logo from './img/logos2.png';
-import "./AnalisesSolvente.css";
+import "./AddAnalise.css";
 import "./navbar.css";
 
 export default class AnalisesSolvente extends Component {
@@ -20,10 +20,6 @@ export default class AnalisesSolvente extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
-    }
-
-    mudarAddAnalise = event =>{
-        this.props.history.push("/addAnalise/"+ this.state.fichaTecId);
     }
 
     componentDidMount(){
@@ -62,54 +58,12 @@ export default class AnalisesSolvente extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+this.state.fichaTecId+'/analisesSolventes')
-        .then((response) => {
-            return response.data
-        })
-        .then(data => {
-            let an = data;
-            let table = document.getElementById('tableAnalises');
-            for(let i=0;i<an.length;i++){
-                let tr = document.createElement('tr');
-                let sujidade = document.createElement('td');
-                sujidade.textContent = an[i].sujidade;
-                tr.appendChild(sujidade);
-
-                let data = document.createElement('td');
-                data.textContent = an[i].data;
-                tr.appendChild(data);
-
-                let tecnico = document.createElement('td');
-                tecnico.textContent = an[i].nomeTecnico;
-                tr.appendChild(tecnico);
-                table.appendChild(tr);
-
-                let info = document.createElement('a');
-                info.href = "http://brandi.ipt.pt/detalhesAnalises/"+an[i].idAnalise+"";
-                //info.href = "http://localhost:3000/detalhesAnalises/"+an[i].idAnalise+"";
-                info.textContent = "Detalhes"
-                tr.appendChild(info);
-                table.appendChild(tr);
-            }
-        })
-        .catch(error =>{
-            console.log(error);
-            let table = document.getElementById('tableAnalises');
-            let tr = document.createElement('tr');
-            let td = document.createElement('td');
-            td.colSpan = 4;
-            td.textContent = "Não existem dados disponiveis";
-            tr.appendChild(td);
-            table.appendChild(tr);
-        })
-
     }
 
   render() {
     return (
-      <div className="bodyAnalises">
-        <Navbar dark expand="sm">
+      <div className="bodyAddAnalises">
+            <Navbar dark expand="sm">
                 <NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
@@ -138,23 +92,8 @@ export default class AnalisesSolvente extends Component {
                 </Collapse>
             </Navbar>
 
+        <div className="AddAnaliseForm">
 
-        <div className="divInfo">
-            <img alt="" src={logo}/>
-        </div>
-
-        <div className="analisesTableDiv">
-            <table id = "tableAnalises" className="analisesTable">
-                <tr>
-                    <th className="thButton" colSpan="4"><input type="button" value="Adicionar" className="btnAddAn btn btn-outline-secondary" onClick={this.mudarAddAnalise}></input></th>
-                </tr>
-                <tr>
-                    <th>Sujidade</th>
-                    <th>data</th>
-                    <th>tecnico</th>
-                    <th>Info</th>
-                </tr>
-            </table>
         </div>
 
       </div>	

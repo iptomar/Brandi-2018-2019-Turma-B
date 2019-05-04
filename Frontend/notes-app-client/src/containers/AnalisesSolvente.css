@@ -34,3 +34,16 @@
 .analisesTable th, td{
     border: 1px solid black;
 }
+
+.thButton{
+    border: 1px solid #f2994a !important;
+    border-bottom: 1px solid black !important;
+    background-color: #f2994a;
+    text-align: right;
+}
+
+.btnAddAn{
+    margin: 2px 0px 15px 0px;
+    background-color: #6c757d;
+    color: #ffffff;
+}
