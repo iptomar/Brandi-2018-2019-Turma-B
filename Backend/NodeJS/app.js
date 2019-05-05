@@ -55,5 +55,6 @@ auth(app, con, verificaLogin, verificaLoginAdmin)
 ft(app, con, verificaLogin, verificaLoginAdmin)
 ft2(app, con, verificaLogin, verificaLoginAdmin)
 edit(app, con, verificaLogin, verificaLoginAdmin)
+fo(app, con, verificaLogin, verificaLoginAdmin)
 
 app.listen(8080)
