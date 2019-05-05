@@ -9,6 +9,7 @@ var auth = require('./modules/auth')
 var ft = require('./modules/ficha_tecnica')
 var ft2 = require('./modules/ficha_tecnica2')
 var edit = require('./modules/edit')
+var fo = require('./modules/folha_obra')
 //coneção com db
 var con = mysql.createConnection({
 	host     : 'localhost',
