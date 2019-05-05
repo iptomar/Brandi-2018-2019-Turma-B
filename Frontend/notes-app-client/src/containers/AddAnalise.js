@@ -4,6 +4,7 @@ import axios from 'axios';
 import logo from './img/logos2.png';
 import "./AddAnalise.css";
 import "./navbar.css";
+import "./base.css";
 
 export default class AnalisesSolvente extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ export default class AnalisesSolvente extends Component {
 
   render() {
     return (
-      <div className="bodyAddAnalises">
+      <div className="bodydiv">
             <Navbar dark expand="sm">
                 <NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />

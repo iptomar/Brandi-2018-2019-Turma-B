@@ -4,6 +4,7 @@ import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios';
 import "./Register.css";
 import "./navbar.css";
+import "./base.css";
 
 export default class Login extends Component {
   constructor(props) {

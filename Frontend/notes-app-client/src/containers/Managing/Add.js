@@ -3,6 +3,7 @@ import {Form, Input, FormGroup, Label, Collapse, Navbar, NavbarToggler, NavbarBr
 import axios from 'axios';
 import "./Add.css";
 import "../navbar.css";
+import "../base.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -157,7 +158,7 @@ export default class Login extends Component {
   render() {
 
     return (
-      <div className="editFT">
+      <div className="bodydiv">
         <Navbar dark expand="sm">
               <NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
               <NavbarToggler onClick={this.toggle} />

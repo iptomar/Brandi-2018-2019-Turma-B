@@ -3,6 +3,7 @@ import {Table, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLi
 import axios from 'axios';
 import "./FichaTecnica.css";
 import "./navbar.css";
+import "./base.css";
 export default class FichaTecnica extends Component {
 	constructor(props) {
 	    super(props);
@@ -120,7 +121,7 @@ componentDidMount(){
 }
 	render() {
     return (
-		<div id="pageFT" className="pageFT">
+		<div id="pageFT" className="bodydiv">
 	    	<Navbar dark expand="sm">
           		<NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
           		<NavbarToggler onClick={this.toggle} />

@@ -3,6 +3,7 @@ import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Unc
 import axios from 'axios';
 import "./Tecnicos.css";
 import "./navbar.css";
+import "./base.css";
 
 export default class Tecnicos extends Component {
 	constructor(props) {
@@ -139,7 +140,7 @@ componentDidMount(){
 }
 	render() {
     return (
-			<div id="main" className="pageObj">
+			<div id="main" className="bodydiv">
 				<Navbar dark expand="sm">
 		          <NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
 		          <NavbarToggler onClick={this.toggle} />

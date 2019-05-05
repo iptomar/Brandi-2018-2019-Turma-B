@@ -1,16 +1,3 @@
-.bodyDetalhesAnalises{
-    background: #f2994a;
-    /********************/
-    position: fixed;
-    top: 0px;
-    left:0px;
-    height: 100%;
-	width: 100%;
-	overflow-y: auto;
-    /********************/
-
-}
-
 /*DIV INFO done pelo ficheiro AnalisesSolvente.css [ LEAKING is FUN :) ]*/
 
 .divTitle{
@@ -32,7 +19,7 @@
     justify-content: center;
 }
 
-.tableHeader{
+.tableHeaderdet{
     margin-top: 25px;
     width: 50%;
     text-align: center;
@@ -40,7 +27,7 @@
     background-color: #ffffff;
 }
 
-.tableHeader th, td, tr{
+.tableHeaderdet th,.tableHeaderdet td,.tableHeaderdet tr{
     border: 1px solid black;
 }
 

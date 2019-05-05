@@ -3,6 +3,7 @@ import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, But
 import axios from 'axios';
 import "./Objetos.css";
 import "./navbar.css";
+import "./base.css";
 export default class Objetos extends Component {
 	constructor(props) {
 	    super(props);
@@ -140,7 +141,7 @@ componentDidMount(){
 	render() {
 
     return (
-        <div className="pageObj">
+        <div className="bodydiv">
 	    	<Navbar dark expand="sm">
           		<NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
           		<NavbarToggler onClick={this.toggle} />

@@ -4,6 +4,7 @@ import axios from 'axios';
 import logo from './img/logos2.png';
 import "./DetalhesAnalises.css";
 import "./navbar.css";
+import "./base.css";
 
 export default class DetalhesAnalises extends Component {
     constructor(props) {
@@ -156,7 +157,7 @@ export default class DetalhesAnalises extends Component {
 
   render() {
     return (
-      <div className="bodyDetalhesAnalises">
+      <div className="bodydiv">
         <Navbar dark expand="sm">
                 <NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
@@ -197,7 +198,7 @@ export default class DetalhesAnalises extends Component {
         </div>
 
         <div className="headerDiv">
-            <table className="tableHeader">
+            <table className="tableHeaderdet">
                 <tr id="identSujData">
                     <th className="identSuj">
                         <b>Identificação do Estrato/Sujidade: </b>

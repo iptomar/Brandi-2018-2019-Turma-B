@@ -4,6 +4,7 @@ import { Grid, Cell } from "react-mdl";
 import axios from "axios";
 import "./Profile.css";
 import "./navbar.css";
+import "./base.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -288,36 +289,43 @@ export default class Login extends Component {
 		let CampoNome = document.createElement("button");
 		CampoNome.id = "CampoNome";
 		CampoNome.innerHTML = "Edit";
+		CampoNome.className = "btn btnFormProfileEdit";
 		CampoNome.addEventListener('click', this.editNome);
 
 		let CampoUsername = document.createElement("button");
 		CampoUsername.id = "CampoUsername";
 		CampoUsername.innerHTML = "Edit"
+		CampoUsername.className = "btn btnFormProfileEdit";
 		CampoUsername.addEventListener('click', this.editUser);
 
 		let CampoEmail = document.createElement("button");
 		CampoEmail.id = "CampoEmail";
 		CampoEmail.innerHTML = "Edit"
+		CampoEmail.className = "btn btnFormProfileEdit";
 		CampoEmail.addEventListener('click', this.editEmail);
 
 		let CampoPass = document.createElement("button");
 		CampoPass.id = "CampoPass";
 		CampoPass.innerHTML = "Edit"
+		CampoPass.className = "btn btnFormProfileEdit";
 		CampoPass.addEventListener('click', this.editPass);
 
 		let CampoTipo = document.createElement("button");
 		CampoTipo.id = "CampoTipo";
 		CampoTipo.innerHTML = "Edit"
+		CampoTipo.className = "btn btnFormProfileEdit";
 		CampoTipo.addEventListener('click', this.editTipo);
 
 		let CampoHab = document.createElement("button");
 		CampoHab.id = "CampoHab";
 		CampoHab.innerHTML = "Edit"
+		CampoHab.className = "btn btnFormProfileEdit";
 		CampoHab.addEventListener('click', this.editHab);
 
 		let CampoNivel = document.createElement("button");
 		CampoNivel.id = "CampoNivel";
 		CampoNivel.innerHTML = "Edit"
+		CampoNivel.className = "btn btnFormProfileEdit";
 		CampoNivel.addEventListener('click', this.editNivel);
 
 		let tdNome = document.getElementById("tdNome");
@@ -407,7 +415,7 @@ export default class Login extends Component {
   render() {
 
     return (
-      <div style={{ width: "100%", margin: "auto" }}>
+      <div className="bodydiv">
 			<Navbar dark expand="sm">
           		<NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
           		<NavbarToggler onClick={this.toggle} />
@@ -444,7 +452,7 @@ export default class Login extends Component {
 							className="avatarImg"
 						/>
 
-						<div className="text">
+						<div className="textdiv">
 							<h1>
 								Laboratório de Conservaçâo e Restauro - Madeiras I Lab.CR-M II
               				</h1>
@@ -455,7 +463,7 @@ export default class Login extends Component {
 
 							<table className="profileTable" align="center">
 								<tbody>
-									<tr className="Campos">
+									<tr >
 										<th>Campo</th>
 										<th>Valor Atual</th>
 										<th>Ações Disponíveis</th>
