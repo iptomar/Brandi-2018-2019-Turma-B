@@ -35,12 +35,12 @@ export default class Login extends Component {
 		btn.removeEventListener('click', this.editNome);
 		btn.innerHTML = "Save";
 		btn.addEventListener('click', this.submitNome);
-		document.getElementById("CampoUsername").remove();
-		document.getElementById("CampoEmail").remove();
-		document.getElementById("CampoPass").remove();
-		document.getElementById("CampoTipo").remove();
-		document.getElementById("CampoHab").remove();
-		document.getElementById("CampoNivel").remove();
+		document.getElementById("CampoUsername").disabled = true;
+		document.getElementById("CampoEmail").disabled = true;
+		document.getElementById("CampoPass").disabled = true;
+		document.getElementById("CampoTipo").disabled = true;
+		document.getElementById("CampoHab").disabled = true;
+		document.getElementById("CampoNivel").disabled = true;
 		nomeAluno.innerHTML = "";
 		nomeAluno.appendChild(textField);
 	}
@@ -53,12 +53,12 @@ export default class Login extends Component {
 		btn.innerHTML = "Save";
 		btn.removeEventListener('click', this.editUser);
 		btn.addEventListener('click', this.submitUsername);
-		document.getElementById("CampoNome").remove();
-		document.getElementById("CampoEmail").remove();
-		document.getElementById("CampoPass").remove();
-		document.getElementById("CampoTipo").remove();
-		document.getElementById("CampoHab").remove();
-		document.getElementById("CampoNivel").remove();
+		document.getElementById("CampoNome").disabled = true;
+		document.getElementById("CampoEmail").disabled = true;
+		document.getElementById("CampoPass").disabled = true;
+		document.getElementById("CampoTipo").disabled = true;
+		document.getElementById("CampoHab").disabled = true;
+		document.getElementById("CampoNivel").disabled = true;
 		userAluno.innerHTML = "";
 		userAluno.appendChild(textField);
 	}
@@ -72,12 +72,12 @@ export default class Login extends Component {
 			btn.innerHTML = "Save";
 			btn.removeEventListener('click', this.editEmail);
 			btn.addEventListener('click', this.submitEmail);
-			document.getElementById("CampoUsername").remove();
-			document.getElementById("CampoNome").remove();
-			document.getElementById("CampoPass").remove();
-			document.getElementById("CampoTipo").remove();
-			document.getElementById("CampoHab").remove();
-			document.getElementById("CampoNivel").remove();
+			document.getElementById("CampoUsername").disabled = true;
+			document.getElementById("CampoNome").disabled = true;
+			document.getElementById("CampoPass").disabled = true;
+			document.getElementById("CampoTipo").disabled = true;
+			document.getElementById("CampoHab").disabled = true;
+			document.getElementById("CampoNivel").disabled = true;
 			
 			emailAluno.innerHTML = "";
 			emailAluno.appendChild(textField);
@@ -89,7 +89,7 @@ export default class Login extends Component {
 			btn.innerHTML = "Save";
 			btn.removeEventListener('click', this.editEmail);
 			btn.addEventListener('click', this.submitEmail);
-			document.getElementById("CampoPass").remove();
+			document.getElementById("CampoPass").disabled = true;
 			emailAluno.innerHTML = "";
 			emailAluno.appendChild(textField);
 		}
@@ -104,12 +104,12 @@ export default class Login extends Component {
 			btn.innerHTML = "Save";
 			btn.removeEventListener('click', this.editPass);
 			btn.addEventListener('click', this.submitPass);
-			document.getElementById("CampoUsername").remove();
-			document.getElementById("CampoNome").remove();
-			document.getElementById("CampoEmail").remove();
-			document.getElementById("CampoTipo").remove();
-			document.getElementById("CampoHab").remove();
-			document.getElementById("CampoNivel").remove();
+			document.getElementById("CampoUsername").disabled = true;
+			document.getElementById("CampoNome").disabled = true;
+			document.getElementById("CampoEmail").disabled = true;
+			document.getElementById("CampoTipo").disabled = true;
+			document.getElementById("CampoHab").disabled = true;
+			document.getElementById("CampoNivel").disabled = true;
 			passAluno.innerHTML = "";
 			passAluno.appendChild(textField);
 		}catch(err){
@@ -120,7 +120,7 @@ export default class Login extends Component {
 			btn.innerHTML = "Save";
 			btn.removeEventListener('click', this.editPass);
 			btn.addEventListener('click', this.submitPass);
-			document.getElementById("CampoEmail").remove();
+			document.getElementById("CampoEmail").disabled = true;
 			passAluno.innerHTML = "";
 			passAluno.appendChild(textField);
 		}
@@ -134,12 +134,12 @@ export default class Login extends Component {
 		btn.innerHTML = "Save";
 		btn.removeEventListener('click', this.editTipo);
 		btn.addEventListener('click', this.submitTipo);
-		document.getElementById("CampoPass").remove();
-		document.getElementById("CampoUsername").remove();
-		document.getElementById("CampoNome").remove();
-		document.getElementById("CampoEmail").remove();
-		document.getElementById("CampoHab").remove();
-		document.getElementById("CampoNivel").remove();
+		document.getElementById("CampoPass").disabled = true;
+		document.getElementById("CampoUsername").disabled = true;
+		document.getElementById("CampoNome").disabled = true;
+		document.getElementById("CampoEmail").disabled = true;
+		document.getElementById("CampoHab").disabled = true;
+		document.getElementById("CampoNivel").disabled = true;
 		tipoAluno.innerHTML = "";
 		tipoAluno.appendChild(textField);
 	}
@@ -152,12 +152,12 @@ export default class Login extends Component {
 		btn.innerHTML = "Save";
 		btn.removeEventListener('click', this.editHab);
 		btn.addEventListener('click', this.submitHab);
-		document.getElementById("CampoPass").remove();
-		document.getElementById("CampoUsername").remove();
-		document.getElementById("CampoNome").remove();
-		document.getElementById("CampoEmail").remove();
-		document.getElementById("CampoTipo").remove();
-		document.getElementById("CampoNivel").remove();
+		document.getElementById("CampoPass").disabled = true;
+		document.getElementById("CampoUsername").disabled = true;
+		document.getElementById("CampoNome").disabled = true;
+		document.getElementById("CampoEmail").disabled = true;
+		document.getElementById("CampoTipo").disabled = true;
+		document.getElementById("CampoNivel").disabled = true;
 		habAluno.innerHTML = "";
 		habAluno.appendChild(textField);
 	}
@@ -170,12 +170,12 @@ export default class Login extends Component {
 		btn.innerHTML = "Save";
 		btn.removeEventListener('click', this.editNivel);
 		btn.addEventListener('click', this.submitNivel);
-		document.getElementById("CampoPass").remove();
-		document.getElementById("CampoUsername").remove();
-		document.getElementById("CampoNome").remove();
-		document.getElementById("CampoEmail").remove();
-		document.getElementById("CampoTipo").remove();
-		document.getElementById("CampoHab").remove();
+		document.getElementById("CampoPass").disabled = true;
+		document.getElementById("CampoUsername").disabled = true;
+		document.getElementById("CampoNome").disabled = true;
+		document.getElementById("CampoEmail").disabled = true;
+		document.getElementById("CampoTipo").disabled = true;
+		document.getElementById("CampoHab").disabled = true;
 		nivelAluno.innerHTML = "";
 		nivelAluno.appendChild(textField);
 	}
