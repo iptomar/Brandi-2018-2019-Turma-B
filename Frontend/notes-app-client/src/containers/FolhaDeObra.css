@@ -1,0 +1,41 @@
+.divInfoFO{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.divFOTable{
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.FOTable{
+    width: 50%;
+    background-color: white;
+    border: 1px solid black;
+}
+.FOTable td, .FOTable tr, .FOTable th{
+    text-align: center;
+    padding: 3px;
+    border: 1px solid black;
+}
+.FOHeader{
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.FOHeaderTable{
+    max-width: 40%;
+    width: 30%;
+    border: 3px double black;
+}
+
+.FOHeaderTable th{
+    padding: 1px 10px 1px 10px;
+}
+.FOHeaderTable td{
+    max-width: 40%;
+    text-align: left;
+    text-decoration: underline;
+}

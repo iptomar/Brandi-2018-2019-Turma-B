@@ -15,6 +15,7 @@ import TestesSolub from "./containers/TestesSolub";
 import AnalisesSolvente from "./containers/AnalisesSolvente";
 import DetalhesAnalises from "./containers/DetalhesAnalises";
 import AddAnalise from "./containers/AddAnalise";
+import FolhaDeObra from "./containers/FolhaDeObra";
 
 export default () =>
   <Switch>
@@ -33,4 +34,5 @@ export default () =>
     <Route path="/analisesSolvente" component={AnalisesSolvente} />
     <Route path="/detalhesAnalises" component={DetalhesAnalises} />
     <Route path="/addAnalise" component={AddAnalise} />
+    <Route path="/folhadeobra" component={FolhaDeObra} />
   </Switch>;
