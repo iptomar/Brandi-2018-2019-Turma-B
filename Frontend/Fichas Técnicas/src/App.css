@@ -60,3 +60,49 @@ input {
   border: 1px solid black;
   border-radius: 1px;
 }
+
+
+
+.centro h1{
+  font-family:Helvetica;
+  margin-left: 20px;
+  }
+  
+  .centro h2{
+    font-family:Helvetica;
+    background-color: #dddddd;
+    margin-right: 30px;
+    margin-left: 20px;
+  }
+  
+  .centro label{
+    font-family:Helvetica;
+    margin-left: 20px;
+  }
+  
+  .centro input{
+    font-family:Helvetica;
+    margin-left: 50px;
+  }
+  
+  .tbl td{
+  
+    font-family:Helvetica;
+    background-color: #dddddd;
+    padding: 25px;
+    width : 120px;
+    height: 30px;
+  }
+  
+  .tbl button {
+  width:100px;
+  height: 25px;
+  }
+  
+  .tbl1 td {
+    font-family:Helvetica;
+    background-color: #dddddd;
+    width : 1200px;
+    height: 30px;
+  }
+  
