@@ -79,12 +79,12 @@ export default class Login extends Component {
       <Router>
         <div className="App">
           <div className="App__Aside">
-            <img className= "estt" alt="./img/img.png" src={require('./img/estt.png')}></img><br></br>
+            <img className= "estt" alt="./img/img.png" src={require('./img/estt.png')}></img>
             <img className= "icr" alt="./img/img.png" src={require('./img/lcr.png')}></img>
           </div>
           <div className="App__Form">
             <div className="FormTitle">
-                Iniciar Sessao
+                Iniciar Sessão
             </div>
             <Route exact path="/login">
               <div className="FormCenter">
@@ -118,8 +118,8 @@ export default class Login extends Component {
                     />
                   </FormGroup>
                   <div id="divBtn" className="FormField">
-                    <button id="idBtn"className="FormField__Button mr-20" disabled={!this.validateForm()} type="submit">
-                      Iniciar sessao
+                    <button id="idBtn" className="FormField__Button mr-20" disabled={!this.validateForm()} type="submit">
+                      Iniciar Sessão
                     </button>
                   </div>
                 </form>
