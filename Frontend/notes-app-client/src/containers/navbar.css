@@ -1,0 +1,14 @@
+.navbar {
+	background-color: #4b2402;
+	border-radius: 0px;
+}
+
+.navbarbrand {
+    color: #ffffff;
+  	padding-top: 15px;
+}
+
+.dropmenu {
+    max-width: 320px;
+    margin-bottom: 10px;
+}

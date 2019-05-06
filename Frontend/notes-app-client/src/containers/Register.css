@@ -1,16 +1,3 @@
-.bodydiv{
-    background: #f2994a;
-    /********************/
-    position: fixed;
-    top: 0px;
-    left:0px;
-    height: 100%;
-	width: 100%;
-	overflow-y: auto;
-    /********************/
-
-}
-
 .registerform{
     border-radius: 50px;
     padding-top: 2%;

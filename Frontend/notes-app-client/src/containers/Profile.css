@@ -1,146 +1,53 @@
-/*.mainDiv{
-  background-color:#66da8d;
-  max-width: 100%;
-  max-height: 50%;
-}
-
-.header{
-  font-family: arial, sans-serif;
-  margin-left: 25%;
-  margin-top: 5%;
-  background-color:dimgrey;
-  width: 50%;
-  height: 25%;
-}
-.p{
-  margin-top: 1%;
-}
-
-table{
-  font-family: arial, sans-serif;
-  width: 50%;
-  margin-top: 3%;
-  border: 5px solid #0c6854;
-  background-color: #0c6854;
-}
-tr{
-}
-
-td{
-  text-align: center;
-  padding: 8px;
- 
-}
-th{
-  text-align: center;
-  padding: 1px;
-}*/
-.header-color {
-	background: #4b2402; /* fallback for old browsers */
-}
-
-.Home-grid {
-	background: #f2994a; /* fallback for old browsers */
-	background: -webkit-linear-gradient( to right, #f2c94c, #f2994a ); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #f2c94c, #f2994a);
-	text-align: center;
-	position: fixed;
-	height: 100%;
-	width: 100%;
-}
-
-	.Home-grid h1 {
-		font-size: 80px;
-		font-weight: bold;
-		color: #4b2402;
-		text-align: center;
-	}
-
-	.Home-grid p {
-		font-size: 50px;
-		font-weight: bold;
-		color: #4b2402;
-		text-align: center;
-	}
-
 .Profile-grid {
-    background: #f2994a; /* fallback for old browsers */
-    background: -webkit-linear-gradient( to right, #f2c94c, #f2994a ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f2c94c, #f2994a);
     text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: scroll;
 }
 
 .avatarImg {
-	height: 250px;
-	padding-top: 5em;
-}
-.logoImg {
-    height: 550px;
-    width: 1250spx;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+	height: 180px !important;
+	padding-top: 1em !important;
 }
 
-.text {
+.textdiv {
 	background-color: #4b2402;
 	opacity: 0.8;
 	width: 75%;
 	margin: auto;
-	border-radius: 10px;
+	border-radius: 30px;
+	padding-bottom: 2.25%;
+	padding-top: 0.1%;
+	margin-top: 1%;
 }
 
-	.text h1 {
+	.textdiv h1 {
 		font-size: 20px;
 		font-weight: bold;
 		color: white;
 	}
 
-	.text p {
+	.textdiv p {
 		color: white;
 		font-size: 20px;
 		padding: 1em;
 	}
-
-.header {
+.profileTable {
+	border-radius: 30px;
+	background-color: #dce6ec;
 	font-family: arial, sans-serif;
-	margin-left: 25%;
-	margin-top: 5%;
-	background-color: dimgrey;
-	width: 50%;
-	height: 25%;
-}
-
-.p {
-	margin-top: 1%;
-}
-
-table {
-	font-family: arial, sans-serif;
-	border: 1px;
-	border-color: black;
 	width: 50%;
 	margin-top: 3%;
 }
 
-tr {
-	background-color: #dddddd;
-}
-
-td {
-	border: 1px solid #dddddd;
+.profileTable td {
 	text-align: center;
 	padding: 8px;
 }
 
-th {
-	border: 1px solid #dddddd;
+.profileTable th {
 	text-align: center;
 	padding: 1px;
+}
+
+.btnFormProfileEdit{
+	background-color: #4b2402;
+	color: white;
 }

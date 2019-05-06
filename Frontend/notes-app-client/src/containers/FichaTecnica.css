@@ -1,20 +1,5 @@
-.pageFT {
-	background: #f2994a;
-    width: 100%;
-    height: 100vh;
-}
-
-.navbarFT {
-	background-color: #4b2402;
-	border-radius: 0px;
-}
-
-.navbarbrandFT {
-    color: #ffffff !important;
-  	padding-top: 15px;
-}
-
 .tableFT {
+	background-color: #dddddd;
 	width: 40%;
     margin: 0 auto;
     margin-top: 10%;
@@ -41,4 +26,12 @@
 
 .menudiv{
 	margin-left: 2%;
+}
+
+.thFT{
+	font-weight: bold;
+}
+
+.tdFT{
+	font-weight: normal;
 }

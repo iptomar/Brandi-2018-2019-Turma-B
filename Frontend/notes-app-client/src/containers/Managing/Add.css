@@ -1,16 +1,10 @@
-.editFT {
-	background: #f2994a;
-    width: 100%;
-    height: 100%;
-}
-
 .formFT {
 	background: #ffffff;
 	width: 40%;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 2.25%;
     padding: 15px;
     padding-bottom: 45px;
-	border-radius: 15px;
+	border-radius: 25px;
 }
 

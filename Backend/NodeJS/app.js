@@ -8,6 +8,8 @@ var api = require('./modules/api')
 var auth = require('./modules/auth')
 var ft = require('./modules/ficha_tecnica')
 var ft2 = require('./modules/ficha_tecnica2')
+var edit = require('./modules/edit')
+var fo = require('./modules/folha_obra')
 //coneção com db
 var con = mysql.createConnection({
 	host     : 'localhost',
@@ -30,9 +32,9 @@ app.use(bodyParser.json())
 
 function verificaLogin(req, res, next) { next()}
 function verificaLoginAdmin(req, res, next) { next()}
-/*
+
 //verifica se o utilizador esta autenticado
-function verificaLogin(req, res, next) {
+/*function verificaLogin(req, res, next) {
 	if (req.session.loggedin) { 
 	  next()
 	} else {
@@ -46,11 +48,13 @@ function verificaLogin(req, res, next) {
 	} else {
 		res.status(500).json({ erro: "Permission denied" })
 	}
-  }
-*/
+  }*/
+
 api(app, con, verificaLogin, verificaLoginAdmin)
 auth(app, con, verificaLogin, verificaLoginAdmin)
 ft(app, con, verificaLogin, verificaLoginAdmin)
 ft2(app, con, verificaLogin, verificaLoginAdmin)
+edit(app, con, verificaLogin, verificaLoginAdmin)
+fo(app, con, verificaLogin, verificaLoginAdmin)
 
 app.listen(8080)

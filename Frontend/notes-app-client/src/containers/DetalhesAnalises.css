@@ -1,0 +1,65 @@
+/*DIV INFO done pelo ficheiro AnalisesSolvente.css [ LEAKING is FUN :) ]*/
+
+.divTitle{
+    display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 110px;
+    width: 70%;
+    text-align: center
+}
+
+.h1Title{
+    font-size: 2em;
+}
+
+.headerDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tableHeaderdet{
+    margin-top: 25px;
+    width: 50%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #ffffff;
+}
+
+.tableHeaderdet th,.tableHeaderdet td,.tableHeaderdet tr{
+    border: 1px solid black;
+}
+
+.identSuj{
+    font-size: 1em;
+}
+
+.caractSuj{
+    font-size: 1em;
+}
+
+.testesDiv{
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testesTable{
+    margin-top: 25px;
+    width: 50%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #ffffff;
+}
+
+.testesTableDef{
+    border: 1px solid black;
+}
+
+.thFinal{
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid white;
+}

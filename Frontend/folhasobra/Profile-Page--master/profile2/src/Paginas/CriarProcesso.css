@@ -1,0 +1,109 @@
+table{
+    margin-left: 15%;
+}
+th{
+    font: italic bold 12px/30px Georgia, serif;
+    color: black;
+    width : 500px ;
+    background-color: #F2B54B;
+    border : 2px solid #4B2402;
+}
+td{
+    font: italic bold 12px/30px Georgia, serif;
+    color:black;
+    width: 500px;
+    height: 10px;
+    background-color: #d6d6d6;
+    border: 2px solid #4B2402;
+}
+
+input[class="same"]{
+    font: italic bold 18px/18px Georgia, serif;
+
+    color: black;
+    border: 0;
+    background:none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4B2402;
+    padding: 14px 10px;
+    border-radius: 24px;
+}
+.botoesRemover{
+    border-radius: 4px;
+    border: 2px solid #4B2402 ;
+    margin: 20px auto;
+    text-align:center;
+    background-color: #F2B54B;
+    padding: 14px 40px;
+    padding-left: 20px;
+    color:white;
+    width:20%;
+    height: 55%;
+}
+textarea{
+    font: italic bold 18px/18px Georgia, serif;
+    width: 400px;
+    height: 300px;
+    color: black;
+    border: 0;
+    background:none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4B2402;
+    padding: 14px 10px;
+    border-radius: 24px;
+}
+
+ h1{
+    font: italic bold 100px/100px Georgia, serif;
+    color: #4B2402;
+    font-weight: 50%;
+}
+
+input[class="botoes"]{
+    border: 0;
+    background: #4B2402;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4B2402;
+    padding: 14px 40px;
+    color:white;
+}
+input[value="Remover Materiais"]{
+    margin-left: 20px;
+}
+input[value="Adicionar Materiais"]{
+    margin-left: 20px
+}
+.ze{
+    background-color: #F2B54B;
+    border : 0;
+    text-align: left;
+}
+.back{
+        text-decoration: none;
+        margin-left: 20px;
+	    border: 0;
+        background: #4B2402;
+        text-align: center;
+        border: 2px solid #4B2402;
+        padding: 14px 40px;
+        color:white;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+::placeholder{
+    color:black;
+}
+input[type=date]::-webkit-inner-spin-button, 
+input[type=date]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+::placeholder {
+    opacity: 0.4;
+  }

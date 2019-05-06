@@ -3,7 +3,7 @@ import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
 import { Redirect } from 'react-router-dom'
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default class Login extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export default class Login extends Component {
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
     axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth', { username, password })
       .then(res => {
-        if(res.data === "Incorrect Username and/or Password!"){
+        if(res.data === "User not found" || res.data === "Unexpected error" || res.data === "Incorrect username and/or password, please try again" ){
           this.setState({ loginState: 'error' })
         }else{
           sessionStorage.setItem("tipo", res.data);
@@ -47,11 +47,15 @@ export default class Login extends Component {
         }
       })
       .catch(err => {
-        console.log(err);
+        console.log(err)
       });
   }
 
   render() {
+
+    if(sessionStorage.getItem("loginState") === "success"){
+    	this.props.history.push("/menu");
+    }
 
     let alertBox = document.getElementById("alertBox");
     if(alertBox != null){
@@ -80,9 +84,7 @@ export default class Login extends Component {
           </div>
           <div className="App__Form">
             <div className="FormTitle">
-              <Link to="/login" className="FormTitle__Link ">
                 Iniciar Sessao
-              </Link>
             </div>
             <Route exact path="/login">
               <div className="FormCenter">

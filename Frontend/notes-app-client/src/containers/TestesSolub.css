@@ -1,3 +1,4 @@
+/*
 table {
 	border-collapse: collapse;
 	border-radius: 1em;
@@ -8,7 +9,8 @@ table {
 	padding: 1em;
 	background: #ddd;
 	border-bottom: 2px solid white; 
-  }               
+	}  
+	*/             
   .cab{
 	text-align:center; 
 	padding:10px;
@@ -31,7 +33,7 @@ table {
 	width: 60%;
   }
   .div2{
-	margin-top:0px;
+	margin-top:75px;
   }
   .div3{
 	width: 100%;
@@ -51,7 +53,8 @@ table {
 	text-align: center;
 	font-size: 18px;
 	color:orange;
-  }
+	}
+	/*
   h2{
 	  font-family: Verdana, Geneva, Tahoma, sans-serif;
 	  text-align: center;
@@ -64,13 +67,15 @@ table {
 	text-align: center;
 	font-size: 22px;
 	color:#4b2402;
-  }
+	}
+	/*
   td{
 	text-align:center; 
 	padding: 10px;
 	font-family:"Arial Black"; 
 	font-size:16px;
-  }
+	}
+	*/
   .tecnico{
 	margin-left: 405px;
 	margin-top: -110px;
@@ -84,12 +89,14 @@ table {
   }
   .grau{
 	margin-top:60px;
-  }
+	}
+	/*
   h3{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 16px;
 	color:#4b2402;
-  }
+	}
+	*/
   .eficacia{
 	font-size:14px;
 	margin-top:-30px;
@@ -115,13 +122,13 @@ table {
 	transform: translateY(4px);
   }
   .principal{
-	background-color: orange;
+	background-color: #f2994a;
 	height:100%;
   }
   .caract{
 	align-items: flex-start;
 	display: flex;
-	margin-left: 350px;
+	margin-left: 528px;
   }
   .ident{
 	text-align: left;
@@ -141,7 +148,7 @@ table {
   }
   .ident2{
 	width:40%;
-  }
+	}/*
   hr{
 	display: block;
 	margin-top: 0.5em;
@@ -151,4 +158,4 @@ table {
 	border-style: inset;
 	border-width: 1px;
 	margin-top: -18px;
-  } 
+  } */
