@@ -1,60 +1,62 @@
+.Campos td {
+  border: 1px solid #0c0b0b;
+  background-color: #dddddd;
+  text-align: center;
+  width: 5%;
+  padding: 8px;
+}
 
+.Campos th {
+  border: 1px solid #0c0b0b;
+  text-align: center;
+  padding: 1px;
+}
 
-
-h1{
+h1 {
   text-align: center;
 }
-h3{
+
+h2 {
+  font-size: 15px;
+}
+h3,
+h4 {
   background-color: #dddddd;
 }
-
-h4{
-  text-align: center;
-}
-.left{
+.left {
   height: 100%;
   width: 45%;
   margin-left: 5%;
 }
-.right{
+.right {
   right: 0;
   width: 45%;
   height: 100%;
   float: right;
-  margin-right: 5%;
+  margin-right: 4%;
+  margin-top: 1.2cm;
 }
-hr { 
-  display: block;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
-}
-textarea{
-  border: 2px solid black;
+
+textarea {
   resize: none;
   overflow: hidden;
-  
-
 }
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width:70%;
+  width: 70%;
 }
-td, th {
-  
+td,
+th,
+label {
   text-align: left;
   padding: 8px;
-  text-align: left; 
+  text-align: left;
 }
-input{
 
+input {
   width: 100%;
-  border: 2px solid black;
-  border-radius: 4px;
+  border: 1px solid black;
+  border-radius: 1px;
 }
-
-
