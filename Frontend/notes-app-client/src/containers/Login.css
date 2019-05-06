@@ -1,28 +1,22 @@
 .App {
+  height: 100vh;
   display: flex;
   color: white;
   margin: 0%;
-  background-image: url(/static/media/loginBackground.4ab5fd33.png);
-  background-color: #f2994a;
-  background-size: cover;
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;
 }
 
-.App__Aside{
-  display: block;
-  margin-left: 50px;
-
+.App__Aside {
+  background-size: cover;
+  background-image: url('./img/loginBackground.png');
+  width: 60%;
+  background-color: #f2994a;
 }
 
 .App__Form {
-  margin: auto;
-  width: 50%;
-  opacity: 0.70;
+  width: 40%;
   background-color: #4b2402;
-  border-radius: 2%;
+  padding: 25px 40px;
   overflow: auto;
-  text-align: center;
 }
 
 .PageSwitcher {
@@ -64,20 +58,15 @@
 .FormTitle {
   color: #f2994a;
   font-weight: 300;
-  margin: 5%;
+  margin-bottom: 50px;
   text-decoration: none;
   display: inline-block;
   font-size: 1.7em;
-  opacity: initial;
   padding-bottom: 5px;
 }
 
 .FormField {
   margin-bottom: 40px;
-  margin-left: 20px;
-  margin: auto;
-  width: 80%;
-  text-align: center;
 }
 
 .FormField__Label {
@@ -85,8 +74,6 @@
   text-transform: uppercase;
   font-size: 0.9em;
   color: #f2994a;
-  margin-top:10px;
-  opacity: initial;
 }
 .FormField__Input {
   width: 85%;
@@ -100,9 +87,6 @@
   font-weight: 300;
   padding-bottom: 10px;
   margin-top: 10px;
-  text-align: center;
-  display: inline-block;
-  opacity: initial;
 }
 
 .FormField__Input::placeholder {
@@ -118,27 +102,19 @@
   padding: 15px 70px;
   font-size: 1em;
   font-weight: 500;
-  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .icr{
-  margin: 1%;
   position: absolute;
-  left: 39%;
-  max-width: 12%;
-  max-height: 12%;
-  margin-left: auto;
-  margin-right: auto;
-
+  left: 43%;
+  bottom: 65%;
+  height: 15%;
 }
 
 .estt{
-  margin-top: 2%;
+  margin-top: 15px;
   position: absolute;
-  left: 51%;
-  max-width: 12%;
-  max-height: 12%;
-  margin-left: auto;
-  margin-right: auto;
-
+  left: 33%;
+  height: 15%;
 }
