@@ -65,6 +65,7 @@
   color: #f2994a;
   font-weight: 300;
   margin: 5%;
+  font-weight: bold;
   text-decoration: none;
   display: inline-block;
   font-size: 1.7em;
@@ -115,10 +116,10 @@
   border: none;
   outline: none;
   border-radius: 50px;
-  padding: 15px 70px;
   font-size: 1em;
   font-weight: 500;
-  margin-top: 30px;
+  margin-top: 10%;
+  padding: 2% 2% 2% 2%;
 }
 
 .icr{
