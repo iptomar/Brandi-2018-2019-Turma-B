@@ -4,12 +4,9 @@
   margin: 0%;
   background-image: url('./img/loginBackground.png');
   object-fit: cover;
-  background-color: #f2994a;
   background-size: cover;
   width: -webkit-fill-available;
   height: -webkit-fill-available;
-  /********************/
-  background: #f2994a;
   /********************/
   position: fixed;
   top: 0px;
