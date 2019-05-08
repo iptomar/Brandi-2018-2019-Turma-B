@@ -2,7 +2,8 @@
   display: flex;
   color: white;
   margin: 0%;
-  background-image: url(/static/media/loginBackground.4ab5fd33.png);
+  background-image: url('./img/loginBackground.png');
+  object-fit: cover;
   background-color: #f2994a;
   background-size: cover;
   width: -webkit-fill-available;
