@@ -92,6 +92,23 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})	
 	})
 
+	//materiais de um procedimento
+	app.get("/procedimento/:id/materiais", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM materiais WHERE procedimento = ?"
+		// req.params.id mapeia o :id que está no URL acima.
+		con.query(sql, [req.params.id], (err, results) => {
+			if (err) {
+				res.status(500).json({ erro: "Erro na query" })
+			} else {
+				if (results.length ==0) {
+					res.status(404).json({ erro: "Materiais not found" })
+				} else {
+					res.status(200).json(results)
+				}
+			}
+		})	
+	})
+
 	//lista de procedimentos
 	app.get("/procedimentos", verificaLogin, (req, res) => {
 		let sql = "SELECT * FROM procedimentos"
@@ -122,29 +139,16 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//lista de processosObra
-	app.get("/processosObra", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM processosObra"
-		con.query(sql, (err, results) => {
-			if (err) {
-				console.error("Erro get processosObra", err)
-				res.status(500).json({ erro: "Erro na query" })
-			} else {
-				res.status(200).json(results)
-			}
-		})
-	})
-
-	//processosObra (pelo ID)
-	app.get("/processosObra/id/:id", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM processosObra WHERE numProcesso = ?"
+	//procedimentos de uma peça
+	app.get("/pecas/:id/procedimentos", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM procedimentos WHERE peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
 				res.status(500).json({ erro: "Erro na query" })
 			} else {
 				if (results.length ==0) {
-					res.status(404).json({ erro: "ProcessoObra not found" })
+					res.status(404).json({ erro: "Procedimentos not found" })
 				} else {
 					res.status(200).json(results)
 				}
@@ -152,12 +156,12 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//lista de processos
-	app.get("/processos", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM processos"
+	//lista de peças
+	app.get("/pecas", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM pecas"
 		con.query(sql, (err, results) => {
 			if (err) {
-				console.error("Erro get processos", err)
+				console.error("Erro get peças", err)
 				res.status(500).json({ erro: "Erro na query" })
 			} else {
 				res.status(200).json(results)
@@ -165,64 +169,16 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//processo (pelo ID)
-	app.get("/processos/id/:id", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM processos WHERE idProcesso = ?"
+	//peças (pelo ID)
+	app.get("/pecas/id/:id", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM pecas WHERE idPeca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
 				res.status(500).json({ erro: "Erro na query" })
 			} else {
 				if (results.length ==0) {
-					res.status(404).json({ erro: "Processo not found" })
-				} else {
-					res.status(200).json(results)
-				}
-			}
-		})
-	})
-
-	//tecnicos de um processo
-	app.get("/processos/:id/tecnicos", verificaLogin, (req, res) => {
-		let sql = "SELECT tec.* FROM tecnicoProcesso, tecnicos tec WHERE tecnico = idTecnico and processo = ?"
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				console.error("Erro get tecnicos do processo", err)
-				res.status(500).json({ erro: "Erro na query" })
-			} else {
-				if (results.length ==0) {
-					res.status(404).json({ erro: "Tecnicos not found" })
-				} else {
-					res.status(200).json(results)
-				}
-			}
-		})
-	})
-
-	//lista de objetos
-	app.get("/objetos", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM objetos"
-		con.query(sql, (err, results) => {
-			if (err) {
-				console.error("Erro get objetos", err)
-				res.status(500).json({ erro: "Erro na query" })
-			} else {
-				res.status(200).json(results)
-			}
-		})
-	})
-
-	//objeto (pelo ID)
-	app.get("/objetos/id/:id", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM objetos WHERE idObjeto = ?"
-		// req.params.id mapeia o :id que está no URL acima.
-		con.query(sql, [req.params.id], (err, results) => {
-			if (err) {
-				res.status(500).json({ erro: "Erro na query" })
-			} else {
-				if (results.length ==0) {
-					res.status(404).json({ erro: "Objeto not found" })
+					res.status(404).json({ erro: "peça not found" })
 				} else {
 					res.status(200).json(results)
 				}
@@ -243,9 +199,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//Imagens de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/imagens", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM imagens WHERE objeto = ?"
+	//Imagens de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/imagens", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM imagens WHERE peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -294,9 +250,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//Interessados de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/interessados", verificaLogin, (req, res) => {
-		let sql = "Select interessados.*,interessadosObjeto.tipo from interessados,interessadosObjeto where interessadosObjeto.objeto = ? and interessados.idInteressado = interessadosObjeto.interessado"
+	//Interessados de uma obra(pelo ID da obra)
+	app.get("/obras/:id/interessados", verificaLogin, (req, res) => {
+		let sql = "Select interessados.*,interessadosObra.tipo from interessados,interessadosObra where interessadosObra.obra = ? and interessados.idInteressado = interessadosObra.interessado"
 
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
@@ -312,9 +268,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//Ciclos climatéricos de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/ciclosclimatericos", verificaLogin, (req, res) => {
-		let sql = "Select * from ciclosClimatericos where objeto = ?"
+	//Ciclos climatéricos de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/ciclosclimatericos", verificaLogin, (req, res) => {
+		let sql = "Select * from ciclosClimatericos where peca = ?"
 
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
@@ -330,9 +286,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//fontes de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/fontes", verificaLogin, (req, res) => {
-		let sql = "Select * from fontes where objeto = ?"
+	//fontes de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/fontes", verificaLogin, (req, res) => {
+		let sql = "Select * from fontes where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -347,9 +303,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//poluição de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/poluicao", verificaLogin, (req, res) => {
-		let sql = "Select * from poluicao where objeto = ?"
+	//poluição de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/poluicao", verificaLogin, (req, res) => {
+		let sql = "Select * from poluicao where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -364,9 +320,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//iluminação de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/iluminacao", verificaLogin, (req, res) => {
-		let sql = "Select * from iluminacao where objeto = ?"
+	//iluminação de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/iluminacao", verificaLogin, (req, res) => {
+		let sql = "Select * from iluminacao where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -381,9 +337,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//pedidos de intervenção de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/pedidosintervencao", verificaLogin, (req, res) => {
-		let sql = "Select * from pedidosIntervencao where objeto = ?"
+	//pedidos de intervenção de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/pedidosintervencao", verificaLogin, (req, res) => {
+		let sql = "Select * from pedidosIntervencao where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -398,9 +354,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//conservações de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/conservacoes", verificaLogin, (req, res) => {
-		let sql = "Select * from conservacoes where objeto = ?"
+	//conservações de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/conservacoes", verificaLogin, (req, res) => {
+		let sql = "Select * from conservacoes where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -428,9 +384,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//propostasIntervencao (pelo ID do objeto)
-	app.get("/objetos/:id/propostasIntervencao", verificaLogin, (req, res) => {
-		let sql = "Select * from propostasIntervencao where objeto = ?"
+	//propostasIntervencao de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/propostasIntervencao", verificaLogin, (req, res) => {
+		let sql = "Select * from propostasIntervencao where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -458,9 +414,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//intervencoes (pelo ID do objeto)
-	app.get("/objetos/:id/intervencoes", verificaLogin, (req, res) => {
-		let sql = "Select intervencoes.* from intervencoes,propostasIntervencao  where propostasIntervencao.objeto = ? and intervencoes.proposta = propostasIntervencao.idProposta" 
+	//intervencoes de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/intervencoes", verificaLogin, (req, res) => {
+		let sql = "Select intervencoes.* from intervencoes,propostasIntervencao  where propostasIntervencao.peca = ? and intervencoes.proposta = propostasIntervencao.idProposta" 
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -475,16 +431,16 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//testes feitos num exame (pelo ID do objeto)
-	app.get("/objetos/:id/testes", verificaLogin, (req, res) => {
-		let sql = "SELECT * FROM testes WHERE objeto = ?"
+	//testes feitos num exame (pelo ID da peça)
+	app.get("/pecas/:id/testes", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM testes WHERE peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
 				res.status(500).json({ erro: "Erro na query" })
 			} else {
 				if (results.length ==0) {
-					res.status(404).json({ erro: "Objeto not found" })
+					res.status(404).json({ erro: "Peça not found" })
 				} else {
 					res.status(200).json(results)
 				}
@@ -509,9 +465,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//Documentação de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/documentacao", verificaLogin, (req, res) => {
-		let sql = "Select * from documentacao where objeto = ?"
+	//Documentação de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/documentacao", verificaLogin, (req, res) => {
+		let sql = "Select * from documentacao where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -573,9 +529,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
         })
     })
 
-	//analisesSolventes de um objeto (pelo ID do objeto)
-	app.get("/objetos/:id/analisesSolventes", verificaLogin, (req, res) => {
-		let sql = "Select analisesSolventes.*, tecnicos.nome as nomeTecnico from analisesSolventes,tecnicos where analisesSolventes.objeto = ? and tecnicos.idTecnico = analisesSolventes.tecnico"
+	//analisesSolventes de uma peça (pelo ID da peça)
+	app.get("/pecas/:id/analisesSolventes", verificaLogin, (req, res) => {
+		let sql = "Select analisesSolventes.*, tecnicos.nome as nomeTecnico from analisesSolventes,tecnicos where analisesSolventes.peca = ? and tecnicos.idTecnico = analisesSolventes.tecnico"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -607,9 +563,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//Intervencoes Anteriores de um objeto (pelo ID do objeto)
+	//Intervencoes Anteriores de uma peça (pelo ID da peça)
 	app.get("/objetos/:id/intervencoesanteriores", verificaLogin, (req, res) => {
-		let sql = "Select * from intervencoesAnteriores where objeto = ?"
+		let sql = "Select * from intervencoesAnteriores where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
 			if (err) {
@@ -623,4 +579,52 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 			}
 		})
 	})
+
+	//Lista de obras
+	app.get("/obras", verificaLogin, (req, res) => {
+		let sql = "SELECT * FROM obras"
+		con.query(sql, (err, results) => {
+			if (err) {
+				console.error("Erro get obras", err)
+				res.status(500).json({ erro: "Erro na query" })
+			} else {
+				res.status(200).json(results)
+			}
+		})
+	})
+
+	//Get obra (pelo ID da obra)
+	app.get("/obras/id/:id", verificaLogin, (req, res) => {
+		let sql = "Select * from obras where idObra = ?"
+		// req.params.id mapeia o :id que está no URL acima.
+		con.query(sql, [req.params.id], (err, results) => {
+			if (err) {
+				res.status(500).json({ erro: "Erro na query" })
+			} else {
+				if (results.length ==0) {
+					res.status(404).json({ erro: "Obra not found" })
+				} else {
+					res.status(200).json(results)
+				}
+			}
+		})
+	})
+
+	//Peças de uma obra (pelo ID da obra)
+	app.get("/obras/:id/pecas", verificaLogin, (req, res) => {
+		let sql = "Select * from pecas where obra = ?"
+		// req.params.id mapeia o :id que está no URL acima.
+		con.query(sql, [req.params.id], (err, results) => {
+			if (err) {
+				res.status(500).json({ erro: "Erro na query" })
+			} else {
+				if (results.length ==0) {
+					res.status(404).json({ erro: "Peças not found" })
+				} else {
+					res.status(200).json(results)
+				}
+			}
+		})
+	})
+
 }
