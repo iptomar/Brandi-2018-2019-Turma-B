@@ -457,7 +457,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 				res.status(500).json({ erro: "Erro na query" })
 			} else {
 				if (results.length ==0) {
-					res.status(404).json({ erro: "Objeto not found" })
+					res.status(404).json({ erro: "Testes not found" })
 				} else {
 					res.status(200).json(results)
 				}
@@ -564,7 +564,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})
 
 	//Intervencoes Anteriores de uma peça (pelo ID da peça)
-	app.get("/objetos/:id/intervencoesanteriores", verificaLogin, (req, res) => {
+	app.get("/pecas/:id/intervencoesanteriores", verificaLogin, (req, res) => {
 		let sql = "Select * from intervencoesAnteriores where peca = ?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql, [req.params.id], (err, results) => {
