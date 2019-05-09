@@ -64,7 +64,7 @@ export default class AnalisesSolvente extends Component {
   render() {
     return (
       <div className="bodydiv">
-            <Navbar dark expand="sm">
+            <Navbar dark className="topnavbar" expand="sm">
                 <NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Table, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import {Table, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button, Dropdown, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import axios from 'axios';
 import "./FichaTecnica.css";
 import "./navbar.css";
@@ -9,8 +9,10 @@ export default class FichaTecnica extends Component {
 	    super(props);
 
 		this.toggle = this.toggle.bind(this);
+		this.toggle2 = this.toggle2.bind(this);
 	    this.state = { 
 			isOpen: false,
+      		dropdownOpen: false,
 			fichaTecId:(window.location.pathname).split("/")[2]
 		};
   	}
@@ -18,6 +20,12 @@ export default class FichaTecnica extends Component {
 toggle() {
 	this.setState({
 		isOpen: !this.state.isOpen
+	});
+}
+  
+toggle2() {
+	this.setState({
+	  dropdownOpen: !this.state.dropdownOpen
 	});
 }
 
@@ -132,7 +140,7 @@ componentDidMount(){
 	render() {
     return (
 		<div id="pageFT" className="bodydiv">
-	    	<Navbar dark expand="sm">
+	    	<Navbar dark className="fttopnavbar" expand="sm">
           		<NavbarBrand className="mr-auto navbarbrand" href="/">Conservação e Restauro</NavbarBrand>
           		<NavbarToggler onClick={this.toggle} />
           		<Collapse isOpen={this.state.isOpen} navbar>
@@ -161,154 +169,188 @@ componentDidMount(){
 				</Collapse>
 			</Navbar>
 
-			<div className="menudiv">
-				<button className="btn btnmenu btn-outline-dark">Ficha Tecnica</button>
-				<button className="btn btnmenu btn-outline-dark">Folha de obra</button>
-				<button className="btn btnmenu btn-outline-dark" onClick = {this.mudarAnalisesSolvente}>Analises Solvente</button>
-			</div>
+			<Navbar className="ftnavbar" expand="sm">
+          		<NavbarToggler onClick={this.toggle} />
+          		<Collapse isOpen={this.state.isOpen} navbar>
+          	     <Nav tabs className="" navbar>
 
-			<div className="menudiv">
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Inicio</button>
+		          <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle2}>
+		            <DropdownToggle nav caret>
+		              Ficha Técnica
+		            </DropdownToggle>
+		            <DropdownMenu>
+		              <DropdownItem>Ficha Técnica</DropdownItem>
+		              <DropdownItem divider />
+		              <DropdownItem>Folha de Obra</DropdownItem>
+		              <DropdownItem divider />
+		              <DropdownItem onClick = {this.mudarAnalisesSolvente} >Análises Solventes</DropdownItem>
+		            </DropdownMenu>
+		          </Dropdown>
+		          
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Inicio</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Condições Ambientais</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Exames e Análises</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Estado de Conservação</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Intervenções Anteriores</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Tipo de Intervenção e Proposta</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Intervenção Realizada</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Documentação</NavLink>
+	             	</NavItem>
+	            	<NavItem>	                	
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "";
+								document.getElementById("Equipa").style.display = "none";
+							}
+						}>Fontes</NavLink>
+	             	</NavItem>
+	            	<NavItem>
+	                	<NavLink className="ftnavlink" onClick = {
+	                		function(){
+								document.getElementById("Inicio").style.display = "none";
+								document.getElementById("CondicoesAmbientais").style.display = "none";
+								document.getElementById("ExamesAnalises").style.display = "none";
+								document.getElementById("EstadoConservacao").style.display = "none";
+								document.getElementById("IntervencoesAnteriores").style.display = "none";
+								document.getElementById("TipoIntervencao").style.display = "none";
+								document.getElementById("IntervencaoRealizada").style.display = "none";
+								document.getElementById("Documentacao").style.display = "none";
+								document.getElementById("Fontes").style.display = "none";
+								document.getElementById("Equipa").style.display = "";
+							}
+						}>Equipa</NavLink>
+	             	</NavItem>
+            	</Nav>
+				</Collapse>
+			</Navbar>
 
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Condições ambientais</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Exames e analises</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Estado de conservação</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Intervenções anteriores</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Tipo de intervenção e proposta</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Intervenção realizada</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Documentação</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "";
-					document.getElementById("Equipa").style.display = "none";
-				}}>Fontes</button>
-
-
-				<button className="btn btnmenu btn-outline-dark" onClick = {function(){
-					document.getElementById("Inicio").style.display = "none";
-					document.getElementById("CondicoesAmbientais").style.display = "none";
-					document.getElementById("ExamesAnalises").style.display = "none";
-					document.getElementById("EstadoConservacao").style.display = "none";
-					document.getElementById("IntervencoesAnteriores").style.display = "none";
-					document.getElementById("TipoIntervencao").style.display = "none";
-					document.getElementById("IntervencaoRealizada").style.display = "none";
-					document.getElementById("Documentacao").style.display = "none";
-					document.getElementById("Fontes").style.display = "none";
-					document.getElementById("Equipa").style.display = "";
-				}}>Equipa</button>
-
-			
-			</div>
 
 			<div id = "Inicio">
 				<Table className="tableFT table-borderless">
