@@ -64,7 +64,7 @@ export default class AnalisesSolvente extends Component {
         } 
 
         //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+this.state.fichaTecId+'/analisesSolventes')
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/pecas/'+this.state.fichaTecId+'/analisesSolventes')
         .then((response) => {
             return response.data
         })
@@ -86,11 +86,13 @@ export default class AnalisesSolvente extends Component {
                 tr.appendChild(tecnico);
                 table.appendChild(tr);
 
+                let tdInfo = document.createElement('td');
                 let info = document.createElement('a');
                 info.href = "http://brandi.ipt.pt/detalhesAnalises/"+an[i].idAnalise+"";
                 //info.href = "http://localhost:3000/detalhesAnalises/"+an[i].idAnalise+"";
-                info.textContent = "Detalhes"
-                tr.appendChild(info);
+                info.textContent = "Detalhes";
+                tdInfo.appendChild(info);
+                tr.appendChild(tdInfo);
                 table.appendChild(tr);
             }
         })
@@ -103,6 +105,20 @@ export default class AnalisesSolvente extends Component {
             td.textContent = "Não existem dados disponiveis";
             tr.appendChild(td);
             table.appendChild(tr);
+        })
+
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/pecas/id/'+this.state.fichaTecId+'')
+        .then((response) => {
+            return response.data
+        })
+        .then(data => {
+            console.log(data);
+            let an = data;
+            let etiq = document.getElementById('spanAnHead');
+            etiq.textContent = "Análises feitas à peça: "+an[0].designacao;
+        })
+        .catch(error =>{
+            console.log(error);
         })
 
     }
@@ -142,6 +158,10 @@ export default class AnalisesSolvente extends Component {
 
         <div className="divInfo">
             <img alt="" src={logo}/>
+        </div>
+
+        <div className="analisesHeadDiv">
+            <span id="spanAnHead"></span>
         </div>
 
         <div className="analisesTableDiv">

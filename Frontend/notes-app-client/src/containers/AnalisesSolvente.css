@@ -34,3 +34,9 @@
     background-color: #6c757d;
     color: #ffffff;
 }
+.analisesHeadDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
