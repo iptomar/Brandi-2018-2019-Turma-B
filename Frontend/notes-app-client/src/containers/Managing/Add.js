@@ -12,16 +12,14 @@ export default class Login extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      fichaTecId:(window.location.pathname).split("/")[2],
+      obraId:(window.location.pathname).split("/")[2],
+      designacao:"",
       LCRM:"",
       CEARC:"",
       dataAberturaLCRM:"",
       dataAberturaCEARC:"",
       dataEntradaLCRM:"",
       dataEntradaCEARC:"",
-      coordenador:"",
-      funcao:"",
-      objeto:""
     };
   }
 
@@ -40,21 +38,19 @@ export default class Login extends Component {
   handleSubmit1 = event => {
     event.preventDefault();
 
+    let designacao = this.state.designacao;
     let LCRM = this.state.LCRM;
     let CEARC = this.state.CEARC;
     let dataAberturaLCRM = this.state.dataAberturaLCRM;
     let dataAberturaCEARC = this.state.dataAberturaCEARC;
     let dataEntradaLCRM = this.state.dataEntradaLCRM;
     let dataEntradaCEARC = this.state.dataEntradaCEARC;
-    let coordenador = this.state.coordenador;
-    let funcao = this.state.funcao;
-    let objeto = this.state.objeto;
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/inserirFT', { LCRM, CEARC, dataAberturaLCRM, dataAberturaCEARC, dataEntradaLCRM, dataEntradaCEARC, coordenador, funcao, objeto})
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/obra/new', { designacao, LCRM, CEARC, dataAberturaLCRM, dataAberturaCEARC, dataEntradaLCRM, dataEntradaCEARC})
       .then(res => {
         console.log(res)
-        this.props.history.push("/objetos");
+        this.props.history.push("/obras");
       })
       .catch(err => {
         console.log(err);
@@ -64,21 +60,19 @@ export default class Login extends Component {
   handleSubmit2 = event => {
     event.preventDefault();
 
+    let designacao = this.state.designacao;
     let LCRM = this.state.LCRM;
     let CEARC = this.state.CEARC;
     let dataAberturaLCRM = this.state.dataAberturaLCRM;
     let dataAberturaCEARC = this.state.dataAberturaCEARC;
     let dataEntradaLCRM = this.state.dataEntradaLCRM;
     let dataEntradaCEARC = this.state.dataEntradaCEARC;
-    let coordenador = this.state.coordenador;
-    let funcao = this.state.funcao;
-    let objeto = this.state.objeto;
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/updateFT', { LCRM, CEARC, dataAberturaLCRM, dataAberturaCEARC, dataEntradaLCRM, dataEntradaCEARC, coordenador, funcao, objeto})
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/obras/'+ this.state.obraId +'/update', { designacao, LCRM, CEARC, dataAberturaLCRM, dataAberturaCEARC, dataEntradaLCRM, dataEntradaCEARC})
       .then(res => {
         console.log(res)
-        this.props.history.push("/objetos");
+        this.props.history.push("/obras");
       })
       .catch(err => {
         console.log(err);
@@ -87,9 +81,9 @@ export default class Login extends Component {
 
   goBack = event => {
     if(window.location.pathname.split("/")[1] === "editar"){
-      this.props.history.push("/fichatecnica/" + this.state.fichaTecId);
+      this.props.history.push("/pecas/" + this.state.obraId);
     }else{
-      this.props.history.push("/objetos");
+      this.props.history.push("/obras");
     }
   }
 
@@ -131,21 +125,19 @@ export default class Login extends Component {
 
 		if(window.location.pathname.split("/")[1] === "editar"){
 			//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-      axios.get(/*proxyurl + 'http://brandi.ipt.pt/*/'/api/objetos/'+ this.state.fichaTecId +'/consultarFT')
+      axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/obras/id/'+ this.state.obraId)
       .then((response) => {
         return response.data[0]
       })
       .then(data => {
         console.log(data)
+        this.setState({ designacao: data.designacao });
         this.setState({ LCRM: data.LCRM });
         this.setState({ CEARC: data.CEARC });
         this.setState({ dataAberturaCEARC: data.dataAberturaCEARC.substring(0,10) });
         this.setState({ dataAberturaLCRM: data.dataAberturaLCRM.substring(0,10) });
         this.setState({ dataEntradaCEARC: data.dataEntradaCEARC.substring(0,10) });
         this.setState({ dataEntradaLCRM: data.dataEntradaLCRM.substring(0,10) });
-        this.setState({ objeto: data.designacao });
-        this.setState({ funcao: data.funcao });
-        this.setState({ coordenador: data.nome });
       });
       document.getElementById("btAdd").onclick = this.handleSubmit2
       document.getElementById("btAdd").innerHTML = "Editar"
@@ -189,8 +181,8 @@ export default class Login extends Component {
           </Navbar>
         <Form className="formFT">
           <FormGroup>
-            <Label for="objeto">Objeto</Label>
-            <Input type="objeto" name="objeto" id="objeto" value={this.state.objeto} onChange={this.handleChange}/>
+            <Label for="designacao">Designacao</Label>
+            <Input type="designacao" name="designacao" id="designacao" value={this.state.designacao} onChange={this.handleChange}/>
           </FormGroup>
           <FormGroup>
             <Label for="CEARC">CEARC</Label>
@@ -215,14 +207,6 @@ export default class Login extends Component {
           <FormGroup>
             <Label for="dataEntradaLCRM">Data de entrada no LCRM</Label>
             <Input type="dataEntradaLCRM" name="dataEntradaLCRM" id="dataEntradaLCRM" value={this.state.dataEntradaLCRM} onChange={this.handleChange}/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="coordenador">Nome do responsável</Label>
-            <Input type="coordenador" name="coordenador" id="coordenador" value={this.state.coordenador}  onChange={this.handleChange}/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="funcao">Funções do responsável</Label>
-            <Input type="funcao" name="funcao" id="funcao" value={this.state.funcao}  onChange={this.handleChange}/>
           </FormGroup>
           <Button className="pull-right" id="btAdd"></Button>
         </Form>

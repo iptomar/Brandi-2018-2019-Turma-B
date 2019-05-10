@@ -70,7 +70,7 @@ export default class Login extends Component {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/objetos">Objetos</NavLink>
+                <NavLink href="/obras">Obras</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>{sessionStorage.getItem("username")}</DropdownToggle>

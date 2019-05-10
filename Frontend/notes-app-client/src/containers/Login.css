@@ -130,6 +130,11 @@
   padding: 2% 2% 2% 2%;
 }
 
+.FormField__Button:disabled{
+  /*Escrever css do botao quando ta disabled*/
+  background-color:#4b2402;
+}
+
 .icr{
   margin: 1%;
   position: absolute;

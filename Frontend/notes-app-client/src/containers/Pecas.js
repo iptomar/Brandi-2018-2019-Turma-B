@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import axios from 'axios';
-import "./Objetos.css";
+import "./Pecas.css";
 import "./navbar.css";
 import "./base.css";
-export default class Objetos extends Component {
+export default class Pecas extends Component {
 	constructor(props) {
 	    super(props);
 
@@ -33,38 +33,40 @@ componentDidMount(){
 	}
 
 	if(sessionStorage.getItem("tipo") === "admin"){
-      let prof = document.querySelector(".dropdown-item")
-      console.log(prof)
-      let registarLink = document.createElement("a")
-      registarLink.href = "/register"
-      registarLink.className = "dropdown-item"
+		let prof = document.querySelector(".dropdown-item")
+		console.log(prof)
+		let registarLink = document.createElement("a")
+		registarLink.href = "/register"
+		registarLink.className = "dropdown-item"
 
-      let resgistarIcon = document.createElement("span")
-      resgistarIcon.className = "glyphicon glyphicon-edit"
-      registarLink.appendChild(resgistarIcon)
+		let resgistarIcon = document.createElement("span")
+		resgistarIcon.className = "glyphicon glyphicon-edit"
+		registarLink.appendChild(resgistarIcon)
 
-      let resgistarText = document.createElement("span")
-      resgistarText.innerHTML = " Registar"
-      registarLink.appendChild(resgistarText)
+		let resgistarText = document.createElement("span")
+		resgistarText.innerHTML = " Registar"
+		registarLink.appendChild(resgistarText)
 
-      let tecnicosLink = document.createElement("a")
-      tecnicosLink.href = "/tecnicos"
-      tecnicosLink.className = "dropdown-item"
+		let tecnicosLink = document.createElement("a")
+		tecnicosLink.href = "/tecnicos"
+		tecnicosLink.className = "dropdown-item"
 
-      let tecnicosIcon = document.createElement("span")
-      tecnicosIcon.className = "glyphicon glyphicon-list-alt"
-      tecnicosLink.appendChild(tecnicosIcon)
-      
-      let tecnicosText = document.createElement("span")
-      tecnicosText.innerHTML = " Técnicos"
-      tecnicosLink.appendChild(tecnicosText)
+		let tecnicosIcon = document.createElement("span")
+		tecnicosIcon.className = "glyphicon glyphicon-list-alt"
+		tecnicosLink.appendChild(tecnicosIcon)
+		
+		let tecnicosText = document.createElement("span")
+		tecnicosText.innerHTML = " Técnicos"
+		tecnicosLink.appendChild(tecnicosText)
 
-      prof.parentNode.insertBefore(registarLink, prof.nextSibling);
-      registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
-    } 
+		prof.parentNode.insertBefore(registarLink, prof.nextSibling);
+		registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
+	} 
 
-	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos')
+	let idObra = (window.location.pathname).split("/")[2];
+		
+	const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(proxyurl + 'http://brandi.ipt.pt/api/obras/' + idObra + "/pecas")
 	.then((response) => {
 		return response.data
 	})
@@ -94,7 +96,7 @@ componentDidMount(){
 			deck.appendChild(col);
 
 			let card = document.createElement('div');
-			card.id = objeto.idObjeto;
+			card.id = objeto.idPeca;
 			card.classList.add('card');
 			card.classList.add('cardObj');
 			card.classList.add("m-3");
@@ -121,7 +123,7 @@ componentDidMount(){
 			titulo.textContent = nome;
 			body.appendChild(titulo);
 			
-			axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+objeto.idObjeto+'/imagens')
+			axios.get(proxyurl + 'http://brandi.ipt.pt/api/pecas/'+objeto.idPeca+'/imagens')
 			.then((response) => {
 				return response.data
 			})		
@@ -133,6 +135,7 @@ componentDidMount(){
 				image.setAttribute('src',require(""+imgpath));
 			})
 			.catch(err => {
+				console.log(err);
 				image.setAttribute('src',require("./img/img.png"));				
 			});
     	}
