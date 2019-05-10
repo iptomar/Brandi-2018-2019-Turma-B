@@ -705,7 +705,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					}
 					sql0 = 'start transaction'
 					sql1 = 'update obras set ? where idObra = ?'
-					con.query(sql0+';'+sql1, [obra],
+					con.query(sql0+';'+sql1, [obra,request.params.id],
 					function(error, results, fields) {
 						if(error){
 							console.log(error)
