@@ -7,7 +7,6 @@ var path = require('path')
 var api = require('./modules/api')
 var auth = require('./modules/auth')
 var ft = require('./modules/ficha_tecnica')
-var ft2 = require('./modules/ficha_tecnica2')
 var edit = require('./modules/edit')
 var fo = require('./modules/folha_obra')
 //coneção com db
@@ -53,7 +52,6 @@ function verificaLoginAdmin(req, res, next) { next()}
 api(app, con, verificaLogin, verificaLoginAdmin)
 auth(app, con, verificaLogin, verificaLoginAdmin)
 ft(app, con, verificaLogin, verificaLoginAdmin)
-ft2(app, con, verificaLogin, verificaLoginAdmin)
 edit(app, con, verificaLogin, verificaLoginAdmin)
 fo(app, con, verificaLogin, verificaLoginAdmin)
 
