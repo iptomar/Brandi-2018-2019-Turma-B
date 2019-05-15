@@ -66,9 +66,9 @@ export default class DetalhesAnalises extends Component {
         .then(data => {
             let header = data;
             let nProcessoObra = document.getElementById('nProcessoObra');
-            nProcessoObra.textContent = header.processoCEARC;
+            nProcessoObra.textContent = header[0].processoCEARC;
             let designacaoProcObra = document.getElementById('designacaoProcObra');
-            designacaoProcObra.textContent = header.peca;
+            designacaoProcObra.textContent = header[0].peca;
 
         })
         .catch(error =>{
