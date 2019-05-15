@@ -7,16 +7,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	app.get("/peca/:id/folhaobra", verificaLogin, (req, res) => {
 		let json=[
 		]
-		let procedimentos={
-			idProcedimento: null,
-			data : null,
-			designacao:null,
-			duracao:null,
-			observacoes:null,
-			tecnico:null,
-			materiais:[]
-		}
-		let sql1 = "select * from procedimentos where peca = ?"
+		let sql1 = "select procedimentos.*, tecnico.nome as nomeTecnico from procedimentos, tecnicos where procedimentos.peca = ? and procedimentos.tecnico = tecnicos.idTecnico"
 		let sql2 = "select * from materiais where procedimento=?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql1 , [req.params.id], (err, results) => {
@@ -47,9 +38,22 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
+	//metodo que permite consultar uma folha de obra
+	app.get("/peca/:id/folhaobraHeader", verificaLogin, (req, res) => {
+		let sql = "SELECT pecas.designacao as peca, obras.CEARC as processoCEARC FROM pecas, obras where pecas.idPeca = ? and pecas.obra = obra.idObra"
+		con.query(sql,[req.params.id], (err, results) => {
+			if (err) {
+				console.error("Erro get folha de obra [HEADER]", err)
+				res.status(500).json({ erro: "Erro na query" })
+			} else {
+				res.status(200).json(results)
+			}
+		})
+	})
+
 
 	//metodo que permite inserir um procedimento
-	app.post('/procedimentos/new', function(request, response) {
+	app.post('/procedimentos/new', verificaLogin, function(request, response) {
 		//guarda os dados recebidos
 		
 		let	designacao  = request.body.designacao
@@ -102,7 +106,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})
 
 	//metodo que permite alterar um procedimento
-	app.post('/procedimentos/:id/update', function(request, response) {
+	app.post('/procedimentos/:id/update', verificaLogin, function(request, response) {
 		//guarda os dados recebidos	
 		let	designacao  = request.body.designacao
 		let	data  = request.body.data
@@ -134,7 +138,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})	
 
 	//metodo que permite alterar um procedimento
-	app.post('/materiais/:id/update', function(request, response) {
+	app.post('/materiais/:id/update', verificaLogin, function(request, response) {
 		//guarda os dados recebidos	
 		let	materiais  = request.body.materiais
 		let	quantidade  = request.body.quantidade
@@ -162,7 +166,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})	
 
 	//metodo que permite remover um material
-	app.get("/materiais/:id/remove", (request, response) => {
+	app.get("/materiais/:id/remove", verificaLoginAdmin, (request, response) => {
 		let sql1 = 'select * from materiais where idMaterial = ?'
 		// request.params.id mapeia o :id que está no URL acima.
 		con.query(sql1, [request.params.id], (err, results) => {
@@ -183,7 +187,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	})
 
 	//metodo que permite remover um material
-	app.get("/procedimentos/:id/remove", (request, response) => {
+	app.get("/procedimentos/:id/remove", verificaLoginAdmin, (request, response) => {
 		let sql0 = 'select * from procedimentos where idProcedimento = ?'
 		// request.params.id mapeia o :id que está no URL acima.
 		con.query(sql0, [request.params.id], (err, results) => {
