@@ -7,7 +7,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	app.get("/peca/:id/folhaobra", verificaLogin, (req, res) => {
 		let json=[
 		]
-		let sql1 = "select procedimentos.*, tecnico.nome as nomeTecnico from procedimentos, tecnicos where procedimentos.peca = ? and procedimentos.tecnico = tecnicos.idTecnico"
+		let sql1 = "select procedimentos.*, tecnicos.nome as nomeTecnico from procedimentos, tecnicos where procedimentos.peca = ? and procedimentos.tecnico = tecnicos.idTecnico"
 		let sql2 = "select * from materiais where procedimento=?"
 		// req.params.id mapeia o :id que está no URL acima.
 		con.query(sql1 , [req.params.id], (err, results) => {
@@ -40,7 +40,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//metodo que permite consultar uma folha de obra
 	app.get("/peca/:id/folhaobraHeader", verificaLogin, (req, res) => {
-		let sql = "SELECT pecas.designacao as peca, obras.CEARC as processoCEARC FROM pecas, obras where pecas.idPeca = ? and pecas.obra = obra.idObra"
+		let sql = "SELECT pecas.designacao as peca, obras.CEARC as processoCEARC FROM pecas, obras where pecas.idPeca = ? and pecas.obra = obras.idObra"
 		con.query(sql,[req.params.id], (err, results) => {
 			if (err) {
 				console.error("Erro get folha de obra [HEADER]", err)
