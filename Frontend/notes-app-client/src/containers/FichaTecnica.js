@@ -61,6 +61,10 @@ mudarAnalisesSolvente = event => {
 	this.props.history.push("/analisesSolvente/"+ this.state.fichaTecId);
 }
 	
+mudarFichaObra = event => {
+	this.props.history.push("/folhadeobra/"+ this.state.fichaTecId);
+}
+
 componentDidMount(){
 	if(sessionStorage.getItem("loginState") !== "success"){
 		this.props.history.push("/login");
@@ -181,7 +185,7 @@ componentDidMount(){
 		            <DropdownMenu>
 		              <DropdownItem>Ficha Técnica</DropdownItem>
 		              <DropdownItem divider />
-		              <DropdownItem>Folha de Obra</DropdownItem>
+		              <DropdownItem onClick = {this.mudarFichaObra}>Folha de Obra</DropdownItem>
 		              <DropdownItem divider />
 		              <DropdownItem onClick = {this.mudarAnalisesSolvente} >Análises Solventes</DropdownItem>
 		            </DropdownMenu>
