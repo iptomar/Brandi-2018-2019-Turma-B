@@ -288,7 +288,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	        function(error, results, fields) {
 	            //peça não encontrada
 	            if (results.length <= 0) {
-	            	response.send('Peça inválida.')
+	            	response.send('Peça inválido.')
 					response.end() 
 				} else {
 					const img = {
@@ -820,7 +820,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					}
 					sql0 = 'start transaction'
 					sql1 = 'update pecas set ? where idPeca = ?'
-					con.query(sql0+';'+sql1, [peca, request.params.id],
+					con.query(sql0+';'+sql1, [peca],
 					function(error, results, fields) {
 						if(error){
 							console.log(error)
@@ -1212,11 +1212,10 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
                 let sql9 = 'delete from procedimentos where peca in (select idPeca from pecas where obra = ?)'
                 let sql10 = 'delete from testesSolvente where analise in (select idAnalise from analisesSolventes where peca in (select idPeca from pecas where obra = ?))'
                 let sql11 = 'delete from analisesSolventes where peca in (select idPeca from pecas where obra = ?)'
-                let sql12 = 'delete from pecas where obra = ?'
-                let sql13 = 'delete from interessadosObra where obra = ?'
-                let sql14 = 'delete from obras where idObra = ?'
+                let sql12 = 'delete from pecas where idPeca in (select idPeca from pecas where obra = ?)'
+                let sql13 = 'delete from obras where idObra = ?'
                 // request.params.id mapeia o :id que está no URL acima.
-                con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8+';'+sql9+';'+sql10+';'+sql11+';'+sql12+';'+sql13+';'+sql14, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
+                con.query(sql0+';'+sql1+';'+sql2+';'+sql3+';'+sql4+';'+sql5+';'+sql6+';'+sql7+';'+sql8+';'+sql9+';'+sql10+';'+sql11+';'+sql12+';'+sql13, [request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id, request.params.id], (err, results) => {
                     if (err) {
                         console.log(err)
                         con.query('rollback')
@@ -1298,7 +1297,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 				response.status(404).json({ erro: "Interessado não encontrado" })
 			}else{
 				let sql0 = 'start transaction'
-				let sql1 = 'delete from interessadosObra where interessado = ?'
+				let sql1 = 'delete from interessadosObjeto where interessado = ?'
 				let sql2 = 'delete from interessados where idInteressado = ?'
 				// request.params.id mapeia o :id que está no URL acima.
 				con.query(sql0+';'+sql1+';'+sql2, [request.params.id,request.params.id], (err, results) => {
@@ -1316,7 +1315,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//metodo que permite remover um interessado de uma obra
 	app.get("/obras/:id/interessados/:id2/remove", (request, response) => {
-		let sql1 = 'select * from interessadosObra where interessado = ? and obra = ?'
+		let sql1 = 'select * from interessadosObjeto where interessado = ? and obra = ?'
 		// request.params.id mapeia o :id que está no URL acima.
 		con.query(sql1, [request.params.id2, request.params.id], (err, results) => {
 			console.log(results)

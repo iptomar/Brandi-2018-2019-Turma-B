@@ -13,7 +13,7 @@ export default class DetalhesAnalises extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = { 
             isOpen: false,
-            pecaID:(window.location.pathname).split("/")[2],
+            processoObraID:(window.location.pathname).split("/")[2],
         };
     }
 
@@ -59,16 +59,16 @@ export default class DetalhesAnalises extends Component {
         } 
 
         //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/peca/'+this.state.pecaID+'/folhaobraHeader')
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/processosObra/id/'+this.state.processoObraID+'')
         .then((response) => {
             return response.data
         })
         .then(data => {
-            let header = data;
+            let processo = data;
             let nProcessoObra = document.getElementById('nProcessoObra');
-            nProcessoObra.textContent = header[0].processoCEARC;
+            nProcessoObra.textContent = processo[0].numProcesso;
             let designacaoProcObra = document.getElementById('designacaoProcObra');
-            designacaoProcObra.textContent = header[0].peca;
+            designacaoProcObra.textContent = processo[0].designacao;
 
         })
         .catch(error =>{
@@ -79,23 +79,23 @@ export default class DetalhesAnalises extends Component {
 
         })
 
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/peca/'+this.state.pecaID+'/folhaobra')
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/processosObra/'+this.state.processoObraID+'')
         .then((response) => {
             return response.data
         })
         .then(data => {
-            let procedimentos = data;
+            let procedimentos = data[0].procedimentos;
             let FOTable = document.getElementById('FOTableID');
             for(let i=0; i<procedimentos.length; i++){
                 let tr = document.createElement('tr');
 
-                let dataTD = document.createElement('td');
-                dataTD.textContent = procedimentos[i].data;
-                tr.appendChild(dataTD);
+                let dataTH = document.createElement('td');
+                dataTH.textContent = procedimentos[i].data;
+                tr.appendChild(dataTH);
 
-                let designacaoTD = document.createElement('td');
-                designacaoTD.textContent = procedimentos[i].designacao;
-                tr.appendChild(designacaoTD);
+                let designacaoTH = document.createElement('td');
+                designacaoTH.textContent = procedimentos[i].designacao;
+                tr.appendChild(designacaoTH);
 
                 let materiaisTD = document.createElement('td');
                 for(let j=0;j<procedimentos[i].materiais.length; j++){
@@ -106,31 +106,6 @@ export default class DetalhesAnalises extends Component {
                     materiaisTD.appendChild(matTR);
                 }
                 tr.appendChild(materiaisTD);
-
-                let quantidadesTD = document.createElement('td');
-                for(let j=0;j<procedimentos[i].materiais.length; j++){
-                    let quantTR = document.createElement('tr');
-                    let quantTH = document.createElement('th');
-                    quantTH.textContent = procedimentos[i].materiais[j].quantidade;
-                    if(quantTH.textContent === ""){
-                        quantTH.textContent = "-";
-                    }
-                    quantTR.appendChild(quantTH);
-                    quantidadesTD.appendChild(quantTR);
-                }
-                tr.appendChild(quantidadesTD);
-
-                let duracaoTD = document.createElement('td');
-                duracaoTD.textContent = procedimentos[i].duracao;
-                tr.appendChild(duracaoTD);
-
-                let tecnicoTD = document.createElement('td');
-                tecnicoTD.textContent = procedimentos[i].nomeTecnico;
-                tr.appendChild(tecnicoTD);
-
-                let observacoesTD = document.createElement('td');
-                observacoesTD.textContent = procedimentos[i].observacoes;
-                tr.appendChild(observacoesTD);
 
                 FOTable.appendChild(tr);
             }
