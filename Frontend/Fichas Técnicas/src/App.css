@@ -1,3 +1,53 @@
+/** Intervenção e Proposta **/
+.inter1 {
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.inter2 {
+  background-color: #dddddd;
+}
+
+.head {
+  text-align: left;
+}
+
+.head1 {
+  background-color: #dddddd;
+  text-align: left;
+  width: 93%;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: 6px;
+}
+
+/** Primeira página **/
+.sobra {
+  background-color: #dddddd;
+  text-align: left;
+  width: 100%;
+  margin-left: -16px;
+}
+.sobra1 {
+  background-color: #dddddd;
+  text-align: left;
+  width: 96%;
+  margin-left: -2px;
+  font-weight: bold;
+}
+.sobra2 {
+  background-color: #dddddd;
+  text-align: left;
+  width: 100%;
+  margin-left: -16px;
+  color: #dddddd;
+}
+
+/**
 .Campos td {
   border: 1px solid #0c0b0b;
   background-color: #dddddd;
@@ -211,3 +261,4 @@ input {
      overflow: hidden;
      align-items: flex-start;
    }
+**/

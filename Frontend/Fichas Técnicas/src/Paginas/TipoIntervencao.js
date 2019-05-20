@@ -3,51 +3,166 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-     <div class="div1">
-     <h1>Tipo de Intervenção e Proposta</h1>
-      <h3>Tipo de Intervenção proposta pelo Conservador-Restaurador</h3>
-      <div  class="preservacao"><label>Preservação<input class="checkbox" type="checkbox"/></label></div>
-      <div class="conservacao"><label>Conservação<input class="checkbox" type="checkbox"/></label></div>
-      <div class="restauro"><label>Restauro<input class="checkbox" type="checkbox"/></label></div>
-     </div>
-      
-      <div class="div2">
-      <table align="center" class="tabela">
-        <tr class="cab">
-          <td class="cab2">Proposta Metodolígica de Intervenção</td>
-          <td class="cab2">Recursos Materiais|Técnicos|Tecnológicos </td>
-          <td class="cab2">Observações | Conclusões</td>
-        </tr>
-        <tr>
-          <td class="nome">Estrutura:</td>
-          <td><textarea rows="2" cols="30" type="text" maxlength="100"/></td>
-          <td><textarea rows="2" cols="30" type="text" maxlength="50"/></td>
-        </tr>
-        <tr>
-          <td class="nome">Superfície:</td>
-          <td><textarea rows="2" cols="30" type="text" maxlength="100"/></td>
-          <td><textarea rows="2" cols="30" type="text" maxlength="100"/></td>
-        </tr>
-        <tr>
-          <td class="nome">Elementos Acessórios:</td>
-          <td><textarea rows="2" cols="30" type="text" maxlength="100"/></td>
-          <td><textarea rows="2" cols="30" type="text" maxlength="100"/></td>
-        </tr>
-        
-      </table>
-      
-      </div>
-      <div class="div3">
-      <p>Data da Informação da proposta:<input type="date" min="2019-01-01"/></p>
-      <p class="p1">Data da aceitação da proposta: <input type="date"/></p>
-      </div>
-      
-      <div class="div4">
-      <p>Interlocutores do Processo (IPT):<textarea class="textarea2"></textarea></p>
-      <p>(Cliente): <textarea class="textarea2"></textarea></p>
-      </div>
+    <div className="container">
+      <div>
+        <div className="card-title">
+          <h1 className="head">Tipo de Intervenção e Proposta</h1>
+          <br />
+          <h3 className="inter1 head1 ">
+            Tipo de Intervenção proposta pelo Conservador-Restaurador
+          </h3>
+          <br />
+          <div class="container">
+            <div className="row">
+              <div className="col-md-4">
+                <label className="inter1">
+                  Preservação
+                  <input class="checkbox" type="checkbox" />
+                </label>
+              </div>
+              <div className="col-md-4">
+                <label className="inter1">
+                  Conservação
+                  <input class="checkbox" type="checkbox" />
+                </label>
+              </div>
+              <div className="col-md-4">
+                <label className="inter1">
+                  Restauro
+                  <input class="checkbox" type="checkbox" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6 inter1">
+                    Proposta Metodolígica de Intervenção
+                  </div>
+                  <div className="col-md-6 inter1">
+                    Recursos Materiais | Técnicos | Tecnológicos
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col inter1 inter2 form-control rounded-0">
+                    Estrutura:
+                  </div>
+                  <div className="col">
+                    <div className="form-group">
+                      <textarea
+                        className="form-control rounded-0"
+                        id="exampleFormControlTextarea2"
+                        rows="3"
+                      />
+                    </div>{' '}
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col inter1 inter2 form-control rounded-0">
+                    Superfície:
+                  </div>
+                  <div className="col">
+                    <div className="form-group">
+                      <textarea
+                        className="form-control rounded-0"
+                        id="exampleFormControlTextarea2"
+                        rows="3"
+                      />
+                    </div>{' '}
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col inter1 inter2 form-control rounded-0">
+                    Elementos Acessórios:
+                  </div>
+                  <div className="col">
+                    <div className="form-group">
+                      <textarea
+                        className="form-control rounded-0"
+                        id="exampleFormControlTextarea2"
+                        rows="3"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div className="col">
+              <div className="row">
+                <div className="col inter1">Observações | Conclusão</div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <div className="form-group">
+                    <textarea
+                      className="form-control rounded-0"
+                      id="exampleFormControlTextarea2"
+                      rows="5"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="container">
+              <div className="row">
+                <div className="col inter1 inter2 form-control rounded-0">
+                  Data da informação da proposta:
+                </div>
+                <div className="col">
+                  <input type="date" min="2019-01-01" />
+                </div>
+              </div>
+            </div>
+            <div className="container ">
+              <div className="row">
+                <div className="col inter1 inter2 form-control rounded-0 mt-5">
+                  Data da aceitação da proposta:
+                </div>
+                <div className="col mt-5">
+                  <input type="date" min="2019-01-01" />
+                </div>
+              </div>
+            </div>
+            <div className="container ">
+              <div class="row">
+                <div className="col inter1 inter2 form-control rounded-0 mt-5">
+                  Interlocutores da proposta:
+                </div>
+                <div className="col">
+                  <div className="form-group">
+                    <textarea
+                      className="form-control rounded-0 mt-5"
+                      id="exampleFormControlTextarea2"
+                      rows="1"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="container">
+              <div className="row">
+                <div className="col inter1 inter2 form-control rounded-0 mt-3">
+                  Cliente:
+                </div>
+                <div className="col">
+                  <div className="form-group">
+                    <textarea
+                      className="form-control rounded-0 mt-3"
+                      id="exampleFormControlTextarea2"
+                      rows="1"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
