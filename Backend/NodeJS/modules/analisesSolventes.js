@@ -10,7 +10,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
         //dados recebidos
         let sujidade = req.body.sujidade
-        let data = req.body.data
+        let data = req.body.dataAnalise
         let caracteristicas = req.body.caracteristicas
         let tecnico = req.body.tecnico
         let peca = req.body.peca
