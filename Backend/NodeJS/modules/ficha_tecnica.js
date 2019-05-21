@@ -381,7 +381,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let tipo = request.body.tipo
 	    //foram recebidos dados
 	    if (interessado && tipo) {
-		    //procura peça e interessado na db
+		    //procura obra e interessado na db
 		    sql1 = 'select * from obras where idObra = ?'
 		    sql2 = 'select * from interessados where idInteressado = ?'
 	        con.query(sql1+';'+sql2, [request.params.id, interessado],
@@ -672,6 +672,346 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 			response.end()
 		}
 	})
+
+	//metodo que permite adicionar uma intervenção anterior
+	app.post('/pecas/:id/intervencao/anterior/new', function(request, response) {
+	    //guarda os dados recebidos
+	    let estrutura = request.body.estrutura
+	    let superficie = request.body.superficie
+	    let elementos = request.body.elementos
+	    let observacoes = request.body.observacoes
+	    //foram recebidos dados
+	    if (estrutura && superficie && elementos && observacoes) {
+		    //procura peça na db
+	        con.query('select * from pecas where idPeca = ?', [request.params.id],
+	        function(error, results, fields) {
+	            //peça não encontrada
+	            if (results.length <= 0) {
+	             	response.send('Peça inválida.')
+					response.end() 
+				} else {
+					const interv = {
+						estrutura: estrutura,
+						superficie: superficie,
+						elementos: elementos,
+						observacoes: observacoes,
+						peca: request.params.id
+					}
+					sql1 = 'insert into intervencoesAnteriores set ?'
+					con.query(sql1, [interv],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao adicionar intervenção anterior")
+							response.end()
+						} else {
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite adicionar um pedido de intervenção
+	app.post('/pecas/:id/intervencao/pedido/new', function(request, response) {
+	    //guarda os dados recebidos
+	    let tipo = request.body.tipo
+	    let aspeto = request.body.aspeto
+	    //foram recebidos dados
+	    if (tipo && aspeto) {
+		    //procura peça na db
+	        con.query('select * from pecas where idPeca = ?', [request.params.id],
+	        function(error, results, fields) {
+	            //peça não encontrada
+	            if (results.length <= 0) {
+	             	response.send('Peça inválida.')
+					response.end() 
+				} else {
+					const interv = {
+						tipo: tipo,
+						aspeto: aspeto,
+						peca: request.params.id
+					}
+					sql1 = 'insert into pedidosIntervencao set ?'
+					con.query(sql1, [interv],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao adicionar pedido de intervenção")
+							response.end()
+						} else {
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite adicionar uma proposta de intervenção
+	app.post('/pecas/:id/intervencao/proposta/new', function(request, response) {
+	    //guarda os dados recebidos
+	    let tipo = request.body.tipo
+		let dataProposto = request.body.dataProposto
+	    let dataAceite = request.body.dataAceite
+	    let interlocutoresIPT = request.body.interlocutoresIPT
+	    let interlocutoresCliente = request.body.interlocutoresCliente
+	    //foram recebidos dados
+	    if (tipo && dataProposto && dataAceite && interlocutoresIPT && interlocutoresCliente) {
+		    //procura peça na db
+	        con.query('select * from pecas where idPeca = ?', [request.params.id],
+	        function(error, results, fields) {
+	            //peça não encontrada
+	            if (results.length <= 0) {
+	             	response.send('Peça inválida.')
+					response.end() 
+				} else {
+					const interv = {
+						tipo: tipo,
+						dataProposto: dataProposto,
+						dataAceite: dataAceite,
+						interlocutoresIPT: interlocutoresIPT,
+						interlocutoresCliente: interlocutoresCliente,
+						peca: request.params.id
+					}
+					sql1 = 'insert into propostasIntervencao set ?'
+					con.query(sql1, [interv],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao adicionar proposta de intervenção")
+							response.end()
+						} else {
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+		//metodo que permite adicionar uma intervenção realizada
+		app.post('/intervencao/proposta/:id/realizada/new', function(request, response) {
+			//guarda os dados recebidos
+			let tipo = request.body.tipo
+			let intervencao = request.body.intervencao
+			let recursos = request.body.recursos
+			let estado = request.body.estado
+			//foram recebidos dados
+			if (tipo && intervencao && recursos && estado) {
+				//procura proposta na db
+				con.query('select * from propostasIntervencao where idProposta = ?', [request.params.id],
+				function(error, results, fields) {
+					//proposta não encontrada
+					if (results.length <= 0) {
+						 response.send('Proposta inválida.')
+						response.end() 
+					} else {
+						const interv = {
+							tipo: tipo,
+							intervencao: intervencao,
+							recursos: recursos,
+							estado: estado,
+							peca: request.params.id
+						}
+						sql1 = 'insert into intervencoes set ?'
+						con.query(sql1, [interv],
+						function(error, results, fields) {
+							if(error){
+								console.log(error)
+								response.send("Erro ao adicionar intervenção realizada")
+								response.end()
+							} else {
+								let resposta = {
+									message: "Sucesso",
+									id: results.insertId 
+								}
+								con.query('commit')
+								response.send(resposta)
+								response.end()
+							}
+						})
+					}
+				})
+			} else {
+				response.send("Dados incompletos")
+				response.end()
+			}
+		})
+
+	//metodo que permite adicionar uma documentação
+	app.post('/pecas/:id/documentacao/new', function(request, response) {
+	    //guarda os dados recebidos
+	    let designacao = request.body.designacao
+		let referencias = request.body.referencias
+	    let autor = request.body.autor
+	    let tipo = request.body.tipo
+	    //foram recebidos dados
+	    if (designacao && referencias && autor && tipo) {
+		    //procura peça na db
+	        con.query('select * from pecas where idPeca = ?', [request.params.id],
+	        function(error, results, fields) {
+	            //peça não encontrada
+	            if (results.length <= 0) {
+	             	response.send('Peça inválida.')
+					response.end() 
+				} else {
+					const doc = {
+						designacao: designacao,
+						referencias: referencias,
+						autor: autor,
+						tipo: tipo,
+						peca: request.params.id
+					}
+					sql1 = 'insert into documentacao set ?'
+					con.query(sql1, [doc],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao adicionar documentação")
+							response.end()
+						} else {
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite adicionar uma fonte
+	app.post('/pecas/:id/fontes/new', function(request, response) {
+	    //guarda os dados recebidos
+	    let fonte = request.body.fonte
+		let tipo = request.body.tipo
+	    let localizacao = request.body.localizacao
+	    let cota = request.body.cota
+	    let dataConsulta = request.body.dataConsulta
+	    let area = request.body.area
+	    //foram recebidos dados
+	    if (fonte && tipo && localizacao && cota && dataConsulta && area) {
+		    //procura peça na db
+	        con.query('select * from pecas where idPeca = ?', [request.params.id],
+	        function(error, results, fields) {
+	            //peça não encontrada
+	            if (results.length <= 0) {
+	             	response.send('Peça inválida.')
+					response.end() 
+				} else {
+					const fonte = {
+						fonte: fonte,
+						tipo: tipo,
+						localizacao: localizacao,
+						cota: cota,
+						dataConsulta: dataConsulta,
+						area: area,
+						peca: request.params.id
+					}
+					sql1 = 'insert into fontes set ?'
+					con.query(sql1, [fonte],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao adicionar fonte")
+							response.end()
+						} else {
+							let resposta = {
+                                message: "Sucesso",
+                                id: results.insertId 
+                            }
+                            con.query('commit')
+                            response.send(resposta)
+                            response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})
+
+	//metodo que permite adicionar um técnico à equipa de uma peça
+	app.post('/pecas/:id/equipa/add', function(request, response) {
+	    //guarda os dados recebidos
+	    let tecnico = request.body.tecnico
+	    let funcao = request.body.funcao
+	    //foram recebidos dados
+	    if (tecnico && funcao) {
+		    //procura peça e técnico na db
+		    sql1 = 'select * from pecas where idPeca = ?'
+		    sql2 = 'select * from tecnicos where idTecnico = ?'
+	        con.query(sql1+';'+sql2, [request.params.id, tecnico],
+	        function(error, results, fields) {
+	            if (results[0].length <= 0) {
+	            	response.send('Peça inválida.')
+					response.end() 
+				} else if (results[1].length <= 0) {
+	            	response.send('Técnico inválido.')
+					response.end() 
+				} else {
+					const equipa = {
+						tecnico: tecnico,
+						peca: request.params.id,
+						funcao: funcao
+					}
+					sql1 = 'insert into tecnicoPeca set ?'
+					con.query(sql1, [equipa],
+					function(error, results, fields) {
+						if(error){
+							console.log(error)
+							response.send("Erro ao adicionar técnico")
+							response.end()
+						} else {
+							response.send("Sucesso")
+							response.end()
+						}
+					})
+				}
+			})
+		} else {
+			response.send("Dados incompletos")
+			response.end()
+		}
+	})		
 
 	//metodo que permite alterar uma obra
 	app.post('/obras/:id/update', function(request, response) {
