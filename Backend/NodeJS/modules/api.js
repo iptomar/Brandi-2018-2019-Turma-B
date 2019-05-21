@@ -20,7 +20,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//lista de tecnicos [Nomes apenas]
 	app.get("/tecnicosNome", verificaLogin, (req,res) =>{
-		let sql = "SELECT nome FROM tecnicos"
+		let sql = "SELECT idTecnico, nome FROM tecnicos"
 		con.query(sql, (err, results) => {
 			if (err) {
 				console.error("Erro get tecnicos", err)
