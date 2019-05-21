@@ -171,7 +171,7 @@ export default class AnalisesSolvente extends Component {
                 </Input>
             </FormGroup>
 
-            <Button>Adicionar</Button>
+            <Button onClick={this.handleSubmit}>Adicionar</Button>
 
         </Form>
 
