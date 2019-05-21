@@ -1,5 +1,7 @@
 ﻿//modules
-var session = require('express-session')
+
+
+
 //export
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	

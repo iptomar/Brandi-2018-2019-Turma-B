@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
-import logo from './img/logos2.png';
 import "./AddAnalise.css";
 import "./navbar.css";
 import "./base.css";
@@ -13,7 +13,11 @@ export default class AnalisesSolvente extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = { 
             isOpen: false,
-            fichaTecId:(window.location.pathname).split("/")[2]
+            sujidade:"",
+            data:"",
+            caracteristicas:"",
+            tecnico:"",
+            peca:(window.location.pathname).split("/")[2]
         };
     }
 
@@ -21,6 +25,14 @@ export default class AnalisesSolvente extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    handleChange = event => {
+
+    }
+
+    handleSubmit1 = event => {
+
     }
 
     componentDidMount(){
@@ -59,6 +71,18 @@ export default class AnalisesSolvente extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicosNome')
+        .then((response) => {
+            return response.data
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
     }
 
   render() {
@@ -93,9 +117,32 @@ export default class AnalisesSolvente extends Component {
                 </Collapse>
             </Navbar>
 
-        <div className="AddAnaliseForm">
+        <Form className="AddAnaliseForm">
 
-        </div>
+            <FormGroup>
+            <Label for="sujArea" className="addAnTag">Sujidade</Label>
+            <Input type="textarea" id="sujArea" placeholder="Sujidade..."/>
+            </FormGroup>
+
+            <FormGroup>
+            <Label for="dataAn" className="addAnTag">Data</Label>
+            <Input type="date" id="dataAn"/>
+            </FormGroup>
+
+            <FormGroup>
+            <Label for="caracteristicasArea" className="addAnTag">Caracteristicas</Label>
+            <Input type="textarea" id="caracteristicasArea" placeholder="Caracteristicas..."/>
+            </FormGroup>
+
+            <FormGroup>
+                <Label for="tecnicosSel" className="addAnTag">Técnico</Label>
+                <Input type="select" id="tecnicosSel">
+                </Input>
+            </FormGroup>
+
+            <Button>Adicionar</Button>
+
+        </Form>
 
       </div>	
     );
