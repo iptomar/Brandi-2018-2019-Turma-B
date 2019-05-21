@@ -77,10 +77,21 @@ export default class AnalisesSolvente extends Component {
             return response.data
         })
         .then(data => {
-            console.log(data);
+            let tecnicos = data;
+            let tecnicosSel = document.getElementById('tecnicosSel');
+            for(let i=0;i<tecnicos.length;i++){
+                let option = document.createElement('option');
+                option.text = tecnicos[i].nome;
+                option.value = tecnicos[i].idTecnico;
+                tecnicosSel.appendChild(option);
+            }
         })
         .catch(error =>{
             console.log(error);
+            let tecnicosSel = document.getElementById('tecnicosSel');
+            let option = document.createElement('option');
+            option.text = "ERRO A RECEBER TÉCNICOS";
+            tecnicosSel.appendChild(option);
         })
 
     }
@@ -137,6 +148,7 @@ export default class AnalisesSolvente extends Component {
             <FormGroup>
                 <Label for="tecnicosSel" className="addAnTag">Técnico</Label>
                 <Input type="select" id="tecnicosSel">
+                    <option value="" disabled selected>Selecionar técnico</option>
                 </Input>
             </FormGroup>
 
