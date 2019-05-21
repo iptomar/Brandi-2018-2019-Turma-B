@@ -6,7 +6,7 @@
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
     //método que permite criar uma Análise
-    app.post('/analisesSolventes/new', verificaLogin, function(req, res){
+    app.post('/analisesSolventes/new', function(req, res){
 
         //dados recebidos
         let sujidade = req.body.sujidade
@@ -22,19 +22,19 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
                 if(error){
                     console.log(error)
 					con.query('rollback')
-					response.send("Erro ao adicionar análise")
-					response.end()
+					res.send("Erro ao adicionar análise")
+					res.end()
                 }
                 else{
                     con.query('commit')
-					response.send("Sucesso")
-					response.end()
+					res.send("Sucesso")
+					res.end()
                 }
             })
         }
         else{
-            response.send("Dados incompletos")
-			response.end()
+            res.send("Dados incompletos")
+			res.end()
         }
 
     })
