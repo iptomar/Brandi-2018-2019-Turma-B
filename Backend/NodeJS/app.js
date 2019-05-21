@@ -9,6 +9,7 @@ var auth = require('./modules/auth')
 var ft = require('./modules/ficha_tecnica')
 var edit = require('./modules/edit')
 var fo = require('./modules/folha_obra')
+var analisesSolventes = require('./modules/analisesSolventes')
 //coneção com db
 var con = mysql.createConnection({
 	host     : 'localhost',
@@ -54,5 +55,6 @@ auth(app, con, verificaLogin, verificaLoginAdmin)
 ft(app, con, verificaLogin, verificaLoginAdmin)
 edit(app, con, verificaLogin, verificaLoginAdmin)
 fo(app, con, verificaLogin, verificaLoginAdmin)
+analisesSolventes(app, con, verificaLogin, verificaLoginAdmin)
 
 app.listen(8080)
