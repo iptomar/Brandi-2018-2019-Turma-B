@@ -1,0 +1,18 @@
+.AddAnaliseForm{
+
+    max-width: 60%;
+    margin: 5% auto;
+    background-color: #4b2402;
+    padding: 20px;
+    border-radius: 25px;
+
+}
+
+.addAnTag{
+    color: white;
+}
+
+
+.AddAnaliseForm input{
+    height: auto;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
-import logo from './img/logos2.png';
 import "./AddAnalise.css";
 import "./navbar.css";
 import "./base.css";
@@ -13,13 +13,44 @@ export default class AnalisesSolvente extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = { 
             isOpen: false,
-            fichaTecId:(window.location.pathname).split("/")[2]
+            sujidade:"",
+            dataAnalise:"",
+            caracteristicas:"",
+            tecnico:"",
+            peca:(window.location.pathname).split("/")[2]
         };
     }
 
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
+        });
+    }
+
+    handleChange = event => {
+        this.setState({
+            [event.target.id]: event.target.value
+          });
+    }
+
+    handleSubmit = event => {
+
+        event.preventDefault();
+
+        let sujidade = this.state.sujidade;
+        let dataAnalise = this.state.dataAnalise;
+        let caracteristicas = this.state.caracteristicas;
+        let tecnico = this.state.tecnico;
+        let peca = this.state.peca;
+
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/new', { sujidade, dataAnalise, caracteristicas, tecnico, peca })
+        .then(res => {
+        console.log(res)
+        this.props.history.push("/analisesSolvente/"+ this.state.peca);
+        })
+        .catch(err => {
+        console.log(err);
         });
     }
 
@@ -59,6 +90,29 @@ export default class AnalisesSolvente extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicosNome')
+        .then((response) => {
+            return response.data
+        })
+        .then(data => {
+            let tecnicos = data;
+            let tecnicosSel = document.getElementById('tecnico');
+            for(let i=0;i<tecnicos.length;i++){
+                let option = document.createElement('option');
+                option.text = tecnicos[i].nome;
+                option.value = tecnicos[i].idTecnico;
+                tecnicosSel.appendChild(option);
+            }
+        })
+        .catch(error =>{
+            console.log(error);
+            let tecnicosSel = document.getElementById('tecnico');
+            let option = document.createElement('option');
+            option.text = "ERRO A RECEBER TÉCNICOS";
+            tecnicosSel.appendChild(option);
+        })
+
     }
 
   render() {
@@ -93,9 +147,33 @@ export default class AnalisesSolvente extends Component {
                 </Collapse>
             </Navbar>
 
-        <div className="AddAnaliseForm">
+        <Form className="AddAnaliseForm">
 
-        </div>
+            <FormGroup>
+            <Label for="sujArea" className="addAnTag">Sujidade</Label>
+            <Input type="textarea" id="sujidade" placeholder="Sujidade..." value={this.state.sujidade}  onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup>
+            <Label for="dataAnalise" className="addAnTag">Data</Label>
+            <Input type="date" id="dataAnalise" value={this.state.dataAnalise}  onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup>
+            <Label for="caracteristicasArea" className="addAnTag">Caracteristicas</Label>
+            <Input type="textarea" id="caracteristicas" placeholder="Caracteristicas..." value={this.state.caracteristicas}  onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup>
+                <Label for="tecnicosSel" className="addAnTag">Técnico</Label>
+                <Input type="select" id="tecnico" value={this.state.tecnico}  onChange={this.handleChange}>
+                    <option value="" disabled selected>Selecionar técnico</option>
+                </Input>
+            </FormGroup>
+
+            <Button onClick={this.handleSubmit}>Adicionar</Button>
+
+        </Form>
 
       </div>	
     );

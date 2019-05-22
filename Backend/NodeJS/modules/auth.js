@@ -1,5 +1,4 @@
 ﻿//modules
-var session = require('express-session')
 var bcrypt = require('bcryptjs');
 //export
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {

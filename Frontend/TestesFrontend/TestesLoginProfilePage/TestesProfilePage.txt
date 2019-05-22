@@ -1,0 +1,8 @@
+Problemas na página de perfil:
+Nome: - Aceita números e carateres especiais.
+Username: - Quando modificado, os dados anteriores (nome,email) "desaparecem." 
+Email: - Aceita um email sem ter "@gmail.com/outros"
+Tipo: -Aceita números e carateres especiais.
+Habilitacões: - Aceita números e carateres especiais.
+
+De resto como se pode comprovar nos testes, os botões de guardar funcionam, em relação aos campos apenas os campos Nível Profissional e Password encontram-se corretos.

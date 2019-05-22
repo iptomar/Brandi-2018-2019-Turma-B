@@ -1,11 +1,26 @@
 ﻿//modules
-var session = require('express-session')
+
+
+
 //export
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
 	//lista de tecnicos
 	app.get("/tecnicos", verificaLoginAdmin, (req,res) =>{
 		let sql = "SELECT * FROM tecnicos"
+		con.query(sql, (err, results) => {
+			if (err) {
+				console.error("Erro get tecnicos", err)
+				res.status(500).json({ erro: "Erro na query" })
+			} else {
+				res.status(200).json(results)
+			}
+		})
+	})
+
+	//lista de tecnicos [Nomes apenas]
+	app.get("/tecnicosNome", verificaLogin, (req,res) =>{
+		let sql = "SELECT idTecnico, nome FROM tecnicos"
 		con.query(sql, (err, results) => {
 			if (err) {
 				console.error("Erro get tecnicos", err)
