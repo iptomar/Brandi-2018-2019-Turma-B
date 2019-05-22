@@ -1,59 +1,72 @@
-import React, { Component } from "react";
-
+import React, { Component } from 'react';
 
 class Documentacao extends Component {
-	render() {
-  return (
-    <div className="App">
-      <div className="right">
-     <h3>Exames e Análises</h3>
-     <h4>Tipo|Designação</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h4>Referências</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h4>Entidade|Autor</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
+  render() {
+    return (
+      <div class="container">
+        <div class="row">
+          <div class="col col-md-7">
+            <h2> Documentação</h2>
+            <br />
+            <h4 class="bg-secondary text-black">
+              Relatório Técnico da Intervenção do LCRM
+            </h4>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+            <h4 class="bg-secondary text-black">Originais Fotográficos</h4>
 
+            <h5 class="mt-3 bg-light text-black">Tipo|Designação</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h5 class="mt-3 bg-light text-black">Referências</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h5 class="mt-3 bg-light text-black">Entidade|Autor</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h4 class="mt-3 bg-secondary text-black">Documentação Gráfica</h4>
+
+            <h5 class="mt-3 bg-light text-black">Tipo|Designação</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h5 class="mt-3 bg-light text-black">Referências</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h5 class="mt-3 bg-light text-black">Entidade|Autor</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h4 class="mt-3 bg-secondary text-black">Exames e Análises</h4>
+            <h5 class="mt-3 bg-light text-black">Tipo|Designação</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h5 class="mt-3 bg-light text-black">Referências</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+
+            <h5 class="mt-3 bg-light text-black">Entidade|Autor</h5>
+            <div class="col">
+              <textarea class="form-control-2 ml-n4" cols="80" rows="2" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="left">
-      <h1>Documentação</h1>
-      <h3>Relatório Técnico da Intervenção do LCRM</h3>
-      <textarea cols="80" rows="2"></textarea>
-      <h3>Originais Fotográficos</h3>
-      <h4>Tipo|Designação</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h4>Referências</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h4>Entidade|Autor</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h3>Documentação Gráfica</h3>
-      <h4>Tipo|Designação</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h4>Referências</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-      <h4>Entidade|Autor</h4>
-      <textarea cols="80" rows="3">
-      </textarea>
-
-
-      
-
-       
-
-
-      </div>
-
-
-    </div>
-  );
+    );
+  }
 }
-}
-export default CondicoesAmbientais;
+export default Documentacao;
