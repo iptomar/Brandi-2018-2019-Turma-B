@@ -32,6 +32,27 @@ export default class DetalhesAnalises extends Component {
           });
     }
 
+    handleSubmit = event => {
+
+        event.preventDefault();
+
+        let solvente = this.state.solvente;
+        let eficacia = this.state.grau;
+        let obs = this.state.obs;
+        let analise = this.state.analiseID;
+
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/testesSolvente/new', { solvente, eficacia, obs, analise})
+        .then(res => {
+        console.log(res)
+        this.props.history.push("/detalhesAnalises/"+ this.state.analiseID);
+        })
+        .catch(err => {
+        console.log(err);
+        });
+
+    }
+
     mudarAddTeste = event =>{
         this.props.history.push("/addTesteAnalise/"+ this.state.analiseID);
     }
@@ -129,7 +150,7 @@ export default class DetalhesAnalises extends Component {
                     <Input type="textarea" placeholder="Observações..." id="obs" value={this.state.obs}  onChange={this.handleChange}></Input>
                 </FormGroup>
 
-                <Button>Adicionar</Button>
+                <Button onClick={this.handleSubmit}>Adicionar</Button>
 
             </Form>
         </div>
