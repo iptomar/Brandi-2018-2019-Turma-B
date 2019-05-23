@@ -39,4 +39,37 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
     })
 
+    //método que permite criar um Teste
+    app.post('/testesSolvente/new', function(req, res){
+
+        //dados recebidos
+        let solvente = req.body.solvente
+        let analise = req.body.analiseID
+        let grau = req.body.grau
+        let obs = req.body.obs
+
+        if(solvente, analise, grau, obs){
+            sql0 = 'start transaction'
+            sql1 = 'insert into testesSolvente (solvente, eficacia, observacao, analise) values(?,?,?,?)'
+            con.query(sql0+';'+sql1,[solvente, grau, obs, analise], function(error, results, fields){
+                if(error){
+                    console.log(error)
+					con.query('rollback')
+					res.send("Erro ao adicionar teste")
+					res.end()
+                }
+                else{
+                    con.query('commit')
+					res.send("Sucesso")
+					res.end()
+                }
+            })
+        }
+        else{
+            res.send("Dados incompletos")
+			res.end()
+        }
+
+    })
+
 }
