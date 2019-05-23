@@ -341,6 +341,87 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste à requisição dos Técnicos pelos nomes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbb43118-f542-4281-8384-584df0be8f15",
+						"exec": [
+							"pm.test(\"Teste ao nome dos Técnicos\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de /tecnicos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idTecnico\":1,",
+							"                    \"nome\":\"Fernando dos Santos Antunes\"   ",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":2,",
+							"                    \"nome\":\"Elmo Pires\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":3,",
+							"                    \"nome\":\"Edgar Oliveira\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":4,",
+							"                    \"nome\":\"Helder Lopes\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":5,",
+							"                    \"nome\":\"Miguel Tomé\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":6,",
+							"                    \"nome\":\"David Moreno\"   ",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":7,",
+							"                    \"nome\":\"Diogo Ribeiro\" ",
+							"                },",
+							"                {\"idTecnico\":8,",
+							"                \"nome\":\"Router\" ",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":9,",
+							"                    \"nome\":\"Yororo\"",
+							"                }",
+							"        ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/tecnicosNome",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"tecnicosNome"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
