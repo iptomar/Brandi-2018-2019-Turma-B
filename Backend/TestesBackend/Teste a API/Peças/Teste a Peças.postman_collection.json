@@ -269,6 +269,90 @@
 			"response": []
 		},
 		{
+			"name": "Teste de uma peça com ID válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99b9eade-79a1-4466-a9a6-ac1d263f832a",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de tecnicos/id/1\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idPeca\": 1,",
+							"        \"designacao\": \"Base da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/id/1",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Teste de uma  peça de ID inválido",
 			"event": [
 				{
