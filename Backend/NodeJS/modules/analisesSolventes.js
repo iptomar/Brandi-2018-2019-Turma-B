@@ -44,8 +44,8 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
         //dados recebidos
         let solvente = req.body.solvente
-        let analise = req.body.analiseID
-        let grau = req.body.grau
+        let analise = req.body.analise
+        let grau = req.body.eficacia
         let obs = req.body.obs
 
         if(solvente, analise, grau, obs){
