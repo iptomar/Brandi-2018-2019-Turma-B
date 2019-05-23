@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "aad3803b-da49-4d29-8136-24b6e5e9a918",
+		"_postman_id": "848e302e-158a-42d3-a1b9-974175674113",
 		"name": "Teste a Procedimentos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -107,10 +107,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/procedimentos",
 					"host": [
@@ -153,10 +149,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/procedimento/id/-1",
 					"host": [
