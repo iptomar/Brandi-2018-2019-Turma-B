@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
-import logo from './img/logos2.png';
-import "./AnalisesSolvente.css";
+import "./AddTesteAnalise.css";
 import "./navbar.css";
 import "./base.css";
 
-export default class AnalisesSolvente extends Component {
+export default class DetalhesAnalises extends Component {
     constructor(props) {
         super(props);
 
         this.toggle = this.toggle.bind(this);
         this.state = { 
             isOpen: false,
-            fichaTecId:(window.location.pathname).split("/")[2]
+            analiseID:(window.location.pathname).split("/")[2],
+            solvente: "",
+            grau: "",
+            obs: ""
         };
     }
 
@@ -23,15 +26,20 @@ export default class AnalisesSolvente extends Component {
         });
     }
 
-    mudarAddAnalise = event =>{
-        this.props.history.push("/addAnalise/"+ this.state.fichaTecId);
+    handleChange = event => {
+        this.setState({
+            [event.target.id]: event.target.value
+          });
+    }
+
+    mudarAddTeste = event =>{
+        this.props.history.push("/addTesteAnalise/"+ this.state.analiseID);
     }
 
     componentDidMount(){
         if(sessionStorage.getItem("loginState") !== "success"){
             this.props.history.push("/login");
         }
-
         if(sessionStorage.getItem("tipo") === "admin"){
           let prof = document.querySelector(".dropdown-item")
           console.log(prof)
@@ -62,64 +70,6 @@ export default class AnalisesSolvente extends Component {
           prof.parentNode.insertBefore(registarLink, prof.nextSibling);
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
-
-        const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(proxyurl + 'http://brandi.ipt.pt/api/pecas/'+this.state.fichaTecId+'/analisesSolventes')
-        .then((response) => {
-            return response.data
-        })
-        .then(data => {
-            let an = data;
-            let table = document.getElementById('tableAnalises');
-            for(let i=0;i<an.length;i++){
-                let tr = document.createElement('tr');
-                let sujidade = document.createElement('td');
-                sujidade.textContent = an[i].sujidade;
-                tr.appendChild(sujidade);
-
-                let data = document.createElement('td');
-                data.textContent = an[i].data;
-                tr.appendChild(data);
-
-                let tecnico = document.createElement('td');
-                tecnico.textContent = an[i].nomeTecnico;
-                tr.appendChild(tecnico);
-                table.appendChild(tr);
-
-                let tdInfo = document.createElement('td');
-                let info = document.createElement('a');
-                //info.href = "http://brandi.ipt.pt/detalhesAnalises/"+an[i].idAnalise+"";
-                info.href = "http://localhost:3000/detalhesAnalises/"+an[i].idAnalise+"";
-                info.textContent = "Detalhes";
-                tdInfo.appendChild(info);
-                tr.appendChild(tdInfo);
-                table.appendChild(tr);
-            }
-        })
-        .catch(error =>{
-            console.log(error);
-            let table = document.getElementById('tableAnalises');
-            let tr = document.createElement('tr');
-            let td = document.createElement('td');
-            td.colSpan = 4;
-            td.textContent = "Não existem dados disponiveis";
-            tr.appendChild(td);
-            table.appendChild(tr);
-        })
-
-        axios.get(proxyurl + 'http://brandi.ipt.pt/api/pecas/id/'+this.state.fichaTecId+'')
-        .then((response) => {
-            return response.data
-        })
-        .then(data => {
-            console.log(data);
-            let an = data;
-            let etiq = document.getElementById('spanAnHead');
-            etiq.textContent = "Análises feitas à peça: "+an[0].designacao;
-        })
-        .catch(error =>{
-            console.log(error);
-        })
 
     }
 
@@ -155,27 +105,33 @@ export default class AnalisesSolvente extends Component {
                 </Collapse>
             </Navbar>
 
+        <div >
+            <Form className="addTesteForm">
+                <FormGroup>
+                    <Label for="solvente">Solvente ou Mistura de Solventes</Label>
+                    <Input type="text" id="solvente" value={this.state.solvente}  onChange={this.handleChange}></Input>
+                </FormGroup>
 
-        <div className="divInfo">
-            <img alt="" src={logo}/>
-        </div>
+                <FormGroup>
+                    <Label for="grau">Grau de Eficácia na Solubilização</Label>
+                    <Input type="select" id="grau" value={this.state.grau}  onChange={this.handleChange}>
+                        <option disabled selected></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </Input>
+                </FormGroup>
 
-        <div className="analisesHeadDiv">
-            <span id="spanAnHead"></span>
-        </div>
+                <FormGroup>
+                    <Label for="obs">Observações</Label>
+                    <Input type="textarea" placeholder="Observações..." id="obs" value={this.state.obs}  onChange={this.handleChange}></Input>
+                </FormGroup>
 
-        <div className="analisesTableDiv">
-            <table id = "tableAnalises" className="analisesTable">
-                <tr>
-                    <th className="thButton" colSpan="4"><input type="button" value="Adicionar" className="btnAddAn btn btn-outline-secondary" onClick={this.mudarAddAnalise}></input></th>
-                </tr>
-                <tr>
-                    <th>Sujidade</th>
-                    <th>data</th>
-                    <th>tecnico</th>
-                    <th>Info</th>
-                </tr>
-            </table>
+                <Button>Adicionar</Button>
+
+            </Form>
         </div>
 
       </div>	
