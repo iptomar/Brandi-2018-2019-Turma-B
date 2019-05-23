@@ -166,6 +166,64 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Teste de pedido do procedimento pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06b90a72-b00f-463e-a7e5-252382ff497e",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de procedimentos/id/1\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idProcedimento\":1,",
+							"                    \"data\":\"2017-02-21T00:00:00.000Z\",",
+							"                    \"designacao\":\"Escolha e análise do objeto\",",
+							"                    \"duracao\":\"4h\",",
+							"                    \"observacoes\":\"Coluna neoclássica com policromia\",",
+							"                    \"peca\":1,",
+							"                    \"tecnico\":1",
+							"                    ",
+							"                }",
+							"            ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/procedimentos/id/1",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"procedimentos",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
