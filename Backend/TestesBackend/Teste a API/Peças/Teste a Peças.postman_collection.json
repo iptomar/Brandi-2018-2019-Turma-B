@@ -269,7 +269,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste de um objeto de ID inválido",
+			"name": "Teste de uma  peça de ID inválido",
 			"event": [
 				{
 					"listen": "test",
@@ -283,7 +283,7 @@
 							"pm.test(\"Mensagem de Erro encontrada\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\": \"Objeto not found\"",
+							"        \"erro\": \"peça not found\"",
 							"    });",
 							"});"
 						],
@@ -295,7 +295,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/objetos/id/-1",
+					"raw": "brandi.ipt.pt:80/api/pecas/id/-1",
 					"host": [
 						"brandi",
 						"ipt",
@@ -304,7 +304,7 @@
 					"port": "80",
 					"path": [
 						"api",
-						"objetos",
+						"pecas",
 						"id",
 						"-1"
 					]
