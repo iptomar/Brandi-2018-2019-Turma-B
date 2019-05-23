@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "e206f691-957a-473a-a4ec-c227752d12a0",
-		"name": "Teste a Objetos",
+		"_postman_id": "94d5b365-387a-4e4e-8bfc-9cd00c58275f",
+		"name": "Teste a Peças",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Teste de pedido de objetos",
+			"name": "Teste de pedido de peças",
 			"event": [
 				{
 					"listen": "test",
@@ -16,12 +16,13 @@
 							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
 							"    //Se o estado for 200",
 							"    if(pm.response.to.have.status(200)){",
-							"         pm.test(\"Resposta de /objetos\", function () {",
+							"         pm.test(\"Resposta de /pecas\", function () {",
 							"            var jsonData = pm.response.json();",
 							"            pm.expect(jsonData).to.eql([",
 							"    {",
-							"        \"idObjeto\": 1,",
-							"        \"designacao\": \"Coluna neoclássica com policromia\",",
+							"        ",
+							"        \"idPeca\": 1,",
+							"        \"designacao\": \"Base da Coluna\",",
 							"        \"superCategoria\": \"Bens Culturais\",",
 							"        \"categoria\": \"Móvel Integrado\",",
 							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
@@ -29,7 +30,6 @@
 							"        \"localizacao\": \"Lisboa\",",
 							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
 							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
-							"        \"conjunto\": 1,",
 							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
 							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
 							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
@@ -49,7 +49,192 @@
 							"        \"autoria\": \"Desconhecida\",",
 							"        \"datacao\": \"Século XVIII/XIX\",",
 							"        \"localOrigem\": \"Desconhecida\",",
-							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\"",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    },",
+							"    {",
+							"        \"idPeca\": 2,",
+							"        \"designacao\": \"Corpo da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    },",
+							"    {",
+							"        \"idPeca\": 3,",
+							"        \"designacao\": \"Topo da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    },",
+							"    {",
+							"        \"idPeca\": 4,",
+							"        \"designacao\": \"Piano de Brincar\",",
+							"        \"superCategoria\": \"Bens Lúdicos\",",
+							"        \"categoria\": \"Brinquedo\",",
+							"        \"subCategoria\": \"Piano de Madeira\",",
+							"        \"tipologia\": \"\",",
+							"        \"localizacao\": \"Porto\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 30 cm | Diâmetro 5 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 15 cm\",",
+							"        \"elementosConjunto\": \"Desconhecido\",",
+							"        \"elementosAcessorios\": \"Piano é constituído por madeira de Sabugueiro\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de sabugueiro. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 3",
+							"    },",
+							"    {",
+							"        \"idPeca\": 5,",
+							"        \"designacao\": \"Mesa de Mármore\",",
+							"        \"superCategoria\": \"Bens Pessoais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Mesa pertence a conjunto com cadeiras\",",
+							"        \"tipologia\": \"\",",
+							"        \"localizacao\": \"Tomar\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 175,5 cm | Diâmetro 35 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 29 x 49 cm | Diagonal - 35 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Mesa e Cadeiras\",",
+							"        \"elementosAcessorios\": \"Mesa de mármore polido\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas no mármore; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de pinheiro. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia)\",",
+							"        \"tecnicaEstrutura\": \"\",",
+							"        \"tecnicaSuperficie\": \"\",",
+							"        \"descricao\": \"\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 1",
+							"    },",
+							"    {",
+							"        \"idPeca\": 6,",
+							"        \"designacao\": \"Cadeira de Madeira trabalhada\",",
+							"        \"superCategoria\": \"Bens Pessoais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Cadeira pertence a conjunto com mesas\",",
+							"        \"tipologia\": \"\",",
+							"        \"localizacao\": \"Tomar\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 60 cm | Diâmetro 20 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 29 cm | Diagonal - 20 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Mesa e Cadeiras\",",
+							"        \"elementosAcessorios\": \"Cadeira de madeira trabalhada\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de pinheiro. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia)\",",
+							"        \"tecnicaEstrutura\": \"\",",
+							"        \"tecnicaSuperficie\": \"\",",
+							"        \"descricao\": \"\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 1",
 							"    }",
 							"]);",
 							"         });",
@@ -67,21 +252,17 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/objetos",
+					"raw": "http://brandi.ipt.pt/api/pecas",
+					"protocol": "http",
 					"host": [
 						"brandi",
 						"ipt",
 						"pt"
 					],
-					"port": "80",
 					"path": [
 						"api",
-						"objetos"
+						"pecas"
 					]
 				}
 			},
@@ -113,10 +294,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/objetos/id/-1",
 					"host": [
@@ -177,10 +354,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/objetos/1/imagens",
 					"host": [
@@ -244,10 +417,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/1/interessados",
 					"protocol": "http",
@@ -291,10 +460,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/objetos/-1/poluicao",
 					"host": [
@@ -338,10 +503,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/objetos/-1/ciclosclimatericos",
 					"host": [
@@ -385,10 +546,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/fontes",
 					"protocol": "http",
@@ -432,10 +589,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/iluminacao",
 					"protocol": "http",
@@ -479,10 +632,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/pedidosintervencao",
 					"protocol": "http",
@@ -526,10 +675,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/conservacoes",
 					"protocol": "http",
@@ -573,10 +718,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/propostasIntervencao",
 					"protocol": "http",
@@ -620,10 +761,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/intervencoes",
 					"protocol": "http",
@@ -667,10 +804,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/exames",
 					"protocol": "http",
@@ -714,10 +847,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/documentacao",
 					"protocol": "http",
@@ -768,10 +897,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/objetos/1/analisesSolventes",
 					"host": [
@@ -815,10 +940,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://brandi.ipt.pt/api/objetos/-1/intervencoesanteriores",
 					"protocol": "http",
