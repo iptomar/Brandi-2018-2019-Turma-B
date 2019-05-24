@@ -51,7 +51,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste de pedido de um processo de obra pelo seu ID",
+			"name": "Teste de pedido de uma obra pelo seu ID",
 			"event": [
 				{
 					"listen": "test",
@@ -89,6 +89,53 @@
 						"processosObra",
 						"id",
 						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de peças de uma obra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b06c79d5-e5e1-403a-ad1c-9f13661305ec",
+						"exec": [
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /obra/:id/pecas\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([{\"idPeca\":5,\"designacao\":\"Mesa de Mármore\",\"superCategoria\":\"Bens Pessoais\",\"categoria\":\"Móvel Integrado\",\"subCategoria\":\"Mesa pertence a conjunto com cadeiras\",\"tipologia\":\"\",\"localizacao\":\"Tomar\",\"dimensoes\":\"Comp x Prof. x Alt. - 175,5 cm | Diâmetro 35 cm\",\"outrasDimensoes\":\"Lado - 29 x 49 cm | Diagonal - 35 cm\",\"elementosConjunto\":\"Bens do Conjunto - Mesa e Cadeiras\",\"elementosAcessorios\":\"Mesa de mármore polido\",\"marcasAutoria\":\"Não foram identificadas quaisquer marcas deste género\",\"marcasMontagem\":\"Riscador; marcas geométricas quadradas incisas no mármore; marcas de entalhe.\",\"marcasConstrucao\":\"Riscador.\",\"classificacaoPatrimonial\":\"Nacional/Regional\",\"estilo\":\"\",\"epoca\":\"Coevo\",\"qualidade\":\"Boa\",\"estruturaMaterial\":\"Suporte: Madeira de pinheiro. Intervenções diferenciadas em madeiras de cerejeira.\",\"superficieMaterial\":\"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia)\",\"tecnicaEstrutura\":\"\",\"tecnicaSuperficie\":\"\",\"descricao\":\"\",\"analogias\":\"Desconhecidas\",\"conclusoes\":\"\",\"autoria\":\"Desconhecida\",\"datacao\":\"Século XX\",\"localOrigem\":\"Desconhecida\",\"condicoesAmbientais\":\"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",\"conclusoesAmbientais\":\"\",\"objetivosExames\":\"\",\"resultadosExames\":\"\",\"conclusoesExames\":\"\",\"obra\":1},{\"idPeca\":6,\"designacao\":\"Cadeira de Madeira trabalhada\",\"superCategoria\":\"Bens Pessoais\",\"categoria\":\"Móvel Integrado\",\"subCategoria\":\"Cadeira pertence a conjunto com mesas\",\"tipologia\":\"\",\"localizacao\":\"Tomar\",\"dimensoes\":\"Comp x Prof. x Alt. - 60 cm | Diâmetro 20 cm\",\"outrasDimensoes\":\"Lado - 19 x 29 cm | Diagonal - 20 cm\",\"elementosConjunto\":\"Bens do Conjunto - Mesa e Cadeiras\",\"elementosAcessorios\":\"Cadeira de madeira trabalhada\",\"marcasAutoria\":\"Não foram identificadas quaisquer marcas deste género\",\"marcasMontagem\":\"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",\"marcasConstrucao\":\"Riscador.\",\"classificacaoPatrimonial\":\"Nacional/Regional\",\"estilo\":\"\",\"epoca\":\"Coevo\",\"qualidade\":\"Boa\",\"estruturaMaterial\":\"Suporte: Madeira de pinheiro. Intervenções diferenciadas em madeiras de cerejeira.\",\"superficieMaterial\":\"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia)\",\"tecnicaEstrutura\":\"\",\"tecnicaSuperficie\":\"\",\"descricao\":\"\",\"analogias\":\"Desconhecidas\",\"conclusoes\":\"\",\"autoria\":\"Desconhecida\",\"datacao\":\"Século XX\",\"localOrigem\":\"Desconhecida\",\"condicoesAmbientais\":\"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",\"conclusoesAmbientais\":\"\",\"objetivosExames\":\"\",\"resultadosExames\":\"\",\"conclusoesExames\":\"\",\"obra\":1}]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/obras/1/pecas",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"obras",
+						"1",
+						"pecas"
 					]
 				}
 			},
