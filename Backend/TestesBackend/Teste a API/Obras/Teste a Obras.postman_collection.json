@@ -51,7 +51,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste de pedido de um processo de obra com ID inválido",
+			"name": "Teste de pedido de um processo de obra pelo seu ID",
 			"event": [
 				{
 					"listen": "test",
