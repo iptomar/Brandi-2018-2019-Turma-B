@@ -554,21 +554,40 @@
 			"response": []
 		},
 		{
-			"name": "Teste de pedido de ciclos climatericos de um objeto",
+			"name": "Teste de pedido de ciclos climatericos de uma peça",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "70354f94-bf46-45c2-b302-572aa9863a3d",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\": \"Ciclos climatéricos not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de tecnicos/id/1\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idCiclo\": 1,",
+							"        \"temperatura\": \"Frio / Húmido: Desconhecido\",",
+							"        \"humidade\": \"Frio / Húmido: Desconhecido\",",
+							"        \"periodoAno\": \"NA\",",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idCiclo\": 2,",
+							"        \"temperatura\": \"Quente / Seco: Desconhecido\",",
+							"        \"humidade\": \"Quente / Seco: Desconhecido\",",
+							"        \"periodoAno\": \"NA\",",
+							"        \"peca\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -579,17 +598,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/objetos/-1/ciclosclimatericos",
+					"raw": "http://brandi.ipt.pt/api/pecas/1/ciclosclimatericos",
+					"protocol": "http",
 					"host": [
 						"brandi",
 						"ipt",
 						"pt"
 					],
-					"port": "80",
 					"path": [
 						"api",
-						"objetos",
-						"-1",
+						"pecas",
+						"1",
 						"ciclosclimatericos"
 					]
 				}
