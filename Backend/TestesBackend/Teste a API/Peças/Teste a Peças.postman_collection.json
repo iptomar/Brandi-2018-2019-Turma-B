@@ -564,7 +564,7 @@
 							"pm.test(\"Teste às ligações\", function () {",
 							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
 							"    if(pm.response.to.have.status(200)){",
-							"        pm.test(\"Resposta de tecnicos/id/1\", function () {",
+							"        pm.test(\"Resposta de pecas/:id/ciclosclimatericos\", function () {",
 							"            var jsonData = pm.response.json();",
 							"            pm.expect(jsonData).to.eql([",
 							"    {",
@@ -616,21 +616,46 @@
 			"response": []
 		},
 		{
-			"name": "Teste de pedido por fontes de um objeto",
+			"name": "Teste de pedido de fontes de uma peça",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "e3f2d870-ece9-4b78-acc9-e1698fb695db",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\": \"Fontes not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as fontes de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idFonte\": 1,",
+							"        \"fonte\": \"Não se aplica\",",
+							"        \"tipo\": \"NA\",",
+							"        \"localizacao\": \"NA\",",
+							"        \"cota\": \"NA\",",
+							"        \"dataConsulta\": \"1997-01-01T00:00:00.000Z\",",
+							"        \"area\": \"Arquivísticas\",",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idFonte\": 2,",
+							"        \"fonte\": \"Não se aplica\",",
+							"        \"tipo\": \"NA\",",
+							"        \"localizacao\": \"NA\",",
+							"        \"cota\": \"NA\",",
+							"        \"dataConsulta\": \"1997-01-01T00:00:00.000Z\",",
+							"        \"area\": \"Documentais\",",
+							"        \"peca\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -641,7 +666,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://brandi.ipt.pt/api/objetos/-1/fontes",
+					"raw": "http://brandi.ipt.pt/api/pecas/1/fontes",
 					"protocol": "http",
 					"host": [
 						"brandi",
@@ -650,8 +675,8 @@
 					],
 					"path": [
 						"api",
-						"objetos",
-						"-1",
+						"pecas",
+						"1",
 						"fontes"
 					]
 				}
