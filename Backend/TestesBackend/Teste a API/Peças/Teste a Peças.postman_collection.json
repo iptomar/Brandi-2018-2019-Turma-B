@@ -511,21 +511,32 @@
 			"response": []
 		},
 		{
-			"name": "Teste de um pedido por poluicao de um objeto",
+			"name": "Teste de um pedido de poluicao de uma peça",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "390bf113-0c67-4927-9608-f18d5ae8c413",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\": \"Poluição not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem a poluição de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/poluicao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idPoluicao\":1,",
+							"                    \"agente\":\"Sendo uma coluna pertencente a um restauro, é possível que estivesse inserida num espaço litúrgico, estando exposta a poeiras e fumos. Pertence possivelmente a um retábulo desmantelado, tendo percorrido um longo caminho até ao local atual, devendo por isso ter passado por alterações bruscas de temperatura e humidade relativa.\",\"fonte\":\"Em relação às poeiras e fumos, provavelmente, teriam origem em velas ou devido ao contacto com pessoas do exterior.\",\"resultados\":\"O contacto com estes agentes degradadores, em especial, às alterações de temperatura e humidade, levaram ao aparecimento de lacunas, tanto ao nível da camada policroma como de preparação. Assim como levaram à perda de coesão da camada de preparação, tornando-se pulverulenta.Deve-se evitar ao máximo coloca-la perto de fontes de calor, como velas, fogueiras ou materiais quentes, assim como evitar transições bruscas de temperatura e humidade, de maneira a que a sua degradação não seja acelerada, levando ao aparecimento de danos e patologias no objeto.\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -536,7 +547,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/objetos/-1/poluicao",
+					"raw": "brandi.ipt.pt:80/api/pecas/1/poluicao",
 					"host": [
 						"brandi",
 						"ipt",
@@ -545,8 +556,8 @@
 					"port": "80",
 					"path": [
 						"api",
-						"objetos",
-						"-1",
+						"pecas",
+						"1",
 						"poluicao"
 					]
 				}
