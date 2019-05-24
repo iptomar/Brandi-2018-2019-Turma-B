@@ -877,21 +877,46 @@
 			"response": []
 		},
 		{
-			"name": "Teste ao pedido de propostas de intervenção de um objeto",
+			"name": "Teste ao pedido de propostas de intervenção de uma peça",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "644eb631-edd5-4d1b-984e-ce447dbe12e2",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\":\"PropostasIntervencao not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os pedidos de propostas de intervenção de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idProposta\":1,",
+							"                    \"tipo\":\"Conservação\",",
+							"                    \"dataProposto\":null,",
+							"                    \"dataAceite\":null,",
+							"                    \"interlecutoresIPT\":\"Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda\",",
+							"                    \"interlecutoresCliente\":\"\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                },",
+							"                {",
+							"                    \"idProposta\":2,",
+							"                    \"tipo\":\"Restauro\",",
+							"                    \"dataProposto\":null,",
+							"                    \"dataAceite\":null,",
+							"                    \"interlecutoresIPT\":\"Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda\",",
+							"                    \"interlecutoresCliente\":\"\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -902,7 +927,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://brandi.ipt.pt/api/objetos/-1/propostasIntervencao",
+					"raw": "http://brandi.ipt.pt/api/pecas/1/propostasIntervencao",
 					"protocol": "http",
 					"host": [
 						"brandi",
@@ -911,8 +936,8 @@
 					],
 					"path": [
 						"api",
-						"objetos",
-						"-1",
+						"pecas",
+						"1",
 						"propostasIntervencao"
 					]
 				}
