@@ -1047,21 +1047,35 @@
 			"response": []
 		},
 		{
-			"name": "Teste ao pedido de documentação  de um objeto",
+			"name": "Teste ao pedido de documentação  de uma peça",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "ac7cda9b-c6d9-49ff-b687-24aa2637c97e",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\":\"Documentacao not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem a documentacao de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/documentacao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idDocumentacao\":1,",
+							"                    \"designacao\":\"Não identificados. Não se sabe nada sobre a história do objeto, como proveniência e local de origem.\",",
+							"                    \"referencias\":\"NA\",",
+							"                    \"autor\":\"NA\",",
+							"                    \"tipo\":\"Originais Fotográficos\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1072,7 +1086,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://brandi.ipt.pt/api/objetos/-1/documentacao",
+					"raw": "http://brandi.ipt.pt/api/pecas/1/documentacao",
 					"protocol": "http",
 					"host": [
 						"brandi",
@@ -1081,8 +1095,8 @@
 					],
 					"path": [
 						"api",
-						"objetos",
-						"-1",
+						"pecas",
+						"1",
 						"documentacao"
 					]
 				}
