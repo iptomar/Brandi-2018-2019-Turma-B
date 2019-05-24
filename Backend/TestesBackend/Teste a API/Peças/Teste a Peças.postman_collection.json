@@ -397,7 +397,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste ao pedido de imagens de um objeto",
+			"name": "Teste ao pedido de imagens de uma peça",
 			"event": [
 				{
 					"listen": "test",
@@ -407,26 +407,17 @@
 							"pm.test(\"Ligação Bem Sucedida\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Your test name\", function () {",
+							"pm.test(\"Teste a /pecas/:id/imagens\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData).to.eql([",
 							"    {",
 							"        \"idImagem\": 1,",
-							"        \"imagem\": \"imgColuna1.jpg\",",
+							"        \"imagem\": \"imgColuna1.png\",",
 							"        \"tipo\": \"fotografia\",",
-							"        \"formato\": \"JPEG\",",
+							"        \"formato\": \"PNG\",",
 							"        \"referencia\": \"Nikon 3300\",",
 							"        \"documentacao\": \"Capitel e pormenores (CD) | Análises estratigráficas (CD)\",",
-							"        \"objeto\": 1",
-							"    },",
-							"    {",
-							"        \"idImagem\": 2,",
-							"        \"imagem\": \"grafColuna1.jpg\",",
-							"        \"tipo\": \"grafico\",",
-							"        \"formato\": \"JPEG\",",
-							"        \"referencia\": \"Nikon 3300\",",
-							"        \"documentacao\": \"FTIR\",",
-							"        \"objeto\": 1",
+							"        \"peca\": 1",
 							"    }",
 							"]);",
 							"});"
@@ -439,7 +430,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/objetos/1/imagens",
+					"raw": "brandi.ipt.pt:80/api/pecas/1/imagens",
 					"host": [
 						"brandi",
 						"ipt",
@@ -448,7 +439,7 @@
 					"port": "80",
 					"path": [
 						"api",
-						"objetos",
+						"pecas",
 						"1",
 						"imagens"
 					]
