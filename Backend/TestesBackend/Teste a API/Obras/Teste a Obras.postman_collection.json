@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "78bb7c00-fd65-44b3-be8a-777c1470e38f",
-		"name": "Teste a Processos Obra",
+		"_postman_id": "2fef7a0f-bb0a-47cc-b99a-424d14608381",
+		"name": "Teste a Obras",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Teste de pedido dos processos de Obra",
+			"name": "Teste de pedido de listagem de Obras",
 			"event": [
 				{
 					"listen": "test",
@@ -16,15 +16,9 @@
 							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
 							"    //Se o estado for 200",
 							"    if(pm.response.to.have.status(200)){",
-							"         pm.test(\"Resposta de /processosObra\", function () {",
+							"         pm.test(\"Resposta de /obra\", function () {",
 							"            var jsonData = pm.response.json();",
-							"            pm.expect(jsonData).to.eql([",
-							"    {",
-							"        \"numProcesso\": 1,",
-							"        \"designacao\": \"Coluna neoclássica com policromia\",",
-							"        \"objeto\": 1",
-							"    }",
-							"]);",
+							"            pm.expect(jsonData).to.eql([{\"idObra\":1,\"designacao\":\"Conjunto: Mesa e Cadeiras\",\"LCRM\":\"0005-04-2006-MOB\",\"CEARC\":\"1221/21/06\",\"dataAberturaLCRM\":\"2006-04-27T23:00:00.000Z\",\"dataAberturaCEARC\":\"2006-04-27T23:00:00.000Z\",\"dataEntradaLCRM\":\"2006-04-27T23:00:00.000Z\",\"dataEntradaCEARC\":\"2006-04-27T23:00:00.000Z\"},{\"idObra\":2,\"designacao\":\"Coluna neoclássica com policromia\",\"LCRM\":\"0015-05-2007-MOB\",\"CEARC\":\"1222/22/07\",\"dataAberturaLCRM\":\"2006-04-28T23:00:00.000Z\",\"dataAberturaCEARC\":\"2006-04-28T23:00:00.000Z\",\"dataEntradaLCRM\":\"2006-04-28T23:00:00.000Z\",\"dataEntradaCEARC\":\"2006-04-28T23:00:00.000Z\"},{\"idObra\":3,\"designacao\":\"Piano de brincar em madeira\",\"LCRM\":\"0025-05-2007-MOB\",\"CEARC\":\"1223/23/08\",\"dataAberturaLCRM\":\"2006-04-29T23:00:00.000Z\",\"dataAberturaCEARC\":\"2006-04-29T23:00:00.000Z\",\"dataEntradaLCRM\":\"2006-04-29T23:00:00.000Z\",\"dataEntradaCEARC\":\"2006-04-29T23:00:00.000Z\"}]);",
 							"         });",
 							"    }",
 							"    //Se o estado for 500",
@@ -40,12 +34,8 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/processosObra",
+					"raw": "brandi.ipt.pt:80/api/obras",
 					"host": [
 						"brandi",
 						"ipt",
@@ -54,7 +44,7 @@
 					"port": "80",
 					"path": [
 						"api",
-						"processosObra"
+						"obras"
 					]
 				}
 			},
@@ -86,10 +76,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/processosObra/id/-1",
 					"host": [
