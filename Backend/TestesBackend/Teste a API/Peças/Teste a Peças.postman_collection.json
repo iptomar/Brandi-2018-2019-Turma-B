@@ -887,7 +887,7 @@
 							"pm.test(\"Teste às ligações\", function () {",
 							"    //se o estado for 200 retorna o JSON que contem os pedidos de propostas de intervenção de uma peça",
 							"    if(pm.response.to.have.status(200)){",
-							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"        pm.test(\"Resposta de pecas/:id/propostasIntervencao\", function () {",
 							"            var jsonData = pm.response.json();",
 							"            pm.expect(jsonData).to.eql([",
 							"                {",
@@ -945,7 +945,7 @@
 			"response": []
 		},
 		{
-			"name": "Teste ao pedido de intervenções de um objeto",
+			"name": "Teste ao pedido de intervenções de uma peça",
 			"event": [
 				{
 					"listen": "test",
