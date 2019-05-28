@@ -512,8 +512,10 @@ export default class Login extends Component {
 									</tr>
 								</tbody>
 							</table>
+							<form method="post" enctype="multipart/form-data" action={"api/tecnicos/username/" + this.state.user.username + "/updateimage"}>
+                <input type="file" name="Img"/>
                 <input type="submit" value="Submit"/>
-            	</form>
+                </form>
 						</div>
 					</Cell>
 				</Grid>

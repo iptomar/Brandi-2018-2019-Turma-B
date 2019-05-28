@@ -70,14 +70,14 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	    let email = request.body.email
 	    let tipo = request.body.tipo
 	    let Habilitacoes = request.body.Habilitacoes
-	    let NivProfissional = request.body.NivProfissional
+			let NivProfissional = request.body.NivProfissional
 	    //let fotografia = request.body.fotografia
 	    if(Nome && username && password && email && tipo && Habilitacoes && NivProfissional){
 		
 			bcrypt.genSalt(10, function(err, salt) {
 				bcrypt.hash(password, salt, function(err, hash) {
 					// Store hash in your password DB.
-					const tecnico = {nome:Nome, username:username, password:hash, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional}
+					const tecnico = {nome:Nome, username:username, password:hash, email:email, tipo:tipo, habilitacoes:Habilitacoes, nivelProfissional:NivProfissional, fotografia: "/home/administrator/Documents/GitHub/Brandi-2018-2019-Turma-B/Backend/NodeJS/imagens/default-user.png"}
 	    			con.query('INSERT INTO tecnicos SET ?', [tecnico], function(error, results, fields) {
 						if(error){
 							response.send("Erro ao inserir na tabela tecnicos")

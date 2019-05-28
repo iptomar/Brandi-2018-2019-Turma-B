@@ -3,6 +3,7 @@ var mysql = require('mysql')
 var express = require('express')
 var session = require('express-session')
 var bodyParser = require('body-parser')
+var fileUpload = require('express-fileupload')
 //var path = require('path')
 var api = require('./modules/api')
 var auth = require('./modules/auth')
@@ -29,6 +30,7 @@ app.use(session({
 //define o bodyparser para trabalhar com json
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
+app.use(fileUpload())
 
 function verificaLogin(req, res, next) { next()}
 function verificaLoginAdmin(req, res, next) { next()}

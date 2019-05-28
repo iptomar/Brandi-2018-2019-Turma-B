@@ -1,4 +1,6 @@
 var bcrypt = require('bcryptjs');
+var path = require('path')
+
 //export
 module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
@@ -188,4 +190,47 @@ app.post('/tecnicos/username/:username/updatenivelProfissional', function (reque
 	}
 
 });
+
+app.post('/tecnicos/username/:username/updateimage',verificaLogin, function (request, response) {
+	if(req.session.username == req.params.username || req.session.role === "admin"){
+		if(!request.files){
+			response.send("Não foram enviadas imagens.")
+		}else{
+			let file=request.files.Img
+			let extension = path.extname(file.name)
+			if(extension!=".png" && extension != ".jpg"){
+				response.send("Só são permitidas imagens")
+			}else{
+				file.name=request.params.username+".png"
+				let caminho=__dirname+"/../imagens/"+file.name
+				file.mv(caminho, function(err){
+					if(err){
+						console.log(err)
+						response.status(500).send("Ocorreu um erro inesperado.")
+					}else{
+						con.query('UPDATE tecnicos SET  fotografia=? WHERE username = ? ', [caminho, request.params.username],
+							function (error, results, fields) {
+								if (error) {
+									response.send("Erro ao guardar imagem");
+									response.end();
+								} else {
+									response.send("Imagem guardada com sucesso")
+									response.end();
+								}
+							}
+						)
+					}
+				})
+			}
+		}
+	}else{
+		res.status(500).json({ erro: "Permission denied" })
+	}
+})
+
+
 }
+
+
+
+
