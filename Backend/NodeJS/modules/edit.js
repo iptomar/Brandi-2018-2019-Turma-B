@@ -192,7 +192,7 @@ app.post('/tecnicos/username/:username/updatenivelProfissional', function (reque
 });
 
 app.post('/tecnicos/username/:username/updateimage',verificaLogin, function (request, response) {
-	if(req.session.username == req.params.username || req.session.role === "admin"){
+	if(request.session.username == request.params.username || request.session.role === "admin"){
 		if(!request.files){
 			response.send("Não foram enviadas imagens.")
 		}else{
@@ -224,7 +224,7 @@ app.post('/tecnicos/username/:username/updateimage',verificaLogin, function (req
 			}
 		}
 	}else{
-		res.status(500).json({ erro: "Permission denied" })
+		response.status(500).json({ erro: "Permission denied" })
 	}
 })
 
