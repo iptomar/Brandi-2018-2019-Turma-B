@@ -959,7 +959,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	             	response.send('Peça inválida.')
 					response.end() 
 				} else {
-					const fonte = {
+					const fontes = {
 						fonte: fonte,
 						tipo: tipo,
 						localizacao: localizacao,
@@ -969,7 +969,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 						peca: request.params.id
 					}
 					sql1 = 'insert into fontes set ?'
-					con.query(sql1, [fonte],
+					con.query(sql1, [fontes],
 					function(error, results, fields) {
 						if(error){
 							console.log(error)
