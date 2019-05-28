@@ -132,7 +132,7 @@ con.connect(function(err) {
 		console.log("Table intervencoesAnteriores created")
 	})
 	//criar tabela propostasIntervencao
-	sql = "create table if not exists propostasIntervencao(idProposta int UNIQUE not null AUTO_INCREMENT,tipo varchar(150),dataProposto date,dataAceite date,interlecutoresIPT text,interlecutoresCliente text,peca int not null,primary key(idProposta), constraint pI1 foreign key(peca) references pecas(idPeca))ENGINE = InnoDB;"
+	sql = "create table if not exists propostasIntervencao(idProposta int UNIQUE not null AUTO_INCREMENT,tipo varchar(150),dataProposto date,dataAceite date,interlocutoresIPT text,interlocutoresCliente text,peca int not null,primary key(idProposta), constraint pI1 foreign key(peca) references pecas(idPeca))ENGINE = InnoDB;"
 	con.query(sql, function (err, result) {
 		if (err) throw err
 		console.log("Table propostasIntervencao created")
