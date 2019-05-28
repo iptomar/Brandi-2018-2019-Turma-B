@@ -1602,9 +1602,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	app.post('/intervencao/pedido/:id/update', function(request, response) {
 	    //guarda os dados recebidos
 	    let tipo = request.body.tipo
-	    let aspeto = request.body.aspeto
+	    let aspetos = request.body.aspetos
 	    //foram recebidos dados
-	    if (tipo && aspeto) {
+	    if (tipo && aspetos) {
 	        con.query('select * from pedidosIntervencao where idPedido = ?', [request.params.id],
 	        function(error, results, fields) {
 	            if (results.length <= 0) {
@@ -1613,7 +1613,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 				} else {
 					const interv = {
 						tipo: tipo,
-						aspeto: aspeto
+						aspetos: aspetos
 					}
 					sql1 = 'update pedidosIntervencao set ? where idPedido = ?'
 					con.query(sql1, [interv, request.params.id],
