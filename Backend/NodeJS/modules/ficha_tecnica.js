@@ -864,7 +864,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 							intervencao: intervencao,
 							recursos: recursos,
 							estado: estado,
-							peca: request.params.id
+							proposta: request.params.id
 						}
 						sql1 = 'insert into intervencoes set ?'
 						con.query(sql1, [interv],
