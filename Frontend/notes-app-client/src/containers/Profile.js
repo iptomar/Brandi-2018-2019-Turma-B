@@ -512,6 +512,8 @@ export default class Login extends Component {
 									</tr>
 								</tbody>
 							</table>
+                <input type="submit" value="Submit"/>
+            	</form>
 						</div>
 					</Cell>
 				</Grid>
