@@ -73,12 +73,12 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
     })
 
     //método que permite apagar uma análise
-    app.post('/analisesSolventes/delete/:id', function(req, res){
+    app.post('/analisesSolventes/delete', function(req, res){
 
         sql0 = 'start transaction'
         sql1 = 'delete from testesSolvente where analise = ?'
         sql2 = 'delete from analisesSolventes where idAnalise = ?'
-        con.query(sql0+';'+sql1+';'+sql2,[req.body.idAnalise, req.body.idAnalise], function(error, results, fields){
+        con.query(sql0+';'+sql1+';'+sql2,[req.body.idAnaliseToDelete, req.body.idAnaliseToDelete], function(error, results, fields){
             if(error){
                 console.log(error)
 				con.query('rollback')

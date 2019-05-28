@@ -27,6 +27,20 @@ export default class AnalisesSolvente extends Component {
         this.props.history.push("/addAnalise/"+ this.state.fichaTecId);
     }
 
+    handleDel = event =>{
+        event.preventDefault();
+
+        let idAnaliseToDelete = event.currentTarget.value;
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/delete', { idAnaliseToDelete })
+        .then(res => {
+            window.location.reload();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
     componentDidMount(){
         if(sessionStorage.getItem("loginState") !== "success"){
             this.props.history.push("/login");
@@ -92,6 +106,18 @@ export default class AnalisesSolvente extends Component {
                 //info.href = "http://localhost:3000/detalhesAnalises/"+an[i].idAnalise+"";
                 info.textContent = "Detalhes";
                 tdInfo.appendChild(info);
+
+                let spanner = document.createElement('span');
+                spanner.textContent = " | ";
+                tdInfo.appendChild(spanner);
+
+                let del = document.createElement('a');
+                del.href = "#"
+                del.value = an[i].idAnalise;
+                del.textContent = "Apagar";
+                del.onclick = this.handleDel;
+                tdInfo.appendChild(del);
+
                 tr.appendChild(tdInfo);
                 table.appendChild(tr);
             }
