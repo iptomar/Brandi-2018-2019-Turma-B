@@ -842,8 +842,8 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		}
 	})
 
-		//metodo que permite adicionar uma intervenção realizada
-		app.post('/intervencao/proposta/:id/realizada/new', function(request, response) {
+		//metodo que permite adicionar uma intervenção a uma proposta
+		app.post('/intervencao/proposta/:id/intervencao/new', function(request, response) {
 			//guarda os dados recebidos
 			let tipo = request.body.tipo
 			let intervencao = request.body.intervencao
@@ -871,7 +871,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 						function(error, results, fields) {
 							if(error){
 								console.log(error)
-								response.send("Erro ao adicionar intervenção realizada")
+								response.send("Erro ao adicionar intervenção à proposta")
 								response.end()
 							} else {
 								let resposta = {
