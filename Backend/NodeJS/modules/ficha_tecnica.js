@@ -750,9 +750,9 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	app.post('/pecas/:id/intervencao/pedido/new', function(request, response) {
 	    //guarda os dados recebidos
 	    let tipo = request.body.tipo
-	    let aspeto = request.body.aspeto
+	    let aspetos = request.body.aspetos
 	    //foram recebidos dados
-	    if (tipo && aspeto) {
+	    if (tipo && aspetos) {
 		    //procura peça na db
 	        con.query('select * from pecas where idPeca = ?', [request.params.id],
 	        function(error, results, fields) {
@@ -763,7 +763,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 				} else {
 					const interv = {
 						tipo: tipo,
-						aspeto: aspeto,
+						aspetos: aspetos,
 						peca: request.params.id
 					}
 					sql1 = 'insert into pedidosIntervencao set ?'
