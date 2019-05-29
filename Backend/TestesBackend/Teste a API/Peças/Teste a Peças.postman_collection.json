@@ -1,0 +1,1247 @@
+{
+	"info": {
+		"_postman_id": "94d5b365-387a-4e4e-8bfc-9cd00c58275f",
+		"name": "Teste a Peças",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste de pedido de peças",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62ab429f-939b-4abe-994e-0ba5f0177b4e",
+						"exec": [
+							"pm.test(\"Teste à Ligação com o Servidor\", function () {",
+							"    //Se o estado for 200",
+							"    if(pm.response.to.have.status(200)){",
+							"         pm.test(\"Resposta de /pecas\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        ",
+							"        \"idPeca\": 1,",
+							"        \"designacao\": \"Base da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    },",
+							"    {",
+							"        \"idPeca\": 2,",
+							"        \"designacao\": \"Corpo da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    },",
+							"    {",
+							"        \"idPeca\": 3,",
+							"        \"designacao\": \"Topo da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    },",
+							"    {",
+							"        \"idPeca\": 4,",
+							"        \"designacao\": \"Piano de Brincar\",",
+							"        \"superCategoria\": \"Bens Lúdicos\",",
+							"        \"categoria\": \"Brinquedo\",",
+							"        \"subCategoria\": \"Piano de Madeira\",",
+							"        \"tipologia\": \"\",",
+							"        \"localizacao\": \"Porto\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 30 cm | Diâmetro 5 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 15 cm\",",
+							"        \"elementosConjunto\": \"Desconhecido\",",
+							"        \"elementosAcessorios\": \"Piano é constituído por madeira de Sabugueiro\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de sabugueiro. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 3",
+							"    },",
+							"    {",
+							"        \"idPeca\": 5,",
+							"        \"designacao\": \"Mesa de Mármore\",",
+							"        \"superCategoria\": \"Bens Pessoais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Mesa pertence a conjunto com cadeiras\",",
+							"        \"tipologia\": \"\",",
+							"        \"localizacao\": \"Tomar\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 175,5 cm | Diâmetro 35 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 29 x 49 cm | Diagonal - 35 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Mesa e Cadeiras\",",
+							"        \"elementosAcessorios\": \"Mesa de mármore polido\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas no mármore; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de pinheiro. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia)\",",
+							"        \"tecnicaEstrutura\": \"\",",
+							"        \"tecnicaSuperficie\": \"\",",
+							"        \"descricao\": \"\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 1",
+							"    },",
+							"    {",
+							"        \"idPeca\": 6,",
+							"        \"designacao\": \"Cadeira de Madeira trabalhada\",",
+							"        \"superCategoria\": \"Bens Pessoais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Cadeira pertence a conjunto com mesas\",",
+							"        \"tipologia\": \"\",",
+							"        \"localizacao\": \"Tomar\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 60 cm | Diâmetro 20 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 29 cm | Diagonal - 20 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Mesa e Cadeiras\",",
+							"        \"elementosAcessorios\": \"Cadeira de madeira trabalhada\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de pinheiro. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia)\",",
+							"        \"tecnicaEstrutura\": \"\",",
+							"        \"tecnicaSuperficie\": \"\",",
+							"        \"descricao\": \"\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 1",
+							"    }",
+							"]);",
+							"         });",
+							"    }",
+							"    //Se o estado for 500",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de uma peça com ID válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99b9eade-79a1-4466-a9a6-ac1d263f832a",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de tecnicos/id/1\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idPeca\": 1,",
+							"        \"designacao\": \"Base da Coluna\",",
+							"        \"superCategoria\": \"Bens Culturais\",",
+							"        \"categoria\": \"Móvel Integrado\",",
+							"        \"subCategoria\": \"Coluna pertence a um retábulo\",",
+							"        \"tipologia\": \"Arte Sacra\",",
+							"        \"localizacao\": \"Lisboa\",",
+							"        \"dimensoes\": \"Comp x Prof. x Alt. - 131,5 cm | Diâmetro 13 cm\",",
+							"        \"outrasDimensoes\": \"Lado - 19 x 19 cm | Diagonal - 25 cm\",",
+							"        \"elementosConjunto\": \"Bens do Conjunto - Retábulos e outras alfaias religiosas |Elementos Constituintes do Bem Cultural - Desconhecido\",",
+							"        \"elementosAcessorios\": \"O tronco da coluna é constituído por madeira de nogueira e o capitel será provavelmente de marupa, existindo a hipótese de ser de choupo ou afusélia. Os frisos aparentam ser do mesmo material que o corpo da coluna.\",",
+							"        \"marcasAutoria\": \"Não foram identificadas quaisquer marcas deste género\",",
+							"        \"marcasMontagem\": \"Riscador; marcas geométricas quadradas incisas na madeira; marcas de entalhe.\",",
+							"        \"marcasConstrucao\": \"Riscador.\",",
+							"        \"classificacaoPatrimonial\": \"Nacional/Regional\",",
+							"        \"estilo\": \"Neo-clássico\",",
+							"        \"epoca\": \"Coevo\",",
+							"        \"qualidade\": \"Boa\",",
+							"        \"estruturaMaterial\": \"Suporte: Madeira de nogueira. Intervenções diferenciadas em madeiras de cerejeira.\",",
+							"        \"superficieMaterial\": \"Preparação branca de cré ou gesso, cola de coelho, bollus (argila da arménia), folha de ouro, policromia, purpurina, elementos metálicos, massa de vidreiro\",",
+							"        \"tecnicaEstrutura\": \"Suporte: Entalhamento; Ligação entre a coluna e capitel simples (macho-fêmea) colada; frisos pregados com elementos metálicos;\",",
+							"        \"tecnicaSuperficie\": \"Policromias, repolicromias e repintes. As policromias originais poderiam ser marmoreados/imitação de lápis lazúli.\",",
+							"        \"descricao\": \"Coluna neoclássica, com policromia, repolicromias e repintes, tendo sido por isso, alvo de intervenções posteriores. Formada por vários blocos: corpo da coluna, capitel e frisos. Decoração do capitel com volutas; apliques metálicos; bute; perfil decorativo.\",",
+							"        \"analogias\": \"Desconhecidas\",",
+							"        \"conclusoes\": \"A coluna pertence a um retábulo que é desconhecido, uma vez que este foi desmantelado e, provavelmente, todas as suas parte constituintes foram vendidas em separado, desconhecendo-se a sua proveniência.\",",
+							"        \"autoria\": \"Desconhecida\",",
+							"        \"datacao\": \"Século XVIII/XIX\",",
+							"        \"localOrigem\": \"Desconhecida\",",
+							"        \"condicoesAmbientais\": \"Não é conhecida a sua proveniência, nem o seu percurso até chegar ao proprietário atual, não se conhecendo assim as condições ambientais do local em que esteve preservado. Prevê-se que a possível localização futura será a casa do proprietário, podendo por isso, haver um maior controlo das condições atmosféricas.\",",
+							"        \"conclusoesAmbientais\": \"\",",
+							"        \"objetivosExames\": \"\",",
+							"        \"resultadosExames\": \"\",",
+							"        \"conclusoesExames\": \"\",",
+							"        \"obra\": 2",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/id/1",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de uma  peça de ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23507a12-06ad-4a61-890f-dc774f82adad",
+						"exec": [
+							"pm.test(\"Ligação Não Encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Mensagem de Erro encontrada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\": \"peça not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/pecas/id/-1",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"pecas",
+						"id",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de imagens de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee998b12-bf02-4030-a285-0b812d8e1904",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Teste a /pecas/:id/imagens\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idImagem\": 1,",
+							"        \"imagem\": \"imgColuna1.png\",",
+							"        \"tipo\": \"fotografia\",",
+							"        \"formato\": \"PNG\",",
+							"        \"referencia\": \"Nikon 3300\",",
+							"        \"documentacao\": \"Capitel e pormenores (CD) | Análises estratigráficas (CD)\",",
+							"        \"peca\": 1",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/pecas/1/imagens",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"imagens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido num interessado num objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca4539b-ac68-42e9-8b98-51c38144e8d8",
+						"exec": [
+							"pm.test(\"Ligação Bem Sucedida\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idInteressado\": 1,",
+							"        \"enderecoPostal\": \"Coimbra\",",
+							"        \"enderecoEletronico\": \"Sem informação\",",
+							"        \"contacto\": \"Sem informação\",",
+							"        \"tipo\": \"Proprietário\"",
+							"    },",
+							"    {",
+							"        \"idInteressado\": 2,",
+							"        \"enderecoPostal\": \"Lisboa\",",
+							"        \"enderecoEletronico\": \"Sem informação\",",
+							"        \"contacto\": \"Sem informação\",",
+							"        \"tipo\": \"Salvador Sanchez\"",
+							"    },",
+							"    {",
+							"        \"idInteressado\": 3,",
+							"        \"enderecoPostal\": \"Não se aplica\",",
+							"        \"enderecoEletronico\": \"Não se aplica\",",
+							"        \"contacto\": \"Não se aplica\",",
+							"        \"tipo\": \"Mecenas\"",
+							"    }",
+							"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/1/interessados",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"1",
+						"interessados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um pedido de poluicao de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "390bf113-0c67-4927-9608-f18d5ae8c413",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem a poluição de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/poluicao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idPoluicao\":1,",
+							"                    \"agente\":\"Sendo uma coluna pertencente a um restauro, é possível que estivesse inserida num espaço litúrgico, estando exposta a poeiras e fumos. Pertence possivelmente a um retábulo desmantelado, tendo percorrido um longo caminho até ao local atual, devendo por isso ter passado por alterações bruscas de temperatura e humidade relativa.\",\"fonte\":\"Em relação às poeiras e fumos, provavelmente, teriam origem em velas ou devido ao contacto com pessoas do exterior.\",\"resultados\":\"O contacto com estes agentes degradadores, em especial, às alterações de temperatura e humidade, levaram ao aparecimento de lacunas, tanto ao nível da camada policroma como de preparação. Assim como levaram à perda de coesão da camada de preparação, tornando-se pulverulenta.Deve-se evitar ao máximo coloca-la perto de fontes de calor, como velas, fogueiras ou materiais quentes, assim como evitar transições bruscas de temperatura e humidade, de maneira a que a sua degradação não seja acelerada, levando ao aparecimento de danos e patologias no objeto.\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/pecas/1/poluicao",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"poluicao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de ciclos climatericos de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70354f94-bf46-45c2-b302-572aa9863a3d",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/ciclosclimatericos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idCiclo\": 1,",
+							"        \"temperatura\": \"Frio / Húmido: Desconhecido\",",
+							"        \"humidade\": \"Frio / Húmido: Desconhecido\",",
+							"        \"periodoAno\": \"NA\",",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idCiclo\": 2,",
+							"        \"temperatura\": \"Quente / Seco: Desconhecido\",",
+							"        \"humidade\": \"Quente / Seco: Desconhecido\",",
+							"        \"periodoAno\": \"NA\",",
+							"        \"peca\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/ciclosclimatericos",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"ciclosclimatericos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de fontes de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3f2d870-ece9-4b78-acc9-e1698fb695db",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as fontes de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idFonte\": 1,",
+							"        \"fonte\": \"Não se aplica\",",
+							"        \"tipo\": \"NA\",",
+							"        \"localizacao\": \"NA\",",
+							"        \"cota\": \"NA\",",
+							"        \"dataConsulta\": \"1997-01-01T00:00:00.000Z\",",
+							"        \"area\": \"Arquivísticas\",",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idFonte\": 2,",
+							"        \"fonte\": \"Não se aplica\",",
+							"        \"tipo\": \"NA\",",
+							"        \"localizacao\": \"NA\",",
+							"        \"cota\": \"NA\",",
+							"        \"dataConsulta\": \"1997-01-01T00:00:00.000Z\",",
+							"        \"area\": \"Documentais\",",
+							"        \"peca\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/fontes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"fontes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedido de iluminação de um objeto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e5489ec-0873-44cf-a628-a61988f9f508",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as fontes de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idIluminacao\":1,",
+							"                    \"fonte\":\"Desconhecido\",",
+							"                    \"iluminancia\":\"Desconhecido\",",
+							"                    \"UVmedido\":\"Desconhecido\",",
+							"                    \"UVreal\":\"Desconhecido\",",
+							"                    \"tipo\":\"natural\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                },",
+							"                {",
+							"                    \"idIluminacao\":2,",
+							"                    \"fonte\":\"Desconhecido\",",
+							"                    \"iluminancia\":\"Desconhecido\",",
+							"                    \"UVmedido\":\"Desconhecido\",",
+							"                    \"UVreal\":\"Desconhecido\",",
+							"                    \"tipo\":\"artificial\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/iluminacao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"iluminacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de pedidos de intervenção de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3718eb4b-2a4b-4a8e-b40e-680e24be6586",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as fontes de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idPedido\":1,",
+							"                    \"tipo\":\"O proprietário deixou este campo sob a responsabilidade de quem fosse realizar a intervenção.\",",
+							"                    \"aspetos\":\"Não se aplica\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"            ] );",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/pedidosintervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"pedidosintervencao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de conservações de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a1d25bb-3514-4b8c-a60c-d0996e4984a2",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os pedidos de intervenção de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/fontes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idConservacao\":1,",
+							"                    \"tipo\":\"Deterioração Biológica dos Materiais\",",
+							"                    \"estado\":\"Identificação de Patologias e Agentes de Biodeterioração – Diagnóstico\",",
+							"                    \"estrutura\":\"Não releva qualquer tipo de atividade biologia, ativa ou não ativa (anterior).\",",
+							"                    \"superficie\":\"Não releva qualquer tipo de atividade biologia, ativa ou não ativa (anterior).\",",
+							"                    \"elementos\":\"Não releva qualquer tipo de atividade biologia, ativa ou não ativa (anterior).\",",
+							"                    \"observacoes\":\"O que se pode concluir em relação ao estado de conservação da obra é que este é mau. Apesar do suporte relevar bom estado tudo o resto não se assemelha, o que dificulta a leitura artística da obra, dificultando então a sua intervenção\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/conservacoes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"conservacoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de propostas de intervenção de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "644eb631-edd5-4d1b-984e-ce447dbe12e2",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os pedidos de propostas de intervenção de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/propostasIntervencao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idProposta\":1,",
+							"                    \"tipo\":\"Conservação\",",
+							"                    \"dataProposto\":null,",
+							"                    \"dataAceite\":null,",
+							"                    \"interlecutoresIPT\":\"Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda\",",
+							"                    \"interlecutoresCliente\":\"\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                },",
+							"                {",
+							"                    \"idProposta\":2,",
+							"                    \"tipo\":\"Restauro\",",
+							"                    \"dataProposto\":null,",
+							"                    \"dataAceite\":null,",
+							"                    \"interlecutoresIPT\":\"Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda\",",
+							"                    \"interlecutoresCliente\":\"\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/propostasIntervencao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"propostasIntervencao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de intervenções de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "970ab41c-9a7e-4945-a35f-4d198659bf23",
+						"exec": [
+							"pm.test(\"Ligação não encontrada\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Mensagem de Erro encontrada \", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"erro\":\"intervencoes not found\"",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/objetos/-1/intervencoes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"objetos",
+						"-1",
+						"intervencoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido dos testes feitos num exame de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "316b3890-0c73-497f-8b31-d248989c2083",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as os testes feitos num exame de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/intervencoes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idTeste\":1,",
+							"                    \"referencia\":\"Observação á vista desarmada\",",
+							"                    \"localizacao\":\"Corpo da coluna e capitel\",",
+							"                    \"objetivos\":\"Identificação dos materiais\",",
+							"                    \"resultados\":\"Confirmação do uso de folha de ouro, purpurina, massa oleica, camada de preparação de gesso ou cré, policromia.\",",
+							"                    \"data\":\"2017-02-21T00:00:00.000Z\",",
+							"                    \"peca\":1,",
+							"                    \"tecnico\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/testes",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"testes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de documentação  de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac7cda9b-c6d9-49ff-b687-24aa2637c97e",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem a documentacao de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/documentacao\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idDocumentacao\":1,",
+							"                    \"designacao\":\"Não identificados. Não se sabe nada sobre a história do objeto, como proveniência e local de origem.\",",
+							"                    \"referencias\":\"NA\",",
+							"                    \"autor\":\"NA\",",
+							"                    \"tipo\":\"Originais Fotográficos\",",
+							"                    \"peca\":1",
+							"                    ",
+							"                }",
+							"                ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/documentacao",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"documentacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de análises  solventes de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a00b8e71-3b15-4cc1-8260-8047fe410abd",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem a analise de solventes de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/analiseSolventes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idAnalise\": 1,",
+							"        \"sujidade\": \"Repintes\",",
+							"        \"data\": \"2006-04-27T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração\",",
+							"        \"tecnico\": 1,",
+							"        \"peca\": 1,",
+							"        \"nomeTecnico\": \"Fernando dos Santos Antunes\"",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 2,",
+							"        \"sujidade\": \"Manchas\",",
+							"        \"data\": \"2006-04-28T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Presença de manchas na superficie\",",
+							"        \"tecnico\": 2,",
+							"        \"peca\": 1,",
+							"        \"nomeTecnico\": \"Elmo Pires\"",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 3,",
+							"        \"sujidade\": \"Manchas\",",
+							"        \"data\": \"2006-05-19T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Presença de manchas na superficie\",",
+							"        \"tecnico\": 3,",
+							"        \"peca\": 1,",
+							"        \"nomeTecnico\": \"Edgar Oliveira\"",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 4,",
+							"        \"sujidade\": \"Manchas\",",
+							"        \"data\": \"2006-05-20T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Presença de manchas na superficie\",",
+							"        \"tecnico\": 4,",
+							"        \"peca\": 1,",
+							"        \"nomeTecnico\": \"Helder Lopes\"",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "brandi.ipt.pt:80/api/pecas/1/analisesSolventes",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"analisesSolventes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de intervenções anteriores de uma peça",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8608f8a3-ca41-4eec-b004-0a4f9ee45ffc",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as intervencoes anteriores de uma peça",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de pecas/:id/intervencoesanteriores\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idIntervencao\": 1,",
+							"        \"estrutura\": \"Desmontagem do capitel. O capitel foi entalhado num bloco separado, que se une à coluna através de uma ligação simples (macho-fêmea), essa fixação é reforçada com adesivo.Foram colocados blocos de madeira nos locais de lacuna de suporte do capitel. O seu entalhe foi iniciado, porém não foi finalizado.\",",
+							"        \"superficie\": \"Foram realizadas repolicromia e repintes anteriormente. Também foi colocada massa oleica numa das faces na zona inferior o motivo é desconhecido. Em alguns dos casos foram usadas purpurinas para substituir a falta de folha de ouro, de uma forma mais económica.\",",
+							"        \"elementos\": \"Os frisos de madeira foram retirados do corpo da escultura e os elementos metálicos também.\",",
+							"        \"observacoes\": \"Os restauros anteriores observam-se sobretudo a nível da superfície. Maior parte dos restauros anteriores, ao nível de policromia, verificaram-se incoerentes, uma vez que não respeitam de qualquer modo a policromia original. Tudo isto muda a sua leitura a nível artístico.\",",
+							"        \"peca\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/pecas/1/intervencoesanteriores",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"pecas",
+						"1",
+						"intervencoesanteriores"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

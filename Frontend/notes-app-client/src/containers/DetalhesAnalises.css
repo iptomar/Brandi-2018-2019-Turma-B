@@ -63,3 +63,10 @@
     border-left: 1px solid black;
     border-top: 1px solid white;
 }
+
+.th1TableTestes{
+    border: 1px solid #f2994a;
+    border-bottom: 1px solid black;
+    background-color: #f2994a;
+    padding-bottom: 1%;
+}

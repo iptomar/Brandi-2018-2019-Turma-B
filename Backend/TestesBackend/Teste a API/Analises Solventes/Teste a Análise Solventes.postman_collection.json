@@ -1,33 +1,87 @@
 {
 	"info": {
-		"_postman_id": "c022ebef-9006-4593-ad5e-957970d13ad7",
+		"_postman_id": "2e5692f0-c743-4092-84c7-ad72440e2c7a",
 		"name": "Teste a Análise Solventes",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Teste ao pedido da análise solventes",
+			"name": "Teste ao pedido da listagem de análises de solventes",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "aea35076-7249-48c5-9359-0189479e44cb",
+						"id": "022e8738-b383-4478-8aaa-aa5ea456d80e",
 						"exec": [
-							"pm.test(\"Ligação Bem Sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"pm.test(\"Resposta de /analisesSolventes\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql([",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem as análises de solvente",
+							"         if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de /analisesSolventes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
 							"    {",
 							"        \"idAnalise\": 1,",
 							"        \"sujidade\": \"Repintes\",",
-							"        \"data\": \"1970-01-01T00:00:00.000Z\",",
+							"        \"data\": \"2006-04-27T23:00:00.000Z\",",
 							"        \"caracteristicas\": \"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração\",",
 							"        \"tecnico\": 1,",
-							"        \"objeto\": 1",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 2,",
+							"        \"sujidade\": \"Manchas\",",
+							"        \"data\": \"2006-04-28T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Presença de manchas na superficie\",",
+							"        \"tecnico\": 2,",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 3,",
+							"        \"sujidade\": \"Manchas\",",
+							"        \"data\": \"2006-05-19T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Presença de manchas na superficie\",",
+							"        \"tecnico\": 3,",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 4,",
+							"        \"sujidade\": \"Manchas\",",
+							"        \"data\": \"2006-05-20T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Presença de manchas na superficie\",",
+							"        \"tecnico\": 4,",
+							"        \"peca\": 1",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 5,",
+							"        \"sujidade\": \"cecvecefec\",",
+							"        \"data\": \"2019-04-30T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"wwwdwdw\",",
+							"        \"tecnico\": 9,",
+							"        \"peca\": 5",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 6,",
+							"        \"sujidade\": \"Sujo\",",
+							"        \"data\": \"2019-04-30T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Caracty\",",
+							"        \"tecnico\": 9,",
+							"        \"peca\": 5",
+							"    },",
+							"    {",
+							"        \"idAnalise\": 7,",
+							"        \"sujidade\": \"Yororo is dirty\",",
+							"        \"data\": \"2019-09-10T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Yororo will get clean\",",
+							"        \"tecnico\": 8,",
+							"        \"peca\": 5",
 							"    }",
 							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -37,21 +91,129 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "brandi.ipt.pt:80/api/analisesSolventes",
+					"raw": "http://brandi.ipt.pt/api/analisesSolventes",
+					"protocol": "http",
 					"host": [
 						"brandi",
 						"ipt",
 						"pt"
 					],
-					"port": "80",
 					"path": [
 						"api",
 						"analisesSolventes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido dos testes da análise solventes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aea35076-7249-48c5-9359-0189479e44cb",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os testes de uma análise",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de /analisesSolventes/1/testesSolvente\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idTeste\": 1,",
+							"        \"solvente\": \"Decapante lavável E-013-0070\",",
+							"        \"eficacia\": 2,",
+							"        \"observacao\": \"Marca: Robbialac | Descrição química: Diclorometano Metanol | Optou-se por um decapante em gel para apenas atuar a superfície, não chegando aos substratos inferiores.Deixou-se a atuar durante dez minutos, sendo removido com água/alcool embebidos num cotonete.\",",
+							"        \"analise\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/analisesSolventes/1/testesSolvente",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"analisesSolventes",
+						"1",
+						"testesSolvente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste ao pedido de uma análise de solventes pelo seu ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb07a156-283d-4e90-99ed-09071dc7df54",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os testes de uma análise",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de /analisesSolventes/1/testesSolvente\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idAnalise\": 1,",
+							"        \"sujidade\": \"Repintes\",",
+							"        \"data\": \"2006-04-27T23:00:00.000Z\",",
+							"        \"caracteristicas\": \"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração\",",
+							"        \"tecnico\": 1,",
+							"        \"peca\": 1,",
+							"        \"nomeTecnico\": \"Fernando dos Santos Antunes\"",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/analisesSolventes/id/1",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"analisesSolventes",
+						"id",
+						"1"
 					]
 				}
 			},

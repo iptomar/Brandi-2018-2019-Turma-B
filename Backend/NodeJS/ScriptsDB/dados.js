@@ -160,7 +160,7 @@ con.connect(function(err) {
 	});
 
 		//inserir registos dos propostasIntervencao
-	sql = "insert into propostasIntervencao(idProposta,tipo,dataProposto,dataAceite,interlecutoresIPT,interlecutoresCliente,peca)values(1,'Conservação',null,null,'Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda','',1),(2,'Restauro',null,null,'Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda','',1);";
+	sql = "insert into propostasIntervencao(idProposta,tipo,dataProposto,dataAceite,interlocutoresIPT,interlocutoresCliente,peca)values(1,'Conservação',null,null,'Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda','',1),(2,'Restauro',null,null,'Fernando Antunes (IPT) LCRM CEARC | Beatriz Penas, Leonor Miranda','',1);";
 	con.query(sql, function (err, result) {
 		if (err) throw err;
 		console.log("Values inserted");

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "91160f6b-eb67-47c4-aa61-d228b1cdbfd2",
+		"_postman_id": "16447344-003f-4b14-afd8-835eea9e65dd",
 		"name": "Teste a Materiais",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,19 +27,49 @@
 							"    },",
 							"    {",
 							"        \"idMaterial\": 2,",
-							"        \"material\": \"Pano, trincha, água\",",
+							"        \"material\": \"Pano,\",",
 							"        \"quantidade\": \"\",",
 							"        \"procedimento\": 4",
 							"    },",
 							"    {",
 							"        \"idMaterial\": 3,",
+							"        \"material\": \"trincha,\",",
+							"        \"quantidade\": \"\",",
+							"        \"procedimento\": 4",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 4,",
+							"        \"material\": \"água\",",
+							"        \"quantidade\": \"\",",
+							"        \"procedimento\": 4",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 5,",
 							"        \"material\": \"Nikon 3300\",",
 							"        \"quantidade\": \"\",",
 							"        \"procedimento\": 5",
 							"    },",
 							"    {",
-							"        \"idMaterial\": 4,",
-							"        \"material\": \"Bisturi 11, etiquetas, contentor, zaragatoa\",",
+							"        \"idMaterial\": 6,",
+							"        \"material\": \"Bisturi 11\",",
+							"        \"quantidade\": \"oito\",",
+							"        \"procedimento\": 7",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 7,",
+							"        \"material\": \"etiquetas\",",
+							"        \"quantidade\": \"oito\",",
+							"        \"procedimento\": 7",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 8,",
+							"        \"material\": \"contentor\",",
+							"        \"quantidade\": \"oito\",",
+							"        \"procedimento\": 7",
+							"    },",
+							"    {",
+							"        \"idMaterial\": 9,",
+							"        \"material\": \"zaragatoa\",",
 							"        \"quantidade\": \"oito\",",
 							"        \"procedimento\": 7",
 							"    }",
@@ -59,10 +89,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/materiais/",
 					"host": [
@@ -105,10 +131,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/materiais/id/-1",
 					"host": [
@@ -122,6 +144,60 @@
 						"materiais",
 						"id",
 						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de um material através do seu ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f9ad2a3-393d-4466-a01d-5c79fbfa419c",
+						"exec": [
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de materiais/id/1\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"            {",
+							"                \"idMaterial\":1,",
+							"                \"material\":\"Nikon 3300\",",
+							"                \"quantidade\":\"\",",
+							"                \"procedimento\":2 ",
+							"            }",
+							"        ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/materiais/id/1",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"materiais",
+						"id",
+						"1"
 					]
 				}
 			},

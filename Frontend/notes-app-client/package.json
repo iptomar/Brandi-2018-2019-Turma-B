@@ -9,7 +9,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.8.6",
     "react-mdl": "^1.11.0",
-    "react-router-dom": "^4.4.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "reactstrap": "^7.1.0"
   },

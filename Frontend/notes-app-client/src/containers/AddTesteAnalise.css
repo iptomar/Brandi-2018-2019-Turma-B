@@ -1,0 +1,12 @@
+.addTesteForm{
+
+    max-width: 60%;
+    margin: 5% auto;
+    background-color: #4b2402;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.addTesteForm Label{
+    color: white;
+}

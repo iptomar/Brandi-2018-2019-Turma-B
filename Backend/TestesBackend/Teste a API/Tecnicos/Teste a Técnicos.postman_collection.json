@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "09bfbfd4-d224-46eb-ba5c-1b30ed60f532",
+		"_postman_id": "7eefdaa1-dbcc-424e-89ae-54f3b640e4cc",
 		"name": "Teste a Técnicos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,76 +20,109 @@
 							"            var jsonData = pm.response.json();",
 							"            pm.expect(jsonData).to.eql([",
 							"            {",
-							"                \"idTecnico\": 1,",
-							"                \"nome\": \"João Nunes\",",
-							"                \"username\": \"joaon\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"jn@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":1,",
+							"                \"nome\":\"Fernando dos Santos Antunes\",",
+							"                \"username\":\"admin\",",
+							"                \"password\":\"$2a$10$gLRcWgeCnwcbSvF5uRBKp.qsQyE.GqHkr.uQ6A/AW0jJx82EJLe/q\",",
+							"                \"email\":\"fsa@hotmail.com\",\"tipo\":\"admin\",\"habilitacoes\":\"1\",",
+							"                \"nivelProfissional\":7,",
+							"                \"fotografia\":\"\"",
+							"            },",
+							"           {",
+							"               \"idTecnico\":2,",
+							"               \"nome\":\"Elmo Pires\",",
+							"               \"username\":\"epires\",",
+							"               \"password\":\"$2a$10$5BnQA8GeB3zgX3e.4pQ5COTJDdORrSD7rzZdXj9nlOqLwDeMjrbM2\",",
+							"               \"email\":\"elmo@email.com\",",
+							"               \"tipo\":\"aluno\",",
+							"               \"habilitacoes\":\"Licenciatura\",",
+							"               \"nivelProfissional\":5,",
+							"               \"fotografia\":\"\"",
+							"           },",
+							"            {",
+							"                \"idTecnico\":3,",
+							"                \"nome\":\"Edgar Oliveira\",",
+							"                \"username\":\"edgaroli\",",
+							"                \"password\":\"$2a$10$HO/sryQQ3D7.fflnSMEDHOWsrIndVjVCBHhhpiMXygnGua6cfAIae\",",
+							"                \"email\":\"eo@hotmail.com\",",
+							"                \"tipo\":\"aluno\",",
+							"                \"habilitacoes\":\"TESTES\",",
+							"                \"nivelProfissional\":0,",
+							"                \"fotografia\":\"\"",
+							"                ",
 							"            },",
 							"            {",
-							"                \"idTecnico\": 2,",
-							"                \"nome\": \"Edgar Oliveira\",",
-							"                \"username\": \"edgaroli\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"eo@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":4,",
+							"                \"nome\":\"Helder Lopes\",",
+							"                \"username\":\"hellopes\",",
+							"                \"password\":\"$2a$10$dO8REZLxo4IVdyv8aq.m1OC/b/V.SYJsTZ.VcLeIbRVgwfM5yr8qq\",",
+							"                \"email\":\"hl@hotmail.com\",",
+							"                \"tipo\":\"aluno\",",
+							"                \"habilitacoes\":\"\",",
+							"                \"nivelProfissional\":0,",
+							"                \"fotografia\":\"\"",
+							"                ",
 							"            },",
 							"            {",
-							"                \"idTecnico\": 3,",
-							"                \"nome\": \"Hélder Lopes\",",
-							"                \"username\": \"hellopes\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"hl@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":5,",
+							"                \"nome\":\"Miguel Tomé\",",
+							"                \"username\":\"mtome\",",
+							"                \"password\":\"$2a$10$Qz5ef/AV9jpphGXiZt3xO.iB88tkZySuBEMD4P3Os6JcBHb6HPQBG\",",
+							"                \"email\":\"mt@hotmail.com\",",
+							"                \"tipo\":\"aluno\",",
+							"                \"habilitacoes\":\"\",",
+							"                \"nivelProfissional\":0,",
+							"                \"fotografia\":\"\"",
+							"                ",
 							"            },",
 							"            {",
-							"                \"idTecnico\": 4,",
-							"                \"nome\": \"Miguel Tomé\",",
-							"                \"username\": \"mtome\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"mt@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":6,",
+							"                \"nome\":\"David Moreno\",",
+							"                \"username\":\"dmoreno\",",
+							"                \"password\":\"$2a$10$pP2Vr.WF4d9R0sagUWCnUOuZNFTJu3Un3UtDTIUXgSzaxTtqn94/C\",",
+							"                \"email\":\"dm@hotmail.com\",",
+							"                \"tipo\":\"aluno\",",
+							"                \"habilitacoes\":\"\",",
+							"                \"nivelProfissional\":0,",
+							"                \"fotografia\":\"\"",
+							"                ",
 							"            },",
 							"            {",
-							"                \"idTecnico\": 5,",
-							"                \"nome\": \"David Moreno\",",
-							"                \"username\": \"dmoreno\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"dm@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":7,",
+							"                \"nome\":\"Diogo Ribeiro\",",
+							"                \"username\":\"dribeiro\",",
+							"                \"password\":\"$2a$10$hCWNMKKIFvrwqdMqR7d4geK9klt.UhaNunTOOF7c69t2MSLcKc3Hy\",",
+							"                \"email\":\"dr@hotmail.com\",",
+							"                \"tipo\":\"aluno\",",
+							"                \"habilitacoes\":\"\",",
+							"                \"nivelProfissional\":0,",
+							"                \"fotografia\":\"\"",
+							"                ",
 							"            },",
 							"            {",
-							"                \"idTecnico\": 6,",
-							"                \"nome\": \"Diogo Ribeiro\",",
-							"                \"username\": \"dribeiro\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"dr@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":8,",
+							"                \"nome\":\"Router\",",
+							"                \"username\":\"afronteira\",",
+							"                \"password\":\"$2a$10$e.dC.bmx1D9rKlRH9zZIt.w6ctR1reJ0tJ6jy5Wpb6O7zhhg44xAC\",",
+							"                \"email\":\"af@hotmail.com\",",
+							"                \"tipo\":\"aluno\",",
+							"                \"habilitacoes\":\"\",",
+							"                \"nivelProfissional\":0,",
+							"                \"fotografia\":\"\"",
 							"            },",
 							"            {",
-							"                \"idTecnico\": 7,",
-							"                \"nome\": \"André Fronteira\",",
-							"                \"username\": \"afronteira\",",
-							"                \"password\": \"pass123\",",
-							"                \"email\": \"af@hotmail.com\",",
-							"                \"tipo\": \"aluno\",",
-							"                \"habilitacoes\": \"\",",
-							"                \"nivelProfissional\": 0",
+							"                \"idTecnico\":9,",
+							"                \"nome\":\"Yororo\",",
+							"                \"username\":\"adminTestes\",",
+							"                \"password\":\"$2a$10$aqbblQE/IEqd3SS3ZsGOpueP6KWE7xZW6YHGTN0qfWbXGL8nFLYOa\",",
+							"                \"email\":\"adm@zapaza.da\",",
+							"                \"tipo\":\"admin\",",
+							"                \"habilitacoes\":\"about that...\",",
+							"                \"nivelProfissional\":4,",
+							"                \"fotografia\":null",
+							"                ",
 							"            }",
-							"            ]);",
+							"        ]);",
 							"        });",
 							"    }",
 							"    //caso o estado for 500 dá erro",
@@ -113,10 +146,6 @@
 						"disabled": true
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/tecnicos",
 					"host": [
@@ -157,10 +186,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/tecnicos/id/10",
 					"host": [
@@ -187,23 +212,28 @@
 					"script": {
 						"id": "62c70aaa-82dd-42ff-97d2-f3f0d315a4f8",
 						"exec": [
-							"pm.test(\"Ligação bem sucedida\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"pm.test(\"Encontra o tecnico 1\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql([",
-							"    {",
-							"        \"idTecnico\": 1,",
-							"        \"nome\": \"João Nunes\",",
-							"        \"username\": \"joaon\",",
-							"        \"password\": \"pass123\",",
-							"        \"email\": \"jn@hotmail.com\",",
-							"        \"tipo\": \"aluno\",",
-							"        \"habilitacoes\": \"\",",
-							"        \"nivelProfissional\": 0",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de tecnicos/id/1\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"            {",
+							"                \"idTecnico\":1,",
+							"                \"nome\":\"Fernando dos Santos Antunes\",",
+							"                \"username\":\"admin\",",
+							"                \"password\":\"$2a$10$gLRcWgeCnwcbSvF5uRBKp.qsQyE.GqHkr.uQ6A/AW0jJx82EJLe/q\",",
+							"                \"email\":\"fsa@hotmail.com\",\"tipo\":\"admin\",\"habilitacoes\":\"1\",",
+							"                \"nivelProfissional\":7,",
+							"                \"fotografia\":\"\"",
+							"            }",
+							"        ]);",
+							"        });",
 							"    }",
-							"]);",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -211,12 +241,23 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "brandi.ipt.pt:80/api/tecnicos/id/1",
 					"host": [
@@ -243,14 +284,29 @@
 					"script": {
 						"id": "b38d9fa4-f7bb-4b1d-a8d3-478169336401",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\":\"Objeto not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de tecnicos/:id/testes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"idTeste\": 1,",
+							"        \"referencia\": \"Observação á vista desarmada\",",
+							"        \"localizacao\": \"Corpo da coluna e capitel\",",
+							"        \"objetivos\": \"Identificação dos materiais\",",
+							"        \"resultados\": \"Confirmação do uso de folha de ouro, purpurina, massa oleica, camada de preparação de gesso ou cré, policromia.\",",
+							"        \"data\": \"2017-02-21T00:00:00.000Z\",",
+							"        \"peca\": 1,",
+							"        \"tecnico\": 1",
+							"    }",
+							"]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -260,12 +316,8 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://brandi.ipt.pt/api/tecnicos/-1/testes",
+					"raw": "http://brandi.ipt.pt/api/tecnicos/1/testes",
 					"protocol": "http",
 					"host": [
 						"brandi",
@@ -275,7 +327,7 @@
 					"path": [
 						"api",
 						"tecnicos",
-						"-1",
+						"1",
 						"testes"
 					]
 				}
@@ -290,14 +342,18 @@
 					"script": {
 						"id": "f9f353b4-b3e2-4a59-994c-48b1e2d0311a",
 						"exec": [
-							"pm.test(\"Ligação não encontrada\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							"pm.test(\"Mensagem de Erro encontrada \", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.eql({",
-							"        \"erro\":\"analisesSolventes not found\"",
-							"    });",
+							"pm.test(\"Teste às ligações\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de tecnicos/:id/testes\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([{\"idAnalise\":1,\"sujidade\":\"Repintes\",\"data\":\"2006-04-27T23:00:00.000Z\",\"caracteristicas\":\"Devido à dificuldade na remoção de repintes de forma mecânica, foi testado o decapante para facilitar a sua extração\",\"tecnico\":1,\"peca\":1}]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
 							"});"
 						],
 						"type": "text/javascript"
@@ -307,12 +363,8 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://brandi.ipt.pt/api/tecnicos/-1/analisesSolventes",
+					"raw": "http://brandi.ipt.pt/api/tecnicos/1/analisesSolventes",
 					"protocol": "http",
 					"host": [
 						"brandi",
@@ -322,8 +374,164 @@
 					"path": [
 						"api",
 						"tecnicos",
-						"-1",
+						"1",
 						"analisesSolventes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste à requisição dos Técnicos pelos nomes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbb43118-f542-4281-8384-584df0be8f15",
+						"exec": [
+							"pm.test(\"Teste ao nome dos Técnicos\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de /tecnicos\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"                {",
+							"                    \"idTecnico\":1,",
+							"                    \"nome\":\"Fernando dos Santos Antunes\"   ",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":2,",
+							"                    \"nome\":\"Elmo Pires\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":3,",
+							"                    \"nome\":\"Edgar Oliveira\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":4,",
+							"                    \"nome\":\"Helder Lopes\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":5,",
+							"                    \"nome\":\"Miguel Tomé\"",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":6,",
+							"                    \"nome\":\"David Moreno\"   ",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":7,",
+							"                    \"nome\":\"Diogo Ribeiro\" ",
+							"                },",
+							"                {\"idTecnico\":8,",
+							"                \"nome\":\"Router\" ",
+							"                },",
+							"                {",
+							"                    \"idTecnico\":9,",
+							"                    \"nome\":\"Yororo\"",
+							"                }",
+							"        ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/tecnicosNome",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"tecnicosNome"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste à requisição da API pelo username de um técnico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf8c2604-4898-4172-a1b0-e391194252fa",
+						"exec": [
+							"pm.test(\"Teste ao nome dos Técnicos\", function () {",
+							"    //se o estado for 200 retorna o JSON que contem os tecnicos",
+							"    if(pm.response.to.have.status(200)){",
+							"        pm.test(\"Resposta de /tecnicos/username/edgaroli\", function () {",
+							"            var jsonData = pm.response.json();",
+							"            pm.expect(jsonData).to.eql([",
+							"               {",
+							"                   \"idTecnico\":3,",
+							"                   \"nome\":\"Edgar Oliveira\",",
+							"                   \"username\":\"edgaroli\",",
+							"                   \"password\":\"$2a$10$HO/sryQQ3D7.fflnSMEDHOWsrIndVjVCBHhhpiMXygnGua6cfAIae\",",
+							"                   \"email\":\"eo@hotmail.com\",",
+							"                   \"tipo\":\"aluno\",",
+							"                   \"habilitacoes\":\"TESTES\",",
+							"                   \"nivelProfissional\":0,",
+							"                   \"fotografia\":\"\"",
+							"                   ",
+							"               }",
+							"        ]);",
+							"        });",
+							"    }",
+							"    //caso o estado for 500 dá erro",
+							"    else if(pm.response.to.have.status(500)){",
+							"        pm.response.to.have.body(\"Erro na query\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://brandi.ipt.pt/api/tecnicos/username/edgaroli",
+					"protocol": "http",
+					"host": [
+						"brandi",
+						"ipt",
+						"pt"
+					],
+					"path": [
+						"api",
+						"tecnicos",
+						"username",
+						"edgaroli"
 					]
 				}
 			},

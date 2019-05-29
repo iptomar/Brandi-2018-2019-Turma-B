@@ -116,6 +116,7 @@ componentDidMount(){
 			
 			let image = document.createElement('img');
 			image.setAttribute('alt','alt');
+			image.src = "/api/tecnicos/username/" + user.username + "/image";
 			image.classList.add('card-img');
 			image.classList.add('imgTec');
 			image.classList.add('img-fluid');
