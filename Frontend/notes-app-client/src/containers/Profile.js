@@ -181,7 +181,15 @@ export default class Login extends Component {
 	}
 
 	submitImg = event => {
-		this.props.history.push("/profile");
+		let file = document.getElementById("imgFile").files[0];
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+		axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'api/tecnicos/username/' + this.state.user.username + '/updateimage', { file })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      });
 	}
 
 	///////////////////
@@ -518,8 +526,8 @@ export default class Login extends Component {
 									</tr>
 								</tbody>
 							</table>
-							<form method="post" enctype="multipart/form-data" action={"api/tecnicos/username/" + this.state.user.username + "/updateimage"}>
-                <input type="file" name="Img"/>
+							<form method="post" enctype="multipart/form-data">
+                <input id="imgFile" type="file" name="Img"/>
                 <input type="submit" value="Submit" onClick = {this.submitImg}/>
               </form>
 						</div>
