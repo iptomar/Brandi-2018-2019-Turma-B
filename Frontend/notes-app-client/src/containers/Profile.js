@@ -180,6 +180,17 @@ export default class Login extends Component {
 		nivelAluno.appendChild(textField);
 	}
 
+	submitImg = event => {
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+		axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/' + this.state.user.username + '/updateimage')
+		.then(res => {
+			window.location.reload();
+		})
+		.catch(err => {
+			console.log(err)
+		});
+	}
+
 	///////////////////
 	//Submeter Valores
 
@@ -408,7 +419,9 @@ export default class Login extends Component {
       document.getElementById("emailAluno").innerHTML = this.state.user.email;
       document.getElementById("tipoAluno").innerHTML = this.state.user.tipo;
       document.getElementById("habAluno").innerHTML = this.state.user.habilitacoes;
-      document.getElementById("nivelAluno").innerHTML = this.state.user.nivelProfissional;
+			document.getElementById("nivelAluno").innerHTML = this.state.user.nivelProfissional;
+			
+			document.getElementById("imgAvatar").src = "/api/tecnicos/username/" + this.state.user.username + "/image";
     })  
   }
 
@@ -447,9 +460,9 @@ export default class Login extends Component {
 				<Grid className="Profile-grid">
 					<Cell col={12}>
 						<img
-							src="https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
 							alt="imag"
 							className="avatarImg"
+							id="imgAvatar"
 						/>
 
 						<div className="textdiv">
@@ -512,6 +525,10 @@ export default class Login extends Component {
 									</tr>
 								</tbody>
 							</table>
+							<form method="post" enctype="multipart/form-data" >
+                <input type="file" name="Img"/>
+                <input type="submit" value="Submit" onClick = {this.submitImg}/>
+              </form>
 						</div>
 					</Cell>
 				</Grid>

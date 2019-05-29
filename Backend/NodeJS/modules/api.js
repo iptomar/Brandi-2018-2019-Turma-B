@@ -1,5 +1,5 @@
 ﻿//modules
-
+var fs = require('fs')
 
 
 //export
@@ -642,4 +642,26 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
+	
+	//imagem do utilizador (pelo username)
+	app.get("/tecnicos/username/:username/image",  (req, res) => {
+		let sql = "SELECT * FROM tecnicos WHERE username = ?"
+		con.query(sql, [req.params.username], (err, results) => {
+			if (err) {
+				res.status(500).json({ erro: "Imagem não existe" })
+			} else {
+				fs.readFile(results[0].fotografia, function (err, content) {
+					if (err) {
+						res.writeHead(400, {'Content-type':'text/html'})
+						console.log(err);
+						res.end("No such image");    
+					} else {
+						//specify the content type in the response will be an image
+						res.writeHead(200,{'Content-type':'image/jpg'});
+						res.end(content);
+					}
+				});
+			}
+		})	
+	})
 }
