@@ -181,9 +181,9 @@ export default class Login extends Component {
 	}
 
 	submitImg = event => {
-		let Img = document.getElementById("imgFile").files[0];
+		let file = document.getElementById("imgFile").files[0];
 		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-		axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'api/tecnicos/username/' + this.state.user.username + '/updateimage', { Img })
+		axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'api/tecnicos/username/' + this.state.user.username + '/updateimage', { file })
       .then(res => {
         window.location.reload();
       })
