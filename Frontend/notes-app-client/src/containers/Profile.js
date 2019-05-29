@@ -460,7 +460,6 @@ export default class Login extends Component {
 				<Grid className="Profile-grid">
 					<Cell col={12}>
 						<img
-							src="https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
 							alt="imag"
 							className="avatarImg"
 							id="imgAvatar"
@@ -526,9 +525,9 @@ export default class Login extends Component {
 									</tr>
 								</tbody>
 							</table>
-							<form method="post" enctype="multipart/form-data" onClick = {this.submitImg}>
+							<form method="post" enctype="multipart/form-data" >
                 <input type="file" name="Img"/>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" onClick = {this.submitImg}/>
               </form>
 						</div>
 					</Cell>
