@@ -216,6 +216,7 @@ app.post('/tecnicos/username/:username/updateimage',verificaLogin, function (req
 								} else {
 									response.send("Imagem guardada com sucesso")
 									response.end();
+									
 								}
 							}
 						)
