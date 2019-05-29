@@ -1776,7 +1776,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	             	response.send('Fonte inválida.')
 					response.end() 
 				} else {
-					const fonte = {
+					const fontes = {
 						fonte: fonte,
 						tipo: tipo,
 						localizacao: localizacao,
@@ -1785,7 +1785,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 						area: area
 					}
 					sql1 = 'update fontes set ? where idFonte = ?'
-					con.query(sql1, [fonte, request.params.id],
+					con.query(sql1, [fontes, request.params.id],
 					function(error, results, fields) {
 						if(error){
 							console.log(error)
