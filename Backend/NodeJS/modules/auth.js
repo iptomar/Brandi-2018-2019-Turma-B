@@ -96,4 +96,14 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 	        response.end()
 	    }
 	})
+
+	//method: get | action: checkLogin
+	//verifica se o user tem a sessao ativa.
+	app.get('/checkLogin', function(request, response) {
+		if(request.session.loggedin){
+			response.status(200).json("true")
+		}else{
+			response.status(500).json("false")
+		}
+	})
 }
