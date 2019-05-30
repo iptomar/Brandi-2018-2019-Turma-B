@@ -27,6 +27,10 @@ export default class DetalhesAnalises extends Component {
         this.props.history.push("/addTesteAnalise/"+ this.state.analiseID);
     }
 
+    editarAnalise = event =>{
+        console.log(this.state.analiseID);
+    }
+
     componentDidMount(){
         if(sessionStorage.getItem("loginState") !== "success"){
             this.props.history.push("/login");
@@ -97,6 +101,9 @@ export default class DetalhesAnalises extends Component {
             td.textContent = "Dados Indisponiveis";
             td.rowSpan = 4;
             identSujData.appendChild(td);
+            let but = document.getElementById('btnAddTst');
+            but.style.visibility = "hidden";
+
         })
 
         axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/'+this.state.analiseID+'/testesSolvente')
@@ -125,12 +132,31 @@ export default class DetalhesAnalises extends Component {
                 observacaoTD.textContent = testes[i].observacao;
                 tr.appendChild(observacaoTD);
 
+                let actionsTD = document.createElement('td');
+                actionsTD.className = "testesTableDef";
+                let editAnchor = document.createElement('a');
+                editAnchor.href = "#";
+                //editAnchor.onclick =
+                editAnchor.value = testes[i].idTeste;
+                editAnchor.textContent = "Editar";
+                actionsTD.appendChild(editAnchor);
+                let separateAux = document.createElement('span');
+                separateAux.textContent = " | ";
+                actionsTD.appendChild(separateAux);
+                let deleteAnchor = document.createElement('a');
+                deleteAnchor.href = "#";
+                //deleteAnchor.onclick = 
+                deleteAnchor.value = testes[i].idTeste;
+                deleteAnchor.textContent = "Apagar";
+                actionsTD.appendChild(deleteAnchor);
+                tr.appendChild(actionsTD);
+
                 tableTestes.appendChild(tr);
             }
 
             let trFinal = document.createElement('tr');
             let thFinal = document.createElement('th');
-            thFinal.colSpan = 3;
+            thFinal.colSpan = 4;
             thFinal.textContent = "Graus de Eficácia no Processo de Solubilização dos Estratos:";
             trFinal.appendChild(thFinal);
             thFinal.className = "thFinal";
@@ -138,7 +164,7 @@ export default class DetalhesAnalises extends Component {
 
             let trFinal2 = document.createElement('tr');
             let thFinal2 = document.createElement('th');
-            thFinal2.colSpan = 3;
+            thFinal2.colSpan = 4;
             thFinal2.textContent = "1 - Muito Eficaz | 2 - Eficaz | 3 - Eficácia média | 4 - Pouco Eficaz | 5 - Eficária Nula";
             trFinal2.appendChild(thFinal2);
             thFinal2.className = "thFinal";
@@ -151,7 +177,7 @@ export default class DetalhesAnalises extends Component {
             let tr = document.createElement('tr');
             let td = document.createElement('td');
             td.textContent = "Não existem testes / Testes Indisponiveis"
-            td.colSpan = 3;
+            td.colSpan = 4;
             tr.appendChild(td);
             tableTestes.appendChild(tr);
 
@@ -203,6 +229,11 @@ export default class DetalhesAnalises extends Component {
 
         <div className="headerDiv">
             <table className="tableHeaderdet">
+                <tr>
+                    <th className="th1TableHeader" colSpan="4">
+                       <button id="btnEditAnl" className=" pull-right btn btn-secondary" onClick={this.editarAnalise}>Editar</button>
+                    </th>
+                </tr>
                 <tr id="identSujData">
                     <th className="identSuj">
                         <b>Identificação do Estrato/Sujidade: </b>
@@ -229,14 +260,15 @@ export default class DetalhesAnalises extends Component {
         <div className="testesDiv">
             <table id="tableTestes" className="testesTable">
                 <tr>  
-                    <th className="th1TableTestes" colSpan="3">
-                       <button className=" pull-right btn btn-secondary" onClick={this.mudarAddTeste}>Adicionar</button>
+                    <th className="th1TableTestes" colSpan="4">
+                       <button id="btnAddTst" className=" pull-right btn btn-secondary" onClick={this.mudarAddTeste}>Adicionar</button>
                     </th>
                 </tr>
                 <tr className="testesTableDef">
                     <th className="testesTableDef">Solvente ou Mistura de Solventes</th>
                     <th className="testesTableDef">Grau de Eficácia Na Solubilização</th>
                     <th className="testesTableDef">Observações</th>
+                    <th className="testesTableDef">Ações Disponiveis</th>
                 </tr>
             </table>
         </div>
