@@ -94,4 +94,28 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 
     })
 
+    //método que permite apagar um teste de uma análise
+    app.post('/testesSolvente/delete', function(req, res){
+
+        //let analise = req.body.analise;
+        //let teste = req.body.teste;
+
+        sql0 = 'start transaction'
+        sql1 = 'delete from testesSolvente where analise = ? and idTeste = ?'
+        con.query(sql0+';'+sql1,[req.body.analise, req.body.teste], function(error, results, fields){
+            if(error){
+                console.log(error)
+				con.query('rollback')
+				res.send("Erro ao apagar teste")
+				res.end()
+            }
+            else{
+                con.query('commit')
+				res.send("Sucesso")
+				res.end()
+            }
+        })
+
+    })
+
 }

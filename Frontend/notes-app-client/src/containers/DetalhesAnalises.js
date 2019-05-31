@@ -14,6 +14,14 @@ export default class DetalhesAnalises extends Component {
         this.state = { 
             isOpen: false,
             analiseID:(window.location.pathname).split("/")[2],
+            //Ident. estrato
+            analise_zero: "",
+            //caracteristicas
+            analise_one: "",
+            //tecnico
+            analise_two: "",
+            //data
+            analise_three: ""
         };
     }
 
@@ -23,12 +31,140 @@ export default class DetalhesAnalises extends Component {
         });
     }
 
+    handleChange = event => {
+        this.setState({
+            [event.target.id]: event.target.value
+          });
+    }
+
     mudarAddTeste = event =>{
         this.props.history.push("/addTesteAnalise/"+ this.state.analiseID);
     }
 
-    editarAnalise = event =>{
-        console.log(this.state.analiseID);
+    editarAnaliseStart = event =>{
+        event.preventDefault();
+
+        document.getElementById('tableTestes').style.visibility = "hidden";
+        let butn = document.getElementById('btnEditAnl');
+        butn.onclick = this.handleSubmitEditAnalise
+
+        //Edit Identificacao do estrato/sujidade
+        let tdIdentSujData = document.getElementById('tdIdentSujData');
+        let txtarea1 = document.createElement('textarea');
+        this.setState({
+            analise_zero : tdIdentSujData.textContent
+        }, function (){
+            tdIdentSujData.textContent = "";
+            txtarea1.id = "analise_zero";
+            txtarea1.value = this.state.analise_zero;
+            txtarea1.onchange = this.handleChange;
+            txtarea1.cols = "60";
+            tdIdentSujData.appendChild(txtarea1);
+        });
+
+        //Edit caracteristicas
+        let tdcaractSujData = document.getElementById('tdcaractSujData');
+        let txtarea2 = document.createElement('textarea');
+        this.setState({
+            analise_one : tdcaractSujData.textContent
+        }, function (){
+            tdcaractSujData.textContent = "";
+            txtarea2.id = "analise_one";
+            txtarea2.value = this.state.analise_one;
+            txtarea2.onchange = this.handleChange;
+            txtarea2.cols = "60";
+            tdcaractSujData.appendChild(txtarea2);
+        });
+
+        //Edit tecnico
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicosNome')
+        .then((response) => {
+            return response.data
+        })
+        .then(data => {
+            let tdtecnicoSujData = document.getElementById('tdtecnicoSujData');
+            let tecnicos = data;
+            for(let i=0; i<tecnicos.length; i++){
+                if(tecnicos[i].nome === tdtecnicoSujData.textContent){
+                    this.setState({
+                        analise_two : tecnicos[i].idTecnico
+                    }, function (){
+                        tdtecnicoSujData.textContent = "";
+                        let select = document.createElement('select');
+                        select.id = "analise_two";
+                        select.value = this.state.analise_two;
+                        select.onchange = this.handleChange;
+                        for(let j=0; j<tecnicos.length; j++){
+                            let option = document.createElement('option');
+                            option.text = tecnicos[j].nome;
+                            option.value = tecnicos[j].idTecnico;
+                            if(j === i){
+                                option.selected = true;
+                            }
+                            select.appendChild(option);
+                        }
+                        tdtecnicoSujData.appendChild(select);
+                    });
+                }
+            }
+        })
+        .catch(error =>{
+            console.log(error);
+
+        })
+
+        //edit data
+        let tddataSujData = document.getElementById('tddataSujData');
+        let inp = document.createElement('input');
+        inp.type = "date";
+        this.setState({
+            analise_three : tddataSujData.textContent
+        }, function (){
+            tddataSujData.textContent = "";
+            inp.id = "analise_three";
+            inp.value = this.state.analise_three;
+            inp.onchange = this.handleChange;
+            tddataSujData.appendChild(inp);
+        });
+
+    }
+
+    handleSubmitEditAnalise = event =>{
+        event.preventDefault();
+        //console.log(this.state.analise_zero +'  '+ this.state.analise_one+'  '+this.state.analise_two+'  '+this.state.analise_three);
+
+        let estratSuj = this.state.analise_zero;
+        let caract = this.state.analise_one;
+        let tecnico = this.state.analise_two;
+        let dat = this.state.analise_three
+
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/edit', { estratSuj, caract, tecnico, dat })
+        .then(res => {
+            console.log(res)
+            window.location.reload();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        
+    }
+
+    handleDelTeste = event =>{
+        event.preventDefault();
+
+        let analise = this.state.analiseID;
+        let teste = event.currentTarget.value;
+
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/testesSolvente/delete', { analise, teste })
+        .then(res => {
+            window.location.reload();
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     componentDidMount(){
@@ -76,21 +212,25 @@ export default class DetalhesAnalises extends Component {
 
             let identSujData = document.getElementById('identSujData');
             let td1 = document.createElement('td');
+            td1.id = "tdIdentSujData"
             td1.textContent = analise[0].sujidade;
             identSujData.appendChild(td1);
 
             let caractSujData = document.getElementById('caractSujData');
             let td2 = document.createElement('td');
+            td2.id = "tdcaractSujData";
             td2.textContent = analise[0].caracteristicas;
             caractSujData.appendChild(td2);
 
             let tecnicoSujData = document.getElementById('tecnicoSujData');
             let td3 = document.createElement('td');
+            td3.id = "tdtecnicoSujData"
             td3.textContent = analise[0].nomeTecnico;
             tecnicoSujData.appendChild(td3);
 
             let dataSujData = document.getElementById('dataSujData');
             let td4 = document.createElement('td');
+            td4.id = "tddataSujData"
             td4.textContent = analise[0].data;
             dataSujData.appendChild(td4);
 
@@ -103,6 +243,9 @@ export default class DetalhesAnalises extends Component {
             identSujData.appendChild(td);
             let but = document.getElementById('btnAddTst');
             but.style.visibility = "hidden";
+            let butn = document.getElementById('btnEditAnl');
+            butn.style.visibility = "hidden";
+            
 
         })
 
@@ -145,7 +288,7 @@ export default class DetalhesAnalises extends Component {
                 actionsTD.appendChild(separateAux);
                 let deleteAnchor = document.createElement('a');
                 deleteAnchor.href = "#";
-                //deleteAnchor.onclick = 
+                deleteAnchor.onclick = this.handleDelTeste
                 deleteAnchor.value = testes[i].idTeste;
                 deleteAnchor.textContent = "Apagar";
                 actionsTD.appendChild(deleteAnchor);
@@ -231,7 +374,7 @@ export default class DetalhesAnalises extends Component {
             <table className="tableHeaderdet">
                 <tr>
                     <th className="th1TableHeader" colSpan="4">
-                       <button id="btnEditAnl" className=" pull-right btn btn-secondary" onClick={this.editarAnalise}>Editar</button>
+                       <button id="btnEditAnl" className=" pull-right btn btn-secondary" onClick={this.editarAnaliseStart}>Editar</button>
                     </th>
                 </tr>
                 <tr id="identSujData">
