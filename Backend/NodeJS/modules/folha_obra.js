@@ -188,7 +188,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 		})
 	})
 
-	//metodo que permite remover um material
+	//metodo que permite remover um procedimento
 	app.get("/procedimentos/:id/remove", verificaLoginAdmin, (request, response) => {
 		let sql0 = 'select * from procedimentos where idProcedimento = ?'
 		// request.params.id mapeia o :id que está no URL acima.
@@ -203,10 +203,10 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 					if(err){
 						console.log(err)
 						con.query('rollback')
-						response.status(500).json({ erro: "Erro ao remover material" });
+						response.status(500).json({ erro: "Erro ao remover procedimento" });
 					} else {
 						con.query('commit')
-						response.status(200).json({message: "Material removido com sucesso"});
+						response.status(200).json({message: "Procedimento removido com sucesso"});
 					}
 				})
 			}
