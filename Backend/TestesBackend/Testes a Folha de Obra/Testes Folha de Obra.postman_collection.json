@@ -1,0 +1,1448 @@
+{
+	"info": {
+		"_postman_id": "005e4c86-8db1-4b14-9491-acdbf5612b5f",
+		"name": "Testes Folha de Obra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e63be242-3774-4dc8-8c67-4abbf7608874",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1cc80a0-8c92-4b5f-a909-e12acd2178b3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.environment.unset(\"Cookie1\");",
+									"pm.environment.unset(\"Cookie2\");",
+									"pm.environment.unset(\"Cookies\");",
+									"",
+									"pm.environment.set('Cookie1',pm.cookies.get('connect.sid'));",
+									"pm.environment.set('Cookie2',pm.cookies.get('_ga'));",
+									"",
+									"let cookie1 = pm.variables.get(\"Cookie1\");",
+									"let cookie2 = pm.variables.get(\"Cookie2\");",
+									"",
+									"pm.environment.set('Cookies','_ga='+cookie1+'; connect.sid='+cookie2+';');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "dribeiro",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/auth",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teste cookies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e695f5d7-77b6-414b-aa88-94ccdf7e07a5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/tecnicos/username/dribeiro",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"tecnicos",
+								"username",
+								"dribeiro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adicionar",
+			"item": [
+				{
+					"name": "Adicionar procedimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Sucesso\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Sucesso\");",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"procID\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "2018-06-02",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "5h",
+									"type": "text"
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/new",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar procedimento - Erro ao registar procedimento (1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Erro ao registar procedimento (1)\", function () {",
+									"    pm.response.to.have.body(\"Erro ao registar procedimento\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "LUDICOLO WAS HERE",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "5h",
+									"type": "text"
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/new",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar procedimento - Erro ao registar procedimento (2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Erro ao registar procedimento (2)\", function () {",
+									"    pm.response.to.have.body(\"Erro ao registar procedimento\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "LUDICOLO WAS HERE",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "5h",
+									"type": "text"
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais",
+									"value": "[ddddddddddddd]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/new",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar procedimento - Erro Dados incompletos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Erro ao registar procedimento (2)\", function () {",
+									"    pm.response.to.have.body(\"Dados incompletos\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "LUDICOLO WAS HERE",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "5h",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/new",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consultar",
+			"item": [
+				{
+					"name": "Consultar Folha de Obra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/peca/5/folhaobra",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"peca",
+								"5",
+								"folhaobra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Folha de Obra [Header]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/peca/5/folhaobraheader",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"peca",
+								"5",
+								"folhaobraheader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Folha de Obra - Erro 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9e6ad55-2b38-4b77-ad38-fab51cbb5f16",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/peca/50/folhaobra",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"peca",
+								"50",
+								"folhaobra"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Editar",
+			"item": [
+				{
+					"name": "Editar procedimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f5bccb1-fe51-47a3-92fc-f03b53527643",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Editado com sucesso\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Sucesso\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra EDITUUUUU",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "2018-06-05",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "7h",
+									"type": "text"
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste EDITADO",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/{{procID}}/update",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"{{procID}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar procedimento - Dados incompletos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f5bccb1-fe51-47a3-92fc-f03b53527643",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Dados incompletos\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Dados incompletos\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra EDITUUUUU",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "2018-06-05",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "7h",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste EDITADO",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/{{procID}}/update",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"{{procID}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar procedimento - Erro ao alterar procedimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f5bccb1-fe51-47a3-92fc-f03b53527643",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Erro ao alterar procedimento\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Erro ao alterar procedimento\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "designacao",
+									"value": "teste folha de obra EDITUUUUU",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "Datas LOL",
+									"type": "text"
+								},
+								{
+									"key": "duracao",
+									"value": "7h",
+									"type": "text"
+								},
+								{
+									"key": "observacoes",
+									"value": "Ganda Teste EDITADO",
+									"type": "text"
+								},
+								{
+									"key": "peca",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "tecnico",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "materiais[0][0]",
+									"value": "NikAO",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "materiais[0][1]",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/{{procID}}/update",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"{{procID}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Material",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e494b9fe-bdd6-4210-8c4a-6c7bd656ad78",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Editado com sucesso\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Sucesso\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "materiais",
+									"value": "Editado",
+									"type": "text"
+								},
+								{
+									"key": "quantidade",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/materiais/46/update",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"materiais",
+								"46",
+								"update"
+							],
+							"query": [
+								{
+									"key": "materiais",
+									"value": "Editado",
+									"disabled": true
+								},
+								{
+									"key": "quantidade ",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Material - Erro ao alterar materiais",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e494b9fe-bdd6-4210-8c4a-6c7bd656ad78",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Erro ao alterar materiais\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Erro ao alterar materiais\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "materiais",
+									"value": "Editado",
+									"type": "text"
+								},
+								{
+									"key": "quantidade",
+									"value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/materiais/46/update",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"materiais",
+								"46",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Material - Erro Dados incompletos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e494b9fe-bdd6-4210-8c4a-6c7bd656ad78",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Dados incompletos\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Dados incompletos\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "materiais",
+									"value": "Editado",
+									"type": "text"
+								},
+								{
+									"key": "quantidade",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/materiais/46/update",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"materiais",
+								"46",
+								"update"
+							],
+							"query": [
+								{
+									"key": "materiais",
+									"value": "Editado",
+									"disabled": true
+								},
+								{
+									"key": "quantidade ",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Remover",
+			"item": [
+				{
+					"name": "Remover procedimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f0eb12a-4879-4e73-a0a3-496aecee974a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Procedimento removido com sucesso\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Procedimento removido com sucesso\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/{{procID}}/remove",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"{{procID}}",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover procedimento - Erro Procedimento não encontrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "366649d5-b99e-4704-9bc8-ca35d604d886",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Procedimento removido com sucesso\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.erro).to.eql(\"Procedimento não encontrado\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/procedimentos/55555/remove",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"procedimentos",
+								"55555",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover material ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e80833af-e0a1-464e-8527-ebed8a646bdf",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Material removido com sucesso\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Material removido com sucesso\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/materiais/:id/remove",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"materiais",
+								":id",
+								"remove"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "46"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover material  - Erro Material não encontrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e80833af-e0a1-464e-8527-ebed8a646bdf",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Material removido com sucesso\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.erro).to.eql(\"Materiais não encontrado\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/materiais/:id/remove",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"materiais",
+								":id",
+								"remove"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1444444"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"item": [
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ba3c599-18ae-4fd8-aaa4-a473e80a8e9c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/logout",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teste cookies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7e32687-3ba7-4fb3-95fe-8320106f24e1",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {",
+									"    pm.response.to.have.status(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://brandi.ipt.pt/api/tecnicos/username/dribeiro",
+							"protocol": "http",
+							"host": [
+								"brandi",
+								"ipt",
+								"pt"
+							],
+							"path": [
+								"api",
+								"tecnicos",
+								"username",
+								"dribeiro"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4a9efca7-012f-4ad6-a0db-8b7ec44c91a3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1371b20a-0f27-4837-a590-026fa7895d9a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
