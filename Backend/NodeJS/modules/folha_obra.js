@@ -84,7 +84,7 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 						id: results[1].insertId 
 					}
 					for(let i=0; i<materiais.length; i++){
-						con.query(sql2, [materiais[i][0],materiais[i][0],resposta.id],
+						con.query(sql2, [materiais[i][0],materiais[i][1],resposta.id],
 						function(error, results, fields) {
 							if(error){
 								con.query('rollback')
