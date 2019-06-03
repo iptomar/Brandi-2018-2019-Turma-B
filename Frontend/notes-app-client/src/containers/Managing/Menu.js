@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import axios from "axios";
 import "./Menu.css";
 import 'react-mdl/extra/material.css';
 import "../navbar.css";
@@ -24,6 +25,15 @@ export default class Login extends Component {
     if(sessionStorage.getItem("loginState") !== "success"){
       this.props.history.push("/login");
     }
+
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth/checkLogin')
+    .then((response) => {
+        return response.data
+    })
+    .then(data => {
+        console.log(data);
+    });
 
     if(sessionStorage.getItem("tipo") === "admin"){
       let prof = document.querySelector(".dropdown-item")

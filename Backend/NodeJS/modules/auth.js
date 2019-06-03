@@ -36,7 +36,8 @@ module.exports = function(app, con, verificaLogin, verificaLoginAdmin) {
 								request.session.username = username
 								request.session.role = results[0].tipo
 								//1 hora = 3600000 ms
-								request.session.cookie.expires = new Date(Date.now() + 18000000)
+								//request.session.cookie.expires = new Date(Date.now() + 18000000)
+								request.session.cookie.expires = new Date(Date.now() + 30000)
 								response.send(request.session.role)
 								response.end()
 							}
