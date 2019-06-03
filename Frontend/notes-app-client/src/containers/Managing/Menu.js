@@ -27,7 +27,7 @@ export default class Login extends Component {
     }
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/auth/checkLogin')
+    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/checkLogin')
     .then((response) => {
         return response.data
     })
