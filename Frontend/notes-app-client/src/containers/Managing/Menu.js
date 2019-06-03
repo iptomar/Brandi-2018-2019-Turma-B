@@ -28,11 +28,8 @@ export default class Login extends Component {
 
     //const proxyurl = "http://cors-anywhere.herokuapp.com/";
     axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/checkLogin')
-    .then((response) => {
-        return response.data
-    })
-    .then(data => {
-        console.log(data);
+    .catch(error =>{
+      this.props.history.push("/logout");
     });
 
     if(sessionStorage.getItem("tipo") === "admin"){
