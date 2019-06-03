@@ -31,6 +31,13 @@ export default class DetalhesAnalises extends Component {
         if(sessionStorage.getItem("loginState") !== "success"){
             this.props.history.push("/login");
         }
+
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/checkLogin')
+        .catch(error =>{
+        this.props.history.push("/logout");
+        });
+
         if(sessionStorage.getItem("tipo") === "admin"){
           let prof = document.querySelector(".dropdown-item")
           console.log(prof)
