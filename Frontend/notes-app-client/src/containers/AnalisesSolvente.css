@@ -49,8 +49,11 @@
 
 .btnAddAn{
     margin: 2px 0px 15px 0px;
-    background-color: #6c757d;
-    color: #ffffff;
+    background-color: white;
+    color :green;
+    padding: 15px 32px;
+    margin: 4px 500px;
+    text-align: center
 }
 .analisesHeadDiv{
     display: flex;
