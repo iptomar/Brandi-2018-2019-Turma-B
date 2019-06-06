@@ -62,10 +62,15 @@
     margin-top: 25px;
 }
 #spanAnHead {
-
 color: white;
 font-size: 30px;
 text-shadow:2px 2px black;
+}
 
+#tableAnalises tr a{
+    color: red;
+}
 
+#tableAnalises tr a:first-of-type{
+    color: orangered;
 }

@@ -202,6 +202,7 @@ export default class AnalisesSolvente extends Component {
                     <th class="analisescabecalho">Info</th>
                 </tr>
             </table>
+            
         </div>
 
       </div>	
