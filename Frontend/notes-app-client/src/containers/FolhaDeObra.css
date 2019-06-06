@@ -10,10 +10,24 @@
     justify-content: center;
 }
 .FOTable{
-    width: 50%;
+    width: 60%;
     background-color: white;
     border: 1px solid black;
 }
+.FOTable > tr > th{
+    background-color: #4b2402;
+    color: #ffffff;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.FOTable > tr > td{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    font-size: 16px;
+}
+
 .FOTable td, .FOTable tr, .FOTable th{
     text-align: center;
     padding: 3px;
