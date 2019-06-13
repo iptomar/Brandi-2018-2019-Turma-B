@@ -2,41 +2,60 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="App">
-      <div className="right">
-        <h3>Vontade expressa do proprietárrio ou do dono da obra</h3>
-        <h4>Tipo de Intervenção</h4>
-        <textarea cols="80" rows="3" />
-        <br />
-        <br />
-        <table>
-          <tr>
-            <td>
-              <label>Preservação</label>
-              <br />
-              <label>Conservação</label>
-            </td>
-            <td>
-              <input type="checkbox" />
-              <input type="checkbox" />
-            </td>
-          </tr>
-        </table>
-        <h3>Aspetos Especificos</h3>
-        <textarea cols="80" rows="3" />
-      </div>
-      <div className="left">
-        <h1>Intervenções Anteriores</h1>
-        <h3>Estrutura</h3>
-        <textarea cols="80" rows="2" />
-        <h3>Superficie</h3>
-        <textarea cols="80" rows="2" />
-        <h3>Elementos Acessórios</h3>
-        <textarea cols="80" rows="2" />
-        <h3>Observações | Conclusões </h3>
-        <textarea cols="80" rows="2" />
+    <div className="container">
+      <div className="row">
+        <div className="col col-md-6">
+          <h1>Intervenções Anteriores</h1>
+          <h3 className="font-weight-bold bg-secondary text-white">
+            Estrutura
+          </h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="5" />
+          </div>
+          <h3 className="font-weight-bold bg-secondary text-white">
+            Superficie
+          </h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="5" />
+          </div>
+          <h3 className="font-weight-bold mt-3 bg-secondary text-white">
+            Elementos Acessórios
+          </h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="5" />
+          </div>
+          <h3 className="font-weight-bold bg-secondary text-white">
+            Observações | Conclusões
+          </h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="5" />
+          </div>
+        </div>
+        <div className="col col-md-6 mt-5">
+          <h3 className="font-weight-bold mt-2 bg-secondary text-white">
+            Vontade expressa do proprietárrio ou do dono da obra
+          </h3>
+          <h3 className="font-weight-bold bg-secondary text-white">
+            Tipo de Intervenção
+          </h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="6" />
+          </div>
+          <h3 className="font-weight-bold bg-secondary text-white">Materias</h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="7" />
+          </div>
+
+          <h3 className="font-weight-bold mt-3 bg-secondary text-white">
+            Aspetos Especificos
+          </h3>
+          <div className="col">
+            <textarea className="form-control-2 ml-n4" cols="103" rows="7" />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
 export default App;
