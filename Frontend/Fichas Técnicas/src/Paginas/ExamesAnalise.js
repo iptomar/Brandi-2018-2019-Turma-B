@@ -2,88 +2,111 @@ import React, { Component } from "react";
 
 
 class ExamesAnalises extends Component {
-	render() {
-  return (
-    <div className="centro">
-    <h1>Exames e Analise</h1>
-    <h2>Objetivos gerais</h2>
-    <table>
-    <tr>
-    <td>
-    <label>Identificação de materiais, técnicas e tecnologias de produção</label>
-    <br></br>
-    <label>Identificação de intervenientes efetuadas no objeto</label>
-    <br></br>
-    <label>Caracterização do estado de conservação</label>
-    <br></br>
-    <label>Identificação de patologias e agentes de biodeterização</label>
-    <br></br>
-    <label>Datação do objeto e das eventuais itervenções que tenha sido alvo</label>
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col col-md-12">
+            <h1>Exames e Analise</h1>
+            <h2 class="mt-3 bg-secondary text-black">Objetivos gerais</h2>
+            <div class="row">
+              <div className="col col-md-10">
+                <h5>Identificação de materiais, técnicas e tecnologias de produção</h5>
+              </div>
+              <div class="col-md-2">
+                <input type="checkbox"></input>
+              </div>
+            </div>
+            <br></br>
+            <div class="row">
+              <div className="col col-md-10">
+                <h5>Identificação de intervenientes efetuadas no objeto</h5>
+              </div>
+              <div class="col-md-2">
+                <input type="checkbox"></input>
+              </div>
+            </div>
+            <br></br>
+            <div class="row">
+              <div className="col col-md-10">
+                <h5>Caracterização do estado de conservação</h5>
+              </div>
+              <div class="col-md-2">
+                <input type="checkbox"></input>
+              </div>
+            </div>
+            <br></br>
+            <div class="row">
+              <div className="col col-md-10">
+                <h5>Identificação de patologias e agentes de biodeterização</h5>
+              </div>
+              <div class="col-md-2">
+                <input type="checkbox"></input>
+              </div>
+            </div>
+            <br></br>
+            <div class="row">
+              <div className="col col-md-10">
+                <h5>Datação do objeto e das eventuais itervenções que tenha sido alvo</h5>
+              </div>
+              <div class="col-md-2">
+                <input type="checkbox"></input>
+              </div>
+            </div>
+            <br></br>
+          </div>
 
-    </td>
-    <td>
-    <input type="checkbox"></input>  <br></br>
-    <input type="checkbox"></input>  <br></br>
-    <input type="checkbox"></input>  <br></br>
-    <input type="checkbox"></input>  <br></br>
-    <input type="checkbox"></input>  <br></br>
-    </td>
-    </tr>
-    </table>
+          <br></br>
+          <br></br>
 
-    <table className="tbl">
-      <tr>
-        <td></td>
-        <td>Tipo-Referência</td>
-        <td>Localização</td>
-        <td>Objetivos expecíficos</td>
-        <td>Resultados</td>
-        <td>Entidade Técnico Responsável</td>
-        <td>Data</td>
-      </tr>
+          <div className="col col-md-12">
+            <div className="row">
+              <div className="col"></div>
+              <div className="col">Tipo-Referência</div>
+              <div className="col">Localização</div>
+              <div className="col">Objetivos expecíficos</div>
+              <div className="col">Resultados</div>
+              <div className="col">Entidade Técnico Responsável</div>
+              <div className="col">Data</div>
+            </div>
 
-      <tr id="myRow">
-        <td><button onclick="myFunction()">+</button></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-    <br></br>
-    <br></br>
-    <table className="tbl1">
-      <tr>
-      <td>
-      Interpretações de Resultados 
-      </td>
-      </tr>
-      <td>
-       "Escrever"
-      </td>
-      <tr>
-      <br></br>
-      </tr>
+            <div className="row">
+              <div className="col text-center"><button class="btn-lg" onclick="myFunction()">+</button></div>
+              <div className="col"><textarea className="form-control-2 ml-n4" cols="25" rows="2"></textarea></div>
+              <div className="col"><textarea className="form-control-2 ml-n4" cols="25" rows="2"></textarea></div>
+              <div className="col"><textarea className="form-control-2 ml-n4" cols="25" rows="2"></textarea></div>
+              <div className="col"><textarea className="form-control-2 ml-n4" cols="25" rows="2"></textarea></div>
+              <div className="col"><textarea className="form-control-2 ml-n4" cols="25" rows="2"></textarea></div>
+              <div className="col"><textarea className="form-control-2 ml-n4" cols="25" rows="2"></textarea></div>
+            </div>
+          </div>
+        </div>
+        <br></br>
+        <br></br>
+        <div className="row">
+          <div className="col col-md-12">
+            <h2 class="mt-3 bg-secondary text-black">Interpretações de Resultados  </h2>
+          </div>
+          <div className="col col-md-12">
+            <textarea className="form-control-2" cols="217" rows="5"></textarea>
+          </div>
+          </div>
+          <br></br>
+          <br></br>
+          <div className="row">
+            <div className="col col-md-12">
+              <h2 class="mt-3 bg-secondary text-black">Observações | Conclusões </h2>
+            </div>
+            <div className="col col-md-12">
+              <textarea className="form-control-2" cols="217" rows="5"></textarea>
+            </div>
 
-      <br></br>
-      <br></br>
 
-      <tr>
-      <td>
-      Observações | Conclusões 
-      </td>
-      </tr>
-      <td>
-        "escrever"
-      </td>
-      <tr>
-      </tr>
+          </div>
+        </div>
 
-    </table>
-  </div>
-  );
-}
+
+    );
+  }
 }
 export default ExamesAnalises;
