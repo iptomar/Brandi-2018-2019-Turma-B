@@ -188,7 +188,7 @@ export default class AnalisesSolvente extends Component {
 
         <div className="analisesHeadDiv">
             <span id="spanAnHead"></span>
-        </div>
+        </div> <br></br> 
 
         <div className="analisesTableDiv">
             <table id = "tableAnalises" className="analisesTable">

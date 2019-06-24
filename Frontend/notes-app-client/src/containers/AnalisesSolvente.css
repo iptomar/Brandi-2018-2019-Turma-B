@@ -72,5 +72,27 @@ text-shadow:2px 2px black;
 }
 
 #tableAnalises tr a:first-of-type{
-    color: orangered;
+    color: green;
 }
+.analisesTableDiv {
+	-webkit-animation: analisesTableDiv 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: analisesTableDiv 1.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes analisesTableDiv {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes analisesTableDiv {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
