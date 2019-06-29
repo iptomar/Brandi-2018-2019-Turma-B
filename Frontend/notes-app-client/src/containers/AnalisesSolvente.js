@@ -31,8 +31,8 @@ export default class AnalisesSolvente extends Component {
         event.preventDefault();
 
         let idAnaliseToDelete = event.currentTarget.value;
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/delete', { idAnaliseToDelete })
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(proxyurl + 'http://brandi.ipt.pt/api/analisesSolventes/delete', { idAnaliseToDelete })
         .then(res => {
             window.location.reload();
         })
@@ -77,8 +77,8 @@ export default class AnalisesSolvente extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/pecas/'+this.state.fichaTecId+'/analisesSolventes')
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(proxyurl + 'http://brandi.ipt.pt/api/pecas/'+this.state.fichaTecId+'/analisesSolventes')
         .then((response) => {
             return response.data
         })
@@ -133,7 +133,7 @@ export default class AnalisesSolvente extends Component {
             table.appendChild(tr);
         })
 
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/pecas/id/'+this.state.fichaTecId+'')
+        axios.get(proxyurl + 'http://brandi.ipt.pt/api/pecas/id/'+this.state.fichaTecId+'')
         .then((response) => {
             return response.data
         })
@@ -188,7 +188,7 @@ export default class AnalisesSolvente extends Component {
 
         <div className="analisesHeadDiv">
             <span id="spanAnHead"></span>
-        </div>
+        </div> <br></br> 
 
         <div className="analisesTableDiv">
             <table id = "tableAnalises" className="analisesTable">
@@ -196,12 +196,13 @@ export default class AnalisesSolvente extends Component {
                     <th className="thButton" colSpan="4"><input type="button" value="Adicionar" className="btnAddAn btn btn-outline-secondary" onClick={this.mudarAddAnalise}></input></th>
                 </tr>
                 <tr>
-                    <th>Sujidade</th>
-                    <th>data</th>
-                    <th>tecnico</th>
-                    <th>Info</th>
+                    <th class="analisescabecalho">Sujidade</th>
+                    <th class="analisescabecalho">data</th>
+                    <th class="analisescabecalho">tecnico</th>
+                    <th class="analisescabecalho">Info</th>
                 </tr>
             </table>
+            
         </div>
 
       </div>	

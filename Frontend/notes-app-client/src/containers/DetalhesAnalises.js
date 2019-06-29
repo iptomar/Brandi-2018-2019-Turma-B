@@ -77,8 +77,8 @@ export default class DetalhesAnalises extends Component {
         });
 
         //Edit tecnico
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicosNome')
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(proxyurl + 'http://brandi.ipt.pt/api/tecnicosNome')
         .then((response) => {
             return response.data
         })
@@ -139,8 +139,8 @@ export default class DetalhesAnalises extends Component {
         let tecnico = this.state.analise_two;
         let dat = this.state.analise_three
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/edit', { estratSuj, caract, tecnico, dat })
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(proxyurl + 'http://brandi.ipt.pt/api/analisesSolventes/edit', { estratSuj, caract, tecnico, dat })
         .then(res => {
             console.log(res)
             window.location.reload();
@@ -157,8 +157,8 @@ export default class DetalhesAnalises extends Component {
         let analise = this.state.analiseID;
         let teste = event.currentTarget.value;
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/testesSolvente/delete', { analise, teste })
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(proxyurl + 'http://brandi.ipt.pt/api/testesSolvente/delete', { analise, teste })
         .then(res => {
             window.location.reload();
         })
@@ -202,8 +202,8 @@ export default class DetalhesAnalises extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/id/'+this.state.analiseID+'')
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(proxyurl + 'http://brandi.ipt.pt/api/analisesSolventes/id/'+this.state.analiseID+'')
         .then((response) => {
             return response.data
         })
@@ -249,7 +249,7 @@ export default class DetalhesAnalises extends Component {
 
         })
 
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/'+this.state.analiseID+'/testesSolvente')
+        axios.get(proxyurl + 'http://brandi.ipt.pt/api/analisesSolventes/'+this.state.analiseID+'/testesSolvente')
         .then((response) => {
             return response.data
         })
