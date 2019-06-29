@@ -10,16 +10,34 @@
     justify-content: center;
 }
 
+.analisescabecalho{
+    background-color: #4B2402;
+    color: white;
+    text-align: middle;
+    padding : 20px;
+    font-size: 20px;
+    
+}
+#tableAnalises > tr:nth-child(even){
+
+    background-color:#eeeeee;
+}
+
 .analisesTable{
     margin-top: 25px;
-    width: 50%;
+    width: 80%;
     text-align: center;
     border: 1px solid black;
     background-color: #ffffff;
-}
 
+}
+#tableAnalises > tr > td{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+}
 .analisesTable th,.analisesTable td{
-    border: 1px solid black;
+    border: none;
 }
 
 .thButton{
@@ -31,8 +49,11 @@
 
 .btnAddAn{
     margin: 2px 0px 15px 0px;
-    background-color: #6c757d;
-    color: #ffffff;
+    background-color: white;
+    color :green;
+    padding: 15px 32px;
+    margin: 4px 500px;
+    text-align: center
 }
 .analisesHeadDiv{
     display: flex;
@@ -40,3 +61,38 @@
     justify-content: center;
     margin-top: 25px;
 }
+#spanAnHead {
+color: white;
+font-size: 30px;
+text-shadow:2px 2px black;
+}
+
+#tableAnalises tr a{
+    color: red;
+}
+
+#tableAnalises tr a:first-of-type{
+    color: green;
+}
+.analisesTableDiv {
+	-webkit-animation: analisesTableDiv 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: analisesTableDiv 1.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes analisesTableDiv {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes analisesTableDiv {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

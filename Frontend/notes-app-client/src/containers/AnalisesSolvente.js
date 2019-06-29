@@ -27,6 +27,20 @@ export default class AnalisesSolvente extends Component {
         this.props.history.push("/addAnalise/"+ this.state.fichaTecId);
     }
 
+    handleDel = event =>{
+        event.preventDefault();
+
+        let idAnaliseToDelete = event.currentTarget.value;
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(proxyurl + 'http://brandi.ipt.pt/api/analisesSolventes/delete', { idAnaliseToDelete })
+        .then(res => {
+            window.location.reload();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
     componentDidMount(){
         if(sessionStorage.getItem("loginState") !== "success"){
             this.props.history.push("/login");
@@ -98,6 +112,18 @@ export default class AnalisesSolvente extends Component {
                 //info.href = "http://localhost:3000/detalhesAnalises/"+an[i].idAnalise+"";
                 info.textContent = "Detalhes";
                 tdInfo.appendChild(info);
+
+                let spanner = document.createElement('span');
+                spanner.textContent = " | ";
+                tdInfo.appendChild(spanner);
+
+                let del = document.createElement('a');
+                del.href = "#"
+                del.value = an[i].idAnalise;
+                del.textContent = "Apagar";
+                del.onclick = this.handleDel;
+                tdInfo.appendChild(del);
+
                 tr.appendChild(tdInfo);
                 table.appendChild(tr);
             }
@@ -168,7 +194,7 @@ export default class AnalisesSolvente extends Component {
 
         <div className="analisesHeadDiv">
             <span id="spanAnHead"></span>
-        </div>
+        </div> <br></br> 
 
         <div className="analisesTableDiv">
             <table id = "tableAnalises" className="analisesTable">
@@ -176,12 +202,13 @@ export default class AnalisesSolvente extends Component {
                     <th className="thButton" colSpan="4"><input type="button" value="Adicionar" className="btnAddAn btn btn-outline-secondary" onClick={this.mudarAddAnalise}></input></th>
                 </tr>
                 <tr>
-                    <th>Sujidade</th>
-                    <th>data</th>
-                    <th>tecnico</th>
-                    <th>Info</th>
+                    <th class="analisescabecalho">Sujidade</th>
+                    <th class="analisescabecalho">data</th>
+                    <th class="analisescabecalho">tecnico</th>
+                    <th class="analisescabecalho">Info</th>
                 </tr>
             </table>
+            
         </div>
 
       </div>	
