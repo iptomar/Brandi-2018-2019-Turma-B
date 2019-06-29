@@ -50,3 +50,19 @@
 .tdFT{
 	font-weight: normal;
 }
+
+.ambLabel{
+	
+	padding-left: 10px;
+	padding-right: 20px;
+}
+
+.textoAmb{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centrarTexto{
+	text-align: center;
+}

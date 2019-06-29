@@ -355,7 +355,6 @@ componentDidMount(){
 				</Collapse>
 			</Navbar>
 
-
 			<div id = "Inicio">
 				<Table className="tableFT table-borderless">
 					<tbody className="tbodyButtonFT">
@@ -410,53 +409,42 @@ componentDidMount(){
 				</Table>
 			</div>
 			
-
-			
-			
-
-
-
-
-
 			<div id = "CondicoesAmbientais">
-				<div className="App">
-					<div className="right">
+				<div className="condAmb">
+					<div className="condAmb" className="centrarTexto">
 						
-						<h3>Radiação</h3>
-						<h4>Natual</h4>
-						<label>Tipo</label>
+						<h3 className="centrarTexto">Radiação</h3>
+						<h4 className="centrarTexto">Natural</h4>
+						<label className="ambLabel">Tipo</label>
 						<input className="radiacao"/>
-						<label>Valor de Luminância</label>
+						<label className="ambLabel">Valor de Luminância</label>
 						<input className="radiacao"/>
-						<label>Valor de U.V. Medidos</label>
+						<label className="ambLabel">Valor de U.V. Medidos</label>
 						<input className="radiacao"/>
-						<label>Valor Rela de U.V.</label>
+						<label className="ambLabel">Valor Rela de U.V.</label>
 						<input className="radiacao"/>
-						<p></p>
-						<hr></hr>
-						<h4>Artificial</h4>
-						<label>Origem</label>
+						
+						<h4 className="centrarTexto">Artificial</h4>
+						<label className="ambLabel">Origem</label>
 						<input className="radiacao"/>
-						<label>Valor de Luminância</label>
+						<label className="ambLabel">Valor de Luminância</label>
 						<input className="radiacao"/>
-						<label>Valor de U.V. Medidos</label>
+						<label className="ambLabel">Valor de U.V. Medidos</label>
 						<input className="radiacao"/>
-						<label>Valor Rela de U.V.</label>
+						<label className="ambLabel">Valor Rela de U.V.</label>
 						<input className="radiacao"/>
-						<h3>Observações|Conclusões</h3>
-						<textarea cols="83" rows="7"></textarea>
-
-
-
+						<h4 className="centrarTexto">Observações|Conclusões</h4>
+						<textarea className="textoAmb" cols="83" rows="7"></textarea>
 					</div>
-					<div className="left">
+					
+					<hr></hr>
 
-						<h1>Condições Ambientais</h1>
-
-						<h3>Descrição</h3>
-						<textarea  cols="80" rows="10"></textarea><br></br>
-						<h3>Ciclos das Estações Climatérias Anuais</h3>
-						<table  align="left" >
+					<div>
+						<h3 className="centrarTexto">Condições Ambientais</h3>
+						<h4 className="centrarTexto">Descrição</h4>
+						<textarea className="textoAmb" cols="80" rows="10"></textarea><br></br>
+						<h4 className="centrarTexto">Ciclos das Estações Climatérias Anuais</h4>
+						<table  align="center" >
 						<tr>
 							<th></th>
 							<th>Frio/Húmido</th>
@@ -488,19 +476,9 @@ componentDidMount(){
 							</td>
 						</tr>
 						</table>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-
-
-
-						<h3>Poluição</h3>
-						<table align="left" >
+						<hr></hr>
+						<h3 className="centrarTexto">Poluição</h3>
+						<table align="center" >
 						<tr>
 							<td>Agentes poluidores</td>
 							<td>
@@ -509,38 +487,36 @@ componentDidMount(){
 						</tr>
 						<tr><td>Resultados</td>
 							<td>
-							<input />
+								<input />
 							</td>
 						</tr>
 						<tr><td>Fontes|Origem</td>
 							<td>
-							<input />
+								<input />
 							</td>
 						</tr>
 						</table>
+						<br/>
 					</div>
 				</div>
 			</div>
 
 
-
-
-
 			<div id = "ExamesAnalises">
 				<div className="centro">
-					<h1>Exames e Analise</h1>
-					<h2>Objetivos gerais</h2>
+					<h3>Exames e Analise</h3>
+					<h4>Objetivos gerais</h4>
 					<table>
 					<tr>
 					<td>
 					<label>Identificação de materiais, técnicas e tecnologias de produção</label>
-					<br></br>
+					<br />
 					<label>Identificação de intervenientes efetuadas no objeto</label>
-					<br></br>
+					<br />
 					<label>Caracterização do estado de conservação</label>
-					<br></br>
+					<br />
 					<label>Identificação de patologias e agentes de biodeterização</label>
-					<br></br>
+					<br />
 					<label>Datação do objeto e das eventuais itervenções que tenha sido alvo</label>
 
 					</td>
@@ -575,8 +551,7 @@ componentDidMount(){
 						<td></td>
 					</tr>
 					</table>
-					<br></br>
-					<br></br>
+					<br />
 					<table className="tbl1">
 					<tr>
 					<td>
@@ -584,87 +559,68 @@ componentDidMount(){
 					</td>
 					</tr>
 					<td>
-					"Escrever"
+					<textarea className="textoAmb" cols="80" rows="10"></textarea>
 					</td>
 					<tr>
-					<br></br>
+					<br />
 					</tr>
-
-					<br></br>
-					<br></br>
-
+					<br />
 					<tr>
 					<td>
 					Observações | Conclusões 
 					</td>
 					</tr>
 					<td>
-						"escrever"
+					<textarea className="textoAmb" cols="80" rows="10"></textarea>
 					</td>
 					<tr>
 					</tr>
-
 					</table>
+				</div>
+			</div>
+
+			<div id = "EstadoConservacao">
+				<div className="centro">
+					<div>
+						<h3 className="centrarTexto">Deterioração Biológica dos Materiais</h3>
+						<h4 className="centrarTexto">Identificação de Patologias e Agentes de Biodeterioração - Diagnóstico</h4>
+						<h4 className="centrarTexto">Estrutura</h4>
+						<textarea className="textoAmb" cols="80" rows="7"></textarea>
+						<h4 className="centrarTexto">Superfície</h4>
+						<textarea className="textoAmb" cols="80" rows="7"></textarea>
+						<h4 className="centrarTexto">Elementos Acessórios</h4>
+						<textarea className="textoAmb" cols="80" rows="7"></textarea>
+						<h4 className="centrarTexto">Observações|Conclusões</h4>
+						<textarea className="textoAmb" cols="80" rows="7"></textarea>
+					</div>
+					<div>
+						<h3 className="centrarTexto">Estado de Conservação</h3>
+						<h4 >Deterioração Física, Química e Mecânica dos Materiais:</h4>
+						<ul>
+							<li>Alterabilidades: Decorrente de envelhecimento natural</li>
+							<li>Alteração: Decorrente de fatores físicos, químicos, biológicos e antrópicos</li>
+						</ul>
+						<h4 className="centrarTexto">Estrutura</h4>
+						<textarea className="textoAmb" cols="80" rows="7"></textarea >
+						<h4 className="centrarTexto">Superfície</h4>
+						<textarea className="textoAmb" cols="80" rows="7"></textarea>
+						<h4 className="centrarTexto">Elementos Acessórios</h4>
+						<textarea className="textoAmb"cols="80" rows="7"></textarea>
+						<br />
+					</div>
 				</div>
 			</div>
 
 
 
-
-
-			<div id = "EstadoConservacao">
-				<div className="App">
-					<div className="right">
-					<h3>Deterioração Biológica dos Materiais</h3>
-						<p>Identificação de Patologias e Agentes de Biodeterioração - Diagnóstico</p>
-					<h3>Estrutura</h3>
-					<textarea cols="80" rows="7">
-					</textarea>
-					<h3>Superfície</h3>
-					<textarea cols="80" rows="7">
-					</textarea>
-					<h3>Elementos Acessórios</h3>
-					<textarea cols="80" rows="7">
-					</textarea>
-					<h3>Observações|Conclusões</h3>
-					<textarea cols="80" rows="7">
-					</textarea>
-					</div>
-					<div className="left">
-					<h1>Estado de Conservação</h1>
-					<h3>Deterioração Física, Química e Mecânica dos Materiais:</h3>
-					<p>Alterabilidades: Decorrente de envelhecimento natural</p>
-					<p>Alteração: Decorrente de fatores físicos, químicos, biológicos e antrópicos</p>
-					<h3>Estrutura</h3>
-					<textarea cols="80" rows="7">
-					</textarea >
-					<h3>Superfície</h3>
-					<textarea cols="80" rows="7">
-					</textarea>
-					<h3>Elementos Acessórios</h3>
-					<textarea cols="80" rows="7">
-					</textarea>
-
-					
-
-
-					</div>
-
-
-					</div>
-			</div>
-
-
-
 			<div id = "IntervencoesAnteriores">
-				<div className="App">
-					<div className="right">
-					<h3>Vontade expressa do proprietárrio ou do dono da obra</h3>
-					<h4>Tipo de Intervenção</h4>
-					<textarea cols="80" rows="3" />
+				<div>
+					<div>
+					<h4 className="centrarTexto">Vontade expressa do proprietário ou do dono da obra</h4>
+					<h4 className="centrarTexto">Tipo de Intervenção</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
 					<br />
-					<br />
-					<table>
+					<table align="center" width="10%">
 						<tr>
 						<td>
 							<label>Preservação</label>
@@ -672,32 +628,32 @@ componentDidMount(){
 							<label>Conservação</label>
 						</td>
 						<td>
-							<input type="checkbox" />
-							<input type="checkbox" />
+						<input type="checkbox"></input>  <br></br>
+						<input type="checkbox"></input>  <br></br>
 						</td>
 						</tr>
 					</table>
-					<h3>Aspetos Especificos</h3>
-					<textarea cols="80" rows="3" />
+					<h4 className="centrarTexto">Aspetos Especificos</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
 					</div>
-					<div className="left">
-					<h1>Intervenções Anteriores</h1>
-					<h3>Estrutura</h3>
-					<textarea cols="80" rows="2" />
-					<h3>Superficie</h3>
-					<textarea cols="80" rows="2" />
-					<h3>Elementos Acessórios</h3>
-					<textarea cols="80" rows="2" />
-					<h3>Observações | Conclusões </h3>
-					<textarea cols="80" rows="2" />
+					<div>
+					<h3 className="centrarTexto">Intervenções Anteriores</h3>
+					<h4 className="centrarTexto">Estrutura</h4>
+					<textarea className="textoAmb" cols="80" rows="2" />
+					<h4 className="centrarTexto">Superficie</h4>
+					<textarea className="textoAmb" cols="80" rows="2" />
+					<h4 className="centrarTexto">Elementos Acessórios</h4>
+					<textarea className="textoAmb" cols="80" rows="2" />
+					<h4 className="centrarTexto">Observações | Conclusões </h4>
+					<textarea className="textoAmb" cols="80" rows="2" />
+					<br />
 					</div>
 				</div>
 			</div>
 
 
-
 			<div id = "TipoIntervencao">
-				<div className="App">
+				<div className="centro">
 					<div class="div1">
 					<h1>Tipo de Intervenção e Proposta</h1>
 						<h3>Tipo de Intervenção proposta pelo Conservador-Restaurador</h3>
@@ -748,27 +704,26 @@ componentDidMount(){
 
 
 			<div id = "IntervencaoRealizada">
-				<div className="App">
-					<div className="right">
-					<h3>Elementos Acessórios</h3>
-					<textarea cols="80" rows="3" />
-					<h2>Materias</h2>
-					<textarea cols="80" rows="3" />
-
-					<h3>Observações | Conclusões</h3>
-					<textarea cols="80" rows="3" />
+				<div>
+					<div>
+					<h4 className="centrarTexto">Elementos Acessórios</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
+					<h4 className="centrarTexto">Materias</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
+					<h4 className="centrarTexto">Observações | Conclusões</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
 					</div>
-					<div className="left">
-					<h1>Intervenções Realizada</h1>
-					<h3>Estrutura</h3>
-					<textarea cols="80" rows="2" />
-					<h2>Materias</h2>
-					<textarea cols="80" rows="3" />
-
-					<h3>Superficie</h3>
-					<textarea cols="80" rows="2" />
-					<h2>Materias</h2>
-					<textarea cols="80" rows="3" />
+					<hr></hr>
+					<div>
+					<h3 className="centrarTexto">Intervenções Realizada</h3>
+					<h4 className="centrarTexto">Estrutura</h4>
+					<textarea className="textoAmb" cols="80" rows="2" />
+					<h4 className="centrarTexto">Materias</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
+					<h4 className="centrarTexto">Superficie</h4>
+					<textarea className="textoAmb" cols="80" rows="2" />
+					<h4 className="centrarTexto">Materias</h4>
+					<textarea className="textoAmb" cols="80" rows="3" />
 					</div>
 				</div>
 			</div>
@@ -776,44 +731,35 @@ componentDidMount(){
 
 
 			<div id = "Documentacao">
-				<div className="App">
+				<div className="centro">
 					<div className="right">
-					<h3>Exames e Análises</h3>
-					<h4>Tipo|Designação</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h4>Referências</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h4>Entidade|Autor</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-
+						<h3 className="centrarTexto">Exames e Análises</h3>
+						<h4 className="centrarTexto">Tipo|Designação</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h4 className="centrarTexto">Referências</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h4 className="centrarTexto">Entidade|Autor</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
 					</div>
 					<div className="left">
-					<h1>Documentação</h1>
-					<h3>Relatório Técnico da Intervenção do LCRM</h3>
-					<textarea cols="80" rows="2"></textarea>
-					<h3>Originais Fotográficos</h3>
-					<h4>Tipo|Designação</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h4>Referências</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h4>Entidade|Autor</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h3>Documentação Gráfica</h3>
-					<h4>Tipo|Designação</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h4>Referências</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
-					<h4>Entidade|Autor</h4>
-					<textarea cols="80" rows="3">
-					</textarea>
+						<h3 className="centrarTexto">Documentação</h3>
+						<h4 className="centrarTexto">Relatório Técnico da Intervenção do LCRM</h4>
+						<textarea className="textoAmb" cols="80" rows="2"></textarea>
+						<h3 className="centrarTexto">Originais Fotográficos</h3>
+						<h4 className="centrarTexto">Tipo|Designação</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h4 className="centrarTexto">Referências</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h4 className="centrarTexto">Entidade|Autor</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h3 className="centrarTexto">Documentação Gráfica</h3>
+						<h4 className="centrarTexto">Tipo|Designação</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h4 className="centrarTexto">Referências</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<h4 className="centrarTexto">Entidade|Autor</h4>
+						<textarea className="textoAmb" cols="80" rows="3"></textarea>
+						<br />
 					</div>
 				</div>
 			</div>
@@ -821,17 +767,17 @@ componentDidMount(){
 
 
 			<div id = "Fontes">
-				<div className="App">
+				<div className="centro">
 					<div className="right">
-					<h3>Bibliográficos</h3>
-					<label>Autor/Título/Local/Editor/Data/Página(s)</label>
-					<input className="bibliográficos" />
-					<table align="left">
+					<h3 className="centrarTexto">Bibliográficos</h3>
+		
+					<table align="center" width="auto">
 						<tr>
 						<th />
 						<th>Tipo</th>
 						<th>Localização</th>
 						<th>Conta</th>
+						<th>Autor/Título/Local/Editor/Data/Página(s)</th>
 						</tr>
 						<tr>
 						<td />
@@ -844,22 +790,21 @@ componentDidMount(){
 						<td>
 							<input />
 						</td>
+						<td>
+							<input className="bibliográficos" />
+						</td>
 						</tr>
 					</table>
 					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<h4>Eletronicas</h4>
-					<label>Autor/Título/Local/Editor/Data/Página(s)</label>
-					<input className="bibliográficos" />
-					<table align="left">
+
+					<h4 className="centrarTexto">Eletronicas</h4>
+					<table align="center" width="auto">
 						<tr>
 						<th />
 						<th>Tipo</th>
 						<th>Localização</th>
 						<th>Conta</th>
+						<th>Autor/Título/Local/Editor/Data/Página(s)</th>
 						</tr>
 						<tr>
 						<td />
@@ -872,49 +817,24 @@ componentDidMount(){
 						<td>
 							<input />
 						</td>
+						<td>
+							<input className="bibliográficos" />
+						</td>
 						</tr>
 					</table>
+					<br />
 					</div>
 
 					<div className="left">
-					<h1>Fontes</h1>
-					<h3>Arquivísticas | Documentais</h3>
-					<label>Autor/Título/Local/Editor/Data/Página(s)</label>
-					<input className="bibliográficos" />
-					<table align="left">
-						<tr>
-						<th />
-						<th>Tipo</th>
-						<th>Localização</th>
-						<th>R</th>
-						</tr>
-						<tr>
-						<td />
-						<td>
-							<input />
-						</td>
-						<td>
-							<input />
-						</td>
-						<td>
-							<input />
-						</td>
-						</tr>
-					</table>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<h4>Iconográficas</h4>
-					<label>Autor/Título/Local/Editor/Data/Página(s)</label>
-					<input className="bibliográficos" />
-					<table align="left">
+					<h3 className="centrarTexto">Fontes</h3>
+					<h4 className="centrarTexto">Arquivísticas | Documentais</h4>
+					<table align="center" width="auto">
 						<tr>
 						<th />
 						<th>Tipo</th>
 						<th>Localização</th>
 						<th>Conta</th>
+						<th>Autor/Título/Local/Editor/Data/Página(s)</th>
 						</tr>
 						<tr>
 						<td />
@@ -927,46 +847,78 @@ componentDidMount(){
 						<td>
 							<input />
 						</td>
+						<td>
+							<input className="bibliográficos" />
+						</td>
 						</tr>
 					</table>
+					<br />
+					<br />
+					<h4 className="centrarTexto">Iconográficas</h4>
+					<table align="center" width="auto">
+						<tr>
+						<th />
+						<th>Tipo</th>
+						<th>Localização</th>
+						<th>Conta</th>
+						<th>Autor/Título/Local/Editor/Data/Página(s)</th>
+						</tr>
+						<tr>
+						<td />
+						<td>
+							<input />
+						</td>
+						<td>
+							<input />
+						</td>
+						<td>
+							<input />
+						</td>
+						<td>
+							<input className="bibliográficos" />
+						</td>
+						</tr>
+					</table>
+					<br />
 					</div>
 
 					<div className="down" />
 					<br />
 					<br />
 					<br />
-					<h4>Eletronicas</h4>
-					<table align="left">
-					<tr>
+					<h4 className="centrarTexto">Eletronicas</h4>
+					<table align="center" width="auto">
+						<tr>
 						<th />
-						<th>Autor/Título/Local/Editor/Data/Página(s)</th>
 						<th>Tipo</th>
 						<th>Localização</th>
 						<th>Conta</th>
-					</tr>
-					<tr>
+						<th>Autor/Título/Local/Editor/Data/Página(s)</th>
+						</tr>
+						<tr>
 						<td />
 						<td>
-						<input />
+							<input />
 						</td>
 						<td>
-						<input />
+							<input />
 						</td>
 						<td>
-						<input />
+							<input />
 						</td>
 						<td>
-						<input />
+							<input className="bibliográficos" />
 						</td>
-					</tr>
+						</tr>
 					</table>
+					<br />
 				</div>
 			</div>
 
 
 
 			<div id = "Equipa">
-				<div className="App">
+				<div className="centro">
 					<div className="down">
 					<h1>Equipa</h1>
 					<h3>Constituição da Equipa</h3>
