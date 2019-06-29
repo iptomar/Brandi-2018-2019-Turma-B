@@ -71,8 +71,8 @@ componentDidMount(){
 
 	let idObra = (window.location.pathname).split("/")[2];
 		
-	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/obras/' + idObra + "/pecas")
+	const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(proxyurl + 'http://brandi.ipt.pt/api/obras/' + idObra + "/pecas")
 	.then((response) => {
 		return response.data
 	})
@@ -129,7 +129,7 @@ componentDidMount(){
 			titulo.textContent = nome;
 			body.appendChild(titulo);
 			
-			axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/pecas/'+objeto.idPeca+'/imagens')
+			axios.get(proxyurl + 'http://brandi.ipt.pt/api/pecas/'+objeto.idPeca+'/imagens')
 			.then((response) => {
 				return response.data
 			})		

@@ -69,8 +69,8 @@ componentDidMount(){
       registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
     } 
 
-	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/obras')
+	const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(proxyurl + 'http://brandi.ipt.pt/api/obras')
 	.then((response) => {
 		return response.data
 	})

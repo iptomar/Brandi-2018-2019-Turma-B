@@ -46,8 +46,8 @@ export default class Login extends Component {
     let Habilitacoes = this.state.Habilitacoes;
     let NivProfissional = this.state.NivProfissional;
 
-    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/register', { Nome, username, password, email, tipo, Habilitacoes, NivProfissional})
+    const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(proxyurl + 'http://brandi.ipt.pt/api/register', { Nome, username, password, email, tipo, Habilitacoes, NivProfissional})
       .then(res => {
         console.log(res)
         this.props.history.push("/tecnicos");

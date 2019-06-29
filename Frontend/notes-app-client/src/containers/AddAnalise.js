@@ -43,8 +43,8 @@ export default class AnalisesSolvente extends Component {
         let tecnico = this.state.tecnico;
         let peca = this.state.peca;
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/analisesSolventes/new', { sujidade, dataAnalise, caracteristicas, tecnico, peca })
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(proxyurl + 'http://brandi.ipt.pt/api/analisesSolventes/new', { sujidade, dataAnalise, caracteristicas, tecnico, peca })
         .then(res => {
         console.log(res)
         this.props.history.push("/analisesSolvente/"+ this.state.peca);
@@ -96,8 +96,8 @@ export default class AnalisesSolvente extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
-        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicosNome')
+        const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(proxyurl + 'http://brandi.ipt.pt/api/tecnicosNome')
         .then((response) => {
             return response.data
         })
