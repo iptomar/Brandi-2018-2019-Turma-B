@@ -65,8 +65,8 @@ export default class DetalhesAnalises extends Component {
           registarLink.parentNode.insertBefore(tecnicosLink, registarLink.nextSibling);
         } 
 
-        const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.get(proxyurl + 'http://brandi.ipt.pt/api/peca/'+this.state.pecaID+'/folhaobraHeader')
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/peca/'+this.state.pecaID+'/folhaobraHeader')
         .then((response) => {
             return response.data
         })
@@ -86,7 +86,7 @@ export default class DetalhesAnalises extends Component {
 
         })
 
-        axios.get(proxyurl + 'http://brandi.ipt.pt/api/peca/'+this.state.pecaID+'/folhaobra')
+        axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/peca/'+this.state.pecaID+'/folhaobra')
         .then((response) => {
             return response.data
         })

@@ -32,8 +32,8 @@ toggle2() {
 deleteObj = event => {
 	event.preventDefault();
 
-	const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(proxyurl + 'http://brandi.ipt.pt/api/objetos/'+ this.state.fichaTecId +'/removeObj')
+	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/removeObj')
 	.then((response) => {
 		 window.location = "/objetos"
 	})
@@ -42,8 +42,8 @@ deleteObj = event => {
 deleteFt = event => {
 	event.preventDefault();
 
-	const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(proxyurl + 'http://brandi.ipt.pt/api/objetos/'+ this.state.fichaTecId +'/removeFT')
+	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ this.state.fichaTecId +'/removeFT')
 	.then((response) => {
 		window.location.reload();
 	})
@@ -119,8 +119,8 @@ componentDidMount(){
 
 	const FtId = (window.location.pathname).split("/")[2];
 
-	const proxyurl = "http://cors-anywhere.herokuapp.com/";
-	axios.get(proxyurl + 'http://brandi.ipt.pt/api/objetos/'+ FtId +'/consultarFT')
+	//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+	axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/objetos/'+ FtId +'/consultarFT')
 	.then((response) => {
 		return response.data[0]
 	})

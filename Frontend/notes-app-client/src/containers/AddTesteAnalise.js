@@ -41,8 +41,8 @@ export default class DetalhesAnalises extends Component {
         let obs = this.state.obs;
         let analise = this.state.analiseID;
 
-        const proxyurl = "http://cors-anywhere.herokuapp.com/";
-        axios.post(proxyurl + 'http://brandi.ipt.pt/api/testesSolvente/new', { solvente, eficacia, obs, analise})
+        //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+        axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/testesSolvente/new', { solvente, eficacia, obs, analise})
         .then(res => {
         console.log(res)
         this.props.history.push("/detalhesAnalises/"+ this.state.analiseID);

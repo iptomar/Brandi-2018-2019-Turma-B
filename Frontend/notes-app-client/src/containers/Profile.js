@@ -191,8 +191,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const Nome = document.getElementById("TfNome").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updateNome', { Nome })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateNome', { Nome })
       .then(res => {
         window.location.reload();
       })
@@ -205,8 +205,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const username = document.getElementById("TfUser").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updateUsername', { username })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateUsername', { username })
       .then(res => {
         window.location.reload();
       })
@@ -219,8 +219,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const email = document.getElementById("TfEmail").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updateEmail', { email })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateEmail', { email })
       .then(res => {
         window.location.reload();
       })
@@ -233,8 +233,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const password = document.getElementById("TfPass").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updatePassword', { password })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updatePassword', { password })
       .then(res => {
         window.location.reload();
       })
@@ -247,8 +247,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const habilitacoes = document.getElementById("TfHab").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updateHabilitacoes', { habilitacoes })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateHabilitacoes', { habilitacoes })
       .then(res => {
         window.location.reload();
       })
@@ -261,8 +261,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const tipo = document.getElementById("TfTipo").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updateTipo', { tipo })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updateTipo', { tipo })
       .then(res => {
         window.location.reload();
       })
@@ -275,8 +275,8 @@ export default class Login extends Component {
 		const nomeActual = this.state.user.username;
 		const nivelProfissional = document.getElementById("TfNivel").value;
 
-		const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/'+ nomeActual +'/updatenivelProfissional', { nivelProfissional })
+		//const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.post(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/'+ nomeActual +'/updatenivelProfissional', { nivelProfissional })
       .then(res => {
         window.location.reload();
       })
@@ -405,8 +405,8 @@ export default class Login extends Component {
 			}
 		}    
     this.setState({name: sessionName })
-    const proxyurl = "http://cors-anywhere.herokuapp.com/";
-    axios.get(proxyurl + 'http://brandi.ipt.pt/api/tecnicos/username/' + sessionName)
+    //const proxyurl = "http://cors-anywhere.herokuapp.com/";
+    axios.get(/*proxyurl + 'http://brandi.ipt.pt*/'/api/tecnicos/username/' + sessionName)
     .then((response) => {
       return response.data
     })
